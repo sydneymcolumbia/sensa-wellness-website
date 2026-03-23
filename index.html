@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensa Wellness - Putting Your Health Back into Your Hands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #fffff7;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-gray: #4a4a5a;
+            --text-light: #7a7a8a;
+            --accent-gold: #fac234;
+            --accent-orange: #f59d06;
+            --accent-coral: #e85a39;
+            --accent-navy: #1800ad;
+            --accent-purple: #7267f2;
+            --accent-blue: #41a6f0;
+            --btn-dark: #1800ad;
+            --btn-hover: #2a10c0;
+            --section-padding: 5rem 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-primary);
+            line-height: 1.2;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.065em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-stagger > *:nth-child(1) { transition-delay: 0s; }
+        .reveal-stagger > *:nth-child(2) { transition-delay: 0.1s; }
+        .reveal-stagger > *:nth-child(3) { transition-delay: 0.2s; }
+        .reveal-stagger > *:nth-child(4) { transition-delay: 0.3s; }
+        .reveal-stagger > *:nth-child(5) { transition-delay: 0.4s; }
+        .reveal-stagger > *:nth-child(6) { transition-delay: 0.5s; }
+        .reveal-stagger > *:nth-child(7) { transition-delay: 0.6s; }
+        .reveal-stagger > *:nth-child(8) { transition-delay: 0.7s; }
+        .reveal-stagger > *:nth-child(9) { transition-delay: 0.8s; }
+        .reveal-stagger > *:nth-child(10) { transition-delay: 0.9s; }
+
+        /* Reading Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-coral), var(--accent-orange));
+            z-index: 1001;
+            transition: width 0.1s linear;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent-orange), var(--accent-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-navy);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            background: var(--btn-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(24, 0, 173, 0.25);
+        }
+
+        .btn:hover {
+            background: var(--btn-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--btn-dark);
+            color: var(--btn-dark);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--btn-dark);
+            color: white;
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.35);
+        }
+
+        /* Accessibility: focus-visible */
+        .btn:focus-visible,
+        nav a:focus-visible,
+        .social-link:focus-visible,
+        .scroll-top:focus-visible {
+            outline: 3px solid var(--accent-purple);
+            outline-offset: 2px;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 5rem;
+            background: linear-gradient(165deg, #ffffff 0%, #f8f6ff 50%, #eef3ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(114, 103, 242, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(65, 166, 240, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-navy);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .hero-feature .check {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Hero Stats Bar */
+        .hero-stats {
+            display: flex;
+            gap: 0;
+            margin-top: 3rem;
+        }
+
+        .hero-stat {
+            flex: 1;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .hero-stat:not(:last-child) {
+            border-right: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .hero-stat-number {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--accent-navy);
+            letter-spacing: -0.065em;
+            line-height: 1.2;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-top: 0.3rem;
+            line-height: 1.4;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .vial-container {
+            position: relative;
+            width: 280px;
+            height: 400px;
+        }
+
+        .vial {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .vial-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 320px;
+            background: linear-gradient(180deg, rgba(24, 0, 173, 0.08) 0%, rgba(114, 103, 242, 0.2) 50%, rgba(65, 166, 240, 0.4) 100%);
+            border-radius: 60px 60px 30px 30px;
+            border: 2px solid rgba(114, 103, 242, 0.3);
+            overflow: hidden;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .vial-liquid {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(180deg, rgba(65, 166, 240, 0.5) 0%, rgba(114, 103, 242, 0.7) 100%);
+            border-radius: 0 0 28px 28px;
+            animation: liquidPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes liquidPulse {
+            0%, 100% { height: 58%; }
+            50% { height: 62%; }
+        }
+
+        .vial-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(114, 103, 242, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .vial-cap {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 40px;
+            background: linear-gradient(180deg, #7267f2, #5a50d8);
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), var(--accent-blue), transparent);
+        }
+
+        /* Non-Invasive Section */
+        .non-invasive {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+        }
+
+        .non-invasive .container {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .non-invasive h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .non-invasive h2 span {
+            color: var(--accent-navy);
+        }
+
+        .non-invasive p {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .highlight-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--bg-primary);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .highlight-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: var(--section-padding);
+            background: var(--bg-primary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 3px solid transparent;
+        }
+
+        .card.card-coral {
+            border-top-color: var(--accent-coral);
+        }
+
+        .card.card-gold {
+            border-top-color: var(--accent-gold);
+        }
+
+        .card.card-purple {
+            border-top-color: var(--accent-purple);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .card.card-coral:hover {
+            background: linear-gradient(180deg, rgba(232, 90, 57, 0.03) 0%, var(--bg-white) 100%);
+        }
+
+        .card.card-gold:hover {
+            background: linear-gradient(180deg, rgba(250, 194, 52, 0.05) 0%, var(--bg-white) 100%);
+        }
+
+        .card.card-purple:hover {
+            background: linear-gradient(180deg, rgba(114, 103, 242, 0.03) 0%, var(--bg-white) 100%);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .card-icon.easy {
+            background: rgba(65, 166, 240, 0.12);
+            color: var(--accent-blue);
+        }
+
+        .card-icon.cost {
+            background: rgba(250, 194, 52, 0.15);
+            color: var(--accent-orange);
+        }
+
+        .card-icon.scale {
+            background: rgba(114, 103, 242, 0.12);
+            color: var(--accent-purple);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent-orange));
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .step p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .step-connector {
+            position: absolute;
+            top: 50px;
+            right: -1rem;
+            width: 2rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-coral), transparent);
+        }
+
+        .step:last-child .step-connector {
+            display: none;
+        }
+
+        .results-info {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .results-info p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .color-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .indicator-dot.light {
+            background: var(--accent-blue);
+        }
+
+        .indicator-dot.moderate {
+            background: var(--accent-orange);
+        }
+
+        .indicator-dot.extreme {
+            background: var(--accent-coral);
+        }
+
+        /* Conditions Section */
+        .conditions {
+            padding: var(--section-padding);
+            background: linear-gradient(165deg, #eef3ff 0%, #f5f3ff 100%);
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .condition-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--bg-white);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+            cursor: pointer;
+        }
+
+        .condition-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .condition-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .condition-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .condition-icon.ci-coral { background: rgba(232, 90, 57, 0.12); }
+        .condition-icon.ci-orange { background: rgba(245, 157, 6, 0.12); }
+        .condition-icon.ci-gold { background: rgba(250, 194, 52, 0.12); }
+        .condition-icon.ci-blue { background: rgba(65, 166, 240, 0.12); }
+        .condition-icon.ci-purple { background: rgba(114, 103, 242, 0.12); }
+        .condition-icon.ci-navy { background: rgba(24, 0, 173, 0.08); }
+
+        .condition-item span {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            background: linear-gradient(135deg, #eef3ff, #dde5ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .team-card:hover .team-photo {
+            box-shadow: 0 0 0 3px var(--accent-purple);
+        }
+
+        .team-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-card p {
+            color: var(--accent-navy);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--section-padding);
+            background: var(--bg-primary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .contact-item .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--bg-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent-purple);
+        }
+
+        .contact-form h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--bg-primary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 3px rgba(114, 103, 242, 0.15);
+        }
+
+        .form-group input:focus-visible,
+        .form-group textarea:focus-visible,
+        .form-group select:focus-visible {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 3px rgba(114, 103, 242, 0.15);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.8);
+            padding: 4rem 0 2rem;
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, var(--accent-coral), var(--accent-purple), var(--accent-blue)) 1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: background 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--btn-dark);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 999;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            background: var(--btn-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-features {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .vial-container {
+                width: 200px;
+                height: 300px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto 3rem;
+            }
+
+            .step-connector {
+                display: none;
+            }
+
+            .conditions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            }
+
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .hero-stat:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+                padding-bottom: 1.5rem;
+            }
+
+            .conditions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="app.html">App</a>
+                <a href="#team">Team</a>
+                <a href="#waitlist" class="btn">Take Action</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1><span>SENSA:</span> Putting Your Health Back into Your Hands.</h1>
+                <p>Chronic inflammation is linked to 7 of the 10 leading causes of death. Sensa is a saliva-based monitoring tool that lets you track it at home&mdash;no needles, no clinic visits, just reliable results in minutes.</p>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <span class="check">&mdash;</span> No needles
+                    </div>
+                    <div class="hero-feature">
+                        <span class="check">&mdash;</span> No clinical visits
+                    </div>
+                    <div class="hero-feature">
+                        <span class="check">&mdash;</span> Results in minutes
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#waitlist" class="btn">Take Action</a>
+                    <a href="#about" class="btn btn-outline">Learn More</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-target="7" data-prefix="" data-suffix=" in 10">7 in 10</div>
+                        <div class="hero-stat-label">Leading causes of death linked to inflammation</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-target="15" data-prefix="" data-suffix=" min">15 min</div>
+                        <div class="hero-stat-label">Get results at home</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-target="100" data-prefix="" data-suffix="%">100%</div>
+                        <div class="hero-stat-label">Non-invasive testing</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="vial-container">
+                    <div class="vial-glow"></div>
+                    <div class="vial">
+                        <div class="vial-cap"></div>
+                        <div class="vial-body">
+                            <div class="vial-liquid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Non-Invasive Section -->
+    <section class="non-invasive" id="about">
+        <div class="container reveal">
+            <h2>Non-invasive. Results in minutes. <span>Safe for home use.</span></h2>
+            <p>Traditional inflammation testing means blood draws, lab visits, and waiting days for results. Sensa uses salivary biomarkers&mdash;the same markers researchers use to study systemic inflammation&mdash;so you get actionable insight from a simple spit sample, right at home.</p>
+            <div class="highlight-bar">
+                <div class="highlight-item">
+                    <div class="highlight-dot"></div>
+                    Non-invasive
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-dot"></div>
+                    Saliva-based
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-dot"></div>
+                    Home-friendly
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Why Choose Sensa -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Why Choose Sensa</h2>
+                <p>Health monitoring should be simple, affordable, and available to everyone.</p>
+            </div>
+            <div class="cards-grid reveal reveal-stagger">
+                <div class="card card-coral">
+                    <div class="card-icon easy">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2c-1 0-2.5 1.5-2.5 3.5C9.5 7.5 12 12 12 12s2.5-4.5 2.5-6.5C14.5 3.5 13 2 12 2z"/>
+                            <path d="M12 12c0 0-1 2-1 4a1 1 0 0 0 2 0c0-2-1-4-1-4z" fill="currentColor" stroke="none"/>
+                            <circle cx="12" cy="19" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Easy to Use</h3>
+                    <p>A saliva-based test that anyone can do. Non-invasive and safe for pregnant women, diabetics, children, and the elderly&mdash;no training required.</p>
+                </div>
+                <div class="card card-gold">
+                    <div class="card-icon cost">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M14.5 9c-.5-1-1.5-1.5-2.5-1.5-1.66 0-3 1-3 2.25s1.34 2.25 3 2.25c1.66 0 3 1 3 2.25S13.66 16.5 12 16.5c-1 0-2-.5-2.5-1.5"/>
+                            <line x1="12" y1="6" x2="12" y2="7.5"/>
+                            <line x1="12" y1="16.5" x2="12" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3>Cost Effective</h3>
+                    <p>No refrigeration, no batteries, no lab equipment. Each single-use device is shelf-stable at room temperature&mdash;designed to keep costs low without cutting corners on accuracy.</p>
+                </div>
+                <div class="card card-purple">
+                    <div class="card-icon scale">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9z"/>
+                        </svg>
+                    </div>
+                    <h3>Built to Scale</h3>
+                    <p>From rural clinics to urban households, Sensa works anywhere. Integrates with our companion app so you can track trends and share results with your doctor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>How Sensa Works</h2>
+                <p>Three steps. A few minutes. Real insight into what's happening inside your body.</p>
+            </div>
+            <div class="steps reveal reveal-stagger">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Provide a Saliva Sample</h3>
+                    <p>Just spit into a Sensa device. No blood draws, no swabs, no discomfort whatsoever.</p>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Wait for the Color Change</h3>
+                    <p>The device reacts with inflammatory biomarkers in your saliva. Within minutes, a visible color change appears.</p>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Read Your Results</h3>
+                    <p>Open the Sensa app, scan your device, and see your inflammation level&mdash;with guidance on what it means.</p>
+                </div>
+            </div>
+            <div class="results-info reveal">
+                <div class="color-indicators">
+                    <div class="indicator">
+                        <div class="indicator-dot light"></div>
+                        Lightly Inflamed
+                    </div>
+                    <div class="indicator">
+                        <div class="indicator-dot moderate"></div>
+                        Moderately Inflamed
+                    </div>
+                    <div class="indicator">
+                        <div class="indicator-dot extreme"></div>
+                        Extremely Inflamed
+                    </div>
+                </div>
+                <p>Moderate or severe results? We'll recommend you follow up with your healthcare provider. Mild inflammation is often manageable through lifestyle changes&mdash;better sleep, nutrition, stress reduction, and movement.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Conditions Section -->
+    <section class="conditions">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Conditions Sensa Can Help Monitor</h2>
+                <p>Inflammation plays a role in far more than you might think. Sensa helps you stay ahead of it.</p>
+            </div>
+            <div class="conditions-grid reveal reveal-stagger">
+                <a href="post-diabetes-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-coral">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#e85a39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2c-1 0-3 2-3 5 0 3.5 3 7 3 7s3-3.5 3-7c0-3-2-5-3-5z"/>
+                            <circle cx="12" cy="17" r="3" fill="rgba(232,90,57,0.2)"/>
+                        </svg>
+                    </div>
+                    <span>Diabetes</span>
+                </a>
+                <a href="post-arthritis-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#f59d06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="12" r="4"/>
+                            <circle cx="15" cy="12" r="4"/>
+                            <path d="M9 8v8M15 8v8"/>
+                        </svg>
+                    </div>
+                    <span>Arthritis</span>
+                </a>
+                <a href="post-injuries-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-gold">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fac234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v8M12 14v8"/>
+                            <path d="M4 10h16"/>
+                            <path d="M4 14h16"/>
+                            <rect x="8" y="6" width="8" height="12" rx="2" fill="rgba(250,194,52,0.15)"/>
+                        </svg>
+                    </div>
+                    <span>Physical Injuries</span>
+                </a>
+                <a href="post-cancer-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#41a6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2C10 2 8 4 8 6c0 3 4 6 4 6s4-3 4-6c0-2-2-4-4-4z" fill="rgba(65,166,240,0.15)"/>
+                            <path d="M6 12c-2 1-4 3-4 5 0 3 5 5 10 5s10-2 10-5c0-2-2-4-4-5"/>
+                            <path d="M12 12v5"/>
+                        </svg>
+                    </div>
+                    <span>Cancer</span>
+                </a>
+                <a href="post-weight-loss-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="14" width="14" height="6" rx="2"/>
+                            <path d="M7 14V8a5 5 0 0 1 10 0v6"/>
+                            <line x1="12" y1="17" x2="12" y2="17.01"/>
+                        </svg>
+                    </div>
+                    <span>Weight Loss</span>
+                </a>
+                <a href="post-aging-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-navy">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1800ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <span>Aging</span>
+                </a>
+                <a href="post-copd-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-coral">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#e85a39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6.5 4C5 4 4 5.5 4 7.5c0 4 4.5 7.5 4.5 7.5"/>
+                            <path d="M17.5 4C19 4 20 5.5 20 7.5c0 4-4.5 7.5-4.5 7.5"/>
+                            <path d="M8.5 15c-1 1-2.5 3-2.5 5h12c0-2-1.5-4-2.5-5"/>
+                            <path d="M9 4c0 0 1.5 2 3 2s3-2 3-2"/>
+                            <line x1="12" y1="6" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <span>COPD</span>
+                </a>
+                <a href="post-heart-disease-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#f59d06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(245,157,6,0.15)"/>
+                        </svg>
+                    </div>
+                    <span>Heart Disease</span>
+                </a>
+                <a href="post-allergies-inflammation.html" class="condition-item" style="text-decoration:none;color:inherit;">
+                    <div class="condition-icon ci-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#41a6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(65,166,240,0.1)"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <span>Allergies</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Meet Our Team</h2>
+                <p>Scientists, engineers, and healthcare advocates working to make inflammation monitoring accessible to all.</p>
+            </div>
+            <div class="team-grid reveal reveal-stagger">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="30" r="14" fill="#a8b4d4"/>
+                            <ellipse cx="40" cy="65" rx="22" ry="16" fill="#a8b4d4"/>
+                        </svg>
+                    </div>
+                    <h3>Ryan</h3>
+                    <p>CEO & Founder</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="30" r="14" fill="#a8b4d4"/>
+                            <ellipse cx="40" cy="65" rx="22" ry="16" fill="#a8b4d4"/>
+                        </svg>
+                    </div>
+                    <h3>Faith</h3>
+                    <p>Sales</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="30" r="14" fill="#a8b4d4"/>
+                            <ellipse cx="40" cy="65" rx="22" ry="16" fill="#a8b4d4"/>
+                        </svg>
+                    </div>
+                    <h3>Nathan</h3>
+                    <p>Administration</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="30" r="14" fill="#a8b4d4"/>
+                            <ellipse cx="40" cy="65" rx="22" ry="16" fill="#a8b4d4"/>
+                        </svg>
+                    </div>
+                    <h3>Priyank</h3>
+                    <p>Manufacturing & Data Compliance</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="30" r="14" fill="#a8b4d4"/>
+                            <ellipse cx="40" cy="65" rx="22" ry="16" fill="#a8b4d4"/>
+                        </svg>
+                    </div>
+                    <h3>Magaga</h3>
+                    <p>Partnerships</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="30" r="14" fill="#a8b4d4"/>
+                            <ellipse cx="40" cy="65" rx="22" ry="16" fill="#a8b4d4"/>
+                        </svg>
+                    </div>
+                    <h3>Steve</h3>
+                    <p>Project Management</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="30" r="14" fill="#a8b4d4"/>
+                            <ellipse cx="40" cy="65" rx="22" ry="16" fill="#a8b4d4"/>
+                        </svg>
+                    </div>
+                    <h3>Sydney</h3>
+                    <p>Marketing & Creative</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="30" r="14" fill="#a8b4d4"/>
+                            <ellipse cx="40" cy="65" rx="22" ry="16" fill="#a8b4d4"/>
+                        </svg>
+                    </div>
+                    <h3>Shreya</h3>
+                    <p>Data Scientist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Waitlist Section -->
+    <section class="contact" id="waitlist">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Be the First to Know</h2>
+                <p>We're building something that could change how you understand your health. Get on the list&mdash;we'll keep you posted.</p>
+            </div>
+            <div class="contact-grid reveal">
+                <div class="contact-info">
+                    <h3>Why Join Early?</h3>
+                    <div class="contact-item">
+                        <div class="icon">&mdash;</div>
+                        <span>Early access before public launch</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">&mdash;</div>
+                        <span>Exclusive pricing for early supporters</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">&mdash;</div>
+                        <span>Help shape the product with your feedback</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">&mdash;</div>
+                        <span>Product updates straight to your inbox</span>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <h3>Contact Us</h3>
+                        <div class="contact-item" style="margin-top: 1rem;">
+                            <div class="icon">&mdash;</div>
+                            <span>sensawellness@gmail.com</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Take Action</h3>
+                    <form id="waitlistForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <select>
+                                <option value="" disabled selected>What interests you most?</option>
+                                <option value="personal">Personal health monitoring</option>
+                                <option value="family">Monitoring for my family</option>
+                                <option value="provider">I'm a healthcare provider</option>
+                                <option value="corporate">Corporate wellness program</option>
+                                <option value="curious">Just curious about Sensa</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn" style="width:100%; text-align:center;">Take Action</button>
+                    </form>
+                    <p style="margin-top:1rem; font-size:0.8rem; color:var(--text-light); text-align:center;">No spam. Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation monitoring as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#waitlist">Take Action</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Inflammation Monitoring</a></li>
+                        <li><a href="#">Preventive Screening</a></li>
+                        <li><a href="app.html">Mobile Integration</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">
+                        sensawellness@gmail.com
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Sensa Wellness. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
+
+    <script>
+        // Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Scroll to top button visibility
+            const btn = document.getElementById('scrollTop');
+            if (scrollTop > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+
+        // Waitlist form submission
+        document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.textContent = 'You\'re on the list!';
+            btn.style.background = '#41a6f0';
+            btn.disabled = true;
+            e.target.reset();
+            setTimeout(() => {
+                btn.textContent = 'Take Action';
+                btn.style.background = '';
+                btn.disabled = false;
+            }, 3000);
+        });
+
+        // Scroll Reveal with IntersectionObserver
+        (function() {
+            var revealElements = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            // If this element also has reveal-stagger, its children inherit transition-delay from CSS
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback: just show everything
+                revealElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        // Hero Stats Counter Animation
+        (function() {
+            var statsAnimated = false;
+
+            function animateCounter(element, target, suffix, prefix, duration) {
+                var start = 0;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    // Ease out cubic
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.round(eased * target);
+                    element.textContent = prefix + current + suffix;
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            function triggerCounters() {
+                if (statsAnimated) return;
+                statsAnimated = true;
+
+                var statNumbers = document.querySelectorAll('.hero-stat-number');
+                statNumbers.forEach(function(el) {
+                    var target = parseInt(el.getAttribute('data-target'), 10);
+                    var suffix = el.getAttribute('data-suffix') || '';
+                    var prefix = el.getAttribute('data-prefix') || '';
+                    animateCounter(el, target, suffix, prefix, 1200);
+                });
+            }
+
+            // Trigger when hero is visible (page load effectively)
+            var heroStats = document.querySelector('.hero-stats');
+            if (heroStats) {
+                if ('IntersectionObserver' in window) {
+                    var statsObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                triggerCounters();
+                                statsObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.3 });
+                    statsObserver.observe(heroStats);
+                } else {
+                    triggerCounters();
+                }
+            }
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sensa App - Sensa Wellness | Your Inflammation Data at Your Fingertips</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-stagger > *:nth-child(1) { transition-delay: 0s; }
+        .reveal-stagger > *:nth-child(2) { transition-delay: 0.1s; }
+        .reveal-stagger > *:nth-child(3) { transition-delay: 0.15s; }
+        .reveal-stagger > *:nth-child(4) { transition-delay: 0.2s; }
+        .reveal-stagger > *:nth-child(5) { transition-delay: 0.25s; }
+        .reveal-stagger > *:nth-child(6) { transition-delay: 0.3s; }
+
+        /* Section Divider */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), var(--accent-blue), transparent);
+        }
+
+        /* ============================================
+           APP HERO
+           ============================================ */
+        .app-hero {
+            padding: 5rem 0 4rem;
+            background: linear-gradient(165deg, #ffffff 0%, #f8f6ff 50%, #eef3ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(114, 103, 242, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .app-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(65, 166, 240, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .app-hero .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .app-hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .app-hero h1 span {
+            color: var(--accent-navy);
+        }
+
+        .app-hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 550px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .app-hero-phones {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        /* Phone Mockup */
+        .phone-mockup {
+            width: 260px;
+            background: var(--bg-white);
+            border-radius: 28px;
+            border: 3px solid #1a1a2e;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(24, 0, 173, 0.15);
+            position: relative;
+        }
+
+        .phone-notch {
+            width: 100px;
+            height: 22px;
+            background: #1a1a2e;
+            border-radius: 0 0 14px 14px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .phone-screen {
+            padding: 1rem 1.2rem 1.5rem;
+            min-height: 400px;
+            background: var(--bg-primary);
+        }
+
+        .phone-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            padding: 0 0.2rem;
+        }
+
+        .phone-bottom-bar {
+            height: 5px;
+            width: 100px;
+            background: #1a1a2e;
+            border-radius: 3px;
+            margin: 0.8rem auto 0.5rem;
+        }
+
+        /* Scan Screen */
+        .scan-screen-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .scan-screen-header h3 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            letter-spacing: -0.03em;
+        }
+
+        .scan-viewfinder {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4e 100%);
+            border-radius: 16px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .scan-viewfinder::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 2px solid rgba(114, 103, 242, 0.5);
+            border-radius: 12px;
+        }
+
+        .scan-corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--accent-purple);
+            border-style: solid;
+            border-width: 0;
+        }
+
+        .scan-corner.tl { top: 8px; left: 8px; border-top-width: 3px; border-left-width: 3px; border-radius: 6px 0 0 0; }
+        .scan-corner.tr { top: 8px; right: 8px; border-top-width: 3px; border-right-width: 3px; border-radius: 0 6px 0 0; }
+        .scan-corner.bl { bottom: 8px; left: 8px; border-bottom-width: 3px; border-left-width: 3px; border-radius: 0 0 0 6px; }
+        .scan-corner.br { bottom: 8px; right: 8px; border-bottom-width: 3px; border-right-width: 3px; border-radius: 0 0 6px 0; }
+
+        .scan-vial-outline {
+            width: 40px;
+            height: 100px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 20px 20px 10px 10px;
+            position: relative;
+        }
+
+        .scan-vial-outline::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 12px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 4px 4px 0 0;
+            border-bottom: none;
+        }
+
+        .scan-vial-outline::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            right: 4px;
+            height: 50%;
+            background: rgba(114, 103, 242, 0.3);
+            border-radius: 0 0 6px 6px;
+        }
+
+        .scan-label {
+            position: absolute;
+            bottom: 16px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .scan-button {
+            display: block;
+            margin: 1rem auto 0;
+            width: 100%;
+            padding: 0.7rem;
+            background: var(--accent-navy);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: default;
+        }
+
+        /* Results Screen */
+        .results-screen-header {
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .results-screen-header h3 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            letter-spacing: -0.03em;
+        }
+
+        .results-screen-header p {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-top: 0.2rem;
+        }
+
+        .score-gauge {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-gauge svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .score-gauge-bg {
+            fill: none;
+            stroke: rgba(0,0,0,0.06);
+            stroke-width: 8;
+        }
+
+        .score-gauge-fill {
+            fill: none;
+            stroke: url(#gaugeGradient);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 167;
+        }
+
+        .score-value {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .score-number {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            letter-spacing: -0.065em;
+            line-height: 1;
+        }
+
+        .score-total {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .score-label {
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        .results-detail {
+            background: var(--bg-white);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .results-detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 0;
+            font-size: 0.75rem;
+        }
+
+        .results-detail-item:not(:last-child) {
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .results-detail-label {
+            color: var(--text-gray);
+        }
+
+        .results-detail-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* ============================================
+           FEATURES GRID
+           ============================================ */
+        .app-features {
+            padding: var(--section-padding);
+            background: var(--bg-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2.2rem 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 3px solid transparent;
+        }
+
+        .feature-card:nth-child(1) { border-top-color: var(--accent-coral); }
+        .feature-card:nth-child(2) { border-top-color: var(--accent-blue); }
+        .feature-card:nth-child(3) { border-top-color: var(--accent-purple); }
+        .feature-card:nth-child(4) { border-top-color: var(--accent-gold); }
+        .feature-card:nth-child(5) { border-top-color: var(--accent-orange); }
+        .feature-card:nth-child(6) { border-top-color: var(--accent-navy); }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .feature-icon.fi-coral { background: rgba(232, 90, 57, 0.12); }
+        .feature-icon.fi-blue { background: rgba(65, 166, 240, 0.12); }
+        .feature-icon.fi-purple { background: rgba(114, 103, 242, 0.12); }
+        .feature-icon.fi-gold { background: rgba(250, 194, 52, 0.15); }
+        .feature-icon.fi-orange { background: rgba(245, 157, 6, 0.12); }
+        .feature-icon.fi-navy { background: rgba(24, 0, 173, 0.08); }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           HOW IT WORKS (APP FLOW)
+           ============================================ */
+        .app-flow {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+        }
+
+        .app-steps {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            gap: 0;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .app-step {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .app-step-badge {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent-orange));
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .app-step-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(114, 103, 242, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .app-step-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .app-step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-step p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .step-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 3rem;
+        }
+
+        .step-arrow svg {
+            width: 32px;
+            height: 32px;
+            color: var(--accent-purple);
+            opacity: 0.5;
+        }
+
+        /* ============================================
+           APP SCREENSHOTS CAROUSEL
+           ============================================ */
+        .app-screenshots {
+            padding: var(--section-padding);
+            background: linear-gradient(165deg, #eef3ff 0%, #f5f3ff 100%);
+        }
+
+        .screenshots-scroll {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0 2rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.04);
+            border-radius: 3px;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent-purple);
+            border-radius: 3px;
+            opacity: 0.5;
+        }
+
+        .screenshot-phone {
+            flex: 0 0 220px;
+            scroll-snap-align: center;
+        }
+
+        .screenshot-phone .phone-mockup {
+            width: 220px;
+        }
+
+        .screenshot-phone .phone-screen {
+            padding: 0.8rem 1rem 1.2rem;
+            min-height: 340px;
+        }
+
+        .screenshot-phone .phone-notch {
+            width: 80px;
+            height: 18px;
+        }
+
+        .screenshot-phone .phone-bottom-bar {
+            height: 4px;
+            width: 80px;
+            margin: 0.6rem auto 0.4rem;
+        }
+
+        .screenshot-label {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Mini screen content styles */
+        .mini-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            margin-bottom: 0.8rem;
+        }
+
+        .mini-nav-item {
+            font-size: 0.55rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .mini-nav-item.active {
+            color: var(--accent-navy);
+            font-weight: 600;
+        }
+
+        .mini-score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0.5rem auto;
+        }
+
+        .mini-score-circle .num {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1;
+            color: var(--accent-navy);
+            letter-spacing: -0.065em;
+        }
+
+        .mini-score-circle .lbl {
+            font-size: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .mini-status {
+            text-align: center;
+            font-size: 0.65rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .mini-card {
+            background: var(--bg-white);
+            border-radius: 6px;
+            padding: 0.5rem;
+            margin-bottom: 0.4rem;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .mini-card-title {
+            font-size: 0.55rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .mini-card-text {
+            font-size: 0.5rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        /* Trend chart (simple CSS bars) */
+        .mini-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 60px;
+            padding: 0 0.3rem;
+            margin: 0.6rem 0;
+        }
+
+        .mini-chart-bar {
+            flex: 1;
+            border-radius: 2px 2px 0 0;
+            min-width: 4px;
+        }
+
+        .mini-chart-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.45rem;
+            color: var(--text-light);
+            padding: 0 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mini-trend-note {
+            text-align: center;
+            font-size: 0.55rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-top: 0.4rem;
+        }
+
+        /* Plan cards */
+        .mini-plan-card {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-white);
+            border-radius: 6px;
+            padding: 0.5rem;
+            margin-bottom: 0.4rem;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .mini-plan-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mini-plan-icon svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .mini-plan-info {
+            flex: 1;
+        }
+
+        .mini-plan-info .mini-card-title {
+            margin-bottom: 0.1rem;
+        }
+
+        /* Share / export screen */
+        .mini-export-btn {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            background: var(--accent-navy);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0.4rem;
+            cursor: default;
+        }
+
+        .mini-export-btn.outline {
+            background: transparent;
+            border: 1px solid var(--accent-navy);
+            color: var(--accent-navy);
+        }
+
+        .mini-share-options {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0.6rem 0;
+        }
+
+        .mini-share-option {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(114, 103, 242, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5rem;
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .app-cta {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+            text-align: center;
+        }
+
+        .app-cta h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .app-cta p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .app-cta .btn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(24, 0, 173, 0.25);
+        }
+
+        .app-cta .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.35);
+        }
+
+        .app-cta-platforms {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 992px) {
+            .app-hero-phones {
+                gap: 2rem;
+            }
+
+            .phone-mockup {
+                width: 220px;
+            }
+
+            .phone-screen {
+                min-height: 350px;
+            }
+
+            .score-gauge {
+                width: 130px;
+                height: 130px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .app-steps {
+                grid-template-columns: 1fr;
+                gap: 0;
+                max-width: 400px;
+            }
+
+            .step-arrow {
+                padding-bottom: 0;
+                transform: rotate(90deg);
+                padding: 0.5rem 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .screenshots-scroll {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav { display: none; }
+            .mobile-toggle { display: block; }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            }
+
+            .app-hero-phones {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .phone-mockup {
+                width: 240px;
+            }
+
+            .phone-screen {
+                min-height: 380px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshots-scroll {
+                gap: 1.5rem;
+            }
+
+            .screenshot-phone {
+                flex: 0 0 200px;
+            }
+
+            .screenshot-phone .phone-mockup {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="app.html" class="nav-active">App</a>
+                <a href="index.html#team">Team</a>
+                <a href="index.html#waitlist" class="btn">Take Action</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================
+         1. HERO SECTION
+         ============================================ -->
+    <section class="app-hero">
+        <div class="container">
+            <h1><span>The Sensa App</span></h1>
+            <p class="app-hero-subtitle">Your inflammation data, always at your fingertips.</p>
+
+            <div class="app-hero-phones reveal">
+                <!-- Left Phone: Scan Screen -->
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="phone-status-bar">
+                            <span>9:41</span>
+                            <span>Sensa</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="scan-screen-header">
+                            <h3>Scan Your Vial</h3>
+                        </div>
+                        <div class="scan-viewfinder">
+                            <div class="scan-corner tl"></div>
+                            <div class="scan-corner tr"></div>
+                            <div class="scan-corner bl"></div>
+                            <div class="scan-corner br"></div>
+                            <div class="scan-vial-outline"></div>
+                            <div class="scan-label">Align vial within frame</div>
+                        </div>
+                        <button class="scan-button">Scan Now</button>
+                        <div class="phone-bottom-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Right Phone: Results Screen -->
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="phone-status-bar">
+                            <span>9:41</span>
+                            <span>Sensa</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="results-screen-header">
+                            <h3>Your Results</h3>
+                            <p>March 9, 2026</p>
+                        </div>
+
+                        <div class="score-gauge">
+                            <svg viewBox="0 0 160 160">
+                                <defs>
+                                    <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#41a6f0"/>
+                                        <stop offset="50%" stop-color="#f59d06"/>
+                                        <stop offset="100%" stop-color="#e85a39"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="80" cy="80" r="70" class="score-gauge-bg"/>
+                                <circle cx="80" cy="80" r="70" class="score-gauge-fill"/>
+                            </svg>
+                            <div class="score-value">
+                                <div class="score-number">62</div>
+                                <div class="score-total">/ 100</div>
+                            </div>
+                        </div>
+
+                        <div class="score-label">Moderate Inflammation</div>
+
+                        <div class="results-detail">
+                            <div class="results-detail-item">
+                                <span class="results-detail-label">CRP Level</span>
+                                <span class="results-detail-value">Elevated</span>
+                            </div>
+                            <div class="results-detail-item">
+                                <span class="results-detail-label">Trend</span>
+                                <span class="results-detail-value">Improving</span>
+                            </div>
+                            <div class="results-detail-item">
+                                <span class="results-detail-label">Next Test</span>
+                                <span class="results-detail-value">In 7 days</span>
+                            </div>
+                        </div>
+                        <div class="phone-bottom-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ============================================
+         2. FEATURES GRID
+         ============================================ -->
+    <section class="app-features">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What the App Does</h2>
+                <p>Everything you need to understand, track, and act on your inflammation data.</p>
+            </div>
+
+            <div class="features-grid reveal reveal-stagger">
+                <!-- 1. Scan Your Vial -->
+                <div class="feature-card">
+                    <div class="feature-icon fi-coral">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#e85a39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Scan Your Vial</h3>
+                    <p>Point your camera, get instant color analysis. The app reads your Sensa vial and translates the color change into a clear inflammation score.</p>
+                </div>
+
+                <!-- 2. Track Over Time -->
+                <div class="feature-card">
+                    <div class="feature-icon fi-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#41a6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>Track Over Time</h3>
+                    <p>See your inflammation trends with charts. Understand how your levels change week to week, month to month, and what might be driving the shifts.</p>
+                </div>
+
+                <!-- 3. Personalized Plans -->
+                <div class="feature-card">
+                    <div class="feature-icon fi-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>Personalized Plans</h3>
+                    <p>Get tailored nutrition, exercise, and sleep recommendations based on your score and history. Actionable steps, not generic advice.</p>
+                </div>
+
+                <!-- 4. Set Reminders -->
+                <div class="feature-card">
+                    <div class="feature-icon fi-gold">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fac234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        </svg>
+                    </div>
+                    <h3>Set Reminders</h3>
+                    <p>Never miss a retest with smart notifications. The app schedules your next scan and nudges you at the right time to keep your data consistent.</p>
+                </div>
+
+                <!-- 5. Share with Your Doctor -->
+                <div class="feature-card">
+                    <div class="feature-icon fi-orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#f59d06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                            <polyline points="16 6 12 2 8 6"/>
+                            <line x1="12" y1="2" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>Share with Your Doctor</h3>
+                    <p>Export reports for your healthcare provider. Generate a clean summary of your inflammation history that your doctor can actually use.</p>
+                </div>
+
+                <!-- 6. Secure & Private -->
+                <div class="feature-card">
+                    <div class="feature-icon fi-navy">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1800ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Secure and Private</h3>
+                    <p>HIPAA-compliant data storage, your data stays yours. We never sell your health information, and you can delete your data at any time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ============================================
+         3. HOW IT WORKS (APP FLOW)
+         ============================================ -->
+    <section class="app-flow">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>From Vial to Insight in 3 Steps</h2>
+                <p>The Sensa app turns a simple color change into actionable health intelligence.</p>
+            </div>
+
+            <div class="app-steps reveal">
+                <!-- Step 1 -->
+                <div class="app-step">
+                    <div class="app-step-badge">1</div>
+                    <div class="app-step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Scan</h3>
+                    <p>Open the app, point at your Sensa vial. The camera reads the color change automatically.</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="step-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="app-step">
+                    <div class="app-step-badge">2</div>
+                    <div class="app-step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Analyze</h3>
+                    <p>AI reads the color change and matches biomarkers to generate your inflammation score.</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="step-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="app-step">
+                    <div class="app-step-badge">3</div>
+                    <div class="app-step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>Act</h3>
+                    <p>View your score, get your personalized plan. Take control of your inflammation with clear next steps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ============================================
+         4. APP SCREENSHOTS CAROUSEL
+         ============================================ -->
+    <section class="app-screenshots">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>See It in Action</h2>
+                <p>A closer look at what the Sensa app experience looks like, from dashboard to doctor reports.</p>
+            </div>
+
+            <div class="screenshots-scroll reveal">
+                <!-- Screen 1: Dashboard -->
+                <div class="screenshot-phone">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-status-bar">
+                                <span>9:41</span>
+                                <span>Sensa</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="mini-nav">
+                                <div class="mini-nav-item active">Dashboard</div>
+                                <div class="mini-nav-item">Trends</div>
+                                <div class="mini-nav-item">Plan</div>
+                            </div>
+                            <div class="mini-score-circle">
+                                <span class="num">72</span>
+                                <span class="lbl">/ 100</span>
+                            </div>
+                            <div class="mini-status">Low Inflammation</div>
+                            <div class="mini-card">
+                                <div class="mini-card-title">Last Scan</div>
+                                <div class="mini-card-text">March 7, 2026 -- Score improved by 8 points</div>
+                            </div>
+                            <div class="mini-card">
+                                <div class="mini-card-title">Next Retest</div>
+                                <div class="mini-card-text">March 14 -- Reminder set</div>
+                            </div>
+                            <div class="mini-card">
+                                <div class="mini-card-title">Streak</div>
+                                <div class="mini-card-text">4 consecutive weekly scans</div>
+                            </div>
+                            <div class="phone-bottom-bar"></div>
+                        </div>
+                    </div>
+                    <div class="screenshot-label">Dashboard</div>
+                </div>
+
+                <!-- Screen 2: Trend Chart -->
+                <div class="screenshot-phone">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-status-bar">
+                                <span>9:41</span>
+                                <span>Sensa</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="mini-nav">
+                                <div class="mini-nav-item">Dashboard</div>
+                                <div class="mini-nav-item active">Trends</div>
+                                <div class="mini-nav-item">Plan</div>
+                            </div>
+                            <div style="font-size:0.6rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;text-align:center;">30-Day Trend</div>
+                            <div class="mini-chart">
+                                <div class="mini-chart-bar" style="height:85%;background:var(--accent-coral);"></div>
+                                <div class="mini-chart-bar" style="height:78%;background:var(--accent-orange);"></div>
+                                <div class="mini-chart-bar" style="height:72%;background:var(--accent-orange);"></div>
+                                <div class="mini-chart-bar" style="height:80%;background:var(--accent-orange);"></div>
+                                <div class="mini-chart-bar" style="height:68%;background:var(--accent-gold);"></div>
+                                <div class="mini-chart-bar" style="height:60%;background:var(--accent-gold);"></div>
+                                <div class="mini-chart-bar" style="height:55%;background:var(--accent-blue);"></div>
+                                <div class="mini-chart-bar" style="height:62%;background:var(--accent-gold);"></div>
+                                <div class="mini-chart-bar" style="height:50%;background:var(--accent-blue);"></div>
+                                <div class="mini-chart-bar" style="height:45%;background:var(--accent-blue);"></div>
+                                <div class="mini-chart-bar" style="height:42%;background:var(--accent-blue);"></div>
+                                <div class="mini-chart-bar" style="height:38%;background:var(--accent-blue);"></div>
+                            </div>
+                            <div class="mini-chart-label">
+                                <span>Feb 7</span>
+                                <span>Feb 21</span>
+                                <span>Mar 7</span>
+                            </div>
+                            <div class="mini-trend-note">Score trending down -- great progress</div>
+                            <div class="mini-card" style="margin-top:0.6rem;">
+                                <div class="mini-card-title">Average Score</div>
+                                <div class="mini-card-text">58.2 -- down from 74.1 last month</div>
+                            </div>
+                            <div class="mini-card">
+                                <div class="mini-card-title">Lowest Score</div>
+                                <div class="mini-card-text">38 on March 5</div>
+                            </div>
+                            <div class="phone-bottom-bar"></div>
+                        </div>
+                    </div>
+                    <div class="screenshot-label">Trend Chart</div>
+                </div>
+
+                <!-- Screen 3: Personalized Plan -->
+                <div class="screenshot-phone">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-status-bar">
+                                <span>9:41</span>
+                                <span>Sensa</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="mini-nav">
+                                <div class="mini-nav-item">Dashboard</div>
+                                <div class="mini-nav-item">Trends</div>
+                                <div class="mini-nav-item active">Plan</div>
+                            </div>
+                            <div style="font-size:0.6rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;text-align:center;">Your Personalized Plan</div>
+                            <div class="mini-plan-card">
+                                <div class="mini-plan-icon" style="background:rgba(232,90,57,0.12);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#e85a39" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                                </div>
+                                <div class="mini-plan-info">
+                                    <div class="mini-card-title">Nutrition</div>
+                                    <div class="mini-card-text">Increase omega-3 intake, reduce processed sugar</div>
+                                </div>
+                            </div>
+                            <div class="mini-plan-card">
+                                <div class="mini-plan-icon" style="background:rgba(65,166,240,0.12);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#41a6f0" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                </div>
+                                <div class="mini-plan-info">
+                                    <div class="mini-card-title">Exercise</div>
+                                    <div class="mini-card-text">30 min moderate activity, 5 days per week</div>
+                                </div>
+                            </div>
+                            <div class="mini-plan-card">
+                                <div class="mini-plan-icon" style="background:rgba(114,103,242,0.12);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg>
+                                </div>
+                                <div class="mini-plan-info">
+                                    <div class="mini-card-title">Sleep</div>
+                                    <div class="mini-card-text">Target 7-8 hours, consistent bedtime routine</div>
+                                </div>
+                            </div>
+                            <div class="mini-plan-card">
+                                <div class="mini-plan-icon" style="background:rgba(250,194,52,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#fac234" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                                </div>
+                                <div class="mini-plan-info">
+                                    <div class="mini-card-title">Stress</div>
+                                    <div class="mini-card-text">Daily 10-min mindfulness practice</div>
+                                </div>
+                            </div>
+                            <div class="phone-bottom-bar"></div>
+                        </div>
+                    </div>
+                    <div class="screenshot-label">Personalized Plan</div>
+                </div>
+
+                <!-- Screen 4: Share / Export -->
+                <div class="screenshot-phone">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-status-bar">
+                                <span>9:41</span>
+                                <span>Sensa</span>
+                                <span>100%</span>
+                            </div>
+                            <div style="font-size:0.65rem;font-weight:600;color:var(--text-dark);margin-bottom:0.6rem;text-align:center;margin-top:0.5rem;">Share with Your Doctor</div>
+                            <div class="mini-card" style="margin-bottom:0.6rem;">
+                                <div class="mini-card-title">Report Summary</div>
+                                <div class="mini-card-text">30-day inflammation report including scores, trends, and biomarker analysis. Ready to share.</div>
+                            </div>
+                            <div class="mini-share-options">
+                                <div class="mini-share-option">PDF</div>
+                                <div class="mini-share-option">Email</div>
+                                <div class="mini-share-option">Link</div>
+                            </div>
+                            <button class="mini-export-btn">Export Full Report</button>
+                            <button class="mini-export-btn outline">Send to Provider</button>
+                            <div class="mini-card" style="margin-top:0.6rem;">
+                                <div class="mini-card-title">What is included</div>
+                                <div class="mini-card-text">Inflammation scores, trend charts, biomarker levels, lifestyle recommendations, and scan history.</div>
+                            </div>
+                            <div style="text-align:center;margin-top:0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                <div style="font-size:0.45rem;color:var(--text-light);margin-top:0.1rem;">HIPAA Compliant</div>
+                            </div>
+                            <div class="phone-bottom-bar"></div>
+                        </div>
+                    </div>
+                    <div class="screenshot-label">Doctor Reports</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ============================================
+         5. CTA SECTION
+         ============================================ -->
+    <section class="app-cta">
+        <div class="container reveal">
+            <h2>Ready to Take Control?</h2>
+            <p>Be among the first to experience the Sensa app. Join our waitlist for early access.</p>
+            <a href="index.html#waitlist" class="btn">Take Action</a>
+            <div class="app-cta-platforms">Available soon on iOS and Android</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation monitoring as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#waitlist">Take Action</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Inflammation Monitoring</a></li>
+                        <li><a href="#">Preventive Screening</a></li>
+                        <li><a href="app.html">Mobile Integration</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">
+                        sensawellness@gmail.com
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Sensa Wellness. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
+
+    <script>
+        // Reading Progress Bar
+        window.addEventListener('scroll', function() {
+            var scrollTop = document.documentElement.scrollTop;
+            var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            var btn = document.getElementById('scrollTop');
+            if (scrollTop > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mainNav a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal with IntersectionObserver
+        (function() {
+            var revealElements = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                revealElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>

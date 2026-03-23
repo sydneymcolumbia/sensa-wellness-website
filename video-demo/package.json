@@ -1,0 +1,21 @@
+{
+  "name": "sensa-video-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render SensaDemo out/sensa-demo.mp4",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.434",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.434"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.7",
+    "@types/react-dom": "18.3.7",
+    "typescript": "5.7.2"
+  }
+}
