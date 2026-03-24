@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensa Wellness - Putting Your Health Back into Your Hands</title>
+    <meta name="description" content="Sensa is a saliva-based inflammation monitoring device that gives you results in minutes at home — no needles, no clinic visits. Track your CRP levels with our companion app.">
+    <meta name="keywords" content="inflammation monitoring, CRP test at home, saliva CRP test, chronic inflammation, home health test, inflammation tracker">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sensawellness.org/">
+    <meta property="og:title" content="Sensa Wellness — Inflammation Monitoring at Home">
+    <meta property="og:description" content="Track your inflammation levels at home with a simple saliva test. No needles. Results in minutes. Powered by the Sensa app.">
+    <meta property="og:image" content="https://www.sensawellness.org/sensa-og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sensa Wellness — Inflammation Monitoring at Home">
+    <meta name="twitter:description" content="Track your inflammation levels at home with a simple saliva test. No needles. Results in minutes.">
+    <link rel="canonical" href="https://www.sensawellness.org/">
+    <meta name="theme-color" content="#1800AD">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1146,6 +1158,24 @@
             }
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sensa Wellness",
+      "url": "https://www.sensawellness.org",
+      "logo": "https://www.sensawellness.org/sensa-og.jpg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "Info@sensawellness.org",
+        "contactType": "customer support"
+      },
+      "sameAs": [
+        "https://instagram.com/sensawellness",
+        "https://linkedin.com/company/sensawellness"
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -1156,7 +1186,7 @@
     <header>
         <div class="header-inner">
             <a href="#" class="logo">
-                <img src="logo.jpg" alt="Sensa" class="logo-img">
+                <img loading="lazy" src="logo.jpg" alt="Sensa" class="logo-img">
             </a>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                 <span></span>
@@ -1459,14 +1489,14 @@
             <div class="team-grid reveal reveal-stagger">
                 <div class="team-card">
                     <div class="team-photo">
-                        <img src="ryan.jpg" alt="Ryan" style="width:100%;height:100%;object-fit:cover;">
+                        <img loading="lazy" src="ryan.jpg" alt="Ryan" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <h3>Ryan</h3>
                     <p>CEO & Founder</p>
                 </div>
                 <div class="team-card">
                     <div class="team-photo">
-                        <img src="faith.jpg" alt="Faith" style="width:100%;height:100%;object-fit:cover;">
+                        <img loading="lazy" src="faith.jpg" alt="Faith" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <h3>Faith</h3>
                     <p>Sales</p>
@@ -1493,21 +1523,21 @@
                 </div>
                 <div class="team-card">
                     <div class="team-photo">
-                        <img src="magaga.jpg" alt="Magaga" style="width:100%;height:100%;object-fit:cover;">
+                        <img loading="lazy" src="magaga.jpg" alt="Magaga" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <h3>Magaga</h3>
                     <p>Partnerships</p>
                 </div>
                 <div class="team-card">
                     <div class="team-photo">
-                        <img src="steve.jpg" alt="Steve" style="width:100%;height:100%;object-fit:cover;">
+                        <img loading="lazy" src="steve.jpg" alt="Steve" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <h3>Steve</h3>
                     <p>Project Management</p>
                 </div>
                 <div class="team-card">
                     <div class="team-photo">
-                        <img src="sydney.jpg" alt="Sydney" style="width:100%;height:100%;object-fit:cover;">
+                        <img loading="lazy" src="sydney.jpg" alt="Sydney" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <h3>Sydney</h3>
                     <p>Marketing & Creative</p>
@@ -1591,7 +1621,7 @@
                                 <option value="curious">Just curious about Sensa</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn" style="width:100%; text-align:center;">Take Action</button>
+                        <button type="submit" class="btn" style="width:100%; text-align:center;">Join Waitlist</button>
                     </form>
                     <p style="margin-top:1rem; font-size:0.8rem; color:var(--text-light); text-align:center;">No spam. Unsubscribe anytime.</p>
                 </div>
@@ -1613,6 +1643,7 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="blog.html">Blog</a></li>
+                        <li><a href="how-to.html">How To</a></li>
                         <li><a href="take-action.html">Take Action</a></li>
                     </ul>
                 </div>
@@ -1707,7 +1738,7 @@
                 btn.style.background = '#41a6f0';
                 e.target.reset();
                 setTimeout(function() {
-                    btn.textContent = 'Take Action';
+                    btn.textContent = 'Join Waitlist';
                     btn.style.background = '';
                     btn.disabled = false;
                 }, 3000);
