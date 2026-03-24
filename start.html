@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensa Wellness - Join the Waitlist</title>
+    <meta name="description" content="Sensa is the at-home test that measures your CRP levels in minutes. Join the waitlist for early access.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1800AD;
+            --bg: #fffff7;
+            --coral: #E85A39;
+            --orange: #F59D06;
+            --gold: #FAC234;
+            --text-dark: #1a1a2e;
+            --text-muted: #4a4a5a;
+            --dark-navy: #0d0066;
+            --light-navy-bg: #f0f0ff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg);
+            line-height: 1.6;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, #2a10c0 50%, #3d20d0 100%);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 2rem 4rem;
+        }
+
+        .hero-logo {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--text-dark);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .trust-line {
+            margin-top: 1.25rem;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* ===== WHAT IS SENSA ===== */
+        .what-is {
+            background: #fff;
+            padding: 5rem 2rem;
+        }
+
+        .what-is .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.25rem;
+            background: var(--light-navy-bg);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== WHY INFLAMMATION ===== */
+        .why-inflammation {
+            background: var(--light-navy-bg);
+            padding: 5rem 2rem;
+        }
+
+        .why-inflammation .container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .why-inflammation h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .why-inflammation .subtext {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .stat-card .stat-number {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team {
+            background: #fff;
+            padding: 5rem 2rem;
+        }
+
+        .team .container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .team h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .team .team-intro {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 130px;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.75rem;
+            border: 3px solid var(--light-navy-bg);
+        }
+
+        .team-member .name {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .team-member .role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== WAITLIST SECTION ===== */
+        .waitlist {
+            background: linear-gradient(135deg, var(--navy) 0%, #2a10c0 100%);
+            color: #fff;
+            padding: 5rem 2rem;
+        }
+
+        .waitlist .container {
+            max-width: 560px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .waitlist h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .waitlist .subtext {
+            opacity: 0.85;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .waitlist-form label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .waitlist-form input,
+        .waitlist-form select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: border-color 0.2s;
+        }
+
+        .waitlist-form input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .waitlist-form input:focus,
+        .waitlist-form select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .waitlist-form select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .waitlist-form select option {
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .submit-btn {
+            background: var(--gold);
+            color: var(--text-dark);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-top: 1rem;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .success-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .success-message p {
+            opacity: 0.85;
+            font-size: 1.05rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .lp-footer {
+            background: var(--dark-navy);
+            color: #fff;
+            padding: 2.5rem 2rem;
+        }
+
+        .lp-footer .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .lp-footer .copyright {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .lp-footer .back-link {
+            color: #fff;
+            opacity: 0.7;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .lp-footer .back-link:hover {
+            opacity: 1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-sub {
+                font-size: 1.05rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-inflammation h2,
+            .team h2,
+            .waitlist h2 {
+                font-size: 1.75rem;
+            }
+
+            .team-row {
+                gap: 1.5rem;
+            }
+
+            .team-member {
+                width: 110px;
+            }
+
+            .team-member img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .waitlist-form {
+                width: 100%;
+            }
+
+            .lp-footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-logo">Sensa Wellness</div>
+        <div class="hero-content">
+            <h1>Know Your Inflammation. Take Control of Your Health.</h1>
+            <p class="hero-sub">Sensa is the at-home test that measures your CRP levels in minutes — then gives you a personalized plan to reduce inflammation and feel better.</p>
+            <a href="#waitlist" class="cta-btn">Join the Waitlist — It's Free</a>
+            <p class="trust-line">No spam. Unsubscribe anytime. Join 500+ people on the waitlist.</p>
+        </div>
+    </section>
+
+    <!-- ===== WHAT IS SENSA ===== -->
+    <section class="what-is">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Scan in Seconds</h3>
+                    <p>Use your phone camera to scan the Sensa test vial. No lab visit needed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                    </div>
+                    <h3>Get Your CRP Score</h3>
+                    <p>See your C-reactive protein level in mg/dL — a clinically recognized inflammation marker.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>Get a Personalized Plan</h3>
+                    <p>After every scan, get expert-backed nutrition, exercise, and sleep recommendations tailored to your results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY INFLAMMATION MATTERS ===== -->
+    <section class="why-inflammation">
+        <div class="container">
+            <h2>Chronic inflammation is behind most modern diseases.</h2>
+            <p class="subtext">Heart disease. Diabetes. Alzheimer's. Arthritis. Cancer. Chronic inflammation is a root cause — and most people have no idea their levels are elevated. Sensa makes it easy to check, track, and act.</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50%</div>
+                    <div class="stat-desc">of all deaths globally are linked to chronic inflammation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1 in 3</div>
+                    <div class="stat-desc">people have elevated CRP with no symptoms</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Minutes</div>
+                    <div class="stat-desc">to get your result with the Sensa home test</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-desc">personalized — recommendations based on your actual levels</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MEET THE TEAM ===== -->
+    <section class="team">
+        <div class="container">
+            <h2>Built by people who care about your health.</h2>
+            <p class="team-intro">We're scientists, engineers, and health advocates on a mission to make inflammation monitoring as easy as brushing your teeth.</p>
+            <div class="team-row">
+                <div class="team-member">
+                    <img src="ryan.jpg" alt="Ryan" loading="lazy">
+                    <span class="name">Ryan</span>
+                    <span class="role">CEO & Founder</span>
+                </div>
+                <div class="team-member">
+                    <img src="faith.jpg" alt="Faith" loading="lazy">
+                    <span class="name">Faith</span>
+                    <span class="role">Sales</span>
+                </div>
+                <div class="team-member">
+                    <img src="steve.jpg" alt="Steve" loading="lazy">
+                    <span class="name">Steve</span>
+                    <span class="role">Project Management</span>
+                </div>
+                <div class="team-member">
+                    <img src="magaga.jpg" alt="Magaga" loading="lazy">
+                    <span class="name">Magaga</span>
+                    <span class="role">Partnerships</span>
+                </div>
+                <div class="team-member">
+                    <img src="sydney.jpg" alt="Sydney" loading="lazy">
+                    <span class="name">Sydney</span>
+                    <span class="role">Marketing & Creative</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WAITLIST FORM ===== -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <h2>Be First. Get Early Access.</h2>
+            <p class="subtext">We're launching soon. Get on the waitlist and be the first to know when Sensa is available — plus get exclusive early-access pricing.</p>
+
+            <form class="waitlist-form" id="waitlistForm" novalidate>
+                <div>
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                </div>
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div>
+                    <label for="interest">What describes you best?</label>
+                    <select id="interest" name="interest" required>
+                        <option value="" disabled selected>Choose one...</option>
+                        <option value="personal">Personal health monitoring</option>
+                        <option value="family">Monitoring for my family</option>
+                        <option value="provider">I'm a healthcare provider</option>
+                        <option value="corporate">Corporate wellness program</option>
+                        <option value="curious">Just curious about Sensa</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Join the Waitlist</button>
+                <p class="form-note">No spam. Unsubscribe anytime.</p>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <h3>You're on the list!</h3>
+                <p>We'll be in touch soon.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="lp-footer">
+        <div class="container">
+            <span class="copyright">&copy; 2026 Sensa Wellness. All Rights Reserved.</span>
+            <a href="index.html" class="back-link">&larr; Back to sensawellness.org</a>
+            <div class="footer-social">
+                <!-- TODO: Update with actual Instagram URL -->
+                <a href="https://instagram.com/sensawellness" aria-label="Instagram" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <!-- TODO: Update with actual LinkedIn URL -->
+                <a href="https://linkedin.com/company/sensawellness" aria-label="LinkedIn" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var name = document.getElementById('fullName').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var interest = document.getElementById('interest').value;
+
+            if (!name || !email || !interest) {
+                return;
+            }
+
+            /* Basic email check */
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                return;
+            }
+
+            /* Hide form, show success */
+            document.getElementById('waitlistForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
