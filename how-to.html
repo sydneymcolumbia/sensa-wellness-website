@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use Sensa - Sensa Wellness | Step-by-Step Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #fffff7;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-gray: #4a4a5a;
+            --text-light: #7a7a8a;
+            --accent-gold: #fac234;
+            --accent-orange: #f59d06;
+            --accent-coral: #e85a39;
+            --accent-navy: #1800ad;
+            --accent-purple: #7267f2;
+            --accent-blue: #41a6f0;
+            --btn-dark: #1800ad;
+            --btn-hover: #2a10c0;
+            --section-padding: 5rem 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-primary);
+            line-height: 1.2;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.065em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reading Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-coral), var(--accent-orange));
+            z-index: 1001;
+            transition: width 0.1s linear;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.nav-active {
+            color: var(--accent-coral);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            background: var(--btn-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(24, 0, 173, 0.25);
+        }
+
+        .btn:hover {
+            background: var(--btn-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--btn-dark);
+            color: var(--btn-dark);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--btn-dark);
+            color: white;
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.35);
+        }
+
+        .btn:focus-visible,
+        nav a:focus-visible,
+        .social-link:focus-visible,
+        .scroll-top:focus-visible {
+            outline: 3px solid var(--accent-purple);
+            outline-offset: 2px;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .how-to-hero {
+            padding: 5rem 0 4rem;
+            background: linear-gradient(165deg, var(--accent-navy) 0%, #2a10c0 50%, #3a1de0 100%);
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .how-to-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(250, 194, 52, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .how-to-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(114, 103, 242, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .how-to-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-variant: small-caps;
+        }
+
+        .how-to-hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+
+        .how-to-hero .hero-subtext {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-gold {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(250, 194, 52, 0.35);
+            font-weight: 600;
+        }
+
+        .btn-gold:hover {
+            background: #e8b42e;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(250, 194, 52, 0.45);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.6);
+            color: white;
+            box-shadow: none;
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: white;
+            color: white;
+            box-shadow: none;
+            transform: translateY(-1px);
+        }
+
+        /* ============================================
+           WHAT YOU'LL NEED
+           ============================================ */
+        .needs-section {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+        }
+
+        .needs-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .need-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+            background: var(--bg-primary);
+        }
+
+        .need-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .need-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-dark);
+        }
+
+        .need-card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .cta-bar {
+            background: var(--accent-navy);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-bar p {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .cta-bar .btn-gold {
+            white-space: nowrap;
+        }
+
+        /* ============================================
+           PREPARATION
+           ============================================ */
+        .prep-section {
+            padding: var(--section-padding);
+            background: #fff8f0;
+        }
+
+        .prep-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .prep-section .section-sub {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+        }
+
+        .prep-timeline {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .time-label {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .prep-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-orange);
+            align-items: flex-start;
+        }
+
+        .prep-item-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .prep-item-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+
+        .prep-item-content p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .prep-time-group {
+            margin-bottom: 2rem;
+        }
+
+        .info-note {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            border: 1px solid rgba(245, 157, 6, 0.3);
+            border-radius: 10px;
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+        }
+
+        .info-note-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .info-note p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           STEPS
+           ============================================ */
+        .steps-section {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+        }
+
+        .steps-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .steps-flow {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            background: var(--accent-navy);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .step-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 60px;
+            bottom: -8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-navy), rgba(24, 0, 173, 0.15));
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 0.3rem;
+        }
+
+        .step-content h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+
+        .step-tip {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            padding: 0.8rem 1rem;
+            background: #f0f0ff;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .step-tip-icon {
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .step-tip p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           RESULTS
+           ============================================ */
+        .results-section {
+            padding: var(--section-padding);
+            background: #eeeeff;
+        }
+
+        .results-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .results-section .section-sub {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 550px;
+            margin: 0 auto 3rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .result-card h3 {
+            font-size: 1.15rem;
+            color: var(--accent-navy);
+            margin-bottom: 0.8rem;
+        }
+
+        .result-card > p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .result-table th {
+            text-align: left;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            color: var(--text-dark);
+            padding: 0.6rem 0.8rem;
+            border-bottom: 2px solid var(--accent-navy);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-table td {
+            padding: 0.6rem 0.8rem;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            color: var(--text-gray);
+        }
+
+        .result-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .score-range {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .score-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .score-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .score-dot.green { background: #2ecc71; }
+        .score-dot.orange { background: var(--accent-orange); }
+        .score-dot.red { background: var(--accent-coral); }
+
+        .score-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .score-label strong {
+            color: var(--text-dark);
+        }
+
+        .results-bottom {
+            text-align: center;
+        }
+
+        .results-bottom p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============================================
+           RESEARCHERS
+           ============================================ */
+        .researchers-section {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+        }
+
+        .researchers-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .researchers-section .section-intro {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .research-blockquote {
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            padding: 1.8rem 2rem;
+            background: #f0f0ff;
+            border-left: 4px solid var(--accent-navy);
+            border-radius: 0 10px 10px 0;
+            font-size: 0.92rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .references {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .references h4 {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .references ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .references li {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .references li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: var(--text-light);
+        }
+
+        .researcher-contact {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .researcher-contact a {
+            color: var(--accent-navy);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .researcher-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           FAQ
+           ============================================ */
+        .faq-section {
+            padding: var(--section-padding);
+            background: #f8f8f0;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .faq-list {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.3rem 0;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            line-height: 1.4;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-navy);
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(24, 0, 173, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--accent-navy);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 0 1.3rem 0;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .faq-answer-inner a {
+            color: var(--accent-navy);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .faq-answer-inner a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           BOTTOM CTA
+           ============================================ */
+        .bottom-cta {
+            padding: 5rem 0;
+            background: linear-gradient(165deg, var(--accent-navy) 0%, #2a10c0 50%, #3a1de0 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .bottom-cta h2 {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .bottom-cta p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: #0d0066;
+            color: rgba(255,255,255,0.8);
+            padding: 4rem 0 2rem;
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, var(--accent-coral), var(--accent-purple), var(--accent-blue)) 1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: background 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--btn-dark);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 999;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 900px) {
+            .needs-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin: 0 auto 3rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            }
+
+            .how-to-hero {
+                padding: 3.5rem 0 3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-item {
+                gap: 1rem;
+            }
+
+            .step-number {
+                width: 44px;
+                height: 44px;
+                font-size: 1.1rem;
+            }
+
+            .step-item:not(:last-child)::before {
+                left: 22px;
+                top: 48px;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-blockquote {
+                padding: 1.2rem 1.2rem;
+                font-size: 0.88rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-cta .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="app.html">App</a>
+                <a href="how-to.html" class="nav-active">How To</a>
+                <a href="index.html#team">Team</a>
+                <a href="take-action.html" class="btn">Take Action</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. Hero -->
+    <section class="how-to-hero">
+        <div class="container">
+            <span class="hero-eyebrow">Step-by-Step Guide</span>
+            <h1>How to Use Sensa</h1>
+            <p class="hero-subtext">Getting an accurate inflammation reading takes less than 5 minutes. Follow these steps to get the best results every time.</p>
+            <div class="hero-buttons">
+                <a href="app.html" class="btn btn-gold">Download the App &rarr;</a>
+                <a href="#results-section" class="btn btn-outline-white">View Sample Results</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. What You'll Need -->
+    <section class="needs-section reveal">
+        <div class="container">
+            <h2>What You'll Need</h2>
+            <div class="needs-grid">
+                <div class="need-card">
+                    <div class="need-icon">&#129514;</div>
+                    <h3>Your Sensa Vial</h3>
+                    <p>The Sensa test vial included in your kit. Make sure it hasn't been opened yet.</p>
+                </div>
+                <div class="need-card">
+                    <div class="need-icon">&#128241;</div>
+                    <h3>Your Smartphone</h3>
+                    <p>iPhone or Android with the Sensa app installed. Download it at the link below.</p>
+                </div>
+                <div class="need-card">
+                    <div class="need-icon">&#128161;</div>
+                    <h3>Good Lighting</h3>
+                    <p>Natural light or a bright indoor light. The camera needs to read the vial color accurately.</p>
+                </div>
+            </div>
+            <div class="cta-bar">
+                <p>Don't have the app yet? Download it free.</p>
+                <a href="app.html" class="btn btn-gold">Get the Sensa App &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Before You Test -->
+    <section class="prep-section reveal">
+        <div class="container">
+            <h2>Before You Test</h2>
+            <p class="section-sub">For the most accurate results, follow these preparation guidelines in the hour before your test.</p>
+
+            <div class="prep-timeline">
+                <div class="prep-time-group">
+                    <span class="time-label">3 hours before</span>
+                    <div class="prep-item">
+                        <span class="prep-item-icon">&#9749;</span>
+                        <div class="prep-item-content">
+                            <h4>No caffeine</h4>
+                            <p>Avoid coffee, tea, energy drinks, or any caffeinated beverage. Caffeine affects inflammatory markers and takes approximately 5&ndash;6 hours to metabolize.</p>
+                        </div>
+                    </div>
+                    <div class="prep-item">
+                        <span class="prep-item-icon">&#127863;</span>
+                        <div class="prep-item-content">
+                            <h4>No alcohol</h4>
+                            <p>Avoid alcohol at least 3 hours before testing. Alcohol is eliminated at approximately 15&ndash;18 mg/dL per hour and can affect your results.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prep-time-group">
+                    <span class="time-label">1 hour before</span>
+                    <div class="prep-item">
+                        <span class="prep-item-icon">&#127869;</span>
+                        <div class="prep-item-content">
+                            <h4>No food or snacks</h4>
+                            <p>Avoid eating for at least one hour before collecting your sample.</p>
+                        </div>
+                    </div>
+                    <div class="prep-item">
+                        <span class="prep-item-icon">&#129659;</span>
+                        <div class="prep-item-content">
+                            <h4>No teeth brushing</h4>
+                            <p>Do not brush your teeth in the hour before testing, as this can introduce debris or blood into the sample.</p>
+                        </div>
+                    </div>
+                    <div class="prep-item">
+                        <span class="prep-item-icon">&#127939;</span>
+                        <div class="prep-item-content">
+                            <h4>No exercise</h4>
+                            <p>Avoid physical exercise for at least one hour before testing. Exercise has been shown to temporarily increase salivary inflammation markers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-note">
+                <span class="info-note-icon">&#8505;&#65039;</span>
+                <p>These guidelines ensure your CRP reading reflects your body's true baseline inflammation &mdash; not temporary spikes from food, drink, or activity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Step-by-Step Instructions -->
+    <section class="steps-section reveal">
+        <div class="container">
+            <h2>How to Take Your Test</h2>
+
+            <div class="steps-flow">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Open the Sensa App</h3>
+                        <p>Download and open the Sensa app on your smartphone. Sign in or create your free account. Tap <strong>Scan Now</strong> on the home screen.</p>
+                        <div class="step-tip">
+                            <span class="step-tip-icon">&#128172;</span>
+                            <p>Make sure your phone battery is above 20% and your camera lens is clean.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Prepare Your Vial</h3>
+                        <p>Remove your Sensa vial from its sealed packaging. Do not shake or squeeze the vial. Hold it upright by the sides &mdash; avoid touching the bottom where the reagent is.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Collect Your Sample</h3>
+                        <p>Follow the instructions included in your kit to introduce your saliva sample into the vial. Seal the vial and hold it upright for 60 seconds while the reagent activates.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Position in the App</h3>
+                        <p>In the Sensa app, tap <strong>Scan Now</strong>. Hold your vial steady within the camera frame &mdash; the app will show you exactly where to position it. Keep your hand still and ensure the vial is well-lit.</p>
+                        <div class="step-tip">
+                            <span class="step-tip-icon">&#128172;</span>
+                            <p>Use a white background or flat surface behind the vial for the most accurate color reading.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Scan</h3>
+                        <p>Tap the scan button. The app's camera will analyze the color change in the vial and calculate your CRP level in mg/dL. This takes just a few seconds.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>View Your Results</h3>
+                        <p>Your inflammation score and CRP level will appear on screen immediately. The app will save your result to your history and generate a personalized plan based on your reading.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Understanding Your Results -->
+    <section class="results-section reveal" id="results-section">
+        <div class="container">
+            <h2>Understanding Your Results</h2>
+            <p class="section-sub">Your Sensa reading gives you two key pieces of information:</p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>CRP Level (mg/dL)</h3>
+                    <p>C-reactive protein is a clinically validated blood marker for systemic inflammation. The Sensa app measures it from your saliva sample.</p>
+                    <table class="result-table">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>CRP Range</th>
+                                <th>What it means</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Low</td>
+                                <td>&lt; 1.0 mg/dL</td>
+                                <td>Low systemic inflammation</td>
+                            </tr>
+                            <tr>
+                                <td>Moderate</td>
+                                <td>1.0&ndash;3.0 mg/dL</td>
+                                <td>Moderate risk &mdash; worth monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>High</td>
+                                <td>&gt; 3.0 mg/dL</td>
+                                <td>Elevated &mdash; consider lifestyle changes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="result-card">
+                    <h3>Inflammation Score (0&ndash;100)</h3>
+                    <p>Your score is calculated from your CRP reading and gives you a simple number to track over time. Lower is better.</p>
+                    <div class="score-range">
+                        <div class="score-item">
+                            <span class="score-dot green"></span>
+                            <span class="score-label"><strong>0&ndash;30:</strong> Low</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-dot orange"></span>
+                            <span class="score-label"><strong>31&ndash;60:</strong> Moderate</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-dot red"></span>
+                            <span class="score-label"><strong>61&ndash;100:</strong> High</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-bottom">
+                <p>Track your score over time using the History tab in the Sensa app to see how your lifestyle choices affect your inflammation levels.</p>
+                <a href="app.html" class="btn">See the App &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. For Researchers & Healthcare Providers -->
+    <section class="researchers-section reveal">
+        <div class="container">
+            <h2>For Researchers &amp; Healthcare Providers</h2>
+            <p class="section-intro">If you are conducting a clinical study or administering Sensa in a research or healthcare setting, the following guidelines are recommended to ensure sample integrity and data reliability.</p>
+
+            <blockquote class="research-blockquote">
+                &ldquo;We also urge researchers to have participants restrict food intake and teeth brushing at least one hour prior to sample collection to eliminate the potential for debris or blood in the sample. Caffeine and alcohol should also be avoided prior to collection. The half-life of caffeine is approximately 5&ndash;6 hours, and the ethanol elimination rate is between 15&ndash;18 mg/dL per hour. Therefore, we recommend researchers have participants restrict their caffeine and alcohol use for at least 3 hours before sample collection. Since exercise has been shown to increase levels of salivary markers of inflammation (Minetto et al., 2007; Minetto et al., 2005), we also recommend having participants avoid exercising for at least one hour prior the study procedure. Several previous studies have provided these or similar guidelines to their participants (e.g., Auer et al., 2018; Szabo et al., 2019).&rdquo;
+            </blockquote>
+
+            <div class="references">
+                <h4>References</h4>
+                <ul>
+                    <li>Auer, B.J., et al. (2018). <em>Salivary alpha-amylase and cortisol as markers of stress.</em></li>
+                    <li>Minetto, M.A., et al. (2005; 2007). <em>Exercise-induced changes in salivary inflammatory markers.</em></li>
+                    <li>Szabo, Y.Z., et al. (2019). <em>Pre-collection guidelines in salivary biomarker research.</em></li>
+                </ul>
+            </div>
+
+            <p class="researcher-contact">For questions about research applications or bulk ordering for clinical studies, contact us at <a href="mailto:Info@sensawellness.org">Info@sensawellness.org</a>.</p>
+        </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="faq-section reveal">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How often should I test?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We recommend testing at least once per week to build a meaningful trend. Testing at the same time of day gives the most consistent results.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I test if I'm sick?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">If you have an active infection, your CRP levels will likely be elevated due to acute inflammation. We recommend waiting until you've recovered to get a baseline reading.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Why does my score vary between tests?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Inflammation naturally fluctuates based on sleep, diet, stress, and activity. This is normal. What matters is the overall trend &mdash; not a single reading.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is the Sensa test the same as a blood CRP test?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Sensa measures CRP from a saliva sample, which correlates with systemic inflammation levels. For clinical diagnosis, always consult your healthcare provider.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Where can I download the app?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">The Sensa app is available now. Visit our <a href="app.html">app page</a> for download links and more information.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Bottom CTA -->
+    <section class="bottom-cta">
+        <div class="container">
+            <h2>Ready to Start Tracking Your Inflammation?</h2>
+            <p>Download the Sensa app, follow these steps, and get your first reading in under 5 minutes.</p>
+            <div class="hero-buttons">
+                <a href="app.html" class="btn btn-gold">Get the App &rarr;</a>
+                <a href="take-action.html" class="btn btn-outline-white">Join the Waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation monitoring as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="how-to.html">How To</a></li>
+                        <li><a href="take-action.html">Take Action</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Inflammation Monitoring</a></li>
+                        <li><a href="#">Preventive Screening</a></li>
+                        <li><a href="app.html">Mobile Integration</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">
+                        Info@sensawellness.org
+                    </div>
+                    <div class="social-links">
+                        <a href="https://instagram.com/sensawellness" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://linkedin.com/company/sensawellness" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Sensa Wellness. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
+
+    <script>
+        // Reading Progress Bar
+        window.addEventListener('scroll', function() {
+            var scrollTop = document.documentElement.scrollTop;
+            var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Scroll to top button visibility
+            var btn = document.getElementById('scrollTop');
+            if (scrollTop > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mainNav a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = this.closest('.faq-item');
+                var isActive = item.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(function(faqItem) {
+                    faqItem.classList.remove('active');
+                    faqItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+
+                // Open clicked if it wasn't already open
+                if (!isActive) {
+                    item.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // Scroll Reveal with IntersectionObserver
+        (function() {
+            var revealElements = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                revealElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
