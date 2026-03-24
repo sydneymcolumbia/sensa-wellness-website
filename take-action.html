@@ -1157,8 +1157,22 @@
         // Waitlist form submission
         document.getElementById('waitlistForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            document.getElementById('waitlistForm').style.display = 'none';
-            document.getElementById('waitlistSuccess').style.display = 'block';
+            var form = document.getElementById('waitlistForm');
+            var data = {
+                name: form.querySelector('input[type="text"]').value.trim(),
+                email: form.querySelector('input[type="email"]').value.trim(),
+                interest: form.querySelector('select').value,
+                source: 'take-action-page'
+            };
+            fetch('https://script.google.com/macros/s/AKfycbyQVIxWJrJNYp0KgEMAeF-pfCpGJPmS3w3O4enN_Dv_KITjfjfl5qeZB9uEMAnJ7CWc_g/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).finally(function() {
+                form.style.display = 'none';
+                document.getElementById('waitlistSuccess').style.display = 'block';
+            });
         });
     </script>
 

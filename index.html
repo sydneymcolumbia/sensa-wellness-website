@@ -1575,13 +1575,13 @@
                     <h3>Join the Waitlist</h3>
                     <form id="waitlistForm">
                         <div class="form-group">
-                            <input type="text" placeholder="Full Name" required>
+                            <input type="text" id="wl-name" placeholder="Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email Address" required>
+                            <input type="email" id="wl-email" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
-                            <select>
+                            <select id="wl-interest">
                                 <option value="" disabled selected>What interests you most?</option>
                                 <option value="personal">Personal health monitoring</option>
                                 <option value="family">Monitoring for my family</option>
@@ -1686,18 +1686,31 @@
         });
 
         // Waitlist form submission
-        document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
-            btn.textContent = 'You\'re on the list!';
-            btn.style.background = '#41a6f0';
+            btn.textContent = 'Submitting…';
             btn.disabled = true;
-            e.target.reset();
-            setTimeout(() => {
-                btn.textContent = 'Take Action';
-                btn.style.background = '';
-                btn.disabled = false;
-            }, 3000);
+            fetch('https://script.google.com/macros/s/AKfycbyQVIxWJrJNYp0KgEMAeF-pfCpGJPmS3w3O4enN_Dv_KITjfjfl5qeZB9uEMAnJ7CWc_g/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: document.getElementById('wl-name').value.trim(),
+                    email: document.getElementById('wl-email').value.trim(),
+                    interest: document.getElementById('wl-interest').value,
+                    source: 'homepage'
+                })
+            }).finally(function() {
+                btn.textContent = 'You\'re on the list!';
+                btn.style.background = '#41a6f0';
+                e.target.reset();
+                setTimeout(function() {
+                    btn.textContent = 'Take Action';
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            });
         });
 
         // Scroll Reveal with IntersectionObserver

@@ -678,23 +678,20 @@
     <script>
         document.getElementById('waitlistForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
             var name = document.getElementById('fullName').value.trim();
             var email = document.getElementById('email').value.trim();
             var interest = document.getElementById('interest').value;
-
-            if (!name || !email || !interest) {
-                return;
-            }
-
-            /* Basic email check */
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                return;
-            }
-
-            /* Hide form, show success */
-            document.getElementById('waitlistForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
+            if (!name || !email || !interest) return;
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+            fetch('https://script.google.com/macros/s/AKfycbyQVIxWJrJNYp0KgEMAeF-pfCpGJPmS3w3O4enN_Dv_KITjfjfl5qeZB9uEMAnJ7CWc_g/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, email: email, interest: interest, source: 'landing-page' })
+            }).finally(function() {
+                document.getElementById('waitlistForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            });
         });
     </script>
 
