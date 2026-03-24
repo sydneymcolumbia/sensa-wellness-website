@@ -1088,6 +1088,36 @@
     color: #1B8A3A;
     margin: 0.3rem 0;
 }
+
+        /* ── Standardized phone size ── */
+        .phone-mockup {
+            width: 240px !important;
+            height: 480px !important;
+            flex-shrink: 0;
+        }
+        .phone-screen {
+            height: calc(100% - 20px) !important;
+            overflow: hidden !important;
+            display: flex !important;
+            flex-direction: column !important;
+            padding: 0 !important;
+        }
+        .screenshot-phone .phone-mockup {
+            width: 240px !important;
+            height: 480px !important;
+        }
+        .app-hero-phones .phone-mockup {
+            width: 240px !important;
+            height: 480px !important;
+        }
+        .phone-screenshot-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            border-radius: 0 0 16px 16px;
+        }
     </style>
 </head>
 <body>
@@ -1130,24 +1160,7 @@
                 <div class="phone-mockup">
                     <div class="phone-notch"></div>
                     <div class="phone-screen">
-                        <div class="phone-status-bar">
-                            <span>9:41</span>
-                            <span>Sensa</span>
-                            <span>100%</span>
-                        </div>
-                        <div class="scan-screen-header">
-                            <h3>Scan Your Vial</h3>
-                        </div>
-                        <div class="scan-viewfinder">
-                            <div class="scan-corner tl"></div>
-                            <div class="scan-corner tr"></div>
-                            <div class="scan-corner bl"></div>
-                            <div class="scan-corner br"></div>
-                            <div class="scan-vial-outline"></div>
-                            <div class="scan-label">Align vial within frame</div>
-                        </div>
-                        <button class="scan-button">Scan Now</button>
-                        <div class="phone-bottom-bar"></div>
+                        <img src="screenshot-scan.jpg" alt="Scan screen" class="phone-screenshot-img">
                     </div>
                 </div>
 
@@ -1155,56 +1168,7 @@
                 <div class="phone-mockup">
                     <div class="phone-notch"></div>
                     <div class="phone-screen">
-                        <div class="phone-status-bar">
-                            <span>9:41</span>
-                            <span>Sensa</span>
-                            <span>100%</span>
-                        </div>
-                        <div class="results-screen-header">
-                            <h3>Scan Result</h3>
-                            <p>March 24, 2026 · 9:41 AM</p>
-                        </div>
-
-                        <div class="score-gauge">
-                            <svg viewBox="0 0 160 160">
-                                <defs>
-                                    <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#41a6f0"/>
-                                        <stop offset="50%" stop-color="#f59d06"/>
-                                        <stop offset="100%" stop-color="#e85a39"/>
-                                    </linearGradient>
-                                </defs>
-                                <circle cx="80" cy="80" r="70" class="score-gauge-bg"/>
-                                <circle cx="80" cy="80" r="70" class="score-gauge-fill"/>
-                            </svg>
-                            <div class="score-value">
-                                <div class="score-number" style="color:#e85a39;">62</div>
-                                <div class="score-total">/ 100</div>
-                            </div>
-                        </div>
-
-                        <div class="score-label" style="color:#e85a39;">High Inflammation</div>
-
-                        <div class="result-chips">
-                            <div class="result-chip">
-                                <div class="result-chip-label">Blue</div>
-                                <div class="result-chip-val">142.5</div>
-                            </div>
-                            <div class="result-chip">
-                                <div class="result-chip-label">CRP</div>
-                                <div class="result-chip-val">2.14 mg/dL</div>
-                            </div>
-                        </div>
-
-                        <div class="saved-indicator">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#1B8A3A" stroke-width="2.5" width="10" height="10"><polyline points="20 6 9 17 4 12"/></svg>
-                            Saved
-                        </div>
-
-                        <button class="result-btn primary">View History</button>
-                        <button class="result-btn outline">Retake</button>
-
-                        <div class="phone-bottom-bar"></div>
+                        <img src="screenshot-home.jpg" alt="Home screen" class="phone-screenshot-img">
                     </div>
                 </div>
             </div>
@@ -1390,73 +1354,10 @@
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <div class="phone-status-bar">
-                                <span>9:41</span>
-                                <span>Sensa</span>
-                                <span>100%</span>
-                            </div>
-                            <div class="home-header">
-                                <div class="home-header-greeting">Hey Ryan 👋</div>
-                                <div class="home-header-sub">Great work staying on top of your health!</div>
-                            </div>
-                            <div style="padding:0.4rem 0.5rem;flex:1;display:flex;flex-direction:column;">
-                                <div style="font-size:0.5rem;font-weight:700;color:#1800AD;margin-bottom:0.5rem;">Latest Reading</div>
-                                <div class="score-gauge" style="width:80px;height:80px;margin:0 auto 0.2rem;">
-                                    <svg viewBox="0 0 160 160">
-                                        <defs>
-                                            <linearGradient id="gaugeGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                <stop offset="0%" stop-color="#41a6f0"/>
-                                                <stop offset="50%" stop-color="#f59d06"/>
-                                                <stop offset="100%" stop-color="#e85a39"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <circle cx="80" cy="80" r="70" class="score-gauge-bg"/>
-                                        <circle cx="80" cy="80" r="70" class="score-gauge-fill" style="stroke:url(#gaugeGradient2);stroke-dashoffset:317;"/>
-                                    </svg>
-                                    <div class="score-value">
-                                        <div class="score-number" style="font-size:1.1rem;color:#1B8A3A;">28</div>
-                                        <div class="score-total" style="font-size:0.4rem;">/ 100</div>
-                                    </div>
-                                </div>
-                                <div style="text-align:center;" class="trend-badge">↓ Improving</div>
-                                <button class="scan-now-btn">📷 Scan Now</button>
-                                <div style="font-size:0.48rem;font-weight:700;color:#1800AD;margin-bottom:0.3rem;">Recent Scans</div>
-                                <div class="scan-tile">
-                                    <div>
-                                        <div class="scan-tile-score" style="color:#1B8A3A;">28</div>
-                                        <div class="scan-tile-date">Mar 24, 2026</div>
-                                    </div>
-                                    <div style="font-size:0.42rem;color:#1B8A3A;font-weight:600;">Low</div>
-                                </div>
-                                <div class="scan-tile">
-                                    <div>
-                                        <div class="scan-tile-score" style="color:#F59D06;">42</div>
-                                        <div class="scan-tile-date">Mar 17, 2026</div>
-                                    </div>
-                                    <div style="font-size:0.42rem;color:#F59D06;font-weight:600;">Moderate</div>
-                                </div>
-                            </div>
-                            <div class="mini-bottom-nav">
-                                <div class="mini-bottom-nav-item active">
-                                    <svg viewBox="0 0 24 24" fill="#1800AD"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-                                    Home
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                    Scan
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                                    History
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                    Profile
-                                </div>
-                            </div>
+                            <img src="screenshot-home.jpg" alt="Home screen" class="phone-screenshot-img">
                         </div>
                     </div>
-                    <div class="screenshot-label">Dashboard</div>
+                    <div class="screenshot-label">Home</div>
                 </div>
 
                 <!-- Screen 2: Trend Chart -->
@@ -1464,100 +1365,7 @@
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <div class="phone-status-bar">
-                                <span>9:41</span>
-                                <span>Sensa</span>
-                                <span>100%</span>
-                            </div>
-                            <div style="padding:0.4rem 0.5rem;flex:1;display:flex;flex-direction:column;overflow:hidden;">
-                                <div style="font-size:0.6rem;font-weight:700;color:#1800AD;margin-bottom:0.4rem;text-align:center;">History & Trends</div>
-                                <div class="filter-chips">
-                                    <div class="filter-chip">Week</div>
-                                    <div class="filter-chip">Month</div>
-                                    <div class="filter-chip active">All</div>
-                                </div>
-                                <div style="font-size:0.48rem;font-weight:700;color:#1800AD;margin-bottom:0.3rem;">Score Trend</div>
-                                <svg viewBox="0 0 200 90" style="width:100%;margin-bottom:0.3rem;">
-                                    <!-- Grid lines -->
-                                    <line x1="15" y1="10" x2="185" y2="10" stroke="#f0f0f0" stroke-width="0.5"/>
-                                    <line x1="15" y1="32" x2="185" y2="32" stroke="#f0f0f0" stroke-width="0.5"/>
-                                    <line x1="15" y1="54" x2="185" y2="54" stroke="#f0f0f0" stroke-width="0.5"/>
-                                    <line x1="15" y1="76" x2="185" y2="76" stroke="#f0f0f0" stroke-width="0.5"/>
-                                    <!-- Y labels -->
-                                    <text x="10" y="12" font-size="5" fill="#6B7280" text-anchor="end">100</text>
-                                    <text x="10" y="34" font-size="5" fill="#6B7280" text-anchor="end">75</text>
-                                    <text x="10" y="56" font-size="5" fill="#6B7280" text-anchor="end">50</text>
-                                    <text x="10" y="78" font-size="5" fill="#6B7280" text-anchor="end">25</text>
-                                    <!-- Gradient fill under line -->
-                                    <defs>
-                                        <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stop-color="#1800AD" stop-opacity="0.2"/>
-                                            <stop offset="100%" stop-color="#1800AD" stop-opacity="0"/>
-                                        </linearGradient>
-                                    </defs>
-                                    <path d="M 15,61 L 49,56 L 83,52 L 117,48 L 151,39 L 185,30 L 185,82 L 15,82 Z" fill="url(#lineGradient)"/>
-                                    <!-- Line -->
-                                    <polyline points="15,61 49,56 83,52 117,48 151,39 185,30" fill="none" stroke="#1800AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <!-- Dots color-coded by score -->
-                                    <circle cx="15" cy="61" r="3" fill="#E85A39" stroke="white" stroke-width="1"/>
-                                    <circle cx="49" cy="56" r="3" fill="#E85A39" stroke="white" stroke-width="1"/>
-                                    <circle cx="83" cy="52" r="3" fill="#F59D06" stroke="white" stroke-width="1"/>
-                                    <circle cx="117" cy="48" r="3" fill="#F59D06" stroke="white" stroke-width="1"/>
-                                    <circle cx="151" cy="39" r="3" fill="#F59D06" stroke="white" stroke-width="1"/>
-                                    <circle cx="185" cy="30" r="3" fill="#1B8A3A" stroke="white" stroke-width="1"/>
-                                    <!-- X date labels -->
-                                    <text x="15" y="88" font-size="4.5" fill="#6B7280" text-anchor="middle">Feb 3</text>
-                                    <text x="83" y="88" font-size="4.5" fill="#6B7280" text-anchor="middle">Feb 24</text>
-                                    <text x="185" y="88" font-size="4.5" fill="#6B7280" text-anchor="middle">Mar 24</text>
-                                </svg>
-                                <div class="stat-row">
-                                    <div class="stat-box">
-                                        <div class="stat-box-val" style="color:#F59D06;">48</div>
-                                        <div class="stat-box-lbl">Average</div>
-                                    </div>
-                                    <div class="stat-box">
-                                        <div class="stat-box-val" style="color:#1B8A3A;">28</div>
-                                        <div class="stat-box-lbl">Lowest</div>
-                                    </div>
-                                    <div class="stat-box">
-                                        <div class="stat-box-val" style="color:#E85A39;">75</div>
-                                        <div class="stat-box-lbl">Highest</div>
-                                    </div>
-                                </div>
-                                <div style="font-size:0.48rem;font-weight:700;color:#1800AD;margin-bottom:0.25rem;">All Scans (6)</div>
-                                <div class="scan-tile">
-                                    <div>
-                                        <div class="scan-tile-score" style="color:#1B8A3A;">28</div>
-                                        <div class="scan-tile-date">Mar 24</div>
-                                    </div>
-                                    <div style="font-size:0.38rem;color:#1B8A3A;">Low</div>
-                                </div>
-                                <div class="scan-tile">
-                                    <div>
-                                        <div class="scan-tile-score" style="color:#F59D06;">42</div>
-                                        <div class="scan-tile-date">Mar 17</div>
-                                    </div>
-                                    <div style="font-size:0.38rem;color:#F59D06;">Moderate</div>
-                                </div>
-                            </div>
-                            <div class="mini-bottom-nav">
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="#6B7280"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-                                    Home
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                    Scan
-                                </div>
-                                <div class="mini-bottom-nav-item active">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#1800AD" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                                    History
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                    Profile
-                                </div>
-                            </div>
+                            <img src="screenshot-history.jpg" alt="History & Trends screen" class="phone-screenshot-img">
                         </div>
                     </div>
                     <div class="screenshot-label">History & Trends</div>
@@ -1568,72 +1376,7 @@
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <div class="phone-status-bar">
-                                <span>9:41</span>
-                                <span>Sensa</span>
-                                <span>100%</span>
-                            </div>
-                            <div style="padding:0.4rem 0.5rem;flex:1;display:flex;flex-direction:column;overflow:hidden;">
-                                <div style="font-size:0.6rem;font-weight:700;color:#1800AD;margin-bottom:0.2rem;text-align:center;">Your Plan</div>
-                                <div style="text-align:center;margin-bottom:0.5rem;">
-                                    <span style="background:rgba(27,138,58,0.12);color:#1B8A3A;font-size:0.4rem;font-weight:600;padding:0.15rem 0.4rem;border-radius:20px;">Based on your score: 28 — Low</span>
-                                </div>
-                                <div class="plan-item">
-                                    <div class="plan-item-icon" style="background:rgba(232,90,57,0.12);">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="#E85A39" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
-                                    </div>
-                                    <div>
-                                        <div class="plan-item-title">Nutrition</div>
-                                        <div class="plan-item-text">Continue omega-3 rich foods. Limit processed sugar intake.</div>
-                                    </div>
-                                </div>
-                                <div class="plan-item">
-                                    <div class="plan-item-icon" style="background:rgba(65,166,240,0.12);">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="#41A6F0" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                                    </div>
-                                    <div>
-                                        <div class="plan-item-title">Exercise</div>
-                                        <div class="plan-item-text">30 min moderate activity daily. You're on a great streak!</div>
-                                    </div>
-                                </div>
-                                <div class="plan-item">
-                                    <div class="plan-item-icon" style="background:rgba(24,0,173,0.08);">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="#1800AD" stroke-width="2"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/></svg>
-                                    </div>
-                                    <div>
-                                        <div class="plan-item-title">Sleep</div>
-                                        <div class="plan-item-text">Maintain 7–8 hours. Good sleep supports low inflammation.</div>
-                                    </div>
-                                </div>
-                                <div class="plan-item">
-                                    <div class="plan-item-icon" style="background:rgba(250,194,52,0.15);">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="#FAC234" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                                    </div>
-                                    <div>
-                                        <div class="plan-item-title">Stress</div>
-                                        <div class="plan-item-text">10 min daily mindfulness. Keep up the consistent effort.</div>
-                                    </div>
-                                </div>
-                                <div style="font-size:0.38rem;color:#6B7280;text-align:center;margin-top:0.3rem;">Recommendations update after each scan</div>
-                            </div>
-                            <div class="mini-bottom-nav">
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="#6B7280"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-                                    Home
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                    Scan
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                                    History
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                    Profile
-                                </div>
-                            </div>
+                            <img src="screenshot-plan.jpg" alt="Your Plan screen" class="phone-screenshot-img">
                         </div>
                     </div>
                     <div class="screenshot-label">Your Plan</div>
@@ -1644,72 +1387,10 @@
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <div class="phone-status-bar">
-                                <span>9:41</span>
-                                <span>Sensa</span>
-                                <span>100%</span>
-                            </div>
-                            <div style="padding:0.4rem 0.5rem;flex:1;display:flex;flex-direction:column;overflow:hidden;">
-                                <div style="font-size:0.6rem;font-weight:700;color:#1800AD;margin-bottom:0.5rem;text-align:center;">Scan Result</div>
-                                <div class="score-gauge" style="width:80px;height:80px;margin:0 auto 0.3rem;">
-                                    <svg viewBox="0 0 160 160">
-                                        <defs>
-                                            <linearGradient id="gaugeGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                <stop offset="0%" stop-color="#41a6f0"/>
-                                                <stop offset="50%" stop-color="#f59d06"/>
-                                                <stop offset="100%" stop-color="#e85a39"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <circle cx="80" cy="80" r="70" class="score-gauge-bg"/>
-                                        <circle cx="80" cy="80" r="70" class="score-gauge-fill" style="stroke:url(#gaugeGradient3);stroke-dashoffset:255;"/>
-                                    </svg>
-                                    <div class="score-value">
-                                        <div class="score-number" style="font-size:1.1rem;color:#F59D06;">42</div>
-                                        <div class="score-total" style="font-size:0.4rem;">/ 100</div>
-                                    </div>
-                                </div>
-                                <div style="text-align:center;margin-bottom:0.2rem;">
-                                    <span style="background:rgba(245,157,6,0.12);color:#F59D06;font-size:0.45rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:20px;">Moderate Inflammation</span>
-                                </div>
-                                <div style="text-align:center;font-size:0.4rem;color:#6B7280;margin-bottom:0.4rem;">Monday, March 17, 2026 · 8:22 AM</div>
-                                <div class="result-chips" style="margin-bottom:0.4rem;">
-                                    <div class="result-chip">
-                                        <div class="result-chip-label">Blue</div>
-                                        <div class="result-chip-val">158.3</div>
-                                    </div>
-                                    <div class="result-chip">
-                                        <div class="result-chip-label">CRP</div>
-                                        <div class="result-chip-val">1.24 mg/dL</div>
-                                    </div>
-                                </div>
-                                <div class="saved-indicator" style="margin-bottom:0.4rem;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#1B8A3A" stroke-width="2.5" width="10" height="10"><polyline points="20 6 9 17 4 12"/></svg>
-                                    Saved
-                                </div>
-                                <button class="result-btn primary">View History</button>
-                                <button class="result-btn outline">Retake</button>
-                            </div>
-                            <div class="mini-bottom-nav">
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="#6B7280"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-                                    Home
-                                </div>
-                                <div class="mini-bottom-nav-item active">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#1800AD" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                    Scan
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                                    History
-                                </div>
-                                <div class="mini-bottom-nav-item">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                    Profile
-                                </div>
-                            </div>
+                            <img src="screenshot-scan.jpg" alt="Scan screen" class="phone-screenshot-img">
                         </div>
                     </div>
-                    <div class="screenshot-label">Scan Results</div>
+                    <div class="screenshot-label">Scan</div>
                 </div>
             </div>
         </div>
