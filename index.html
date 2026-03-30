@@ -761,6 +761,130 @@
             font-size: 0.95rem;
         }
 
+        /* Pricing Section */
+        .pricing {
+            padding: var(--section-padding);
+            background: var(--bg-primary);
+        }
+
+        .pricing-cards {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: stretch;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            flex: 1;
+            max-width: 300px;
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            background: #1a1464;
+            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(26, 20, 100, 0.3);
+            border: none;
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 0 16px 50px rgba(26, 20, 100, 0.4);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            line-height: 1;
+        }
+
+        .pricing-price span {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .pricing-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            opacity: 0.75;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-features li::before {
+            content: "\2713";
+            font-weight: 700;
+            color: var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured .pricing-features li::before {
+            color: var(--accent-gold);
+        }
+
+        .pricing-card .btn {
+            display: block;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .pricing-card.featured .btn {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        .pricing-card.featured .btn:hover {
+            background: #f5b820;
+        }
+
         /* Team Section */
         .team {
             padding: var(--section-padding);
@@ -1083,6 +1207,25 @@
 
             .conditions-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
+                max-width: 380px;
+                width: 100%;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+                order: -1;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
             }
 
             .team-grid {
@@ -1489,6 +1632,60 @@
 
     <div class="section-divider"></div>
 
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Choose Your Bundle</h2>
+                <p>One-time purchase. No subscription. Free shipping.</p>
+            </div>
+            <div class="pricing-cards reveal">
+                <div class="pricing-card">
+                    <h3>1 Test Kit</h3>
+                    <div class="pricing-price"><span>$</span>49</div>
+                    <p class="pricing-subtitle">Perfect for trying Sensa</p>
+                    <ul class="pricing-features">
+                        <li>1 at-home test</li>
+                        <li>Instant results</li>
+                        <li>App access</li>
+                        <li>Free shipping</li>
+                    </ul>
+                    <a href="take-action.html" class="btn">Buy Now</a>
+                </div>
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">Most Popular</span>
+                    <h3>3-Pack Bundle</h3>
+                    <div class="pricing-price"><span>$</span>99</div>
+                    <p class="pricing-subtitle">Best for tracking over time</p>
+                    <ul class="pricing-features">
+                        <li>3 at-home tests</li>
+                        <li>Save $48</li>
+                        <li>Instant results</li>
+                        <li>App access</li>
+                        <li>Free shipping</li>
+                    </ul>
+                    <a href="take-action.html" class="btn">Buy Now</a>
+                </div>
+                <div class="pricing-card">
+                    <span class="pricing-badge" style="background:rgba(114,103,242,0.12); color:var(--accent-purple);">Best Value</span>
+                    <h3>4-Pack Bundle</h3>
+                    <div class="pricing-price"><span>$</span>129</div>
+                    <p class="pricing-subtitle">Ideal for families</p>
+                    <ul class="pricing-features">
+                        <li>4 at-home tests</li>
+                        <li>Save $67</li>
+                        <li>Instant results</li>
+                        <li>App access</li>
+                        <li>Free shipping</li>
+                    </ul>
+                    <a href="take-action.html" class="btn">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- Team Section -->
     <section class="team" id="team">
         <div class="container">
@@ -1588,6 +1785,10 @@
                         <div class="icon">&mdash;</div>
                         <span>Free shipping on every order</span>
                     </div>
+                    <div class="contact-item">
+                        <div class="icon" style="background:var(--accent-gold); color:var(--text-dark); font-weight:700;">%</div>
+                        <span><strong>Save up to 34%</strong> with our multi-pack bundles</span>
+                    </div>
                     <div style="margin-top: 2rem;">
                         <h3>Contact Us</h3>
                         <div class="contact-item" style="margin-top: 1rem;">
@@ -1625,7 +1826,11 @@
                                 <option value="gift">A gift</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn" style="width:100%; text-align:center;">Buy Now</button>
+                        <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.5rem;">
+                            <a href="take-action.html" class="btn" style="width:100%; text-align:center; display:block;">Buy 1 &mdash; $49</a>
+                            <a href="take-action.html" class="btn" style="width:100%; text-align:center; display:block; background:#1a1464;">Buy 3-Pack &mdash; $99</a>
+                            <a href="take-action.html" class="btn" style="width:100%; text-align:center; display:block;">Buy 4-Pack &mdash; $129</a>
+                        </div>
                     </form>
                     <p style="margin-top:1rem; font-size:0.8rem; color:var(--text-light); text-align:center;">Secure checkout. Free shipping on all orders.</p>
                 </div>

@@ -588,11 +588,126 @@
         }
 
         .waitlist-form-card {
+            background: transparent;
+            border-radius: 16px;
+            padding: 0;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .pricing-cards {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            flex: 1;
+            max-width: 300px;
             background: var(--bg-white);
             border-radius: 16px;
-            padding: 2.5rem;
-            max-width: 520px;
-            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .pricing-card.featured {
+            background: #1a1464;
+            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(26, 20, 100, 0.5);
+            border: 2px solid rgba(250, 194, 52, 0.4);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 0 16px 50px rgba(26, 20, 100, 0.6);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            line-height: 1;
+        }
+
+        .pricing-price span {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .pricing-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            opacity: 0.75;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-features li::before {
+            content: "\2713";
+            font-weight: 700;
+            color: var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured .pricing-features li::before {
+            color: var(--accent-gold);
+        }
+
+        .pricing-card .waitlist-submit {
+            margin-top: auto;
+        }
+
+        .pricing-card.featured .waitlist-submit {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        .pricing-card.featured .waitlist-submit:hover {
+            background: #f5b820;
         }
 
         .form-group {
@@ -859,7 +974,26 @@
 
             .waitlist-form-card {
                 margin: 0 0.5rem;
-                padding: 2rem 1.5rem;
+                padding: 0;
+            }
+
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
+                max-width: 380px;
+                width: 100%;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+                order: -1;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
             }
         }
 
@@ -905,7 +1039,7 @@
             <h1 class="reveal">Your Inflammation Levels Are Telling You Something. Are You Listening?</h1>
             <p class="hero-subtext reveal">Leading physicians and researchers agree: measuring and managing chronic inflammation is one of the most important things you can do for your long-term health. Sensa makes it possible at home.</p>
             <div class="reveal">
-                <button type="button" class="hero-cta" onclick="handleCheckout(document.getElementById('buyNowBtn'))">Buy Now</button>
+                <a href="#waitlist" class="hero-cta" style="text-decoration:none; display:inline-block;">Choose Your Bundle</a>
                 <p class="hero-fine-print">Ships to your door. Results in 15 minutes. No clinic visit required.</p>
             </div>
         </div>
@@ -1077,8 +1211,49 @@
             </div>
 
             <div class="waitlist-form-card reveal" id="waitlistFormCard">
-                <button type="button" id="buyNowBtn" class="waitlist-submit" onclick="handleCheckout(this)">Buy Now &rarr;</button>
-                <p id="checkoutError" style="display:none; color:#e85a39; margin-top:1rem; font-size:0.95rem;"></p>
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3>1 Test Kit</h3>
+                        <div class="pricing-price"><span>$</span>49</div>
+                        <p class="pricing-subtitle">Perfect for trying Sensa</p>
+                        <ul class="pricing-features">
+                            <li>1 at-home test</li>
+                            <li>Instant results</li>
+                            <li>App access</li>
+                            <li>Free shipping</li>
+                        </ul>
+                        <button type="button" class="waitlist-submit" onclick="handleCheckout('price_1test')">Buy Now &rarr;</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <span class="pricing-badge">Most Popular</span>
+                        <h3>3-Pack Bundle</h3>
+                        <div class="pricing-price"><span>$</span>99</div>
+                        <p class="pricing-subtitle">Best for tracking over time</p>
+                        <ul class="pricing-features">
+                            <li>3 at-home tests</li>
+                            <li>Save $48</li>
+                            <li>Instant results</li>
+                            <li>App access</li>
+                            <li>Free shipping</li>
+                        </ul>
+                        <button type="button" class="waitlist-submit" onclick="handleCheckout('price_3pack')">Buy Now &rarr;</button>
+                    </div>
+                    <div class="pricing-card">
+                        <span class="pricing-badge" style="background:rgba(114,103,242,0.12); color:var(--accent-purple);">Best Value</span>
+                        <h3>4-Pack Bundle</h3>
+                        <div class="pricing-price"><span>$</span>129</div>
+                        <p class="pricing-subtitle">Ideal for families</p>
+                        <ul class="pricing-features">
+                            <li>4 at-home tests</li>
+                            <li>Save $67</li>
+                            <li>Instant results</li>
+                            <li>App access</li>
+                            <li>Free shipping</li>
+                        </ul>
+                        <button type="button" class="waitlist-submit" onclick="handleCheckout('price_4pack')">Buy Now &rarr;</button>
+                    </div>
+                </div>
+                <p id="checkoutError" style="display:none; color:#e85a39; margin-top:1rem; font-size:0.95rem; text-align:center;"></p>
             </div>
 
             <p class="waitlist-privacy reveal">Secure checkout. One-time purchase. Your data is never sold.</p>
@@ -1153,19 +1328,30 @@
         });
 
         // Stripe checkout handler
-        function handleCheckout(triggerBtn) {
-            var btn = document.getElementById('buyNowBtn');
-            var errorEl = document.getElementById('checkoutError');
-            var originalText = btn.textContent;
+        function handleCheckout(priceId) {
+            // Find the button that was clicked
+            var buttons = document.querySelectorAll('.waitlist-submit');
+            var clickedBtn = null;
+            buttons.forEach(function(btn) {
+                if (btn.getAttribute('onclick') && btn.getAttribute('onclick').indexOf(priceId) !== -1) {
+                    clickedBtn = btn;
+                }
+            });
 
-            btn.disabled = true;
-            btn.textContent = 'Processing...';
-            btn.style.opacity = '0.7';
+            var errorEl = document.getElementById('checkoutError');
+            var originalText = clickedBtn ? clickedBtn.textContent : 'Buy Now';
+
+            if (clickedBtn) {
+                clickedBtn.disabled = true;
+                clickedBtn.textContent = 'Processing...';
+                clickedBtn.style.opacity = '0.7';
+            }
             errorEl.style.display = 'none';
 
             fetch('/api/checkout', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ priceId: priceId })
             })
             .then(function(response) {
                 if (!response.ok) throw new Error('Checkout request failed');
@@ -1182,9 +1368,11 @@
                 console.error('Checkout error:', err);
                 errorEl.textContent = 'Something went wrong. Please try again.';
                 errorEl.style.display = 'block';
-                btn.disabled = false;
-                btn.textContent = originalText;
-                btn.style.opacity = '1';
+                if (clickedBtn) {
+                    clickedBtn.disabled = false;
+                    clickedBtn.textContent = originalText;
+                    clickedBtn.style.opacity = '1';
+                }
             });
         }
     </script>
