@@ -1,0 +1,1 @@
+- [project_sensawellness.md](project_sensawellness.md) - Sensa Wellness static site: design system, page inventory, nav/footer patterns, SEO setup, responsive breakpoints
