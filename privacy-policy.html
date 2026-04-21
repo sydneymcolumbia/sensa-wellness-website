@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Sensa Wellness</title>
+    <meta name="description" content="Sensa Wellness Privacy Policy. Learn how we collect, use, and protect your personal and wellness data.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sensawellness.org/privacy-policy.html">
+    <meta property="og:title" content="Privacy Policy - Sensa Wellness">
+    <meta property="og:description" content="Learn how Sensa Wellness collects, uses, and protects your personal and wellness data.">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://www.sensawellness.org/privacy-policy.html">
+    <meta name="theme-color" content="#1800AD">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #fffff7;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-gray: #4a4a5a;
+            --text-light: #7a7a8a;
+            --accent-gold: #fac234;
+            --accent-orange: #f59d06;
+            --accent-coral: #e85a39;
+            --accent-navy: #1800ad;
+            --accent-purple: #7267f2;
+            --accent-blue: #41a6f0;
+            --btn-dark: #1800ad;
+            --btn-hover: #2a10c0;
+            --section-padding: 5rem 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-primary);
+            line-height: 1.2;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.065em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-navy);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            background: var(--btn-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(24, 0, 173, 0.25);
+        }
+
+        .btn:hover {
+            background: var(--btn-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.35);
+        }
+
+        /* Accessibility */
+        .btn:focus-visible,
+        nav a:focus-visible,
+        .social-link:focus-visible,
+        .scroll-top:focus-visible {
+            outline: 3px solid var(--accent-purple);
+            outline-offset: 2px;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Policy Hero */
+        .policy-hero {
+            background: linear-gradient(135deg, var(--accent-navy), #2a10c0);
+            color: white;
+            padding: 5rem 0 4rem;
+            text-align: center;
+        }
+
+        .policy-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.04em;
+        }
+
+        .policy-hero .last-updated {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+        }
+
+        /* Policy Content */
+        .policy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .policy-content h2 {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(24, 0, 173, 0.1);
+        }
+
+        .policy-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .policy-content h3 {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .policy-content ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .policy-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .policy-content a {
+            color: var(--accent-navy);
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .policy-content a:hover {
+            color: var(--btn-hover);
+        }
+
+        .policy-content strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.8);
+            padding: 4rem 0 2rem;
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, var(--accent-coral), var(--accent-purple), var(--accent-blue)) 1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: background 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .wellness-disclaimer {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--btn-dark);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 999;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            background: var(--btn-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .policy-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .policy-hero {
+                padding: 3.5rem 0 3rem;
+            }
+
+            .policy-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .policy-content {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .policy-content h2 {
+                font-size: 1.35rem;
+                margin-top: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img loading="lazy" src="logo.jpg" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="app.html">App</a>
+                <a href="how-to.html">How To</a>
+                <a href="pay-now.html" class="btn">Buy Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Policy Hero -->
+    <section class="policy-hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last updated: April 21, 2026</p>
+        </div>
+    </section>
+
+    <!-- Policy Content -->
+    <div class="policy-content">
+
+        <h2>1. Introduction</h2>
+        <p>Sensa Wellness is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and share information when you use the Sensa Wellness mobile application and website (<a href="https://www.sensawellness.org">sensawellness.org</a>). By using our services, you agree to the practices described in this policy.</p>
+        <p>We believe transparency is essential. This document is designed to be readable and straightforward so you can make informed decisions about your data.</p>
+
+        <h2>2. Information We Collect</h2>
+
+        <h3>Account Information</h3>
+        <p>When you create a Sensa account, we collect your <strong>email address</strong> and <strong>display name</strong>. These are required to set up your account, authenticate your identity, and personalize your experience within the app.</p>
+
+        <h3>Wellness Scan Data</h3>
+        <p>Each time you perform a wellness scan using the Sensa app, we collect and store the following data points:</p>
+        <ul>
+            <li><strong>Wellness score</strong> (a value from 0 to 100)</li>
+            <li><strong>Score label</strong> (e.g., Low, Moderate, Elevated)</li>
+            <li><strong>Timestamp</strong> of the scan</li>
+            <li><strong>CRP-derived measurement</strong> used to calculate the score</li>
+            <li><strong>Average blue channel value</strong> from the test strip image analysis</li>
+        </ul>
+
+        <h3>Health Profile (Optional)</h3>
+        <p>If you choose to fill out the Health Profile section in the app, we may collect the following optional information:</p>
+        <ul>
+            <li>Age range</li>
+            <li>Biological sex</li>
+            <li>Activity level</li>
+            <li>Diet type</li>
+            <li>Average sleep hours</li>
+            <li>Stress level</li>
+            <li>Smoking status</li>
+            <li>Primary health goal</li>
+        </ul>
+        <p>This information is collected only if you voluntarily provide it. You are never required to complete your Health Profile to use the core scanning features of the app.</p>
+
+        <h3>Scan Images</h3>
+        <p>When you photograph a test strip, the image is processed entirely on your device. <strong>Scan images are stored locally on your device only and are never uploaded to our servers.</strong> Only the numerical results derived from image analysis are transmitted and stored.</p>
+
+        <h3>Usage and Crash Data</h3>
+        <p>We automatically collect basic usage analytics and crash reports through Google Firebase. This data helps us understand how the app is being used, identify bugs, and improve reliability. This data does not include your wellness scores or health profile information.</p>
+
+        <h2>3. How We Use Your Information</h2>
+        <p>We use the information we collect for the following purposes:</p>
+        <ul>
+            <li><strong>Display your scores and history:</strong> Your scan data powers the dashboard, score gauge, and history timeline within the app.</li>
+            <li><strong>Personalize action plans:</strong> If you provide Health Profile information, we use it to tailor wellness recommendations and action plans specific to your lifestyle.</li>
+            <li><strong>Send optional reminders:</strong> With your permission, we send push notifications to remind you to perform regular wellness scans.</li>
+            <li><strong>Generate exportable reports:</strong> You can export your scan history as a PDF report to share with your healthcare provider or keep for your own records.</li>
+            <li><strong>Improve app reliability:</strong> Usage and crash data help us identify and fix technical issues to deliver a better experience.</li>
+        </ul>
+        <p><strong>We never use your data for advertising. We never sell your data to third parties.</strong></p>
+
+        <h2>4. Health Data</h2>
+        <p>The health profile fields you provide (age range, biological sex, activity level, diet type, sleep hours, stress level, smoking status, and primary health goal) are used solely to personalize wellness recommendations within the Sensa app.</p>
+        <p>This data is <strong>not</strong> a clinical assessment. It is not shared with healthcare providers, insurance companies, employers, or any third party. Your health profile information remains within your Sensa account and is used exclusively to improve the relevance of the wellness content and action plans presented to you.</p>
+
+        <h2>5. Data Storage &amp; Security</h2>
+        <p>Your data is stored in <strong>Google Firebase (Cloud Firestore)</strong>, a secure, cloud-hosted database. All data is:</p>
+        <ul>
+            <li><strong>Encrypted in transit</strong> using TLS (Transport Layer Security), ensuring your data is protected as it moves between your device and our servers.</li>
+            <li><strong>Encrypted at rest</strong> on Google's servers, meaning your stored data is protected even in the unlikely event of a physical breach.</li>
+        </ul>
+        <p>We use Firebase Security Rules to enforce strict access controls. These rules ensure that only the authenticated user can read, write, or modify their own data. No other user, and no Sensa team member outside of authorized administrators, can access your personal records.</p>
+
+        <h2>6. Third-Party Services</h2>
+        <p>Sensa Wellness relies on a limited number of trusted third-party services to operate:</p>
+        <ul>
+            <li><strong>Google Firebase:</strong> Provides authentication (secure sign-in), Cloud Firestore (database), and Crashlytics (crash reporting). Google's privacy practices are governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</li>
+            <li><strong>Google Fonts:</strong> Used to load the typefaces displayed on the Sensa website. Google Fonts may log basic access data (such as CSS requests) as described in the <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts Privacy FAQ</a>.</li>
+        </ul>
+        <p>We do not integrate any advertising networks, social media trackers, or data brokers into our app or website.</p>
+
+        <h2>7. Data Retention</h2>
+        <p>Your data is retained for as long as your Sensa account remains active. You have full control over your data at all times:</p>
+        <ul>
+            <li><strong>Delete individual scans:</strong> You can remove any individual scan record directly within the app's history view.</li>
+            <li><strong>Delete your entire account:</strong> Navigate to <strong>Profile &rarr; Delete Account &amp; Data</strong> within the app to permanently delete your account and all associated data, including scan history and health profile information.</li>
+            <li><strong>Request deletion by email:</strong> You may also request account and data deletion by contacting us at <a href="mailto:privacy@sensawellness.org">privacy@sensawellness.org</a>. We will process your request within 30 days.</li>
+        </ul>
+        <p>Once your data is deleted, it cannot be recovered.</p>
+
+        <h2>8. Children's Privacy</h2>
+        <p>Sensa Wellness is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that a child under 13 has provided us with personal data, we will take steps to delete that information promptly. If you believe a child under 13 has created an account or provided data through our services, please contact us at <a href="mailto:privacy@sensawellness.org">privacy@sensawellness.org</a>.</p>
+
+        <h2>9. Your Rights</h2>
+        <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+        <ul>
+            <li><strong>Access:</strong> You have the right to request a copy of the personal data we hold about you.</li>
+            <li><strong>Correction:</strong> You have the right to request that we correct any inaccurate or incomplete data.</li>
+            <li><strong>Deletion:</strong> You have the right to request the deletion of your personal data (as described in the Data Retention section above).</li>
+            <li><strong>Objection and restriction:</strong> You have the right to object to or request restriction of certain data processing activities.</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us at <a href="mailto:privacy@sensawellness.org">privacy@sensawellness.org</a>. We will respond to your request within 30 days.</p>
+
+        <h2>10. HIPAA Notice</h2>
+        <p>Sensa Wellness is a <strong>general wellness application</strong> and is not a covered entity under the Health Insurance Portability and Accountability Act (HIPAA). The wellness scores generated by the Sensa app are lifestyle metrics intended to support general wellness awareness, not clinical measurements or medical diagnoses.</p>
+        <p>However, we take the security and privacy of your data seriously. We apply security best practices that are consistent with healthcare data standards, including encryption in transit and at rest, strict access controls, and minimal data collection. While we are not legally bound by HIPAA, we aim to meet or exceed the spirit of its data protection principles.</p>
+
+        <h2>11. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make changes, we will update the "Last updated" date at the top of this page.</p>
+        <p>We encourage you to review this policy periodically. Your continued use of the Sensa app or website after any changes are posted constitutes your acceptance of the updated policy.</p>
+
+        <h2>12. Contact</h2>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us:</p>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:privacy@sensawellness.org">privacy@sensawellness.org</a></li>
+            <li><strong>Website:</strong> <a href="https://www.sensawellness.org">sensawellness.org</a></li>
+        </ul>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation monitoring as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="how-to.html">How To</a></li>
+                        <li><a href="pay-now.html">Buy Now</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Inflammation Monitoring</a></li>
+                        <li><a href="#">Preventive Screening</a></li>
+                        <li><a href="app.html">Mobile Integration</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">Info@sensawellness.org</div>
+                    <div class="social-links">
+                        <a href="https://instagram.com/sensawellness" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://linkedin.com/company/sensawellness" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="wellness-disclaimer">Sensa is a general wellness product intended to support a healthy lifestyle. It is not intended to diagnose, treat, cure, or prevent any disease or medical condition.</p>
+                &copy; 2026 Sensa Wellness. All Rights Reserved. &nbsp;&middot;&nbsp; <a href="privacy-policy.html" style="color:rgba(255,255,255,0.4);">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
+
+    <script>
+        // Scroll to top button
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTop');
+            if (document.documentElement.scrollTop > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile nav toggle
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
