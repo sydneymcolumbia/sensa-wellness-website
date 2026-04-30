@@ -23,6 +23,9 @@ module.exports = async function handler(req, res) {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items: [{ price: stripePriceId, quantity: 1 }],
+      shipping_address_collection: {
+        allowed_countries: ['US'],
+      },
       success_url: 'https://sensawellness.org/success.html',
       cancel_url: 'https://sensawellness.org/pay-now.html',
     });
