@@ -94,7 +94,9 @@ Always respond with valid JSON and nothing else, in exactly this structure:
   "message": "Your response text here",
   "escalate": false
 }
-Set escalate to true only when the customer is upset or needs a human to follow up.`;
+Set escalate to true only when the customer is upset or needs a human to follow up.
+Do not wrap your response in markdown code blocks. Return raw JSON only.
+Never use em dashes in your message text. Use commas or periods instead.`;
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -129,11 +131,12 @@ module.exports = async function handler(req, res) {
       messages,
     });
 
+    let rawText = response.content[0].text.trim().replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '');
     let parsed;
     try {
-      parsed = JSON.parse(response.content[0].text);
+      parsed = JSON.parse(rawText);
     } catch {
-      parsed = { message: response.content[0].text, escalate: false };
+      parsed = { message: rawText, escalate: false };
     }
 
     if (parsed.escalate) {
