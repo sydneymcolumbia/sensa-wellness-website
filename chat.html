@@ -444,7 +444,8 @@
         ? `Hi ${customerName}! My name is Melissa, and I'm on the Sensa customer care team. I wanted to personally check in now that your order has arrived. How is everything going? Do you have any questions about getting started with your kit?`
         : `Hi there! My name is Melissa, and I'm on the Sensa customer care team. I wanted to personally check in and see how your order went. Is there anything I can help you with?`;
 
-    conversationHistory.push({ role: 'assistant', content: greeting });
+    // Show the greeting in the UI but don't add it to history —
+    // Claude API requires the first message to be from the user.
     addMessage('melissa', greeting);
 
     // Enable input
