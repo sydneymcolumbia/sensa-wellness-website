@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Us - Sensa Wellness | Partnerships and Careers</title>
+    <meta name="description" content="Partner with Sensa Wellness or join our team. We are looking for healthcare partners, corporate wellness programs, and passionate people who want to change how the world monitors inflammation.">
+    <meta name="theme-color" content="#1800AD">
+    <link rel="canonical" href="https://www.sensawellness.org/work-with-us.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sensawellness.org/work-with-us.html">
+    <meta property="og:title" content="Work With Us - Sensa Wellness">
+    <meta property="og:description" content="Partner with Sensa Wellness or join our team. We are looking for healthcare partners, corporate wellness programs, and passionate people who want to change how the world monitors inflammation.">
+    <meta property="og:image" content="https://www.sensawellness.org/sensa-og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .wellness-disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.5); max-width: 800px; margin: 0 auto 1rem; line-height: 1.5; text-align: center; }
+
+        .page-hero {
+            background: linear-gradient(135deg, #1800ad 0%, #7267f2 100%);
+            padding: 7rem 0 4rem;
+            text-align: center;
+            color: white;
+        }
+        .page-hero h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-light { background: #fffff7; padding: 5rem 0; }
+        .section-white { background: #ffffff; padding: 5rem 0; }
+
+        .section-label {
+            display: inline-block;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #e85a39;
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'Quicksand', sans-serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: #4a4a5a;
+            max-width: 580px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .opportunity-card {
+            background: #ffffff;
+            border: 1px solid rgba(114,103,242,0.12);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .section-white .opportunity-card {
+            background: #fffff7;
+        }
+        .opportunity-card:hover {
+            box-shadow: 0 8px 32px rgba(114,103,242,0.12);
+            transform: translateY(-2px);
+        }
+        .opportunity-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(114,103,242,0.12), rgba(65,166,240,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .opportunity-card h3 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.6rem;
+        }
+        .opportunity-card p {
+            font-size: 0.92rem;
+            color: #4a4a5a;
+            line-height: 1.65;
+        }
+
+        .job-card {
+            background: #ffffff;
+            border: 1px solid rgba(114,103,242,0.12);
+            border-radius: 16px;
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+            margin-bottom: 1rem;
+        }
+        .job-card:hover {
+            box-shadow: 0 8px 32px rgba(114,103,242,0.12);
+            transform: translateY(-2px);
+        }
+        .job-info h3 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.3rem;
+        }
+        .job-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .job-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background: rgba(114,103,242,0.1);
+            color: #7267f2;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .job-tag.remote { background: rgba(65,166,240,0.1); color: #41a6f0; }
+        .job-tag.open { background: rgba(45,190,120,0.1); color: #1a9a60; }
+        .job-apply-btn {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            background: #1800ad;
+            color: white;
+            border-radius: 8px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .job-apply-btn:hover { background: #2a10c0; }
+
+        .contact-cta-section {
+            background: linear-gradient(135deg, #1800ad 0%, #7267f2 100%);
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+        }
+        .contact-cta-section h2 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .contact-cta-section p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-cta-section .btn {
+            background: white;
+            color: #1800ad;
+            font-weight: 700;
+        }
+        .contact-cta-section .btn:hover { background: #fffff7; }
+
+        @media (max-width: 600px) {
+            .job-card { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="app.html">App</a>
+                <a href="index.html#team">Team</a>
+                <a href="pay-now.html" class="btn">Buy Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Work With Us</h1>
+            <p>We are on a mission to make inflammation monitoring a daily habit for everyone. We are looking for partners and people who share that vision.</p>
+        </div>
+    </section>
+
+    <!-- Partnerships -->
+    <section class="section-light">
+        <div class="container">
+            <span class="section-label">Partnerships</span>
+            <h2 class="section-title">Let's Build Something Together</h2>
+            <p class="section-subtitle">We partner with organizations that are as serious about preventive health as we are. If your work brings you close to people who care about their long-term wellbeing, there is likely a fit.</p>
+
+            <div class="opportunity-grid">
+
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3>Healthcare Providers and Clinics</h3>
+                    <p>Recommend Sensa to patients who would benefit from tracking their inflammation at home between visits. We offer provider resources, bulk pricing, and co-branded materials.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#41a6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                        </svg>
+                    </div>
+                    <h3>Corporate Wellness Programs</h3>
+                    <p>Bring inflammation monitoring to your workforce. Chronic inflammation costs employers billions in lost productivity and healthcare spending. We offer group pricing and program support for companies of all sizes.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Research Institutions</h3>
+                    <p>We are interested in partnering with academic and research organizations studying inflammation, chronic disease, and preventive health. Contact us to discuss collaboration opportunities.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#41a6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                        </svg>
+                    </div>
+                    <h3>Wellness Coaches and Personal Trainers</h3>
+                    <p>Help your clients understand what is happening inside their bodies, not just on the outside. Sensa gives coaches a concrete biomarker to track alongside fitness and nutrition progress.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7267f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Influencers and Content Creators</h3>
+                    <p>If you create content around health, longevity, biohacking, or wellness and have an engaged audience, we would love to talk about how we can work together.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#41a6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h3>Senior Living and Assisted Care</h3>
+                    <p>Older adults are among those who benefit most from regular inflammation monitoring. We offer tailored programs for senior living communities, assisted care facilities, and elder care organizations.</p>
+                </div>
+
+            </div>
+
+            <div style="text-align:center; margin-top:3rem;">
+                <a href="mailto:sensawellness@gmail.com?subject=Partnership Inquiry" class="btn">Get in Touch About Partnerships</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers -->
+    <section class="section-white">
+        <div class="container">
+            <span class="section-label">Careers</span>
+            <h2 class="section-title">Join the Team</h2>
+            <p class="section-subtitle">We are a small, driven team building something that has the potential to change how people understand their health. If that sounds like the kind of work you want to do, we want to hear from you.</p>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Marketing and Growth</h3>
+                    <div class="job-meta">
+                        <span class="job-tag open">Open</span>
+                        <span class="job-tag remote">Remote</span>
+                        <span class="job-tag">Part-time / Full-time</span>
+                    </div>
+                </div>
+                <a href="mailto:sensawellness@gmail.com?subject=Application: Marketing and Growth" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Sales and Business Development</h3>
+                    <div class="job-meta">
+                        <span class="job-tag open">Open</span>
+                        <span class="job-tag remote">Remote</span>
+                        <span class="job-tag">Part-time / Full-time</span>
+                    </div>
+                </div>
+                <a href="mailto:sensawellness@gmail.com?subject=Application: Sales and Business Development" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Mobile App Developer (iOS / Android)</h3>
+                    <div class="job-meta">
+                        <span class="job-tag open">Open</span>
+                        <span class="job-tag remote">Remote</span>
+                        <span class="job-tag">Contract / Full-time</span>
+                    </div>
+                </div>
+                <a href="mailto:sensawellness@gmail.com?subject=Application: Mobile App Developer" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Scientific Advisor (Inflammation / Immunology)</h3>
+                    <div class="job-meta">
+                        <span class="job-tag open">Open</span>
+                        <span class="job-tag remote">Remote</span>
+                        <span class="job-tag">Advisory Role</span>
+                    </div>
+                </div>
+                <a href="mailto:sensawellness@gmail.com?subject=Application: Scientific Advisor" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Don't See Your Role? Send Us Your Resume</h3>
+                    <div class="job-meta">
+                        <span class="job-tag">General Interest</span>
+                        <span class="job-tag remote">Remote</span>
+                    </div>
+                </div>
+                <a href="mailto:sensawellness@gmail.com?subject=General Application" class="job-apply-btn">Reach Out</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="contact-cta-section">
+        <div class="container">
+            <h2>Questions? Just Reach Out.</h2>
+            <p>Whether it is a partnership idea, a job inquiry, or something we haven't thought of yet, we read every email.</p>
+            <a href="mailto:sensawellness@gmail.com" class="btn">sensawellness@gmail.com</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation monitoring as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="pay-now.html">Buy Now</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="our-story.html">Our Story</a></li>
+                        <li><a href="work-with-us.html">Work With Us</a></li>
+                        <li><a href="work-with-us.html#partnerships">Partnerships</a></li>
+                        <li><a href="work-with-us.html#careers">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">
+                        sensawellness@gmail.com
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="wellness-disclaimer">Sensa is a general wellness product intended to support a healthy lifestyle. It is not intended to diagnose, treat, cure, or prevent any disease or medical condition. Results are not a substitute for professional medical advice, diagnosis, or treatment. If you have concerns about your health, consult a qualified healthcare provider.</p>
+                &copy; 2026 Sensa Wellness. All Rights Reserved. &nbsp;&middot;&nbsp; <a href="privacy-policy.html" style="color:rgba(255,255,255,0.4);">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
+            const btn = document.getElementById('scrollTop');
+            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+        });
+        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+    </script>
+
+</body>
+</html>

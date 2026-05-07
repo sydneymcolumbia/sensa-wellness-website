@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Take Action - Sensa Wellness | Measure and Manage Your Inflammation</title>
-    <meta name="description" content="Chronic inflammation is the silent driver behind 7 of the 10 leading causes of death. Join the Sensa waitlist and be first to measure yours at home.">
+    <meta name="description" content="Chronic inflammation is the silent driver behind 7 of the 10 leading causes of death. Order Sensa now and measure yours at home in minutes.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sensawellness.org/pay-now.html">
     <meta property="og:title" content="Take Action — Measure Your Inflammation at Home">
-    <meta property="og:description" content="Chronic inflammation is the silent driver behind 7 of the 10 leading causes of death. Join the Sensa waitlist today.">
+    <meta property="og:description" content="Chronic inflammation is the silent driver behind 7 of the 10 leading causes of death. Order yours today and measure your inflammation at home.">
     <meta property="og:image" content="https://www.sensawellness.org/sensa-og.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Take Action — Measure Your Inflammation at Home">
-    <meta name="twitter:description" content="Chronic inflammation is the silent driver behind 7 of the 10 leading causes of death. Join the Sensa waitlist today.">
+    <meta name="twitter:description" content="Chronic inflammation is the silent driver behind 7 of the 10 leading causes of death. Order yours today and measure your inflammation at home.">
     <link rel="canonical" href="https://www.sensawellness.org/pay-now.html">
     <meta name="theme-color" content="#1800AD">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1253,6 +1253,22 @@
                         <button type="button" class="waitlist-submit" onclick="handleCheckout('price_4pack')">Buy Now &rarr;</button>
                     </div>
                 </div>
+                <div class="attribution-question reveal" style="max-width:480px; margin:2rem auto 0; text-align:center;">
+                    <label for="hearAboutUs" style="display:block; font-size:0.9rem; color:rgba(255,255,255,0.7); margin-bottom:0.6rem; font-family:'Quicksand',sans-serif;">How did you hear about Sensa?</label>
+                    <select id="hearAboutUs" style="width:100%; padding:0.75rem 1rem; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.07); color:#fff; font-size:0.95rem; font-family:'Nunito',sans-serif; appearance:none; cursor:pointer;">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="google_search">Google / Search</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="friend_family">Friend or Family</option>
+                        <option value="doctor">Doctor or Healthcare Provider</option>
+                        <option value="blog_article">Blog or Article</option>
+                        <option value="podcast">Podcast</option>
+                        <option value="advertisement">Advertisement</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
                 <p id="checkoutError" style="display:none; color:#e85a39; margin-top:1rem; font-size:0.95rem; text-align:center;"></p>
             </div>
 
@@ -1276,6 +1292,7 @@
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="app.html">App</a></li>
                         <li><a href="pay-now.html">Buy Now</a></li>
+                        <li><a href="work-with-us.html">Work With Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -1348,10 +1365,12 @@
             }
             errorEl.style.display = 'none';
 
+            var hearAboutUs = document.getElementById('hearAboutUs').value || 'not_answered';
+
             fetch('/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ priceId: priceId })
+                body: JSON.stringify({ priceId: priceId, hearAboutUs: hearAboutUs })
             })
             .then(function(response) {
                 if (!response.ok) throw new Error('Checkout request failed');

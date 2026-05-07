@@ -12,7 +12,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { priceId } = req.body;
+  const { priceId, hearAboutUs } = req.body;
   const stripePriceId = PRICE_IDS[priceId];
 
   if (!stripePriceId) {
@@ -25,6 +25,9 @@ module.exports = async function handler(req, res) {
       line_items: [{ price: stripePriceId, quantity: 1 }],
       shipping_address_collection: {
         allowed_countries: ['US'],
+      },
+      metadata: {
+        hear_about_us: hearAboutUs || 'not_answered',
       },
       success_url: 'https://sensawellness.org/success.html',
       cancel_url: 'https://sensawellness.org/pay-now.html',
