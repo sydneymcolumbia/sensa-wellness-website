@@ -11,9 +11,9 @@
 
         html, body {
             height: 100%;
-            background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 60%, #16213e 100%);
+            background: #f0f2f5;
             font-family: 'Nunito', sans-serif;
-            color: #fff;
+            color: #1a1a2e;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -26,11 +26,10 @@
             max-height: 820px;
             display: flex;
             flex-direction: column;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: #ffffff;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
             margin: 16px;
         }
 
@@ -49,14 +48,14 @@
             width: 46px;
             height: 46px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #c9a84c, #e8c96d);
+            background: #1a1a2e;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
             font-size: 1.2rem;
-            color: #1a1a2e;
+            color: #c9a84c;
             flex-shrink: 0;
         }
 
@@ -86,12 +85,14 @@
 
         .header-logo {
             margin-left: auto;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 0.78rem;
-            color: #c9a84c;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo img {
+            height: 32px;
+            width: auto;
+            border-radius: 6px;
         }
 
         /* Messages */
@@ -107,7 +108,7 @@
 
         .messages::-webkit-scrollbar { width: 4px; }
         .messages::-webkit-scrollbar-track { background: transparent; }
-        .messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        .messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
 
         .message-row {
             display: flex;
@@ -121,13 +122,13 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #c9a84c, #e8c96d);
+            background: #1a1a2e;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.72rem;
             font-weight: 700;
-            color: #1a1a2e;
+            color: #c9a84c;
             flex-shrink: 0;
         }
 
@@ -140,10 +141,10 @@
         }
 
         .message-row.melissa .bubble {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: #f0f2f5;
+            border: none;
             border-bottom-left-radius: 4px;
-            color: rgba(255,255,255,0.92);
+            color: #1a1a2e;
         }
 
         .message-row.user .bubble {
@@ -161,8 +162,8 @@
         }
 
         .typing-bubble {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: #f0f2f5;
+            border: none;
             border-radius: 18px;
             border-bottom-left-radius: 4px;
             padding: 14px 18px;
@@ -175,7 +176,7 @@
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.4);
+            background: rgba(26,26,46,0.35);
             animation: typing 1.2s infinite;
         }
 
@@ -209,28 +210,28 @@
             display: flex;
             gap: 10px;
             padding: 16px 20px 20px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            background: rgba(0,0,0,0.2);
+            border-top: 1px solid #eee;
+            background: #fff;
             flex-shrink: 0;
         }
 
         .input-area input {
             flex: 1;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.12);
+            background: #f0f2f5;
+            border: 1px solid transparent;
             border-radius: 12px;
             padding: 12px 16px;
-            color: #fff;
+            color: #1a1a2e;
             font-family: 'Nunito', sans-serif;
             font-size: 0.93rem;
             outline: none;
             transition: border-color 0.2s;
         }
 
-        .input-area input::placeholder { color: rgba(255,255,255,0.3); }
+        .input-area input::placeholder { color: #aaa; }
 
         .input-area input:focus {
-            border-color: rgba(201, 168, 76, 0.5);
+            border-color: rgba(201, 168, 76, 0.6);
         }
 
         .send-btn {
@@ -257,7 +258,7 @@
         .error-notice {
             text-align: center;
             font-size: 0.82rem;
-            color: rgba(255,100,100,0.8);
+            color: #e05555;
             padding: 6px 0;
         }
 
@@ -286,7 +287,7 @@
                 Sensa Customer Care
             </div>
         </div>
-        <div class="header-logo">Sensa</div>
+        <div class="header-logo"><img src="logo.jpg" alt="Sensa Wellness"></div>
     </div>
 
     <div class="messages" id="messages"></div>
