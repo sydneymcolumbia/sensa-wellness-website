@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Melissa | Sensa Wellness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
+            height: 100%;
+            background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 60%, #16213e 100%);
+            font-family: 'Nunito', sans-serif;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-wrapper {
+            width: 100%;
+            max-width: 600px;
+            height: 100vh;
+            max-height: 820px;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+            margin: 16px;
+        }
+
+        /* Header */
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            flex-shrink: 0;
+        }
+
+        .melissa-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a84c, #e8c96d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1a1a2e;
+            flex-shrink: 0;
+        }
+
+        .header-info h2 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .header-info .subtitle {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+            display: inline-block;
+        }
+
+        .header-logo {
+            margin-left: auto;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.78rem;
+            color: #c9a84c;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Messages */
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            scroll-behavior: smooth;
+        }
+
+        .messages::-webkit-scrollbar { width: 4px; }
+        .messages::-webkit-scrollbar-track { background: transparent; }
+        .messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+        .message-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .message-row.user { flex-direction: row-reverse; }
+
+        .bubble-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a84c, #e8c96d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            flex-shrink: 0;
+        }
+
+        .bubble {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.93rem;
+            line-height: 1.65;
+        }
+
+        .message-row.melissa .bubble {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-bottom-left-radius: 4px;
+            color: rgba(255,255,255,0.92);
+        }
+
+        .message-row.user .bubble {
+            background: linear-gradient(135deg, #c9a84c, #e8c96d);
+            color: #1a1a2e;
+            font-weight: 600;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .typing-bubble {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            border-bottom-left-radius: 4px;
+            padding: 14px 18px;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .typing-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            animation: typing 1.2s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-6px); opacity: 1; }
+        }
+
+        /* Escalation notice */
+        .escalation-notice {
+            display: flex;
+            justify-content: center;
+            margin-top: 4px;
+        }
+
+        .escalation-notice span {
+            background: rgba(74, 222, 128, 0.12);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            color: #4ade80;
+            font-size: 0.78rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        /* Input area */
+        .input-area {
+            display: flex;
+            gap: 10px;
+            padding: 16px 20px 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            background: rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
+
+        .input-area input {
+            flex: 1;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.93rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-area input::placeholder { color: rgba(255,255,255,0.3); }
+
+        .input-area input:focus {
+            border-color: rgba(201, 168, 76, 0.5);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #c9a84c, #e8c96d);
+            border: none;
+            border-radius: 12px;
+            width: 46px;
+            height: 46px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        .send-btn:hover { opacity: 0.9; }
+        .send-btn:active { transform: scale(0.96); }
+        .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .send-btn svg { color: #1a1a2e; }
+
+        /* Error state */
+        .error-notice {
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,100,100,0.8);
+            padding: 6px 0;
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            body { align-items: flex-start; }
+            .chat-wrapper {
+                max-height: 100vh;
+                height: 100vh;
+                max-height: -webkit-fill-available;
+                border-radius: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-wrapper">
+    <div class="chat-header">
+        <div class="melissa-avatar">M</div>
+        <div class="header-info">
+            <h2>Melissa</h2>
+            <div class="subtitle">
+                <span class="online-dot"></span>
+                Sensa Customer Care
+            </div>
+        </div>
+        <div class="header-logo">Sensa</div>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="input-area">
+        <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off" />
+        <button class="send-btn" id="sendBtn" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+(function () {
+    const messagesEl = document.getElementById('messages');
+    const input = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    let token = null;
+    let customerName = '';
+    let conversationHistory = [];
+    let isLoading = false;
+
+    // Decode JWT payload (client-side, no verification needed)
+    function decodeToken(t) {
+        try {
+            return JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+        } catch {
+            return null;
+        }
+    }
+
+    // Get token from URL
+    const params = new URLSearchParams(window.location.search);
+    token = params.get('t');
+
+    if (token) {
+        const payload = decodeToken(token);
+        if (payload) {
+            customerName = payload.name || '';
+        }
+    }
+
+    function scrollToBottom() {
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function addMessage(role, text) {
+        const row = document.createElement('div');
+        row.className = `message-row ${role}`;
+
+        if (role === 'melissa') {
+            const avatar = document.createElement('div');
+            avatar.className = 'bubble-avatar';
+            avatar.textContent = 'M';
+            row.appendChild(avatar);
+        }
+
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.textContent = text;
+        row.appendChild(bubble);
+
+        messagesEl.appendChild(row);
+        scrollToBottom();
+    }
+
+    function showTyping() {
+        const row = document.createElement('div');
+        row.className = 'typing-indicator';
+        row.id = 'typing';
+
+        const avatar = document.createElement('div');
+        avatar.className = 'bubble-avatar';
+        avatar.textContent = 'M';
+        row.appendChild(avatar);
+
+        const bubble = document.createElement('div');
+        bubble.className = 'typing-bubble';
+        bubble.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+        row.appendChild(bubble);
+
+        messagesEl.appendChild(row);
+        scrollToBottom();
+    }
+
+    function removeTyping() {
+        const t = document.getElementById('typing');
+        if (t) t.remove();
+    }
+
+    function showEscalationNotice() {
+        const notice = document.createElement('div');
+        notice.className = 'escalation-notice';
+        notice.innerHTML = '<span>Our team has been notified and will reach out to you personally within 24 hours.</span>';
+        messagesEl.appendChild(notice);
+        scrollToBottom();
+    }
+
+    async function sendMessage(text) {
+        if (isLoading || !text.trim()) return;
+
+        isLoading = true;
+        sendBtn.disabled = true;
+        input.disabled = true;
+
+        // Add user message to history and UI
+        conversationHistory.push({ role: 'user', content: text });
+        addMessage('user', text);
+
+        showTyping();
+
+        try {
+            const resp = await fetch('/api/melissa', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token, messages: conversationHistory }),
+            });
+
+            removeTyping();
+
+            if (!resp.ok) throw new Error('Request failed');
+
+            const data = await resp.json();
+
+            conversationHistory.push({ role: 'assistant', content: data.message });
+            addMessage('melissa', data.message);
+
+            if (data.escalate) {
+                showEscalationNotice();
+            }
+
+        } catch (err) {
+            removeTyping();
+            const errRow = document.createElement('div');
+            errRow.className = 'error-notice';
+            errRow.textContent = 'Something went wrong. Please try again.';
+            messagesEl.appendChild(errRow);
+            scrollToBottom();
+            // Remove from history since it failed
+            conversationHistory.pop();
+        }
+
+        isLoading = false;
+        sendBtn.disabled = false;
+        input.disabled = false;
+        input.focus();
+    }
+
+    // Opening message
+    const greeting = customerName
+        ? `Hi ${customerName}! My name is Melissa, and I'm on the Sensa customer care team. I wanted to personally check in now that your order has arrived. How is everything going? Do you have any questions about getting started with your kit?`
+        : `Hi there! My name is Melissa, and I'm on the Sensa customer care team. I wanted to personally check in and see how your order went. Is there anything I can help you with?`;
+
+    conversationHistory.push({ role: 'assistant', content: greeting });
+    addMessage('melissa', greeting);
+
+    // Enable input
+    sendBtn.disabled = false;
+
+    // Send on button click
+    sendBtn.addEventListener('click', () => {
+        const text = input.value.trim();
+        if (text) {
+            input.value = '';
+            sendMessage(text);
+        }
+    });
+
+    // Send on Enter
+    input.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            const text = input.value.trim();
+            if (text) {
+                input.value = '';
+                sendMessage(text);
+            }
+        }
+    });
+
+    input.focus();
+})();
+</script>
+
+</body>
+</html>

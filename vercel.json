@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/melissa-cron",
+      "schedule": "0 14 * * *"
+    }
+  ]
+}
