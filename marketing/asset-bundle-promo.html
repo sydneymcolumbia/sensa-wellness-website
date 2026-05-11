@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sensa — Bundle & Save Promo (1080x1080)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .canvas {
+    width: 1080px;
+    height: 1080px;
+    background: #fffff7;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Top accent bars (matches existing "Social Graphics" style) */
+  .top-bars {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  /* Large colorful top stripe */
+  .top-stripe {
+    width: 100%;
+    height: 22px;
+    background: linear-gradient(90deg,
+      #fac234 0%, #fac234 33%,
+      #7267f2 33%, #7267f2 66%,
+      #41a6f0 66%, #41a6f0 100%
+    );
+  }
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 80px;
+    gap: 0;
+  }
+
+  .tag {
+    background: #e85a39;
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 10px 32px;
+    border-radius: 100px;
+    margin-bottom: 30px;
+  }
+
+  .headline-small {
+    font-size: 44px;
+    font-weight: 700;
+    color: #1800ad;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .headline-big {
+    font-size: 140px;
+    font-weight: 900;
+    color: #e85a39;
+    text-align: center;
+    line-height: 0.9;
+    letter-spacing: -4px;
+    margin: 8px 0;
+  }
+
+  .headline-sub {
+    font-size: 44px;
+    font-weight: 700;
+    color: #1800ad;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .divider {
+    width: 70%;
+    height: 2px;
+    background: #7267f2;
+    opacity: 0.25;
+    margin: 36px auto;
+  }
+
+  /* Kit illustration */
+  .kit-area {
+    display: flex;
+    gap: 28px;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .kit-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .kit-visual {
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kit-label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1800ad;
+    text-align: center;
+  }
+
+  .badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #fac234;
+    color: #1800ad;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .body-text {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1800ad;
+    text-align: center;
+    opacity: 0.75;
+    line-height: 1.4;
+  }
+
+  /* URL pill */
+  .url-pill {
+    background: #fac234;
+    color: #1800ad;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 10px 30px;
+    border-radius: 100px;
+    margin-top: 18px;
+  }
+
+  /* Logo bottom */
+  .logo-area {
+    position: absolute;
+    bottom: 44px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .logo-text {
+    font-size: 30px;
+    font-weight: 800;
+    color: #1800ad;
+  }
+
+  /* Bottom accent */
+  .bottom-accent {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 220px;
+    height: 8px;
+    background: #41a6f0;
+  }
+
+  .bottom-accent2 {
+    position: absolute;
+    bottom: 8px;
+    right: 0;
+    width: 150px;
+    height: 8px;
+    background: #1800ad;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- Top color stripe -->
+  <div class="top-stripe"></div>
+
+  <div class="main-content">
+
+    <div class="tag">Limited Offer</div>
+
+    <div class="headline-small">Bundle &amp; save</div>
+    <div class="headline-big">20%</div>
+    <div class="headline-sub">on multi-kit orders</div>
+
+    <div class="divider"></div>
+
+    <!-- Kit illustrations -->
+    <div class="kit-area">
+
+      <!-- 3-pack -->
+      <div class="kit-box">
+        <div class="kit-visual" style="width:200px;height:130px;background:#1800ad;">
+          <div class="badge">3<br><span style="font-size:12px;font-weight:600;">pack</span></div>
+          <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
+            <rect x="5" y="10" width="60" height="60" rx="8" fill="white" opacity="0.15" stroke="white" stroke-width="1.5"/>
+            <rect x="18" y="0" width="60" height="60" rx="8" fill="white" opacity="0.12" stroke="white" stroke-width="1.5"/>
+            <rect x="30" y="10" width="60" height="60" rx="8" fill="white" opacity="0.25" stroke="white" stroke-width="2"/>
+            <text x="60" y="45" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="white" opacity="0.8" text-anchor="middle">Sensa Kit</text>
+          </svg>
+        </div>
+        <div class="kit-label">3-pack — 3 months<br>of tracking</div>
+      </div>
+
+      <!-- Spacer "or" -->
+      <div style="font-size:32px;font-weight:800;color:#7267f2;opacity:0.5;margin-bottom:40px;">or</div>
+
+      <!-- 4-pack -->
+      <div class="kit-box">
+        <div class="kit-visual" style="width:200px;height:130px;background:#7267f2;">
+          <div class="badge" style="background:#e85a39;color:white;">4<br><span style="font-size:12px;font-weight:600;">pack</span></div>
+          <svg width="110" height="88" viewBox="0 0 110 88" fill="none">
+            <rect x="0" y="14" width="65" height="65" rx="8" fill="white" opacity="0.12" stroke="white" stroke-width="1.5"/>
+            <rect x="14" y="4" width="65" height="65" rx="8" fill="white" opacity="0.1" stroke="white" stroke-width="1.5"/>
+            <rect x="28" y="14" width="65" height="65" rx="8" fill="white" opacity="0.1" stroke="white" stroke-width="1.5"/>
+            <rect x="40" y="8" width="65" height="65" rx="8" fill="white" opacity="0.25" stroke="white" stroke-width="2"/>
+            <text x="73" y="47" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="white" opacity="0.8" text-anchor="middle">Sensa Kit</text>
+          </svg>
+        </div>
+        <div class="kit-label">4-pack — your best<br>value option</div>
+      </div>
+
+    </div>
+
+    <div class="body-text" style="margin-top:14px;">
+      Track your inflammation all year.<br>
+      Know your number before it becomes a symptom.
+    </div>
+
+    <div class="url-pill">sensawellness.org</div>
+
+  </div>
+
+  <!-- Bottom logo -->
+  <div class="logo-area">
+    <svg width="42" height="46" viewBox="0 0 42 46" fill="none">
+      <circle cx="24" cy="10" r="10" fill="#41a6f0"/>
+      <circle cx="12" cy="16" r="8" fill="#e85a39"/>
+      <circle cx="8" cy="27" r="7" fill="#fac234"/>
+      <circle cx="30" cy="23" r="7" fill="#7267f2"/>
+      <circle cx="19" cy="27" r="14" fill="#1800ad"/>
+      <circle cx="9" cy="37" r="6" fill="#1800ad"/>
+      <circle cx="20" cy="41" r="6" fill="#41a6f0"/>
+      <circle cx="31" cy="37" r="5" fill="#7267f2"/>
+    </svg>
+    <span class="logo-text">Sensa</span>
+  </div>
+
+  <!-- Bottom right accents -->
+  <div class="bottom-accent"></div>
+  <div class="bottom-accent2"></div>
+
+</div>
+</body>
+</html>
