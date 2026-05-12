@@ -1,71 +1,134 @@
 SENSA WELLNESS - UNIT ECONOMICS TEMPLATE,,,,
-Last updated:,,,,
+Last updated: May 2026,,,,
 ,,,,
 ==== SECTION 1: PRODUCT PRICING ====,,,,
 Product,Unit Price,Units Sold (monthly),Monthly Revenue,Notes
-1-Test Kit,$0.00,0,$0.00,Enter your selling price
-3-Test Pack,$0.00,0,$0.00,Enter your selling price
-4-Test Pack,$0.00,0,$0.00,Enter your selling price
+1-Test Kit,$49.00,0,$0.00,"One-time purchase, free shipping"
+3-Pack Bundle,$99.00,0,$0.00,"$33/test, saves $48 vs. buying 3 singles"
+4-Pack Bundle,$129.00,0,$0.00,"$32.25/test, saves $67 vs. buying 4 singles"
 ,,,,
-TOTAL MONTHLY REVENUE,,$0.00,,
+TOTAL MONTHLY REVENUE,,$0.00,,Fill in units sold to calculate
 AVERAGE ORDER VALUE (AOV),,$0.00,,Revenue / total orders
+,,,,
+Per-test price by tier (reference):,,,,
+1-Test Kit,$49.00 per test,,,
+3-Pack Bundle,$33.00 per test,,,
+4-Pack Bundle,$32.25 per test,,,
 ,,,,
 ==== SECTION 2: COST OF GOODS SOLD (COGS) - PER TEST ====,,,,
 Component,Cost per Unit,Notes,,
-CRP Test Strip,$0.00,Get quote from supplier,,
-Lancet,$0.00,Commodity item,,
-Alcohol Wipe,$0.00,Commodity item,,
-Packaging / Box,$0.00,Box + insert card + instructions,,
-Kitting / Assembly,$0.00,Contract manufacturer or 3PL,,
+CRP Test Strip,$0.00,"GET SUPPLIER QUOTE — estimated $0.50-$3.00 at low volume, $0.50-$1.00 at 10k+ units",,
+Lancet,$0.00,Estimated $0.05-$0.15 — commodity item,,
+Alcohol Wipe,$0.00,Estimated $0.02-$0.05 — commodity item,,
+Packaging / Box,$0.00,Estimated $0.50-$2.00 — box + insert card + instructions,,
+Kitting / Assembly,$0.00,Estimated $0.50-$2.00 — contract manufacturer or 3PL,,
 Other,$0.00,,,
 ,,,,
 TOTAL COGS PER TEST,$0.00,,,
 ,,,,
+Industry benchmark COGS estimate (low volume):,$3.00 - $8.00,Fill in actual once supplier quotes received,,
+Industry benchmark COGS estimate (at scale):,$1.50 - $4.00,,,
+,,,,
 ==== SECTION 3: VARIABLE COSTS - PER ORDER ====,,,,
 Cost Item,Cost per Order,Notes,,
-Outbound Shipping,$0.00,USPS / UPS / 3PL rate,,
-Payment Processing,$0.00,Stripe: 2.9% of order + $0.30,,
-Returns / Replacements,$0.00,Estimate as % of orders,,
+Outbound Shipping,$0.00,"Sensa offers FREE SHIPPING to customers — this is a real cost absorbed by Sensa. Estimated $5-$8 per order via USPS/UPS for a small package.",,
+Payment Processing (1-Test $49),$1.72,"Stripe: 2.9% x $49 + $0.30 = $1.72",,
+Payment Processing (3-Pack $99),$3.17,"Stripe: 2.9% x $99 + $0.30 = $3.17",,
+Payment Processing (4-Pack $129),$4.04,"Stripe: 2.9% x $129 + $0.30 = $4.04",,
+Returns / Replacements,$0.00,Estimate 1-3% of orders — policy offers free replacements for defective kits,,
 Other,$0.00,,,
 ,,,,
-TOTAL VARIABLE COST PER ORDER,$0.00,,,
+NOTE: Shipping is free to the customer but ~$5-$8 cost to Sensa per order. This must be factored into contribution margin.,,,,
 ,,,,
-==== SECTION 4: UNIT ECONOMICS (AUTO-CALCULATED) ====,,,,
-Metric,Value,Formula,Target,Notes
-Gross Profit per Test,$0.00,Unit Price - COGS,,$0.00
-Gross Margin %,0.0%,Gross Profit / Unit Price,60%+,
-Contribution Margin per Order,$0.00,AOV - COGS - Variable Costs,,
-Contribution Margin %,0.0%,Contribution Margin / AOV,40%+,
+==== SECTION 4: UNIT ECONOMICS BY PRODUCT TIER ====,,,,
+Metric,1-Test Kit ($49),3-Pack ($99),4-Pack ($129),Notes
+Revenue per order,$49.00,$99.00,$129.00,
+Stripe fee per order,$1.72,$3.17,$4.04,2.9% + $0.30
+Shipping cost (absorbed),$6.00,$6.00,$6.00,Estimate — free to customer
+COGS (all tests in order),$0.00,$0.00,$0.00,Fill in once COGS per test is known
+Contribution Margin,$0.00,$0.00,$0.00,Revenue - Stripe - Shipping - COGS
+Contribution Margin %,0.0%,0.0%,0.0%,Target: 40%+
+Gross Margin % (excl. shipping),0.0%,0.0%,0.0%,Target: 60%+
+,,,,
+Example if COGS = $4/test:,,,,
+Revenue per order,$49.00,$99.00,$129.00,
+COGS,$4.00,$12.00,$16.00,
+Stripe fee,$1.72,$3.17,$4.04,
+Shipping (absorbed),$6.00,$6.00,$6.00,
+Contribution Margin,$37.28,$77.83,$102.96,
+Contribution Margin %,76.1%,78.6%,79.8%,Strong if COGS stays this low
+,,,,
+Example if COGS = $7/test (higher volume assumption):,,,,
+Revenue per order,$49.00,$99.00,$129.00,
+COGS,$7.00,$21.00,$28.00,
+Stripe fee,$1.72,$3.17,$4.04,
+Shipping (absorbed),$6.00,$6.00,$6.00,
+Contribution Margin,$34.28,$68.83,$90.96,
+Contribution Margin %,69.9%,69.5%,70.5%,Still healthy
 ,,,,
 ==== SECTION 5: CUSTOMER ACQUISITION ====,,,,
 Metric,Value,Notes,,
-Monthly Marketing Spend,$0.00,Total ad spend + content costs,,
-New Customers (monthly),0,,,
+Monthly Marketing Spend,$0.00,Fill in total ad spend + content costs,,
+New Customers (monthly),0,Fill in from order data,,
 Customer Acquisition Cost (CAC),$0.00,Marketing Spend / New Customers,,
+,,,,
+Industry benchmarks for consumer health DTC:,,,,
+Typical CAC range,$30 - $80,"Varies widely by channel (paid social, SEO, referral)",,
+Target CAC,$0.00,Should be less than 1/3 of Contribution LTV,,
 ,,,,
 ==== SECTION 6: LIFETIME VALUE (LTV) ====,,,,
 Metric,Value,Notes,,
-Avg Tests per Customer per Year,0,How often does a customer reorder?,,
-Avg Revenue per Customer per Year,$0.00,Tests/year x AOV,,
-Avg Customer Lifespan (years),0,How long do they stay active?,,
+Avg Tests per Customer per Year,0,"Melissa system prompt suggests monthly testing = 12x/year, but reality may be lower",,
+Avg Revenue per Customer per Year,$0.00,Tests per year x AOV per order,,
+Avg Customer Lifespan (years),0,Unknown — fill in from cohort data as it develops,,
 Gross LTV,$0.00,Annual Revenue x Lifespan,,
 Contribution LTV,$0.00,Annual Contribution Margin x Lifespan,,
 ,,,,
+LTV scenarios (using $99 3-Pack AOV as proxy):,,,,
+Scenario,Tests/Year,Lifespan,Contribution LTV (at 70% margin),LTV:CAC (at $50 CAC)
+Low (tests 2x/year),2,1 year,$138.60,2.8x
+Base (tests 4x/year),4,2 years,$554.40,11.1x
+High (tests monthly),12,3 years,$2494.80,49.9x
+,,,,
+NOTE: Even the low scenario at 2x/year is viable if CAC is kept under $45. Monthly testing habit dramatically transforms the business economics.,,,,
+,,,,
 ==== SECTION 7: KEY RATIOS ====,,,,
 Metric,Value,Formula,Target,Notes
-LTV:CAC Ratio,0.0x,Contribution LTV / CAC,3:1 or better,
-Payback Period (months),0,CAC / Monthly Contribution Margin,Under 12 months,
-Monthly Recurring Revenue (MRR),$0.00,Active subscribers x AOV,,
+LTV:CAC Ratio,0.0x,Contribution LTV / CAC,3:1 or better,Fill in once LTV and CAC are known
+Payback Period (months),0,CAC / Monthly Contribution Margin per customer,Under 12 months,
+Monthly Recurring Revenue (MRR),$0.00,Active reorder customers x AOV,,
 Annual Recurring Revenue (ARR),$0.00,MRR x 12,,
 ,,,,
 ==== SECTION 8: BREAK-EVEN ANALYSIS ====,,,,
 Metric,Value,Notes,,
-Monthly Fixed Costs,$0.00,Salaries + software + overhead,,
+Monthly Fixed Costs,$0.00,Fill in: salaries + software + hosting + overhead,,
+Known recurring software costs (approximate):,,,,
+Firebase (Blaze plan),$25-$50/mo,Scales with usage,,
+Vercel,$0-$20/mo,Likely on free or hobby tier,,
+Anthropic API (Melissa),$0.00,Pay-per-use — depends on chat volume,,
+Resend (email),$0-$20/mo,Depends on email volume,,
+,,,,
 Break-even Units (monthly),0,Fixed Costs / Contribution Margin per Order,,
 Break-even Revenue (monthly),$0.00,Break-even Units x AOV,,
 ,,,,
 ==== SECTION 9: SCENARIO PLANNING ====,,,,
-Scenario,Monthly Orders,AOV,COGS/Test,CAC,LTV:CAC,Notes
-Conservative,0,$0.00,$0.00,$0.00,0.0x,Low volume / early stage
-Base Case,0,$0.00,$0.00,$0.00,0.0x,Realistic near-term target
-Optimistic,0,$0.00,$0.00,$0.00,0.0x,At scale with supplier discounts
+Scenario,Monthly Orders,AOV,Est. COGS/Test,Shipping Absorbed,Stripe Fee,Contribution Margin/Order,Notes
+Conservative,50,$79.00,$6.00,$6.00,$2.59,$52.55,"Low volume, early stage, mixed product mix"
+Base Case,200,$99.00,$5.00,$6.00,$3.17,$72.17,"Growing, mostly 3-packs"
+Optimistic,500,$109.00,$3.50,$6.00,$3.46,$89.04,"Scale achieved, supplier discounts kicking in"
+,,,,
+Monthly contribution at each scenario:,,,,
+Conservative,,$2,627.50,,,50 orders x $52.55,
+Base Case,,$14,434.00,,,200 orders x $72.17,
+Optimistic,,$44,520.00,,,500 orders x $89.04,
+,,,,
+==== NOTES & ASSUMPTIONS ====,,,,
+Assumption,Value/Note,Source,,
+Pricing,1-Test $49 / 3-Pack $99 / 4-Pack $129,sensawellness.org pay-now.html,,
+Shipping policy,Free shipping on all orders,sensawellness.org index.html,,
+Payment processor,Stripe (2.9% + $0.30 per transaction),Inferred from checkout flow,,
+Shipping cost to Sensa,$5-$8 per order (absorbed),Industry estimate — get actual rate,,
+COGS per test,UNKNOWN — supplier quotes needed,Fill in after RFQ process,,
+CAC,UNKNOWN — no marketing spend data yet,Fill in from ad platform data,,
+Reorder rate,UNKNOWN — no cohort data yet,Survey early customers,,
+Fixed costs,UNKNOWN,Fill in from actual expenses,,
