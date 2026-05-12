@@ -1,0 +1,60 @@
+Sensa Tech Stack & Infrastructure
+
+Mobile App (iOS & Android)
+
+Framework
+- Flutter (Dart) — single codebase targeting iOS and Android
+- Provider — state management
+- Google Fonts + Material Design — UI theming
+
+Core Features
+- ColorAnalyzer (on-device) — analyzes blue channel intensity from vial images using an inverse Beer-Lambert calibration curve to produce a 0-100 wellness score. No server calls; all image processing happens locally.
+- fl_chart — scan history charting
+- flutter_local_notifications — streak & scan reminder push notifications
+- pdf + share_plus — wellness report generation and sharing
+- camera + image — vial photo capture and pixel analysis
+
+Backend
+- Firebase project: sensa-app-7b2b7
+  - Firebase Auth — email/password + phone OTP authentication
+  - Cloud Firestore — stores user profiles (/users) and scan results (/scans), with a 60-second in-memory cache layer
+
+Local Storage
+- SharedPreferences — persists onboarding state, disclaimer acceptance, health intake answers, and streak data on-device
+
+---
+
+Website
+
+Framework
+- Static HTML/CSS — public marketing site hosted at sensawellness.org
+
+Hosting & Infrastructure
+- Vercel — hosts the static website and serverless API routes
+
+---
+
+Melissa — AI Customer Care
+
+Melissa is Sensa's AI-powered support assistant, built on the Anthropic Claude API. She operates in two contexts:
+
+- Website (post-purchase) — Proactively reaches out to customers after their order arrives. Has access to order context (customer name, order ID, items, order date) and handles product questions, usage guidance, returns, and general support.
+- In-app (authenticated users) — Accessible inside the Sensa mobile app as an always-available support assistant. Verified via Firebase ID token; has access to the user's display name and email.
+
+Both variants share the same core behavior:
+- Powered by Anthropic Claude (claude-sonnet-4-6) via the @anthropic-ai/sdk
+- Returns structured JSON responses with an escalation flag
+- Escalation logic: when a user is frustrated or requests a human, Melissa flags the conversation and triggers an email alert to the Sensa team via Resend
+- A cron job (melissa-cron.js) handles scheduled proactive outreach to new customers
+
+Infrastructure
+- Anthropic API — Claude model inference
+- Resend — transactional email for escalation alerts and team notifications
+- Firebase Auth — ID token verification for in-app requests
+- JWT — session verification for website chat sessions
+
+---
+
+Shared Backend
+
+- Same Firebase Auth and Cloud Firestore project (sensa-app-7b2b7) used across the mobile app, Flutter web build, and Melissa in-app — users and scan data are consistent across all platforms
