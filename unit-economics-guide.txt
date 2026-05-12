@@ -1,0 +1,320 @@
+SENSA WELLNESS
+Unit Economics Guide
+Last updated: May 2026
+
+---
+
+INTRODUCTION
+
+Unit economics answer one fundamental question: does Sensa make money on each
+customer, and how much? Before worrying about scale, you need to know whether
+the underlying business is viable at the individual transaction level. A company
+can grow fast and still destroy value if its unit economics are broken. This
+guide walks through every section of the unit economics template and explains
+what to fill in, how to calculate it, and what the numbers mean.
+
+---
+
+SECTION 1: PRODUCT PRICING
+
+What to fill in:
+Enter the selling price for each product tier (1-Test Kit, 3-Test Pack,
+4-Test Pack) and how many of each you sell or expect to sell per month.
+
+Why it matters:
+Your pricing is the ceiling on everything else. Every cost, margin, and ratio
+flows from what a customer actually pays. The spreadsheet will calculate your
+monthly revenue and your Average Order Value (AOV), which is the weighted
+average of what a customer spends per transaction across all product types.
+
+Key questions to ask yourself:
+- Are your prices based on what competitors charge, what customers will pay,
+  or what you need to cover your costs? Ideally all three.
+- Does your pricing encourage customers to buy the larger packs? A customer
+  who buys a 4-Test Pack is worth more upfront and is more likely to build a
+  testing habit.
+- Is there room to raise prices? Consumer health products often have more
+  pricing power than founders assume, especially when backed by science.
+
+Target: No specific target here, but your price must be high enough to
+support a gross margin of at least 60% after COGS.
+
+---
+
+SECTION 2: COST OF GOODS SOLD (COGS)
+
+What to fill in:
+The direct cost of producing one test. This includes every physical component
+that goes into the kit.
+
+Components:
+
+CRP Test Strip
+This is your most important cost to get right. The lateral flow assay strip is
+the core of the product. At low volumes (under 1,000 units) you may pay $1.50
+to $3.00 per strip. At 10,000+ units, you can likely negotiate $0.50 to $1.00.
+Get quotes from at least three suppliers. Ask for price break schedules at 1k,
+5k, 10k, and 50k units so you can model future COGS.
+
+Lancet
+A commodity item. At any reasonable volume, this should cost $0.05 to $0.15
+per unit. Do not over-index on this. It is unlikely to move your margins
+meaningfully, but it is worth bundling into a supplier order if possible.
+
+Alcohol Wipe
+Also a commodity. Budget $0.02 to $0.05 per unit.
+
+Packaging
+This includes the box, insert card, and printed instructions. Packaging has a
+larger impact on perceived quality than most founders realize. Budget $0.50 to
+$2.00 per unit depending on material quality. At early volumes, packaging is
+often the second-largest cost after the strip. As volume grows, unit costs drop.
+
+Kitting and Assembly
+Someone has to put the components together and seal the box. This is typically
+done by a contract manufacturer or a third-party logistics provider (3PL).
+Budget $0.50 to $2.00 per unit. At low volumes this feels expensive. At scale
+it becomes negligible.
+
+Why it matters:
+COGS is the first number subtracted from your revenue. Every dollar you reduce
+COGS by (through volume discounts, supplier negotiations, or design changes)
+falls directly to gross profit. Getting your COGS right is the foundation of
+everything else.
+
+Target: Total COGS should be less than 40% of your selling price, leaving at
+least a 60% gross margin.
+
+---
+
+SECTION 3: VARIABLE COSTS PER ORDER
+
+What to fill in:
+Costs that occur with every order but are not part of the physical product.
+
+Outbound Shipping
+This is often larger than founders expect. Shipping a small box via USPS
+First Class or UPS Ground within the US typically costs $4 to $8. If you are
+self-fulfilling, you can negotiate commercial rates with USPS or UPS. If you
+use a 3PL, shipping is often bundled with pick-and-pack fees. Consider whether
+you offer free shipping (common in consumer e-commerce) and if so, this cost
+must be absorbed into your pricing.
+
+Payment Processing
+Stripe charges 2.9% of the transaction plus $0.30 per charge. On a $30 order
+that is about $1.17. On a $60 order it is about $2.04. This is non-negotiable
+at early stage but can be renegotiated with Stripe at significant volume.
+
+Returns and Replacements
+Not every order goes perfectly. Budget a small percentage (1% to 3%) of
+orders for replacements due to defective strips, shipping damage, or customer
+dissatisfaction. Sensa's current policy offers free replacements for defective
+kits, which is the right call for customer trust but must be accounted for
+in the economics.
+
+Why it matters:
+Variable costs are what you subtract from gross profit to get contribution
+margin. Contribution margin is the amount each order actually contributes
+toward covering your fixed costs and generating profit. It is the more honest
+measure of unit profitability than gross margin alone.
+
+Target: Contribution margin should be at least 40% of AOV.
+
+---
+
+SECTION 4: UNIT ECONOMICS (CALCULATED)
+
+These are the outputs of Sections 1 through 3. Once you fill in the inputs,
+these numbers will tell you whether the business model works.
+
+Gross Profit per Test
+Revenue per test minus COGS per test. This tells you how much you make before
+shipping and other variable costs.
+
+Gross Margin %
+Gross profit divided by revenue, expressed as a percentage. For a consumer
+health product like Sensa, you should target 60% or higher. If your gross
+margin is under 50%, your pricing is too low or your COGS is too high.
+
+Contribution Margin per Order
+AOV minus COGS minus variable costs. This is the most important number on the
+sheet. It tells you how much money each order actually generates that can be
+used to cover marketing, salaries, software, and overhead.
+
+Contribution Margin %
+Contribution margin divided by AOV. Target 40% or higher.
+
+---
+
+SECTION 5: CUSTOMER ACQUISITION
+
+What to fill in:
+Your monthly marketing spend and how many new customers it produces.
+
+Customer Acquisition Cost (CAC)
+CAC = Total Marketing Spend / Number of New Customers Acquired
+
+Example: If you spend $2,000 on Instagram ads in a month and get 40 new
+customers, your CAC is $50.
+
+CAC is one of the most important numbers in the business. It determines how
+much you need to earn from each customer to be profitable. A CAC that exceeds
+your contribution margin on a first purchase is fine IF customers reorder.
+A CAC that exceeds your total LTV is a business that is losing money on every
+customer.
+
+What drives CAC:
+- Ad spend efficiency (cost per click, click-through rate, conversion rate)
+- Organic channels (SEO, content, word of mouth) reduce blended CAC
+- Referral programs are one of the most cost-effective ways to lower CAC
+  in consumer health
+
+Target: CAC should be no more than one-third of your Contribution LTV
+(LTV:CAC ratio of 3:1 or better).
+
+---
+
+SECTION 6: LIFETIME VALUE (LTV)
+
+What to fill in:
+Your estimate of how often a customer reorders and how long they stay active.
+
+LTV is where Sensa's business model has the most leverage. A customer who
+tests once is worth their one-time contribution margin. A customer who tests
+monthly for two years is worth dramatically more. The habit of monthly CRP
+tracking is the core value driver.
+
+Gross LTV
+Average revenue per customer per year multiplied by estimated lifespan in
+years. This is the top-line number but does not account for costs.
+
+Contribution LTV
+Average contribution margin per order multiplied by number of orders over a
+customer's lifetime. This is the number you compare to CAC, because CAC is
+paid up front to acquire a customer whose profits arrive over time.
+
+Example:
+- Customer buys a 3-Test Pack every 3 months ($45 AOV, 4x per year)
+- Contribution margin per order: $20
+- Average customer lifespan: 2 years
+- Contribution LTV: $20 x 4 orders/year x 2 years = $160
+- If CAC is $50, LTV:CAC = 3.2x (healthy)
+
+Key insight:
+Even a modest improvement in reorder rate dramatically improves LTV. If you
+can move a customer from testing twice a year to four times a year, you double
+their LTV without spending an additional dollar on acquisition. This is why
+the Sensa app, streaks, and push notifications matter. They are not just
+product features. They are retention mechanics that directly impact LTV.
+
+---
+
+SECTION 7: KEY RATIOS
+
+LTV:CAC Ratio
+Contribution LTV divided by CAC. This is the single most important ratio for
+a subscription or repeat-purchase business.
+
+  Under 1:1 — You are losing money on every customer. Not sustainable.
+  1:1 to 2:1 — Marginal. You are covering CAC but not generating much profit.
+  3:1 — The standard benchmark for a healthy consumer business.
+  5:1 or higher — Strong unit economics. You may be under-investing in growth.
+
+Payback Period
+How many months until the contribution margin from a customer covers the CAC
+you paid to acquire them.
+
+Formula: CAC / (Monthly Contribution Margin per customer)
+
+Example: CAC of $50, customer generates $10/month in contribution margin.
+Payback period = 5 months.
+
+Target: Under 12 months for a consumer product. Shorter is better because
+it means you get your acquisition investment back faster and can reinvest it.
+
+MRR and ARR
+Monthly and Annual Recurring Revenue give you a high-level view of the
+business trajectory. Even if Sensa is not technically a subscription, if
+customers reorder predictably, you can model a quasi-subscription MRR.
+
+---
+
+SECTION 8: BREAK-EVEN ANALYSIS
+
+What to fill in:
+Your total monthly fixed costs. These are costs you pay regardless of how
+many units you sell: salaries, software subscriptions, office space, legal,
+accounting, etc.
+
+Break-even Units
+Fixed Costs / Contribution Margin per Order
+
+This tells you exactly how many orders you need per month to cover all your
+fixed costs. Every order above break-even is profit.
+
+Example:
+- Fixed costs: $10,000/month
+- Contribution margin per order: $25
+- Break-even: 400 orders/month
+
+This number should feel concrete and achievable. If break-even requires 5,000
+orders/month before you can generate profit, your fixed cost structure is too
+heavy for your current stage.
+
+---
+
+SECTION 9: SCENARIO PLANNING
+
+What to fill in:
+Three versions of the business: conservative, base case, and optimistic.
+
+This section forces you to think about the range of outcomes and what drives
+the difference between them. The key variables to flex are:
+
+- Monthly order volume (driven by marketing and organic growth)
+- AOV (driven by product mix and pricing)
+- COGS per test (driven by supplier negotiations and volume discounts)
+- CAC (driven by marketing efficiency and organic/referral growth)
+
+Use this section to answer questions like:
+- What does the business look like if we hit 500 orders/month vs. 2,000?
+- How much does our LTV:CAC improve if we negotiate COGS down by 30%?
+- At what order volume does the business become profitable?
+
+---
+
+NEXT STEPS
+
+1. Get real supplier quotes for CRP strips. This is the most uncertain input
+   and the one that most affects your COGS. Contact at least three suppliers
+   with your specs and ask for price breaks at 1k, 5k, and 10k units.
+
+2. Calculate your actual CAC from any marketing spend to date. Even a small
+   data set gives you a starting point.
+
+3. Survey early users about reorder intent. Ask: "How often do you plan to
+   test?" This gives you an LTV estimate grounded in real customer feedback.
+
+4. Fill in the spreadsheet with real numbers, even if some are estimates.
+   A model with rough estimates is more useful than a perfect model you have
+   not built yet.
+
+5. Revisit this model monthly as you get more data. Unit economics improve
+   as you grow (volume discounts, better CAC from organic growth, higher LTV
+   from better retention). Tracking this over time shows you whether the
+   business is moving in the right direction.
+
+---
+
+GLOSSARY
+
+AOV — Average Order Value. The average amount a customer spends per transaction.
+CAC — Customer Acquisition Cost. Total marketing spend divided by new customers acquired.
+COGS — Cost of Goods Sold. The direct cost of producing one unit.
+Contribution Margin — Revenue minus COGS minus variable costs per order.
+Gross Margin — Gross profit (revenue minus COGS) divided by revenue.
+LTV — Lifetime Value. Total contribution margin generated by one customer over their relationship with Sensa.
+MRR — Monthly Recurring Revenue.
+ARR — Annual Recurring Revenue. MRR multiplied by 12.
+Payback Period — Months required for a customer's contribution margin to cover their CAC.
+3PL — Third-party logistics provider. A company that handles warehousing, kitting, and fulfillment.
