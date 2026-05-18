@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sensa Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1800AD;
+    --purple: #7267f2;
+    --blue: #41a6f0;
+    --dark: #1a1a2e;
+    --gray: #4a4a5a;
+    --light: #f8f7ff;
+    --border: #e8e5ff;
+    --green: #22c55e;
+    --yellow: #f59e0b;
+    --orange: #f97316;
+    --red: #ef4444;
+  }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: #f0f0f8;
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* ---- LOGIN ---- */
+  #login-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1800AD 0%, #7267f2 100%);
+  }
+
+  .login-card {
+    background: white;
+    border-radius: 20px;
+    padding: 48px 40px;
+    width: 380px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+
+  .login-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .login-logo span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--navy);
+    letter-spacing: -0.03em;
+  }
+
+  .login-card h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    letter-spacing: -0.03em;
+  }
+
+  .login-card p {
+    color: var(--gray);
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+
+  .form-group { margin-bottom: 16px; }
+
+  .form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus { border-color: var(--purple); }
+
+  .login-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+  }
+
+  .login-btn:hover { background: #2a10c0; }
+
+  .login-error {
+    color: var(--red);
+    font-size: 13px;
+    margin-top: 12px;
+    text-align: center;
+    display: none;
+  }
+
+  /* ---- DASHBOARD ---- */
+  #dashboard { display: none; min-height: 100vh; }
+
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 220px;
+    background: var(--dark);
+    padding: 28px 0;
+    z-index: 100;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px;
+    margin-bottom: 36px;
+  }
+
+  .sidebar-logo span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: white;
+    letter-spacing: -0.03em;
+  }
+
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.35);
+    padding: 0 24px;
+    margin-bottom: 8px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-item:hover { color: white; background: rgba(255,255,255,0.05); }
+
+  .nav-item.active {
+    color: white;
+    background: rgba(114,103,242,0.2);
+    border-left-color: var(--purple);
+  }
+
+  .nav-item svg { opacity: 0.7; flex-shrink: 0; }
+  .nav-item.active svg { opacity: 1; }
+
+  .sidebar-bottom {
+    position: absolute;
+    bottom: 24px;
+    left: 0; right: 0;
+    padding: 0 24px;
+  }
+
+  .signout-btn {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.6);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .signout-btn:hover { background: rgba(255,255,255,0.12); color: white; }
+
+  .main {
+    margin-left: 220px;
+    padding: 32px;
+    min-height: 100vh;
+  }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .page-header h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .last-updated {
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  /* ---- STAT CARDS ---- */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 20px;
+    border: 1px solid var(--border);
+  }
+
+  .stat-card .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+
+  .stat-card .value {
+    font-family: 'Nunito', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-card .sub {
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  .stat-card .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+
+  /* ---- DISTRIBUTION BAR ---- */
+  .dist-card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+
+  .dist-card h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+
+  .dist-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .dist-bar-label {
+    width: 70px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .dist-bar-track {
+    flex: 1;
+    background: #f0eeff;
+    border-radius: 6px;
+    height: 28px;
+    overflow: hidden;
+  }
+
+  .dist-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    min-width: 36px;
+    transition: width 0.6s ease;
+  }
+
+  .dist-bar-fill span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: white;
+  }
+
+  .dist-bar-count { width: 40px; font-size: 12px; color: var(--gray); font-weight: 600; }
+
+  /* ---- TABLES ---- */
+  .table-card {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .table-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .table-header h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .table-header .count {
+    font-size: 12px;
+    color: var(--gray);
+    background: var(--light);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  th {
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    background: #fafafa;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f4f3ff;
+    font-size: 13px;
+    vertical-align: middle;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fafbff; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .badge.low { background: #dcfce7; color: #16a34a; }
+  .badge.moderate { background: #fef3c7; color: #d97706; }
+  .badge.elevated { background: #ffedd5; color: #ea580c; }
+  .badge.high { background: #fee2e2; color: #dc2626; }
+  .badge.yes { background: #dcfce7; color: #16a34a; }
+  .badge.no { background: #f4f3ff; color: var(--gray); }
+
+  .avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--purple));
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .user-cell { display: flex; align-items: center; }
+
+  .score-pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: white;
+  }
+
+  /* ---- SEARCH ---- */
+  .search-bar {
+    padding: 8px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    width: 220px;
+  }
+
+  .search-bar:focus { border-color: var(--purple); }
+
+  /* ---- USER DETAIL MODAL ---- */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: white;
+    border-radius: 20px;
+    width: 620px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 32px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .modal-header h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--gray);
+    line-height: 1;
+    padding: 4px;
+  }
+
+  .modal-section { margin-bottom: 22px; }
+
+  .modal-section h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .profile-item { }
+
+  .profile-item .key {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    margin-bottom: 2px;
+  }
+
+  .profile-item .val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .loading {
+    text-align: center;
+    padding: 48px;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 32px;
+    color: var(--gray);
+    font-size: 13px;
+  }
+
+  .refresh-btn {
+    padding: 8px 16px;
+    background: var(--light);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--dark);
+    transition: all 0.15s;
+  }
+
+  .refresh-btn:hover { background: var(--border); }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <svg width="30" height="30" viewBox="0 0 60 60" fill="none">
+        <circle cx="20" cy="20" r="10" fill="#f59d06"/>
+        <circle cx="38" cy="16" r="7" fill="#41a6f0"/>
+        <circle cx="42" cy="34" r="9" fill="#e85a39"/>
+        <circle cx="24" cy="40" r="8" fill="#7267f2"/>
+        <circle cx="14" cy="36" r="6" fill="#fac234"/>
+      </svg>
+      <span>Sensa Admin</span>
+    </div>
+    <h2>Sign in</h2>
+    <p>Admin access only. Use your Sensa email.</p>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="you@sensawellness.org">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="Password">
+    </div>
+    <button class="login-btn" onclick="signIn()">Sign In</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <svg width="26" height="26" viewBox="0 0 60 60" fill="none">
+        <circle cx="20" cy="20" r="10" fill="#f59d06"/>
+        <circle cx="38" cy="16" r="7" fill="#41a6f0"/>
+        <circle cx="42" cy="34" r="9" fill="#e85a39"/>
+        <circle cx="24" cy="40" r="8" fill="#7267f2"/>
+        <circle cx="14" cy="36" r="6" fill="#fac234"/>
+      </svg>
+      <span>Sensa Admin</span>
+    </div>
+
+    <div class="sidebar-label">Navigation</div>
+
+    <div class="nav-item active" onclick="showPage('overview')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Overview
+    </div>
+    <div class="nav-item" onclick="showPage('users')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Users
+    </div>
+    <div class="nav-item" onclick="showPage('scans')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Scans
+    </div>
+
+    <div class="sidebar-bottom">
+      <button class="signout-btn" onclick="signOut()">Sign out</button>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main">
+
+    <!-- OVERVIEW PAGE -->
+    <div class="page active" id="page-overview">
+      <div class="page-header">
+        <h1>Overview</h1>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span class="last-updated" id="last-updated"></span>
+          <button class="refresh-btn" onclick="loadData()">Refresh</button>
+        </div>
+      </div>
+
+      <div class="stats-grid" id="stats-grid">
+        <div class="loading" style="grid-column:1/-1">Loading...</div>
+      </div>
+
+      <div class="dist-card" id="dist-card" style="display:none">
+        <h2>Scan Score Distribution</h2>
+        <div id="dist-bars"></div>
+      </div>
+
+      <div class="table-card" id="recent-scans-card" style="display:none">
+        <div class="table-header">
+          <h2>Recent Scans</h2>
+          <span class="count" id="recent-count"></span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Score</th>
+              <th>Label</th>
+              <th>CRP (mg/L)</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="recent-scans-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- USERS PAGE -->
+    <div class="page" id="page-users">
+      <div class="page-header">
+        <h1>Users</h1>
+        <input class="search-bar" type="text" placeholder="Search by name or email..." oninput="filterUsers(this.value)">
+      </div>
+      <div class="table-card">
+        <div class="table-header">
+          <h2>All Users</h2>
+          <span class="count" id="users-count"></span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Joined</th>
+              <th>Scans</th>
+              <th>Last Score</th>
+              <th>Intake Done</th>
+              <th>Reminder</th>
+            </tr>
+          </thead>
+          <tbody id="users-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCANS PAGE -->
+    <div class="page" id="page-scans">
+      <div class="page-header">
+        <h1>All Scans</h1>
+        <input class="search-bar" type="text" placeholder="Search by label..." oninput="filterScans(this.value)">
+      </div>
+      <div class="table-card">
+        <div class="table-header">
+          <h2>Scan History</h2>
+          <span class="count" id="scans-count"></span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Score</th>
+              <th>Label</th>
+              <th>CRP (mg/L)</th>
+              <th>Avg Blue</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="scans-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- USER DETAIL MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-name"></h2>
+      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    </div>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- Firebase JS SDK -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+  import { getAuth, signInWithEmailAndPassword, signOut as fbSignOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+
+  const firebaseConfig = {
+    apiKey: 'AIzaSyBgQp_ZTGul5jFwXbTlB0gJKjfR17j1D44',
+    authDomain: 'sensa-app-7b2b7.firebaseapp.com',
+    projectId: 'sensa-app-7b2b7',
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window._auth = auth;
+  window._signInFn = signInWithEmailAndPassword;
+  window._signOutFn = fbSignOut;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      window._currentUser = user;
+      loadData();
+    } else {
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('dashboard').style.display = 'none';
+    }
+  });
+</script>
+
+<script>
+  let _data = null;
+
+  async function signIn() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    const errEl = document.getElementById('login-error');
+    errEl.style.display = 'none';
+    try {
+      await window._signInFn(window._auth, email, password);
+    } catch (e) {
+      errEl.textContent = 'Invalid email or password.';
+      errEl.style.display = 'block';
+    }
+  }
+
+  async function signOut() {
+    await window._signOutFn(window._auth);
+  }
+
+  document.getElementById('login-password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') signIn();
+  });
+
+  async function loadData() {
+    try {
+      const token = await window._currentUser.getIdToken();
+      const res = await fetch('/api/admin', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) throw new Error(await res.text());
+      _data = await res.json();
+      renderOverview();
+      renderUsers();
+      renderScans();
+      document.getElementById('last-updated').textContent =
+        'Updated ' + new Date().toLocaleTimeString();
+    } catch (e) {
+      console.error(e);
+      document.getElementById('stats-grid').innerHTML =
+        '<div class="loading">Failed to load data. Make sure FIREBASE_SERVICE_ACCOUNT is set in Vercel.</div>';
+    }
+  }
+
+  function renderOverview() {
+    const s = _data.stats;
+
+    document.getElementById('stats-grid').innerHTML = `
+      <div class="stat-card">
+        <div class="label">Total Users</div>
+        <div class="value">${s.totalUsers}</div>
+        <div class="sub"><span class="dot" style="background:#22c55e"></span>${s.newUsersThisWeek} new this week</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Total Scans</div>
+        <div class="value">${s.totalScans}</div>
+        <div class="sub">${s.totalUsers ? (s.totalScans / s.totalUsers).toFixed(1) : 0} avg per user</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Avg Wellness Score</div>
+        <div class="value">${s.avgScore}<small style="font-size:18px;opacity:0.5">/100</small></div>
+        <div class="sub">Across all scans</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Health Intake Done</div>
+        <div class="value">${s.intakeCompletePct}<small style="font-size:18px;opacity:0.5">%</small></div>
+        <div class="sub">${s.intakeComplete} of ${s.totalUsers} users</div>
+      </div>
+    `;
+
+    // Distribution bars
+    const total = Object.values(s.labelCounts).reduce((a, b) => a + b, 0) || 1;
+    const colors = {
+      Low: '#22c55e',
+      Moderate: '#f59e0b',
+      Elevated: '#f97316',
+      High: '#ef4444',
+    };
+
+    document.getElementById('dist-bars').innerHTML = Object.entries(s.labelCounts).map(([label, count]) => {
+      const pct = Math.round((count / total) * 100);
+      return `
+        <div class="dist-bar-row">
+          <div class="dist-bar-label">${label}</div>
+          <div class="dist-bar-track">
+            <div class="dist-bar-fill" style="width:${Math.max(pct, 3)}%;background:${colors[label]}">
+              <span>${pct}%</span>
+            </div>
+          </div>
+          <div class="dist-bar-count">${count}</div>
+        </div>`;
+    }).join('');
+
+    document.getElementById('dist-card').style.display = 'block';
+
+    // Recent scans
+    const userMap = {};
+    for (const u of _data.users) userMap[u.uid] = u;
+
+    const rows = _data.recentScans.slice(0, 20).map(scan => {
+      const u = userMap[scan.userId];
+      const name = u ? u.displayName || u.email : scan.userId.slice(0, 8);
+      return `<tr>
+        <td><div class="user-cell"><div class="avatar">${initials(name)}</div>${name}</div></td>
+        <td><span class="score-pill" style="background:${scoreColor(scan.score)}">${scan.score}</span></td>
+        <td><span class="badge ${scan.label.toLowerCase()}">${scan.label}</span></td>
+        <td>${scan.opticalScore ? scan.opticalScore.toFixed(2) : 'N/A'}</td>
+        <td>${formatDate(scan.timestamp)}</td>
+      </tr>`;
+    }).join('');
+
+    document.getElementById('recent-scans-body').innerHTML = rows || '<tr><td colspan="5" class="empty">No scans yet</td></tr>';
+    document.getElementById('recent-count').textContent = `${_data.recentScans.length} scans`;
+    document.getElementById('recent-scans-card').style.display = 'block';
+  }
+
+  function renderUsers(filter = '') {
+    const users = _data ? _data.users.filter(u =>
+      (u.displayName + u.email).toLowerCase().includes(filter.toLowerCase())
+    ) : [];
+
+    document.getElementById('users-count').textContent = `${users.length} users`;
+
+    document.getElementById('users-body').innerHTML = users.map(u => {
+      const score = u.lastScan?.score;
+      const label = u.lastScan?.label || '';
+      return `<tr onclick="openUserModal('${u.uid}')" style="cursor:pointer">
+        <td><div class="user-cell"><div class="avatar">${initials(u.displayName || u.email)}</div><div><div style="font-weight:700">${u.displayName || 'No name'}</div><div style="color:var(--gray);font-size:12px">${u.email}</div></div></div></td>
+        <td>${formatDate(u.createdAt)}</td>
+        <td>${u.scanCount}</td>
+        <td>${score !== undefined ? `<span class="score-pill" style="background:${scoreColor(score)}">${score}</span>` : '<span style="color:var(--gray)">None</span>'}</td>
+        <td><span class="badge ${u.healthIntakeComplete ? 'yes' : 'no'}">${u.healthIntakeComplete ? 'Yes' : 'No'}</span></td>
+        <td style="color:var(--gray)">${u.reminderInterval === 'none' ? 'Off' : u.reminderInterval}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="6" class="empty">No users found</td></tr>';
+  }
+
+  function renderScans(filter = '') {
+    if (!_data) return;
+    const userMap = {};
+    for (const u of _data.users) userMap[u.uid] = u;
+
+    const scans = _data.recentScans.filter(s =>
+      s.label.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    document.getElementById('scans-count').textContent = `${scans.length} scans`;
+
+    document.getElementById('scans-body').innerHTML = scans.map(scan => {
+      const u = userMap[scan.userId];
+      const name = u ? u.displayName || u.email : scan.userId.slice(0, 8);
+      return `<tr>
+        <td><div class="user-cell"><div class="avatar">${initials(name)}</div>${name}</div></td>
+        <td><span class="score-pill" style="background:${scoreColor(scan.score)}">${scan.score}</span></td>
+        <td><span class="badge ${scan.label.toLowerCase()}">${scan.label}</span></td>
+        <td>${scan.opticalScore ? scan.opticalScore.toFixed(2) : 'N/A'}</td>
+        <td>${scan.avgBlue ? scan.avgBlue.toFixed(1) : 'N/A'}</td>
+        <td>${formatDate(scan.timestamp)}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="6" class="empty">No scans found</td></tr>';
+  }
+
+  function openUserModal(uid) {
+    if (!_data) return;
+    const u = _data.users.find(x => x.uid === uid);
+    if (!u) return;
+
+    const userScans = _data.recentScans
+      .filter(s => s.userId === uid)
+      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+    document.getElementById('modal-name').textContent = u.displayName || u.email;
+
+    const fmt = (v) => v ? v.replace(/_/g, ' ') : 'N/A';
+
+    document.getElementById('modal-content').innerHTML = `
+      <div class="modal-section">
+        <h3>Account</h3>
+        <div class="profile-grid">
+          <div class="profile-item"><div class="key">Email</div><div class="val">${u.email}</div></div>
+          <div class="profile-item"><div class="key">Joined</div><div class="val">${formatDate(u.createdAt)}</div></div>
+          <div class="profile-item"><div class="key">Scan Count</div><div class="val">${u.scanCount}</div></div>
+          <div class="profile-item"><div class="key">Intake Complete</div><div class="val">${u.healthIntakeComplete ? 'Yes' : 'No'}</div></div>
+          <div class="profile-item"><div class="key">Reminders</div><div class="val">${u.reminderInterval === 'none' ? 'Off' : u.reminderInterval}</div></div>
+        </div>
+      </div>
+      ${u.healthIntakeComplete ? `
+      <div class="modal-section">
+        <h3>Health Intake</h3>
+        <div class="profile-grid">
+          <div class="profile-item"><div class="key">Age Range</div><div class="val">${fmt(u.ageRange)}</div></div>
+          <div class="profile-item"><div class="key">Biological Sex</div><div class="val">${fmt(u.biologicalSex)}</div></div>
+          <div class="profile-item"><div class="key">Activity Level</div><div class="val">${fmt(u.activityLevel)}</div></div>
+          <div class="profile-item"><div class="key">Diet Type</div><div class="val">${fmt(u.dietType)}</div></div>
+          <div class="profile-item"><div class="key">Sleep Hours</div><div class="val">${fmt(u.sleepHours)}</div></div>
+          <div class="profile-item"><div class="key">Stress Level</div><div class="val">${fmt(u.stressLevel)}</div></div>
+          <div class="profile-item"><div class="key">Smoking Status</div><div class="val">${fmt(u.smokingStatus)}</div></div>
+          <div class="profile-item"><div class="key">Primary Goal</div><div class="val">${fmt(u.primaryGoal)}</div></div>
+          <div class="profile-item"><div class="key">Health Conditions</div><div class="val">${fmt(u.healthConditions)}</div></div>
+        </div>
+      </div>` : ''}
+      <div class="modal-section">
+        <h3>Scan History (${userScans.length})</h3>
+        ${userScans.length ? `
+        <table style="width:100%">
+          <thead><tr>
+            <th>Score</th><th>Label</th><th>CRP (mg/L)</th><th>Date</th>
+          </tr></thead>
+          <tbody>
+            ${userScans.map(s => `<tr>
+              <td><span class="score-pill" style="background:${scoreColor(s.score)}">${s.score}</span></td>
+              <td><span class="badge ${s.label.toLowerCase()}">${s.label}</span></td>
+              <td>${s.opticalScore ? s.opticalScore.toFixed(2) : 'N/A'}</td>
+              <td>${formatDate(s.timestamp)}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>` : '<div class="empty">No scans yet</div>'}
+      </div>
+    `;
+
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+  }
+
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('modal')) closeModal();
+  });
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  function filterUsers(val) { renderUsers(val); }
+  function filterScans(val) { renderScans(val); }
+
+  // Helpers
+  function initials(name) {
+    if (!name) return '?';
+    return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  }
+
+  function formatDate(iso) {
+    if (!iso) return 'N/A';
+    return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function scoreColor(score) {
+    if (score >= 70) return '#22c55e';
+    if (score >= 50) return '#f59e0b';
+    if (score >= 30) return '#f97316';
+    return '#ef4444';
+  }
+</script>
+
+</body>
+</html>
