@@ -1190,6 +1190,27 @@
                 height: 300px;
             }
 
+            .vial-body {
+                width: 86px;
+                height: 240px;
+                border-radius: 43px 43px 22px 22px;
+            }
+
+            .vial-cap {
+                width: 43px;
+                height: 30px;
+                top: 15px;
+            }
+
+            .vial-glow {
+                width: 150px;
+                height: 150px;
+            }
+
+            .vial-liquid {
+                border-radius: 0 0 20px 20px;
+            }
+
             .cards-grid {
                 grid-template-columns: 1fr;
                 max-width: 500px;
@@ -1239,6 +1260,31 @@
 
             .contact-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Keep bottle consistent in landscape on phones */
+        @media (max-width: 992px) and (orientation: landscape) {
+            .vial-container {
+                width: 200px;
+                height: 300px;
+            }
+
+            .vial-body {
+                width: 86px;
+                height: 240px;
+                border-radius: 43px 43px 22px 22px;
+            }
+
+            .vial-cap {
+                width: 43px;
+                height: 30px;
+                top: 15px;
+            }
+
+            .vial-glow {
+                width: 150px;
+                height: 150px;
             }
         }
 

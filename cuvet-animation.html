@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sensa CRP Animation</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #fffff7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+const DPR = window.devicePixelRatio || 1;
+const W = 480, H = 680;
+c.width = W * DPR; c.height = H * DPR;
+c.style.width = W + 'px'; c.style.height = H + 'px';
+ctx.scale(DPR, DPR);
+
+const CX = W / 2;
+
+// Cuvette geometry
+const BW = 114, BH = 295, WT = 15;
+const BX = CX - BW / 2, BY = 72;
+const IX = BX + WT, IY = BY, IW = BW - WT * 2, IH = BH - WT;
+
+// Stopper geometry — thick round cylindrical PTFE cap
+const NECK_W = 34, NECK_H = 18;
+const DISC_W = 108, DISC_SIDE_H = 24, DISC_RY = 13;
+
+// UI Card
+const CARD_X = 28, CARD_Y = BY + BH + 36;
+const CARD_W = W - 56, CARD_H = 155, CARD_R = 16;
+const TRACK_X = CARD_X + 24, TRACK_Y = CARD_Y + 66;
+const TRACK_W = CARD_W - 48, TRACK_H = 9;
+
+// Liquid colors: light sky blue → deep navy
+const LIQUID_COLORS = [
+  [148, 218, 255],
+  [62,  152, 240],
+  [22,   70, 200],
+  [7,    16,  88],
+];
+const STAGE_LABELS = ['Low Inflammation', 'Lightly Moderate', 'Moderate', 'High Inflammation'];
+const TRACK_COLORS = [[34,197,94],[245,158,11],[249,115,22],[220,38,38]];
+
+const CYCLE_MS = 7400;
+let startTime = null, t = 0;
+
+function lerp(a, b, f) { return a + (b - a) * f; }
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+function multiLerp(cols, f) {
+  f = clamp(f, 0, 1);
+  const n = cols.length - 1, fi = f * n;
+  const i = Math.min(Math.floor(fi), n - 1), frac = fi - i;
+  const e = frac < 0.5 ? 2*frac*frac : -1+(4-2*frac)*frac;
+  return cols[i].map((v, j) => lerp(v, cols[i+1][j], e));
+}
+function getLabel(p) {
+  if (p < 0.25) return STAGE_LABELS[0];
+  if (p < 0.5)  return STAGE_LABELS[1];
+  if (p < 0.75) return STAGE_LABELS[2];
+  return STAGE_LABELS[3];
+}
+function rrect(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y); ctx.lineTo(x+w-r, y);
+  ctx.arcTo(x+w, y, x+w, y+r, r); ctx.lineTo(x+w, y+h-r);
+  ctx.arcTo(x+w, y+h, x+w-r, y+h, r); ctx.lineTo(x+r, y+h);
+  ctx.arcTo(x, y+h, x, y+h-r, r); ctx.lineTo(x, y+r);
+  ctx.arcTo(x, y, x+r, y, r);
+  ctx.closePath();
+}
+
+function mkBub() {
+  return {
+    x: IX + 5 + Math.random() * (IW - 10),
+    y: IY + IH - Math.random() * 25,
+    r: 0.8 + Math.random() * 2.2,
+    spd: 0.28 + Math.random() * 0.6,
+    ph: Math.random() * Math.PI * 2,
+    phSpd: 0.012 + Math.random() * 0.022,
+    op: 0.28 + Math.random() * 0.42,
+  };
+}
+const bubbles = Array.from({ length: 14 }, mkBub);
+
+function draw(ts) {
+  if (!startTime) startTime = ts;
+  const elapsed = (ts - startTime) % CYCLE_MS;
+  t += 0.012;
+
+  const hold = 0.13;
+  const rawP = elapsed / CYCLE_MS;
+  const progress = clamp(rawP < (1 - hold) ? rawP / (1 - hold) : 1, 0, 1);
+  const p = progress < 0.5 ? 2*progress*progress : -1+(4-2*progress)*progress;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fffff7';
+  ctx.fillRect(0, 0, W, H);
+
+  // Liquid color
+  const [lr, lg, lb] = multiLerp(LIQUID_COLORS, p);
+
+  // Subtle color glow on background behind cuvette
+  const glow = ctx.createRadialGradient(CX, BY + BH * 0.45, 0, CX, BY + BH * 0.45, 200);
+  glow.addColorStop(0, `rgba(${lr},${lg},${lb},0.07)`);
+  glow.addColorStop(1, `rgba(${lr},${lg},${lb},0)`);
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  // Cast shadow under cuvette (soft ellipse)
+  const shadow = ctx.createRadialGradient(CX, BY + BH + 5, 2, CX, BY + BH + 5, BW * 0.72);
+  shadow.addColorStop(0, 'rgba(80,110,165,0.14)');
+  shadow.addColorStop(1, 'rgba(80,110,165,0)');
+  ctx.fillStyle = shadow;
+  ctx.fillRect(BX - 24, BY + BH, BW + 48, 22);
+
+  // ===== Q-TIP =====
+  const QTX = 357;
+  const QT_TOP_Y = 95;
+  const QT_BOT_Y = 353;
+  const QT_SW = 4;
+  const CRX = 9, CRY = 18;
+  const QT_SY1 = QT_TOP_Y + CRY - 4;
+  const QT_SY2 = QT_BOT_Y - CRY + 4;
+
+  // Stick shadow
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.13)';
+  ctx.shadowBlur = 5;
+  ctx.shadowOffsetX = 2;
+  ctx.shadowOffsetY = 1;
+
+  // Stick — thin paper/plastic rod
+  const stkG = ctx.createLinearGradient(QTX - QT_SW/2, 0, QTX + QT_SW/2 + 3, 0);
+  stkG.addColorStop(0,   '#c8c2b8');
+  stkG.addColorStop(0.25,'#f0ebe4');
+  stkG.addColorStop(0.6, '#e8e2da');
+  stkG.addColorStop(1,   '#bab4aa');
+  ctx.fillStyle = stkG;
+  ctx.fillRect(QTX - QT_SW/2, QT_SY1, QT_SW, QT_SY2 - QT_SY1);
+  ctx.restore();
+
+  // Stick outline
+  ctx.strokeStyle = 'rgba(160,150,138,0.3)';
+  ctx.lineWidth = 0.8;
+  ctx.strokeRect(QTX - QT_SW/2, QT_SY1, QT_SW, QT_SY2 - QT_SY1);
+
+  // Stick center seam line (paper roll effect)
+  ctx.beginPath();
+  ctx.moveTo(QTX + 0.5, QT_SY1);
+  ctx.lineTo(QTX + 0.5, QT_SY2);
+  ctx.strokeStyle = 'rgba(190,182,172,0.3)';
+  ctx.lineWidth = 0.6;
+  ctx.stroke();
+
+  // Top cotton tip
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.1)';
+  ctx.shadowBlur = 4;
+  ctx.shadowOffsetX = 1;
+  const tCG = ctx.createRadialGradient(QTX - 3, QT_TOP_Y - 5, 0, QTX, QT_TOP_Y, CRX + 5);
+  tCG.addColorStop(0,   '#ffffff');
+  tCG.addColorStop(0.45,'#f8f6f4');
+  tCG.addColorStop(0.82,'#ece7e2');
+  tCG.addColorStop(1,   '#d8d2cc');
+  ctx.fillStyle = tCG;
+  ctx.beginPath();
+  ctx.ellipse(QTX, QT_TOP_Y, CRX, CRY, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // Top cotton texture strands
+  ctx.strokeStyle = 'rgba(255,255,255,0.65)';
+  ctx.lineWidth = 0.9;
+  ctx.beginPath();
+  ctx.ellipse(QTX - 2, QT_TOP_Y - 4, CRX * 0.55, CRY * 0.42, -0.15, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.strokeStyle = 'rgba(220,214,208,0.4)';
+  ctx.lineWidth = 0.6;
+  ctx.beginPath();
+  ctx.ellipse(QTX + 2, QT_TOP_Y + 2, CRX * 0.3, CRY * 0.28, 0.1, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Top cotton outline
+  ctx.strokeStyle = 'rgba(180,172,164,0.28)';
+  ctx.lineWidth = 0.8;
+  ctx.beginPath();
+  ctx.ellipse(QTX, QT_TOP_Y, CRX, CRY, 0, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Bottom cotton tip
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.1)';
+  ctx.shadowBlur = 4;
+  ctx.shadowOffsetX = 1;
+  const bCG = ctx.createRadialGradient(QTX - 3, QT_BOT_Y - 2, 0, QTX, QT_BOT_Y, CRX + 5);
+  bCG.addColorStop(0,   '#ffffff');
+  bCG.addColorStop(0.45,'#f8f6f4');
+  bCG.addColorStop(0.82,'#ece7e2');
+  bCG.addColorStop(1,   '#d8d2cc');
+  ctx.fillStyle = bCG;
+  ctx.beginPath();
+  ctx.ellipse(QTX, QT_BOT_Y, CRX, CRY, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // Bottom cotton texture strands
+  ctx.strokeStyle = 'rgba(255,255,255,0.65)';
+  ctx.lineWidth = 0.9;
+  ctx.beginPath();
+  ctx.ellipse(QTX - 2, QT_BOT_Y - 3, CRX * 0.55, CRY * 0.42, -0.1, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.strokeStyle = 'rgba(180,172,164,0.28)';
+  ctx.lineWidth = 0.8;
+  ctx.beginPath();
+  ctx.ellipse(QTX, QT_BOT_Y, CRX, CRY, 0, 0, Math.PI * 2);
+  ctx.stroke();
+
+  const FILL_Y = IY + IH * 0.20;
+
+  // ===== LIQUID (clipped to inner chamber) =====
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(IX, IY);
+  ctx.lineTo(IX, IY + IH - 6);
+  ctx.arcTo(IX, IY + IH, IX + 6, IY + IH, 6);
+  ctx.lineTo(IX + IW - 6, IY + IH);
+  ctx.arcTo(IX + IW, IY + IH, IX + IW, IY + IH - 6, 6);
+  ctx.lineTo(IX + IW, IY);
+  ctx.closePath();
+  ctx.clip();
+
+  // Liquid shape — wave with meniscus curves at walls
+  ctx.beginPath();
+  ctx.moveTo(IX, IY + IH);
+  ctx.lineTo(IX, FILL_Y + 7);
+  ctx.bezierCurveTo(IX, FILL_Y + 1, IX + 6, FILL_Y - 2, IX + 12, FILL_Y);
+  for (let x = 12; x <= IW - 12; x++) {
+    const wy = FILL_Y
+      + Math.sin(t * 1.3 + x * 0.09) * 5
+      + Math.sin(t * 0.72 + x * 0.16) * 2.8;
+    ctx.lineTo(IX + x, wy);
+  }
+  ctx.bezierCurveTo(IX + IW - 6, FILL_Y - 2, IX + IW, FILL_Y + 1, IX + IW, FILL_Y + 7);
+  ctx.lineTo(IX + IW, IY + IH);
+  ctx.closePath();
+
+  // Main liquid fill
+  const liqG = ctx.createLinearGradient(IX, FILL_Y, IX, IY + IH);
+  liqG.addColorStop(0,   `rgba(${lr},${lg},${lb},0.88)`);
+  liqG.addColorStop(0.4, `rgba(${Math.max(lr-12,0)},${Math.max(lg-8,0)},${Math.max(lb-4,0)},0.93)`);
+  liqG.addColorStop(1,   `rgba(${Math.max(lr-30,0)},${Math.max(lg-22,0)},${Math.max(lb-10,0)},0.98)`);
+  ctx.fillStyle = liqG;
+  ctx.fill();
+
+  // Refraction shimmer — light hitting liquid from left side
+  const shimG = ctx.createLinearGradient(IX, 0, IX + IW, 0);
+  shimG.addColorStop(0,    'rgba(255,255,255,0.18)');
+  shimG.addColorStop(0.12, 'rgba(255,255,255,0.06)');
+  shimG.addColorStop(0.5,  'rgba(255,255,255,0.01)');
+  shimG.addColorStop(1,    'rgba(255,255,255,0.04)');
+  ctx.fillStyle = shimG;
+  ctx.fill();
+
+  // Caustic light pooling at bottom
+  const causticG = ctx.createLinearGradient(0, IY + IH - 18, 0, IY + IH);
+  causticG.addColorStop(0, `rgba(${Math.min(lr+50,255)},${Math.min(lg+50,255)},${Math.min(lb+70,255)},0)`);
+  causticG.addColorStop(0.5, `rgba(${Math.min(lr+50,255)},${Math.min(lg+50,255)},${Math.min(lb+70,255)},0.14)`);
+  causticG.addColorStop(1,  `rgba(${Math.min(lr+30,255)},${Math.min(lg+30,255)},${Math.min(lb+50,255)},0.06)`);
+  ctx.fillStyle = causticG;
+  ctx.fill();
+
+  // Bubbles
+  for (const b of bubbles) {
+    b.ph += b.phSpd;
+    b.y -= b.spd;
+    b.x += Math.sin(b.ph) * 0.32;
+    if (b.y < FILL_Y - 4) Object.assign(b, mkBub());
+    if (b.y > FILL_Y + 8) {
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(255,255,255,${b.op})`;
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+      // Bubble inner highlight
+      ctx.beginPath();
+      ctx.arc(b.x - b.r * 0.28, b.y - b.r * 0.28, b.r * 0.38, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${b.op * 0.55})`;
+      ctx.fill();
+    }
+  }
+
+  // Horizontal scan beam
+  const scanF = (Math.sin(t * 0.48) + 1) / 2;
+  const scanY = FILL_Y + 12 + (IH * 0.65 - 12) * scanF;
+  const beamG = ctx.createLinearGradient(IX, scanY - 4, IX, scanY + 4);
+  beamG.addColorStop(0, 'rgba(255,255,255,0)');
+  beamG.addColorStop(0.5, 'rgba(255,255,255,0.26)');
+  beamG.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = beamG;
+  ctx.fillRect(IX, scanY - 4, IW, 8);
+
+  ctx.restore();
+
+  // ===== CUVETTE WALLS (drawn over liquid) =====
+
+  // LEFT WALL — thick frosted acrylic / polished glass
+  const lwG = ctx.createLinearGradient(BX, 0, BX + WT, 0);
+  lwG.addColorStop(0,    'rgba(238,244,250,0.96)');
+  lwG.addColorStop(0.2,  'rgba(242,248,254,0.82)');
+  lwG.addColorStop(0.55, 'rgba(248,252,255,0.58)');
+  lwG.addColorStop(0.82, 'rgba(242,248,254,0.36)');
+  lwG.addColorStop(1,    'rgba(230,240,252,0.12)');
+  ctx.fillStyle = lwG;
+  ctx.fillRect(BX, BY, WT, BH);
+
+  // Outer-edge primary specular — crisp bright streak
+  const lwS1 = ctx.createLinearGradient(BX, 0, BX + 4, 0);
+  lwS1.addColorStop(0, 'rgba(255,255,255,1)');
+  lwS1.addColorStop(0.5, 'rgba(255,255,255,0.55)');
+  lwS1.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = lwS1;
+  ctx.fillRect(BX, BY + 2, 4.5, BH - 4);
+
+  // Secondary softer highlight
+  const lwS2 = ctx.createLinearGradient(BX + 6, 0, BX + 11, 0);
+  lwS2.addColorStop(0, 'rgba(255,255,255,0.28)');
+  lwS2.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = lwS2;
+  ctx.fillRect(BX + 6, BY + 6, 5, BH - 12);
+
+  // Inner-edge refraction band — polished glass edge
+  const lwR = ctx.createLinearGradient(BX + WT - 4, 0, BX + WT + 1, 0);
+  lwR.addColorStop(0, 'rgba(200,230,255,0)');
+  lwR.addColorStop(0.5, 'rgba(200,230,255,0.72)');
+  lwR.addColorStop(1, 'rgba(200,230,255,0.1)');
+  ctx.fillStyle = lwR;
+  ctx.fillRect(BX + WT - 4, BY, 5, IH);
+
+  // RIGHT WALL — mirrored
+  const rwG = ctx.createLinearGradient(BX + BW - WT, 0, BX + BW, 0);
+  rwG.addColorStop(0,    'rgba(230,240,252,0.12)');
+  rwG.addColorStop(0.18, 'rgba(242,248,254,0.36)');
+  rwG.addColorStop(0.45, 'rgba(248,252,255,0.58)');
+  rwG.addColorStop(0.8,  'rgba(242,248,254,0.82)');
+  rwG.addColorStop(1,    'rgba(238,244,250,0.96)');
+  ctx.fillStyle = rwG;
+  ctx.fillRect(BX + BW - WT, BY, WT, BH);
+
+  const rwR = ctx.createLinearGradient(BX + BW - WT - 1, 0, BX + BW - WT + 4, 0);
+  rwR.addColorStop(0, 'rgba(200,230,255,0.1)');
+  rwR.addColorStop(0.5, 'rgba(200,230,255,0.72)');
+  rwR.addColorStop(1, 'rgba(200,230,255,0)');
+  ctx.fillStyle = rwR;
+  ctx.fillRect(BX + BW - WT - 1, BY, 5, IH);
+
+  const rwS1 = ctx.createLinearGradient(BX + BW - 4.5, 0, BX + BW, 0);
+  rwS1.addColorStop(0, 'rgba(255,255,255,0)');
+  rwS1.addColorStop(0.5, 'rgba(255,255,255,0.55)');
+  rwS1.addColorStop(1, 'rgba(255,255,255,1)');
+  ctx.fillStyle = rwS1;
+  ctx.fillRect(BX + BW - 4.5, BY + 2, 4.5, BH - 4);
+
+  // BOTTOM WALL
+  const botG = ctx.createLinearGradient(0, BY + BH - WT, 0, BY + BH);
+  botG.addColorStop(0,   'rgba(198,220,242,0.24)');
+  botG.addColorStop(0.5, 'rgba(186,212,238,0.42)');
+  botG.addColorStop(1,   'rgba(168,200,230,0.64)');
+  ctx.fillStyle = botG;
+  ctx.fillRect(BX, BY + BH - WT, BW, WT);
+
+  // Bottom inner face highlight
+  ctx.fillStyle = 'rgba(235,248,255,0.44)';
+  ctx.fillRect(BX + WT, BY + BH - WT, IW, 4);
+
+  // Bottom outer glint
+  const botGlint = ctx.createLinearGradient(0, BY + BH - 2, 0, BY + BH);
+  botGlint.addColorStop(0, 'rgba(255,255,255,0.42)');
+  botGlint.addColorStop(1, 'rgba(255,255,255,0.12)');
+  ctx.fillStyle = botGlint;
+  ctx.fillRect(BX, BY + BH - 2, BW, 2);
+
+  // Round the bottom corners — mask sharp corners with background color
+  const BR = 10;
+  ctx.fillStyle = '#fffff7';
+  ctx.beginPath();
+  ctx.moveTo(BX, BY + BH - BR);
+  ctx.lineTo(BX, BY + BH);
+  ctx.lineTo(BX + BR, BY + BH);
+  ctx.arc(BX + BR, BY + BH - BR, BR, Math.PI * 0.5, Math.PI);
+  ctx.closePath();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(BX + BW - BR, BY + BH);
+  ctx.lineTo(BX + BW, BY + BH);
+  ctx.lineTo(BX + BW, BY + BH - BR);
+  ctx.arc(BX + BW - BR, BY + BH - BR, BR, 0, Math.PI * 0.5);
+  ctx.closePath();
+  ctx.fill();
+
+  // Outer silhouette — soft, rounded bottom
+  ctx.strokeStyle = 'rgba(82,116,180,0.28)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(BX, BY);
+  ctx.lineTo(BX, BY + BH - BR);
+  ctx.arcTo(BX, BY + BH, BX + BR, BY + BH, BR);
+  ctx.lineTo(BX + BW - BR, BY + BH);
+  ctx.arcTo(BX + BW, BY + BH, BX + BW, BY + BH - BR, BR);
+  ctx.lineTo(BX + BW, BY);
+  ctx.stroke();
+
+  // Inner wall lines
+  ctx.strokeStyle = 'rgba(82,116,180,0.22)';
+  ctx.beginPath(); ctx.moveTo(BX + WT, BY); ctx.lineTo(BX + WT, BY + BH - WT); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(BX + BW - WT, BY); ctx.lineTo(BX + BW - WT, BY + BH - WT); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(BX + WT, BY + BH - WT); ctx.lineTo(BX + BW - WT, BY + BH - WT); ctx.stroke();
+
+  // ===== TOP COLLAR — solid block above body, like real cuvette =====
+  const RIM_H = 16, RE = 0;
+  const rimY = BY - RIM_H;
+
+  // Left collar block (flush with body walls, no overhang)
+  const rimLG = ctx.createLinearGradient(BX, 0, BX + WT, 0);
+  rimLG.addColorStop(0,   'rgba(238,244,250,0.98)');
+  rimLG.addColorStop(0.35,'rgba(245,250,255,0.85)');
+  rimLG.addColorStop(0.8, 'rgba(242,248,255,0.6)');
+  rimLG.addColorStop(1,   'rgba(235,244,255,0.18)');
+  ctx.fillStyle = rimLG;
+  ctx.fillRect(BX, rimY, WT, RIM_H);
+
+  // Left collar outer specular
+  const rimLS = ctx.createLinearGradient(BX, 0, BX + 4, 0);
+  rimLS.addColorStop(0, 'rgba(255,255,255,1)');
+  rimLS.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = rimLS;
+  ctx.fillRect(BX, rimY, 4, RIM_H);
+
+  // Left collar top face
+  const rimLT = ctx.createLinearGradient(BX, rimY, BX + WT, rimY);
+  rimLT.addColorStop(0, 'rgba(255,255,255,0.9)');
+  rimLT.addColorStop(1, 'rgba(230,242,255,0.4)');
+  ctx.fillStyle = rimLT;
+  ctx.fillRect(BX, rimY, WT, 2.5);
+
+  // Right collar block
+  const rimRG = ctx.createLinearGradient(BX + BW - WT, 0, BX + BW, 0);
+  rimRG.addColorStop(0,   'rgba(235,244,255,0.18)');
+  rimRG.addColorStop(0.2, 'rgba(242,248,255,0.6)');
+  rimRG.addColorStop(0.65,'rgba(245,250,255,0.85)');
+  rimRG.addColorStop(1,   'rgba(238,244,250,0.98)');
+  ctx.fillStyle = rimRG;
+  ctx.fillRect(BX + BW - WT, rimY, WT, RIM_H);
+
+  // Right collar outer specular
+  const rimRS = ctx.createLinearGradient(BX + BW - 4, 0, BX + BW, 0);
+  rimRS.addColorStop(0, 'rgba(255,255,255,0)');
+  rimRS.addColorStop(1, 'rgba(255,255,255,1)');
+  ctx.fillStyle = rimRS;
+  ctx.fillRect(BX + BW - 4, rimY, 4, RIM_H);
+
+  // Right collar top face
+  const rimRT = ctx.createLinearGradient(BX + BW - WT, rimY, BX + BW, rimY);
+  rimRT.addColorStop(0, 'rgba(230,242,255,0.4)');
+  rimRT.addColorStop(1, 'rgba(255,255,255,0.9)');
+  ctx.fillStyle = rimRT;
+  ctx.fillRect(BX + BW - WT, rimY, WT, 2.5);
+
+  // Rim outlines
+  ctx.strokeStyle = 'rgba(82,116,180,0.38)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(BX, rimY);      ctx.lineTo(BX, BY);      ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(BX, rimY);      ctx.lineTo(BX + WT, rimY); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(BX + BW, rimY); ctx.lineTo(BX + BW, BY); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(BX + BW - WT, rimY); ctx.lineTo(BX + BW, rimY); ctx.stroke();
+
+  // Inner lip glint
+  ctx.strokeStyle = 'rgba(180,220,252,0.45)';
+  ctx.beginPath(); ctx.moveTo(IX, rimY); ctx.lineTo(IX, BY); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(IX + IW, rimY); ctx.lineTo(IX + IW, BY); ctx.stroke();
+
+  // Air gap — shadow inside opening above liquid
+  const agG = ctx.createLinearGradient(0, rimY, 0, rimY + 18);
+  agG.addColorStop(0, 'rgba(10,18,50,0.1)');
+  agG.addColorStop(1, 'rgba(10,18,50,0)');
+  ctx.fillStyle = agG;
+  ctx.fillRect(IX, rimY, IW, 18);
+
+  // ===== STOPPER — wide flat PTFE mushroom cap =====
+  const INSERT = 5;
+  const neckX = CX - NECK_W / 2;
+  const neckY = rimY - NECK_H + INSERT;
+  const discSideY = neckY - DISC_SIDE_H;
+  const discTopCY = discSideY;
+
+  // Soft drop shadow under disc
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.15)';
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetY = 3;
+
+  // NECK — short cylinder sitting in the cuvette opening
+  const nkG = ctx.createLinearGradient(neckX, 0, neckX + NECK_W, 0);
+  nkG.addColorStop(0,    '#c4c6d8');
+  nkG.addColorStop(0.1,  '#dddff0');
+  nkG.addColorStop(0.42, '#f6f6ff');
+  nkG.addColorStop(0.85, '#dddff0');
+  nkG.addColorStop(1,    '#c2c4d6');
+  ctx.fillStyle = nkG;
+  ctx.fillRect(neckX, neckY, NECK_W, NECK_H);
+  ctx.restore();
+
+  // Neck left specular
+  const nkGl = ctx.createLinearGradient(neckX, 0, neckX + 5, 0);
+  nkGl.addColorStop(0, 'rgba(255,255,255,0.72)');
+  nkGl.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = nkGl;
+  ctx.fillRect(neckX + 1, neckY + 2, 5, NECK_H - 4);
+
+  // Neck shadow at insertion point
+  const nkBot = ctx.createLinearGradient(0, neckY + NECK_H - 5, 0, neckY + NECK_H);
+  nkBot.addColorStop(0, 'rgba(0,0,0,0)');
+  nkBot.addColorStop(1, 'rgba(0,0,0,0.1)');
+  ctx.fillStyle = nkBot;
+  ctx.fillRect(neckX, neckY + NECK_H - 5, NECK_W, 5);
+
+  ctx.strokeStyle = 'rgba(148,150,172,0.4)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(neckX, neckY, NECK_W, NECK_H);
+
+  // DISC SIDE FACE — the cylindrical rim of the cap
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.12)';
+  ctx.shadowBlur = 6;
+  ctx.shadowOffsetY = 2;
+  const dsG = ctx.createLinearGradient(CX - DISC_W/2, 0, CX + DISC_W/2, 0);
+  dsG.addColorStop(0,    '#c0c0d2');
+  dsG.addColorStop(0.06, '#d8d8ea');
+  dsG.addColorStop(0.5,  '#f8f8ff');
+  dsG.addColorStop(0.94, '#d8d8ea');
+  dsG.addColorStop(1,    '#bdbdd0');
+  ctx.fillStyle = dsG;
+  ctx.fillRect(CX - DISC_W/2, discSideY, DISC_W, DISC_SIDE_H);
+  ctx.restore();
+
+  // Disc side top bevel
+  const dsBev = ctx.createLinearGradient(0, discSideY, 0, discSideY + 3);
+  dsBev.addColorStop(0, 'rgba(255,255,255,0.62)');
+  dsBev.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = dsBev;
+  ctx.fillRect(CX - DISC_W/2, discSideY, DISC_W, 3);
+
+  // Disc side bottom shadow
+  const dsBot = ctx.createLinearGradient(0, discSideY + DISC_SIDE_H - 3, 0, discSideY + DISC_SIDE_H);
+  dsBot.addColorStop(0, 'rgba(0,0,0,0)');
+  dsBot.addColorStop(1, 'rgba(0,0,0,0.09)');
+  ctx.fillStyle = dsBot;
+  ctx.fillRect(CX - DISC_W/2, discSideY + DISC_SIDE_H - 3, DISC_W, 3);
+
+  ctx.strokeStyle = 'rgba(135,135,158,0.32)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(CX - DISC_W/2, discSideY, DISC_W, DISC_SIDE_H);
+
+  // Disc underside arc — foreshortened bottom ellipse (shadow)
+  ctx.fillStyle = 'rgba(140,140,165,0.3)';
+  ctx.beginPath();
+  ctx.ellipse(CX, discSideY + DISC_SIDE_H, DISC_W/2 * 0.97, DISC_RY * 0.5, 0, 0, Math.PI);
+  ctx.fill();
+
+  // DISC TOP FACE — wide flat ellipse cap
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.1)';
+  ctx.shadowBlur = 10;
+  ctx.shadowOffsetY = 3;
+  const dtG = ctx.createRadialGradient(CX - 24, discTopCY - 3, 0, CX, discTopCY, DISC_W / 2);
+  dtG.addColorStop(0,    '#ffffff');
+  dtG.addColorStop(0.3,  '#f8f8ff');
+  dtG.addColorStop(0.7,  '#ebebf8');
+  dtG.addColorStop(1,    '#d6d6ea');
+  ctx.fillStyle = dtG;
+  ctx.beginPath();
+  ctx.ellipse(CX, discTopCY, DISC_W / 2, DISC_RY, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  ctx.strokeStyle = 'rgba(128,128,152,0.28)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.ellipse(CX, discTopCY, DISC_W / 2, DISC_RY, 0, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Disc top specular hotspot
+  const dSpec = ctx.createRadialGradient(CX - 26, discTopCY - 3, 0, CX - 14, discTopCY, DISC_W * 0.32);
+  dSpec.addColorStop(0,    'rgba(255,255,255,0.96)');
+  dSpec.addColorStop(0.28, 'rgba(255,255,255,0.38)');
+  dSpec.addColorStop(1,    'rgba(255,255,255,0)');
+  ctx.fillStyle = dSpec;
+  ctx.beginPath();
+  ctx.ellipse(CX, discTopCY, DISC_W / 2, DISC_RY, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Disc top rim arc highlight
+  ctx.strokeStyle = 'rgba(255,255,255,0.58)';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.ellipse(CX, discTopCY, DISC_W/2 - 2, DISC_RY - 1, 0, Math.PI * 1.1, Math.PI * 1.9);
+  ctx.stroke();
+
+  // ===== UI CARD =====
+  ctx.save();
+  ctx.shadowColor = 'rgba(65,95,165,0.1)';
+  ctx.shadowBlur = 28;
+  ctx.shadowOffsetY = 8;
+  rrect(CARD_X, CARD_Y, CARD_W, CARD_H, CARD_R);
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+  ctx.restore();
+
+  rrect(CARD_X, CARD_Y, CARD_W, CARD_H, CARD_R);
+  ctx.strokeStyle = 'rgba(104,95,228,0.16)';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  ctx.fillStyle = 'rgba(85,80,148,0.5)';
+  ctx.font = '700 10px system-ui, -apple-system, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('CRP RESULTS', CX, CARD_Y + 22);
+
+  // Track background
+  ctx.save();
+  rrect(TRACK_X, TRACK_Y, TRACK_W, TRACK_H, TRACK_H / 2);
+  ctx.fillStyle = 'rgba(0,0,0,0.06)';
+  ctx.fill();
+  ctx.restore();
+
+  // Active track fill
+  const trkG = ctx.createLinearGradient(TRACK_X, 0, TRACK_X + TRACK_W, 0);
+  trkG.addColorStop(0, '#22c55e');
+  trkG.addColorStop(0.33, '#f59e0b');
+  trkG.addColorStop(0.65, '#f97316');
+  trkG.addColorStop(1, '#ef4444');
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(TRACK_X, TRACK_Y - 2, TRACK_W * p + 1, TRACK_H + 4);
+  ctx.clip();
+  rrect(TRACK_X, TRACK_Y, TRACK_W, TRACK_H, TRACK_H / 2);
+  ctx.fillStyle = trkG;
+  ctx.fill();
+  ctx.restore();
+
+  // Thumb
+  const thumbX = TRACK_X + TRACK_W * p;
+  const thumbY = TRACK_Y + TRACK_H / 2;
+  const [tr, tg, tb] = multiLerp(TRACK_COLORS, p);
+
+  const tGlow = ctx.createRadialGradient(thumbX, thumbY, 0, thumbX, thumbY, 14);
+  tGlow.addColorStop(0, `rgba(${tr},${tg},${tb},0.24)`);
+  tGlow.addColorStop(1, `rgba(${tr},${tg},${tb},0)`);
+  ctx.fillStyle = tGlow;
+  ctx.beginPath(); ctx.arc(thumbX, thumbY, 14, 0, Math.PI * 2); ctx.fill();
+
+  ctx.shadowColor = `rgba(${tr},${tg},${tb},0.32)`;
+  ctx.shadowBlur = 8;
+  ctx.beginPath(); ctx.arc(thumbX, thumbY, 9, 0, Math.PI * 2);
+  ctx.fillStyle = '#ffffff'; ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = `rgba(${tr},${tg},${tb},0.78)`;
+  ctx.lineWidth = 2; ctx.stroke();
+
+  ctx.fillStyle = 'rgba(72,72,110,0.5)';
+  ctx.font = '500 10px system-ui, -apple-system, sans-serif';
+  ctx.textAlign = 'left';  ctx.fillText('Low',      TRACK_X,                  TRACK_Y + TRACK_H + 17);
+  ctx.textAlign = 'center'; ctx.fillText('Moderate', TRACK_X + TRACK_W / 2,   TRACK_Y + TRACK_H + 17);
+  ctx.textAlign = 'right';  ctx.fillText('High',     TRACK_X + TRACK_W,       TRACK_Y + TRACK_H + 17);
+
+  ctx.textAlign = 'center';
+  ctx.font = 'bold 19px system-ui, -apple-system, sans-serif';
+  ctx.fillStyle = `rgb(${tr},${tg},${tb})`;
+  ctx.shadowColor = `rgba(${tr},${tg},${tb},0.2)`;
+  ctx.shadowBlur = 10;
+  ctx.fillText(getLabel(p), CX, CARD_Y + CARD_H - 20);
+  ctx.shadowBlur = 0;
+
+  requestAnimationFrame(draw);
+}
+
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
