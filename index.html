@@ -237,27 +237,20 @@
         /* Hero Section */
         .hero {
             padding: 6rem 0 5rem;
-            background: url('hero-bg.png') center center / cover no-repeat;
+            background: url('hero-bg-marble.jpg') center center / cover no-repeat;
             position: relative;
             overflow: hidden;
             min-height: 600px;
         }
 
-        .hero::before {
-            display: none;
-        }
-
-        .hero::after {
-            display: none;
-        }
-
         .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
             position: relative;
             z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero-content {
+            max-width: 45%;
         }
 
         .hero-content h1 {
@@ -339,14 +332,22 @@
         }
 
         .hero-visual {
+            position: absolute;
+            top: -30%;
+            right: 0;
+            bottom: -30%;
+            width: 100%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            pointer-events: none;
         }
 
-        .hero-visual {
-            flex-direction: column;
-            gap: 1.2rem;
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center right;
         }
 
         /* Section Divider */
@@ -1073,32 +1074,19 @@
             transform: translateY(-2px);
         }
 
-        /* Responsive */
+        /* Responsive - Tablet */
         @media (max-width: 992px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-                text-align: center;
+            .hero {
+                padding: 4rem 0 3rem;
+                min-height: auto;
             }
 
-            .hero-content p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-features {
-                justify-content: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-stats {
-                justify-content: center;
+            .hero-content {
+                max-width: 50%;
             }
 
             .hero-visual {
-                display: none;
+                width: 55%;
             }
 
             .cards-grid {
@@ -1156,6 +1144,55 @@
         /* (removed old vial/video mobile styles) */
 
         @media (max-width: 640px) {
+            .hero {
+                padding: 2.5rem 0 0;
+                min-height: auto;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+                padding-bottom: 1.5rem;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-visual {
+                position: relative;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .hero-img {
+                object-position: center;
+            }
+
+            .hero-features {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .hero-stat:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+                padding-bottom: 1.5rem;
+            }
+
             nav {
                 display: none;
             }
@@ -1310,7 +1347,7 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <!-- Background image provides the visual -->
+                <img src="hero-product.jpg" alt="Sensa wellness kit and app showing inflammation score" class="hero-img">
             </div>
         </div>
     </section>
