@@ -591,6 +591,69 @@
             margin: 0 auto 3rem;
         }
 
+        .results-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .results-video {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .crp-hscale {
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .crp-hs-track {
+            width: 100%;
+            height: 10px;
+            border-radius: 6px;
+            background: linear-gradient(to right, rgb(148,218,255) 0%, rgb(62,152,240) 45%, rgb(22,70,200) 68%, rgb(7,16,88) 100%);
+            position: relative;
+        }
+
+        .crp-hs-title {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .crp-hs-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .crp-hs-labels span {
+            font-size: 0.65rem;
+            color: var(--text-gray);
+            opacity: 0.7;
+        }
+
+        .crp-hs-thumb {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2.5px solid rgb(148,218,255);
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 0 10px rgba(148,218,255,0.5);
+        }
+
         .results-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1317,6 +1380,23 @@
             <h2>Understanding Your Results</h2>
             <p class="section-sub">Your Sensa reading gives you two key pieces of information:</p>
 
+            <div class="results-visual">
+                <video class="results-video" autoplay loop muted playsinline>
+                    <source src="cuvette-test.mp4" type="video/mp4">
+                </video>
+                <div class="crp-hscale">
+                    <div class="crp-hs-title">Inflammation Level</div>
+                    <div class="crp-hs-track">
+                        <div class="crp-hs-thumb"></div>
+                    </div>
+                    <div class="crp-hs-labels">
+                        <span>Low</span>
+                        <span>Moderate</span>
+                        <span>High</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="results-grid">
                 <div class="result-card">
                     <h3>CRP Level (mg/dL)</h3>
@@ -1602,5 +1682,54 @@
         })();
     </script>
 
+<script>
+  const resultsVideo = document.querySelector('.results-video');
+  const resultsThumb = document.querySelector('.crp-hs-thumb');
+  const resultsTrack = document.querySelector('.crp-hs-track');
+
+  if (resultsVideo && resultsThumb && resultsTrack) {
+    const colorStops = [
+      { p: 0,    r: 148, g: 218, b: 255 },
+      { p: 0.35, r: 62,  g: 152, b: 240 },
+      { p: 0.60, r: 22,  g: 70,  b: 200 },
+      { p: 0.87, r: 7,   g: 16,  b: 88  },
+      { p: 1.0,  r: 148, g: 218, b: 255 },
+    ];
+
+    function lerpColor(t) {
+      for (let i = 0; i < colorStops.length - 1; i++) {
+        const a = colorStops[i], b = colorStops[i + 1];
+        if (t >= a.p && t <= b.p) {
+          const f = (t - a.p) / (b.p - a.p);
+          return {
+            r: Math.round(a.r + f * (b.r - a.r)),
+            g: Math.round(a.g + f * (b.g - a.g)),
+            b: Math.round(a.b + f * (b.b - a.b)),
+          };
+        }
+      }
+      return colorStops[colorStops.length - 1];
+    }
+
+    function update() {
+      if (resultsVideo.duration) {
+        const progress = resultsVideo.currentTime / resultsVideo.duration;
+        const trackW = resultsTrack.clientWidth;
+        const thumbW = 20;
+        const pos = progress <= 0.87
+          ? (progress / 0.87) * (trackW - thumbW)
+          : 0;
+        const c = lerpColor(progress);
+        const rgb = `rgb(${c.r},${c.g},${c.b})`;
+        resultsThumb.style.left = pos + 'px';
+        resultsThumb.style.borderColor = rgb;
+        resultsThumb.style.boxShadow = `0 2px 8px rgba(0,0,0,0.15), 0 0 10px rgba(${c.r},${c.g},${c.b},0.5)`;
+      }
+      requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  }
+</script>
 </body>
 </html>
