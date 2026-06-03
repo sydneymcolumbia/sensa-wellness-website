@@ -857,6 +857,63 @@
             font-weight: 500;
         }
 
+        /* Press Section */
+        .press {
+            padding: var(--section-padding);
+            background: var(--bg-primary);
+        }
+
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .press-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .press-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .press-source {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-coral);
+            margin-bottom: 0.8rem;
+        }
+
+        .press-card h3 {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+        }
+
+        .press-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .press-date {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
         /* Contact Section */
         .contact {
             padding: var(--section-padding);
@@ -1305,6 +1362,7 @@
                 <a href="how-to.html">How To</a>
                 <a href="#team">Team</a>
                 <a href="our-story.html">Our Story</a>
+                <a href="#press">Press</a>
                 <a href="pay-now.html" class="btn">Buy Now</a>
             </nav>
         </div>
@@ -1701,6 +1759,26 @@
                     <h3>Malhar</h3>
                     <p>Data Scientist</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Press Section -->
+    <section class="press" id="press">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Sensa in the Press</h2>
+                <p>Read about Sensa Wellness and the people behind the science.</p>
+            </div>
+            <div class="press-grid reveal">
+                <a href="https://hgseadmissions.com/2026/06/02/ryan-robinson-using-education-to-make-scientific-innovation-more-human/" class="press-card" target="_blank" rel="noopener">
+                    <div class="press-source">HGSE Admissions Blog</div>
+                    <h3>Ryan Robinson: Using Education to Make Scientific Innovation More Human</h3>
+                    <p>A reflection on how Harvard's Graduate School of Education shaped Robinson's approach to bridging science, entrepreneurship, and education through human-centered leadership at Sensa.</p>
+                    <span class="press-date">June 2, 2026</span>
+                </a>
             </div>
         </div>
     </section>
