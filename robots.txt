@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+Disallow: /admin.html
+Disallow: /success.html
+Disallow: /chat.html
+Disallow: /deck.html
+Disallow: /cuvet-animation.html
+Disallow: /start.html
+Disallow: /video-demo/
+Disallow: /marketing/
+Disallow: /node_modules/
+
 Sitemap: https://www.sensawellness.org/sitemap.xml
