@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is CRP? Understanding C-Reactive Protein | Sensa Wellness</title>
+    <meta name="description" content="Learn what CRP (C-reactive protein) is, what your levels mean, and how to test at home. Understand the link between inflammation and your health.">
+    <meta name="keywords" content="what is CRP, C-reactive protein, CRP test, CRP levels, inflammation test, at-home CRP test, CRP meaning, inflammation marker">
+    <meta name="theme-color" content="#1800AD">
+    <link rel="canonical" href="https://www.sensawellness.org/what-is-crp.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sensawellness.org/what-is-crp.html">
+    <meta property="og:title" content="What is CRP? Understanding C-Reactive Protein | Sensa Wellness">
+    <meta property="og:description" content="Learn what CRP (C-reactive protein) is, what your levels mean, and how to test at home. Understand the link between inflammation and your health.">
+    <meta property="og:image" content="https://www.sensawellness.org/sensa-og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What is CRP? Understanding C-Reactive Protein | Sensa Wellness">
+    <meta name="twitter:description" content="Learn what CRP (C-reactive protein) is, what your levels mean, and how to test at home. Understand the link between inflammation and your health.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Page-specific reveal animation ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Hero ── */
+        .crp-hero {
+            padding: 5.5rem 0 4rem;
+            background: linear-gradient(165deg, #ffffff 0%, #f8f6ff 55%, #eef3ff 100%);
+            text-align: center;
+        }
+
+        .crp-hero .eyebrow {
+            display: inline-block;
+            background: rgba(114, 103, 242, 0.1);
+            color: var(--accent-coral);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+        }
+
+        .crp-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            color: var(--text-dark);
+            margin-bottom: 1.4rem;
+            line-height: 1.15;
+        }
+
+        .crp-hero h1 span {
+            color: var(--accent-navy);
+        }
+
+        .crp-hero .hero-intro {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 640px;
+            margin: 0 auto 2.2rem;
+            line-height: 1.75;
+        }
+
+        .crp-hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            background: transparent;
+            color: var(--accent-navy);
+            border: 2px solid var(--accent-navy);
+            text-decoration: none;
+            border-radius: 0.33rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-navy);
+            color: white;
+        }
+
+        /* ── Quick-stat strip ── */
+        .crp-stats {
+            background: var(--text-dark);
+            padding: 2rem 0;
+        }
+
+        .crp-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .crp-stat-item {
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        .crp-stat-item:not(:last-child) {
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .crp-stat-number {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .crp-stat-label {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.4;
+        }
+
+        /* ── Shared section styles ── */
+        .crp-section {
+            padding: 5rem 0;
+        }
+
+        .crp-section.bg-white {
+            background: var(--bg-white);
+        }
+
+        .crp-section.bg-primary {
+            background: var(--bg-primary);
+        }
+
+        .crp-section.bg-subtle {
+            background: linear-gradient(165deg, #f8f6ff 0%, #eef3ff 100%);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent-coral);
+            margin-bottom: 0.8rem;
+        }
+
+        /* ── Two-column layout ── */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .two-col.reverse {
+            direction: rtl;
+        }
+
+        .two-col.reverse > * {
+            direction: ltr;
+        }
+
+        .crp-text h2 {
+            font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+            color: var(--text-dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.25;
+        }
+
+        .crp-text p {
+            color: var(--text-gray);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .crp-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Info cards (for "why track CRP") ── */
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 1.6rem 1.5rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+        }
+
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(114,103,242,0.12), rgba(65,166,240,0.14));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-navy);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            font-size: 0.92rem;
+            color: var(--text-gray);
+            line-height: 1.65;
+        }
+
+        /* ── CRP levels table ── */
+        .levels-section {
+            padding: 5rem 0;
+            background: var(--bg-white);
+        }
+
+        .levels-section .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .levels-section .section-header h2 {
+            font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+        }
+
+        .levels-section .section-header p {
+            color: var(--text-gray);
+            font-size: 1.02rem;
+            max-width: 580px;
+            margin: 0.8rem auto 0;
+            line-height: 1.7;
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .level-card {
+            border-radius: 14px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+        }
+
+        .level-card.optimal {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .level-card.optimal::before { background: #22c55e; }
+
+        .level-card.moderate {
+            background: #fefce8;
+            border-color: #fde68a;
+        }
+
+        .level-card.moderate::before { background: #eab308; }
+
+        .level-card.elevated {
+            background: #fff7ed;
+            border-color: #fed7aa;
+        }
+
+        .level-card.elevated::before { background: #f97316; }
+
+        .level-card.high {
+            background: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .level-card.high::before { background: #ef4444; }
+
+        .level-range {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .level-card.optimal .level-range { color: #15803d; }
+        .level-card.moderate .level-range { color: #a16207; }
+        .level-card.elevated .level-range { color: #c2410c; }
+        .level-card.high .level-range { color: #b91c1c; }
+
+        .level-unit {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .level-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .level-desc {
+            font-size: 0.88rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .levels-disclaimer {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* ── Comparison table ── */
+        .compare-section {
+            padding: 5rem 0;
+            background: var(--bg-primary);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            margin-top: 2.5rem;
+        }
+
+        .compare-table th {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 2px solid rgba(0,0,0,0.06);
+        }
+
+        .compare-table th:first-child {
+            background: var(--bg-primary);
+            color: var(--text-dark);
+            width: 28%;
+        }
+
+        .compare-table th.col-traditional {
+            background: #f8f6ff;
+            color: var(--text-dark);
+        }
+
+        .compare-table th.col-sensa {
+            background: var(--accent-navy);
+            color: white;
+        }
+
+        .compare-table td {
+            padding: 1rem 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .compare-table td:first-child {
+            font-weight: 600;
+            color: var(--text-dark);
+            background: var(--bg-primary);
+        }
+
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .compare-table .check-yes {
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        .compare-table .check-no {
+            color: #dc2626;
+        }
+
+        /* ── How Sensa works ── */
+        .how-sensa {
+            padding: 5rem 0;
+            background: linear-gradient(165deg, #f8f6ff 0%, #eef3ff 100%);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: var(--bg-white);
+            border-radius: 14px;
+            padding: 2rem 1.6rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 32px rgba(0,0,0,0.08);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent-orange));
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .step-card p {
+            font-size: 0.92rem;
+            color: var(--text-gray);
+            line-height: 1.65;
+        }
+
+        /* ── Final CTA ── */
+        .crp-final-cta {
+            padding: 5.5rem 0;
+            background: var(--text-dark);
+            text-align: center;
+        }
+
+        .crp-final-cta h2 {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .crp-final-cta p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto 2rem;
+            line-height: 1.75;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 0.33rem;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-gold:hover {
+            background: var(--accent-orange);
+            transform: translateY(-2px);
+        }
+
+        .cta-trust {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.45);
+        }
+
+        /* ── Wellness disclaimer ── */
+        .wellness-disclaimer {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 992px) {
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .two-col.reverse { direction: ltr; }
+
+            .levels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .crp-stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .crp-stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .crp-stat-item:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .levels-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .compare-table th,
+            .compare-table td {
+                padding: 0.85rem 0.9rem;
+                font-size: 0.88rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="app.html">App</a>
+                <a href="index.html#team">Team</a>
+                <a href="pay-now.html" class="btn">Buy Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ══ HERO ══ -->
+    <section class="crp-hero">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow">Inflammation 101</span>
+                <h1>What is <span>CRP</span>?</h1>
+                <p class="hero-intro">C-reactive protein (CRP) is a protein your liver releases in response to inflammation. It is one of the most widely used markers of systemic inflammation, and tracking it over time can offer a clear picture of how your lifestyle is affecting your body from the inside.</p>
+                <div class="crp-hero-cta">
+                    <a href="pay-now.html" class="btn">Test Your CRP at Home</a>
+                    <a href="#crp-levels" class="btn-secondary">See What Levels Mean</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ STAT STRIP ══ -->
+    <div class="crp-stats">
+        <div class="container">
+            <div class="crp-stats-grid">
+                <div class="crp-stat-item reveal">
+                    <span class="crp-stat-number">4&ndash;6 hrs</span>
+                    <span class="crp-stat-label">Time for CRP to rise after inflammation begins</span>
+                </div>
+                <div class="crp-stat-item reveal">
+                    <span class="crp-stat-number">1 in 2</span>
+                    <span class="crp-stat-label">Adults estimated to have low-grade chronic inflammation</span>
+                </div>
+                <div class="crp-stat-item reveal">
+                    <span class="crp-stat-number">Minutes</span>
+                    <span class="crp-stat-label">Time to get a result with at-home testing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ UNDERSTANDING CRP ══ -->
+    <section class="crp-section bg-white">
+        <div class="container">
+            <div class="two-col">
+                <div class="crp-text reveal">
+                    <span class="section-label">The Basics</span>
+                    <h2>Understanding C-Reactive Protein</h2>
+                    <p>C-reactive protein is a protein produced by the liver. Under normal conditions, it circulates in the blood at very low concentrations. When the body detects tissue damage, infection, or sustained stress, immune signaling molecules called cytokines (particularly IL-6) prompt the liver to rapidly increase CRP production.</p>
+                    <p>This makes CRP a reliable signal that something in the body has triggered an inflammatory response. In the short term, that response is helpful: it helps fight infections and heal injuries. The concern arises when inflammation becomes chronic, running quietly in the background for months or years without an obvious cause.</p>
+                    <p>High-sensitivity CRP (hsCRP) assays are capable of detecting very small changes in CRP concentration, making them useful for tracking the kind of low-grade inflammation associated with everyday lifestyle factors like diet, sleep, stress, and physical activity.</p>
+                </div>
+                <div class="crp-visual reveal">
+                    <div style="background: linear-gradient(145deg, #eef3ff, #f5f3ff); border-radius: 16px; padding: 2.5rem; border: 1px solid rgba(114,103,242,0.12);">
+                        <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1.4rem;">How CRP Gets Produced</h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+                            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <div style="min-width: 28px; height: 28px; background: var(--accent-coral); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: 700; font-family: 'Nunito', sans-serif;">1</div>
+                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-gray); line-height: 1.6;">A stressor (infection, poor diet, poor sleep, chronic stress) activates immune cells.</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <div style="min-width: 28px; height: 28px; background: var(--accent-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: 700; font-family: 'Nunito', sans-serif;">2</div>
+                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-gray); line-height: 1.6;">Those cells release IL-6 and other pro-inflammatory cytokines into the bloodstream.</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <div style="min-width: 28px; height: 28px; background: var(--accent-navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: 700; font-family: 'Nunito', sans-serif;">3</div>
+                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-gray); line-height: 1.6;">The liver detects these signals and ramps up CRP production within 4 to 6 hours.</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <div style="min-width: 28px; height: 28px; background: var(--accent-purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: 700; font-family: 'Nunito', sans-serif;">4</div>
+                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-gray); line-height: 1.6;">CRP levels in the blood rise, providing a measurable signal of the body's inflammatory state.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CRP LEVELS ══ -->
+    <section class="levels-section" id="crp-levels">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Reference Ranges</span>
+                <h2>CRP Levels and What They Mean</h2>
+                <p>High-sensitivity CRP (hsCRP) is measured in milligrams per liter (mg/L). The ranges below reflect general wellness context and are based on widely referenced cardiovascular risk classifications. They are not a substitute for a healthcare provider's interpretation.</p>
+            </div>
+
+            <div class="levels-grid reveal">
+                <div class="level-card optimal">
+                    <div class="level-range">&lt; 1</div>
+                    <span class="level-unit">mg/L</span>
+                    <div class="level-label">Optimal</div>
+                    <p class="level-desc">Low inflammatory activity. Associated with favorable cardiovascular and metabolic wellness in most research.</p>
+                </div>
+                <div class="level-card moderate">
+                    <div class="level-range">1 &ndash; 3</div>
+                    <span class="level-unit">mg/L</span>
+                    <div class="level-label">Moderate</div>
+                    <p class="level-desc">Average range for many adults. May reflect lifestyle factors like stress, diet, or inconsistent sleep.</p>
+                </div>
+                <div class="level-card elevated">
+                    <div class="level-range">3 &ndash; 10</div>
+                    <span class="level-unit">mg/L</span>
+                    <div class="level-label">Elevated</div>
+                    <p class="level-desc">Suggests meaningful inflammatory activity. Commonly seen with visceral fat, poor diet, sedentary behavior, or recovering from illness.</p>
+                </div>
+                <div class="level-card high">
+                    <div class="level-range">&gt; 10</div>
+                    <span class="level-unit">mg/L</span>
+                    <div class="level-label">High</div>
+                    <p class="level-desc">Often reflects an acute event such as active infection, injury, or significant illness. Consult a healthcare provider.</p>
+                </div>
+            </div>
+
+            <p class="levels-disclaimer reveal">These ranges are based on high-sensitivity CRP (hsCRP) reference standards from the American Heart Association and related research. Sensa is a general wellness product. These values are for educational purposes only and do not constitute medical advice.</p>
+        </div>
+    </section>
+
+    <!-- ══ WHY TRACK CRP ══ -->
+    <section class="crp-section bg-primary">
+        <div class="container">
+            <div class="reveal" style="max-width: 620px; margin-bottom: 1rem;">
+                <span class="section-label">Why It Matters</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">Why Track Your CRP?</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">A single CRP reading is informative. A trend over time is transformative. Regular monitoring gives you objective feedback on how your habits are affecting your body at a biological level.</p>
+            </div>
+
+            <div class="benefit-grid">
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">01</div>
+                    <h3>Weight and Body Composition</h3>
+                    <p>Visceral fat (fat around internal organs) is one of the strongest drivers of elevated CRP. Tracking CRP alongside weight gives you a fuller picture of whether changes in body composition are actually reducing inflammation, not just moving the number on a scale.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">02</div>
+                    <h3>Exercise and Recovery</h3>
+                    <p>Acute exercise transiently raises CRP, but consistent training lowers baseline inflammation over time. Monitoring CRP can help you find the balance between productive training stress and overtraining, and confirm your recovery strategies are working.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">03</div>
+                    <h3>Energy and Sleep</h3>
+                    <p>Chronic fatigue and poor sleep quality are both associated with elevated CRP. Seeing your CRP fall as you prioritize sleep hygiene provides tangible confirmation that the effort is paying off beyond just feeling rested.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">04</div>
+                    <h3>Long-Term Wellness</h3>
+                    <p>Chronic low-grade inflammation is a shared feature of many common conditions, including cardiovascular disease, metabolic syndrome, and accelerated aging. Keeping CRP in a healthy range is one measurable strategy for supporting long-term health.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">05</div>
+                    <h3>Diet and Nutrition</h3>
+                    <p>Ultra-processed foods, refined carbohydrates, and excess sugar reliably raise CRP. Anti-inflammatory eating patterns consistently lower it. Your CRP can tell you whether a dietary change is working for your biology specifically, not just in population studies.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">06</div>
+                    <h3>Stress and Mental Wellbeing</h3>
+                    <p>Psychological stress and social isolation both elevate inflammatory markers. Practices like consistent exercise, connection, and relaxation techniques that lower your perceived stress can also show up as measurable reductions in CRP.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ TRADITIONAL VS AT-HOME ══ -->
+    <section class="compare-section">
+        <div class="container">
+            <div class="reveal" style="text-align: center; margin-bottom: 0.5rem;">
+                <span class="section-label">Testing Options</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); line-height: 1.25;">Traditional Testing vs. At-Home Testing</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; max-width: 580px; margin: 0.8rem auto 0; line-height: 1.75;">Lab-based CRP testing has been the standard for decades. At-home testing changes the equation for routine wellness monitoring.</p>
+            </div>
+
+            <div class="reveal">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="col-traditional">Traditional Lab Test</th>
+                            <th class="col-sensa">At-Home Testing (Sensa)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sample Type</td>
+                            <td>Blood draw (venipuncture)</td>
+                            <td class="check-yes">Saliva, no needles</td>
+                        </tr>
+                        <tr>
+                            <td>Where to Test</td>
+                            <td>Clinic, hospital, or lab facility</td>
+                            <td class="check-yes">Anywhere, at home</td>
+                        </tr>
+                        <tr>
+                            <td>Appointment Required</td>
+                            <td class="check-no">Yes</td>
+                            <td class="check-yes">No</td>
+                        </tr>
+                        <tr>
+                            <td>Result Turnaround</td>
+                            <td>Hours to days</td>
+                            <td class="check-yes">Minutes</td>
+                        </tr>
+                        <tr>
+                            <td>Cost Per Test</td>
+                            <td>Can be significant without insurance</td>
+                            <td class="check-yes">Affordable, no insurance needed</td>
+                        </tr>
+                        <tr>
+                            <td>Frequency</td>
+                            <td>Typically once per year at a checkup</td>
+                            <td class="check-yes">Test as often as needed to track trends</td>
+                        </tr>
+                        <tr>
+                            <td>Best For</td>
+                            <td>Acute illness, clinical diagnosis</td>
+                            <td class="check-yes">Ongoing wellness monitoring and lifestyle tracking</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ HOW SENSA WORKS ══ -->
+    <section class="how-sensa">
+        <div class="container">
+            <div class="reveal" style="text-align: center;">
+                <span class="section-label">The Product</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">How Sensa Measures CRP</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; max-width: 560px; margin: 0 auto; line-height: 1.75;">Sensa is a general wellness device that detects CRP in saliva using a simple test strip, giving you a result in minutes without a clinic visit or a blood draw.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card reveal">
+                    <div class="step-number">1</div>
+                    <h3>Collect a Saliva Sample</h3>
+                    <p>Use the collection tool included with your Sensa kit. No needles, no preparation required. The whole process takes about 30 seconds.</p>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">2</div>
+                    <h3>Insert the Test Strip</h3>
+                    <p>Place the sample on the Sensa test strip. The strip uses a lateral flow assay to detect CRP concentration in your sample.</p>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">3</div>
+                    <h3>Read Your Result</h3>
+                    <p>Scan the strip with the Sensa app to get your CRP reading in minutes. The app logs your result over time so you can track trends, not just snapshots.</p>
+                </div>
+            </div>
+
+            <div class="reveal" style="text-align: center; margin-top: 2.5rem;">
+                <a href="pay-now.html" class="btn" style="font-size: 1rem; padding: 0.75rem 2rem;">Get Your Sensa Kit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FINAL CTA ══ -->
+    <section class="crp-final-cta">
+        <div class="container">
+            <div class="reveal">
+                <h2>Start Measuring What Matters</h2>
+                <p>CRP is one of the clearest windows into your body's inflammatory state. Sensa makes it easy to check in regularly and see how your lifestyle choices are landing at the cellular level.</p>
+                <a href="pay-now.html" class="btn-gold">Buy Sensa Now</a>
+                <p class="cta-trust">No clinic visit needed. No needles. Results in minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation monitoring as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="pay-now.html">Buy Now</a></li>
+                        <li><a href="work-with-us.html">Work With Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Inflammation Monitoring</a></li>
+                        <li><a href="#">Preventive Screening</a></li>
+                        <li><a href="app.html">Mobile Integration</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">
+                        sensawellness@gmail.com
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="wellness-disclaimer">Sensa is a general wellness product intended to support a healthy lifestyle. It is not intended to diagnose, treat, cure, or prevent any disease or medical condition. Results are not a substitute for professional medical advice, diagnosis, or treatment. If you have concerns about your health, consult a qualified healthcare provider.</p>
+                &copy; 2026 Sensa Wellness. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
+
+    <script>
+        // Progress bar + scroll-to-top
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
+            const btn = document.getElementById('scrollTop');
+            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+        });
+
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile nav
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+
+</body>
+</html>

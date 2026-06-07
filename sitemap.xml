@@ -37,6 +37,12 @@
     <priority>0.3</priority>
   </url>
 
+  <url>
+    <loc>https://www.sensawellness.org/what-is-crp.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Blog Index -->
   <url>
     <loc>https://www.sensawellness.org/blog.html</loc>
@@ -45,6 +51,21 @@
   </url>
 
   <!-- Blog Posts -->
+  <url>
+    <loc>https://www.sensawellness.org/post-weight-gain-inflammation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/post-beyond-the-scale.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/post-glp1-inflammation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://www.sensawellness.org/post-weight-loss-inflammation.html</loc>
     <changefreq>monthly</changefreq>
