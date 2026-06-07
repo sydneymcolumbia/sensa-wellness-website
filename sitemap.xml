@@ -32,6 +32,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://www.sensawellness.org/press-kit.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.sensawellness.org/privacy-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
