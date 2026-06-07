@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sensa Wellness - Putting Your Health Back into Your Hands</title>
-    <meta name="description" content="Sensa is a saliva-based inflammation monitoring device that gives you results in minutes at home — no needles, no clinic visits. Track your CRP levels with our companion app.">
-    <meta name="keywords" content="inflammation wellness, CRP wellness test, saliva CRP test, chronic inflammation, home wellness test, inflammation lifestyle tracker">
+    <title>Sensa Wellness - Go Beyond The Scale | At-Home Wellness Monitoring Kit</title>
+    <meta name="description" content="Sensa is a simple at-home saliva wellness kit that helps you see what the scale can't. Track inflammation in minutes with no needles, no clinic visits. Support your weight loss, recovery, and wellness goals with real insight.">
+    <meta name="keywords" content="at-home wellness test, wellness monitoring kit, body inflammation test, weight loss inflammation, go beyond the scale, saliva wellness test, GLP-1 alternative wellness, body composition insight, CRP wellness test, inflammation lifestyle tracker, personal health device">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sensawellness.org/">
-    <meta property="og:title" content="Sensa Wellness — Inflammation Monitoring at Home">
-    <meta property="og:description" content="Track your inflammation levels at home with a simple saliva test. No needles. Results in minutes. Powered by the Sensa app.">
+    <meta property="og:title" content="Sensa Wellness — Go Beyond The Scale">
+    <meta property="og:description" content="A simple at-home saliva wellness kit that helps you see what the scale can't. Track inflammation in minutes. No needles, no clinic visits. Support your weight loss and wellness goals.">
     <meta property="og:image" content="https://www.sensawellness.org/sensa-og.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sensa Wellness — Inflammation Monitoring at Home">
-    <meta name="twitter:description" content="Track your inflammation levels at home with a simple saliva test. No needles. Results in minutes.">
+    <meta name="twitter:title" content="Sensa Wellness — Go Beyond The Scale">
+    <meta name="twitter:description" content="A simple at-home saliva wellness kit that shows what the scale can't. Track inflammation in minutes. No needles, no clinic visits.">
     <link rel="canonical" href="https://www.sensawellness.org/">
     <link rel="sitemap" href="/sitemap.xml">
     <meta name="theme-color" content="#1800AD">
@@ -929,6 +929,70 @@
             color: var(--text-light);
         }
 
+        /* FAQ Section */
+        .faq {
+            padding: var(--section-padding);
+            background: var(--bg-white);
+        }
+
+        .faq-list {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.4rem 0;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-coral);
+        }
+
+        .faq-icon {
+            font-size: 1.4rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding-bottom: 1.4rem;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
         /* Contact Section */
         .contact {
             padding: var(--section-padding);
@@ -1378,6 +1442,7 @@
                 <a href="#team">Team</a>
                 <a href="our-story.html">Our Story</a>
                 <a href="#press">Press</a>
+                <a href="#faq">FAQ</a>
                 <a href="pay-now.html" class="btn">Buy Now</a>
             </nav>
         </div>
@@ -1387,8 +1452,8 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1><span>SENSA:</span> Putting Your Health Back into Your Hands.</h1>
-                <p>Chronic inflammation is linked to 7 of the 10 leading causes of death, and it may be the hidden reason weight loss feels impossible. Sensa is a saliva-based monitoring tool that lets you track it at home: no needles, no clinic visits, just reliable results in minutes.</p>
+                <h1><span>Go Beyond The Scale.</span> Wellness You Can See.</h1>
+                <p>Weight loss stalls, fatigue, slow recovery. The missing piece might be inflammation. Sensa is a simple at-home saliva wellness kit that gives you a clear picture in minutes. No needles, no clinic visits, no prescriptions. Just real insight to support your wellness goals.</p>
                 <div class="hero-features">
                     <div class="hero-feature">
                         <span class="check">&mdash;</span> No needles
@@ -1671,11 +1736,12 @@
                 </div>
                 <div class="pricing-card featured">
                     <span class="pricing-badge">Most Popular</span>
-                    <h3>3-Pack Bundle</h3>
+                    <h3>3-Pack Progress Tracker</h3>
                     <div class="pricing-price"><span>$</span>99</div>
-                    <p class="pricing-subtitle">Best for tracking over time</p>
+                    <p class="pricing-subtitle">Test, change, retest. See your progress.</p>
                     <ul class="pricing-features">
                         <li>3 at-home tests</li>
+                        <li>Track your wellness over time</li>
                         <li>Save $48</li>
                         <li>Instant results</li>
                         <li>App access</li>
@@ -1797,6 +1863,92 @@
                     <p>A reflection on how Harvard's Graduate School of Education shaped Robinson's approach to bridging science, entrepreneurship, and education through human-centered leadership at Sensa.</p>
                     <span class="press-date">June 2, 2026</span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about Sensa before you buy.</p>
+            </div>
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        What exactly is Sensa?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sensa is a simple, at-home saliva wellness kit. You provide a saliva sample, and the device measures your C-reactive protein (CRP) level, a key marker of inflammation in your body. It is not a drug, not a diagnosis, and not a replacement for medical care. It is a wellness tool that gives you a clearer picture of what is happening inside your body.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How can Sensa help with weight loss?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Chronic inflammation can stall weight loss, increase cravings, and disrupt your metabolism. If the scale is not moving despite your efforts, hidden inflammation may be part of the picture. Sensa helps you see whether inflammation could be a factor so you can adjust your approach with better information.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Is Sensa a medical device?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. Sensa is a wellness product designed for general self-monitoring. It does not diagnose, treat, or cure any disease. If your results suggest elevated inflammation, we recommend consulting a healthcare professional for further evaluation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How does the test work?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You provide a small saliva sample into the Sensa device. The device uses a color-change reaction to indicate your inflammation level. Open the Sensa app, scan the device, and receive your result with personalized guidance. The whole process takes about 15 minutes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Why should I get the 3-pack instead of a single test?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A single test gives you a snapshot. The 3-pack lets you track your progress over time: test now, make lifestyle changes, then retest to see whether those changes are working. It turns Sensa from a one-time check into a wellness routine.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Is the saliva test safe and non-invasive?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Sensa requires only a small saliva sample. There are no needles, no blood, and no discomfort. It is safe for adults of all ages, including pregnant women and people managing chronic conditions like diabetes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How is Sensa different from a blood test at the doctor?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Traditional CRP testing requires a blood draw, a lab visit, and days of waiting. Sensa uses saliva-based biomarkers to give you a result at home in minutes. It is designed for regular wellness monitoring between doctor visits, not as a replacement for clinical lab work.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Do I need a prescription?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. Sensa is available for purchase directly from our website. No prescription, no referral, and no insurance needed.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2079,6 +2231,146 @@
                 }
             }
         })();
+    </script>
+
+    <!-- FAQ Toggle -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = this.parentElement;
+                var isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item.active').forEach(function(el) {
+                    el.classList.remove('active');
+                    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
+
+    <!-- Structured Data: Product -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Sensa Wellness Kit",
+        "description": "A simple at-home saliva wellness kit that measures inflammation (CRP) levels in minutes. No needles, no clinic visits.",
+        "brand": {
+            "@type": "Brand",
+            "name": "Sensa Wellness"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "1 Test Kit",
+                "price": "49.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.sensawellness.org/pay-now.html",
+                "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                        "@type": "MonetaryAmount",
+                        "value": "0",
+                        "currency": "USD"
+                    }
+                }
+            },
+            {
+                "@type": "Offer",
+                "name": "3-Pack Progress Tracker",
+                "price": "99.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.sensawellness.org/pay-now.html"
+            },
+            {
+                "@type": "Offer",
+                "name": "4-Pack Bundle",
+                "price": "129.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.sensawellness.org/pay-now.html"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What exactly is Sensa?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sensa is a simple, at-home saliva wellness kit. You provide a saliva sample, and the device measures your C-reactive protein (CRP) level, a key marker of inflammation in your body. It is not a drug, not a diagnosis, and not a replacement for medical care. It is a wellness tool that gives you a clearer picture of what is happening inside your body."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can Sensa help with weight loss?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Chronic inflammation can stall weight loss, increase cravings, and disrupt your metabolism. If the scale is not moving despite your efforts, hidden inflammation may be part of the picture. Sensa helps you see whether inflammation could be a factor so you can adjust your approach with better information."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Sensa a medical device?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Sensa is a wellness product designed for general self-monitoring. It does not diagnose, treat, or cure any disease. If your results suggest elevated inflammation, we recommend consulting a healthcare professional for further evaluation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does the test work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You provide a small saliva sample into the Sensa device. The device uses a color-change reaction to indicate your inflammation level. Open the Sensa app, scan the device, and receive your result with personalized guidance. The whole process takes about 15 minutes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why should I get the 3-pack instead of a single test?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A single test gives you a snapshot. The 3-pack lets you track your progress over time: test now, make lifestyle changes, then retest to see whether those changes are working. It turns Sensa from a one-time check into a wellness routine."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the saliva test safe and non-invasive?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Sensa requires only a small saliva sample. There are no needles, no blood, and no discomfort. It is safe for adults of all ages, including pregnant women and people managing chronic conditions like diabetes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is Sensa different from a blood test at the doctor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Traditional CRP testing requires a blood draw, a lab visit, and days of waiting. Sensa uses saliva-based biomarkers to give you a result at home in minutes. It is designed for regular wellness monitoring between doctor visits, not as a replacement for clinical lab work."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need a prescription?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Sensa is available for purchase directly from our website. No prescription, no referral, and no insurance needed."
+                }
+            }
+        ]
+    }
     </script>
 
 </body>
