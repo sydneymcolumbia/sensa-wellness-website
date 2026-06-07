@@ -17,6 +17,19 @@
     <meta name="twitter:description" content="Chronic inflammation is the silent driver behind 7 of the 10 leading causes of death. Order Sensa today and measure yours at home.">
     <link rel="canonical" href="https://www.sensawellness.org/pay-now.html">
     <meta name="theme-color" content="#1800AD">
+    <!-- Google Analytics (GA4) - TODO: Replace G-XXXXXXXXXX with your Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <!-- Google Ads Conversion Tracking - TODO: Replace AW-XXXXXXXXXX with your Conversion ID and label -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+    <script>
+        gtag('config', 'AW-XXXXXXXXXX');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1348,6 +1361,16 @@
 
         // Stripe checkout handler
         function handleCheckout(priceId) {
+            // GA4 begin_checkout event - TODO: update values once Conversion IDs are set
+            if (typeof gtag === 'function') {
+                var prices = { 'price_1test': 49, 'price_3pack': 99, 'price_4pack': 129 };
+                var labels = { 'price_1test': '1 Test Kit', 'price_3pack': '3-Pack Progress Tracker', 'price_4pack': '4-Pack Bundle' };
+                gtag('event', 'begin_checkout', {
+                    currency: 'USD',
+                    value: prices[priceId] || 0,
+                    items: [{ item_name: labels[priceId] || priceId, price: prices[priceId] || 0, quantity: 1 }]
+                });
+            }
             // Find the button that was clicked
             var buttons = document.querySelectorAll('.waitlist-submit');
             var clickedBtn = null;

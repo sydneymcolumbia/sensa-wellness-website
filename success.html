@@ -7,6 +7,26 @@
     <title>Order Confirmed - Sensa Wellness</title>
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#1800AD">
+    <!-- Google Analytics (GA4) - TODO: Replace G-XXXXXXXXXX with your Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        // Google Ads purchase conversion - TODO: Replace AW-XXXXXXXXXX/LABEL with your values
+        gtag('config', 'AW-XXXXXXXXXX');
+        gtag('event', 'conversion', {
+            'send_to': 'AW-XXXXXXXXXX/CONVERSION_LABEL',
+            'transaction_id': ''
+        });
+        // GA4 purchase event
+        gtag('event', 'purchase', {
+            currency: 'USD',
+            value: 0,
+            transaction_id: ''
+        });
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
