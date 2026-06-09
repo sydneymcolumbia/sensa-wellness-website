@@ -7,6 +7,23 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Comparison Pages -->
+  <url>
+    <loc>https://www.sensawellness.org/compare-crp-tests.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/compare-inflammation-tests.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/compare-wellness-devices.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Topic Hubs -->
   <url>
     <loc>https://www.sensawellness.org/hub-aging-inflammation.html</loc>
