@@ -2,6 +2,39 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
   <url>
+    <loc>https://www.sensawellness.org/sitemap-page.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Topic Hubs -->
+  <url>
+    <loc>https://www.sensawellness.org/hub-aging-inflammation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/hub-mental-health-inflammation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/hub-diet-inflammation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/hub-lifestyle-inflammation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/hub-chronic-disease-inflammation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://www.sensawellness.org/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
