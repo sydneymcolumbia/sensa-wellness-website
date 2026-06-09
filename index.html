@@ -17,6 +17,7 @@
     <meta name="twitter:description" content="A simple at-home saliva wellness kit that shows what the scale can't. Track inflammation in minutes. No needles, no clinic visits.">
     <link rel="canonical" href="https://www.sensawellness.org/">
     <link rel="sitemap" href="/sitemap.xml">
+    <link rel="alternate" type="application/rss+xml" title="Sensa Wellness Blog" href="https://www.sensawellness.org/feed.xml">
     <meta name="theme-color" content="#1800AD">
     <!-- Google Analytics (GA4) - TODO: Replace G-X24JYKBTXB with your Measurement ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24JYKBTXB"></script>
@@ -2402,5 +2403,10 @@
     }
     </script>
 
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+</script>
 </body>
 </html>
