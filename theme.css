@@ -1,0 +1,335 @@
+/* ============================================================
+   SENSA THEME — surface-quality overlay
+   Loaded after page styles. Brand colors, fonts, and logos are
+   untouched — this layer only refines shadows, borders, radii,
+   and interaction polish for a more premium feel.
+   ============================================================ */
+
+:root {
+    --section-padding: 6rem 0;
+    --border: #e8e8f1;
+    --border-hover: #dcdaee;
+    --shadow-sm: 0 1px 2px rgba(26, 26, 46, 0.04), 0 2px 8px rgba(26, 26, 46, 0.04);
+    --shadow-md: 0 2px 4px rgba(26, 26, 46, 0.04), 0 12px 24px -8px rgba(26, 26, 46, 0.10);
+    --shadow-lg: 0 4px 8px rgba(26, 26, 46, 0.04), 0 24px 48px -12px rgba(26, 26, 46, 0.16);
+}
+
+/* ---------- Base rendering ---------- */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: rgba(114, 103, 242, 0.22);
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ---------- Header ---------- */
+
+header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(24, 0, 173, 0.15), 0 8px 20px -6px rgba(24, 0, 173, 0.35);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(24, 0, 173, 0.15), 0 12px 28px -6px rgba(24, 0, 173, 0.4);
+}
+
+.btn-outline {
+    box-shadow: none;
+}
+
+/* ---------- Cards & surfaces ---------- */
+
+.card,
+.press-card,
+.blog-card,
+.featured-card,
+.pricing-card,
+.team-card {
+    border-radius: 18px;
+    box-shadow: var(--shadow-sm);
+}
+
+.card,
+.press-card,
+.blog-card,
+.featured-card {
+    border-color: var(--border);
+}
+
+.card:hover,
+.press-card:hover,
+.blog-card:hover,
+.featured-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-hover);
+}
+
+.pricing-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.team-card {
+    box-shadow: none;
+}
+
+.team-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.condition-item,
+.related-card {
+    border-radius: 14px;
+    border-color: var(--border);
+}
+
+.condition-item:hover,
+.related-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-hover);
+}
+
+.highlight-item,
+.indicator {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.step-number {
+    box-shadow: 0 8px 20px -6px rgba(232, 90, 57, 0.45);
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Forms ---------- */
+
+.newsletter-form input,
+.contact-form input,
+.contact-form textarea {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.newsletter-form input:focus,
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 4px rgba(114, 103, 242, 0.14);
+}
+
+/* ---------- Blog & long-form polish ---------- */
+
+.blog-newsletter,
+.post-cta {
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.filter-btn {
+    border: 1px solid var(--border);
+}
+
+/* ---------- Chrome ---------- */
+
+.scroll-top {
+    box-shadow: var(--shadow-md);
+}
+
+.section-divider {
+    opacity: 0.6;
+}
+
+/* ============================================================
+   FX LAYER — advanced visual effects (driven by theme-fx.js)
+   All colors come from the existing brand palette.
+   ============================================================ */
+
+/* ---------- Aurora glow (heroes) ---------- */
+
+.fx-aurora {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.fx-aurora span {
+    position: absolute;
+    width: 46vw;
+    height: 46vw;
+    min-width: 380px;
+    min-height: 380px;
+    border-radius: 50%;
+    filter: blur(72px);
+    will-change: transform;
+}
+
+.fx-aurora .fx-a1 {
+    top: -18%;
+    left: -8%;
+    background: radial-gradient(circle at 35% 35%, rgba(114, 103, 242, 0.32), transparent 68%);
+    animation: fx-drift-a 26s ease-in-out infinite alternate;
+}
+
+.fx-aurora .fx-a2 {
+    bottom: -28%;
+    right: -6%;
+    background: radial-gradient(circle at 60% 40%, rgba(65, 166, 240, 0.30), transparent 68%);
+    animation: fx-drift-b 32s ease-in-out infinite alternate;
+}
+
+.fx-aurora .fx-a3 {
+    top: 8%;
+    right: 22%;
+    width: 34vw;
+    height: 34vw;
+    background: radial-gradient(circle at 50% 50%, rgba(250, 194, 52, 0.22), transparent 70%);
+    animation: fx-drift-c 38s ease-in-out infinite alternate;
+}
+
+@keyframes fx-drift-a {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(9%, 7%, 0) scale(1.18); }
+}
+
+@keyframes fx-drift-b {
+    from { transform: translate3d(0, 0, 0) scale(1.12); }
+    to   { transform: translate3d(-8%, -9%, 0) scale(0.96); }
+}
+
+@keyframes fx-drift-c {
+    from { transform: translate3d(0, 0, 0) scale(0.95); }
+    to   { transform: translate3d(-12%, 12%, 0) scale(1.15); }
+}
+
+/* Hosts that receive an aurora need a stacking context above it */
+.blog-hero,
+.post-header-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-hero > .container,
+.post-header-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- Hero particle canvas ---------- */
+
+.fx-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ---------- Cursor spotlight + gradient border glow ---------- */
+
+.fx-spot {
+    position: relative;
+}
+
+.fx-spot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--fx-o, 0);
+    transition: opacity 0.35s ease;
+    background: radial-gradient(380px circle at var(--fx-x, 50%) var(--fx-y, 50%),
+        rgba(114, 103, 242, 0.08), transparent 65%);
+}
+
+.fx-spot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    opacity: var(--fx-o, 0);
+    transition: opacity 0.35s ease;
+    background: radial-gradient(260px circle at var(--fx-x, 50%) var(--fx-y, 50%),
+        rgba(114, 103, 242, 0.55), rgba(65, 166, 240, 0.28) 45%, transparent 72%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+}
+
+/* ---------- 3D tilt ---------- */
+
+.fx-tilt,
+.fx-tilt:hover {
+    transform: perspective(1000px)
+        rotateX(var(--fx-rx, 0deg))
+        rotateY(var(--fx-ry, 0deg))
+        translateY(var(--fx-ty, 0px));
+    will-change: transform;
+}
+
+/* ---------- Animated conic ring on featured pricing ---------- */
+
+@property --fx-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.pricing-card.featured::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    padding: 2px;
+    pointer-events: none;
+    background: conic-gradient(from var(--fx-angle),
+        var(--accent-gold), var(--accent-purple), var(--accent-blue),
+        var(--accent-purple), var(--accent-gold));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: fx-spin 9s linear infinite;
+    opacity: 0.9;
+}
+
+@keyframes fx-spin {
+    to { --fx-angle: 360deg; }
+}
+
+/* ---------- Motion preferences ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

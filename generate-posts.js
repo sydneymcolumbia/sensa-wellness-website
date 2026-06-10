@@ -29,6 +29,7 @@ function buildPost(p) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="theme.css">
     <style>
         .wellness-disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.5); max-width: 800px; margin: 0 auto 1rem; line-height: 1.5; text-align: center; }
     </style>
@@ -154,6 +155,7 @@ ${relatedHTML}
         document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
+<script src="theme-fx.js" defer></script>
 </body>
 </html>`;
 }
