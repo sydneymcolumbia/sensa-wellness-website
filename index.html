@@ -1225,6 +1225,193 @@
             transform: translateY(-2px);
         }
 
+        /* ============================================
+           Attention animations (motion-safe only)
+           ============================================ */
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            /* Hero entrance sequence */
+            .hero-content h1,
+            .hero-content p,
+            .hero-features,
+            .hero-buttons,
+            .hero-stats {
+                opacity: 0;
+                animation: heroRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            }
+
+            .hero-content h1 { animation-delay: 0.05s; }
+            .hero-content p { animation-delay: 0.2s; }
+            .hero-features { animation-delay: 0.35s; }
+            .hero-buttons { animation-delay: 0.5s; }
+            .hero-stats { animation-delay: 0.65s; }
+
+            @keyframes heroRise {
+                from { opacity: 0; transform: translateY(28px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            /* Product image glides in, then floats forever */
+            .hero-img {
+                animation: heroImgIn 1s cubic-bezier(0.22, 1, 0.36, 1) backwards,
+                           heroFloat 7s 1.2s ease-in-out infinite;
+            }
+
+            @keyframes heroImgIn {
+                from { opacity: 0; transform: translateX(60px) scale(0.97); }
+                to { opacity: 1; transform: translateX(0) scale(1); }
+            }
+
+            @keyframes heroFloat {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-14px); }
+            }
+
+            /* Shimmering gradient headline */
+            .hero-content h1 span {
+                background: linear-gradient(90deg, var(--accent-navy) 0%, var(--accent-purple) 30%, var(--accent-blue) 50%, var(--accent-purple) 70%, var(--accent-navy) 100%);
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: textShimmer 6s linear infinite;
+            }
+
+            @keyframes textShimmer {
+                to { background-position: 200% center; }
+            }
+
+            /* Pulsing glow ring on the primary CTA */
+            .btn-pulse {
+                animation: ctaPulse 2.4s ease-out infinite;
+            }
+
+            @keyframes ctaPulse {
+                0% { box-shadow: 0 4px 15px rgba(24, 0, 173, 0.25), 0 0 0 0 rgba(24, 0, 173, 0.45); }
+                70% { box-shadow: 0 4px 15px rgba(24, 0, 173, 0.25), 0 0 0 16px rgba(24, 0, 173, 0); }
+                100% { box-shadow: 0 4px 15px rgba(24, 0, 173, 0.25), 0 0 0 0 rgba(24, 0, 173, 0); }
+            }
+
+            /* Shine sweep across buttons on hover */
+            .btn::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -80%;
+                width: 50%;
+                height: 100%;
+                background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+                transform: skewX(-20deg);
+                pointer-events: none;
+            }
+
+            .btn:hover::after {
+                animation: btnShine 0.7s ease forwards;
+            }
+
+            @keyframes btnShine {
+                to { left: 140%; }
+            }
+
+            /* Step numbers and card icons pop when revealed */
+            .reveal.visible .step-number,
+            .reveal.visible .card-icon {
+                animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s backwards;
+            }
+
+            @keyframes popIn {
+                from { transform: scale(0.4); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+
+            /* Featured badge gentle bob */
+            .pricing-card.featured .pricing-badge {
+                animation: badgeBob 2.8s ease-in-out infinite;
+            }
+
+            @keyframes badgeBob {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-4px); }
+            }
+        }
+
+        /* ============================================
+           Quick-buy sticky bar
+           ============================================ */
+        .buy-bar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 998;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 -8px 30px rgba(26, 26, 46, 0.12);
+            transform: translateY(110%);
+            visibility: hidden;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.35s;
+        }
+
+        .buy-bar.visible {
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .buy-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.7rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .buy-bar-text {
+            line-height: 1.3;
+        }
+
+        .buy-bar-title {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .buy-bar-sub {
+            font-size: 0.78rem;
+            color: var(--text-gray);
+        }
+
+        .buy-bar-actions {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .buy-bar .btn {
+            padding: 0.55rem 1rem;
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+
+        .buy-bar .btn.buy-bar-featured {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        .buy-bar .btn.buy-bar-featured:hover {
+            background: #f5b820;
+        }
+
+        body.buy-bar-on .scroll-top {
+            bottom: 5.5rem;
+        }
+
         /* Responsive - Tablet */
         @media (max-width: 992px) {
             .hero {
@@ -1402,6 +1589,30 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .buy-bar-inner {
+                padding: 0.6rem 1rem;
+                justify-content: center;
+            }
+
+            .buy-bar-text {
+                display: none;
+            }
+
+            .buy-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .buy-bar .buy-bar-hide-sm {
+                display: none;
+            }
+
+            .buy-bar .btn.buy-bar-featured {
+                flex: 1;
+                max-width: 320px;
+                text-align: center;
+            }
         }
 
         .wellness-disclaimer {
@@ -1474,7 +1685,7 @@
                 <a href="#press">Press</a>
                 <a href="what-is-crp.html">What is CRP?</a>
                 <a href="#faq">FAQ</a>
-                <a href="pay-now.html" class="btn">Buy Now</a>
+                <a href="#pricing" class="btn">Buy Now</a>
             </nav>
         </div>
     </header>
@@ -1497,7 +1708,7 @@
                     </div>
                 </div>
                 <div class="hero-buttons">
-                    <a href="pay-now.html" class="btn">Buy Now</a>
+                    <a href="#pricing" class="btn btn-pulse">Buy Now &middot; From $49</a>
                     <a href="#about" class="btn btn-outline">Learn More</a>
                 </div>
                 <div class="hero-stats">
@@ -1763,7 +1974,7 @@
                         <li>App access</li>
                         <li>Free shipping</li>
                     </ul>
-                    <a href="pay-now.html" class="btn">Buy Now</a>
+                    <button type="button" class="btn" onclick="handleCheckout('price_1test', this)">Buy Now</button>
                 </div>
                 <div class="pricing-card featured">
                     <span class="pricing-badge">Most Popular</span>
@@ -1778,7 +1989,7 @@
                         <li>App access</li>
                         <li>Free shipping</li>
                     </ul>
-                    <a href="pay-now.html" class="btn">Buy Now</a>
+                    <button type="button" class="btn" onclick="handleCheckout('price_3pack', this)">Buy Now</button>
                 </div>
                 <div class="pricing-card">
                     <span class="pricing-badge" style="background:rgba(114,103,242,0.12); color:var(--accent-purple);">Best Value</span>
@@ -1792,9 +2003,10 @@
                         <li>App access</li>
                         <li>Free shipping</li>
                     </ul>
-                    <a href="pay-now.html" class="btn">Buy Now</a>
+                    <button type="button" class="btn" onclick="handleCheckout('price_4pack', this)">Buy Now</button>
                 </div>
             </div>
+            <p id="checkoutError" style="display:none; color:var(--accent-coral); margin-top:1.5rem; font-size:0.95rem; text-align:center;"></p>
         </div>
     </section>
 
@@ -2054,9 +2266,9 @@
                             </select>
                         </div>
                         <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.5rem;">
-                            <a href="pay-now.html" class="btn" style="width:100%; text-align:center; display:block;">Buy 1 for $49</a>
-                            <a href="pay-now.html" class="btn" style="width:100%; text-align:center; display:block; background:#1a1464;">Buy 3-Pack for $99</a>
-                            <a href="pay-now.html" class="btn" style="width:100%; text-align:center; display:block;">Buy 4-Pack for $129</a>
+                            <button type="button" class="btn" style="width:100%; text-align:center; display:block;" onclick="handleCheckout('price_1test', this)">Buy 1 for $49</button>
+                            <button type="button" class="btn" style="width:100%; text-align:center; display:block; background:#1a1464;" onclick="handleCheckout('price_3pack', this)">Buy 3-Pack for $99</button>
+                            <button type="button" class="btn" style="width:100%; text-align:center; display:block;" onclick="handleCheckout('price_4pack', this)">Buy 4-Pack for $129</button>
                         </div>
                     </form>
                     <p style="margin-top:1rem; font-size:0.8rem; color:var(--text-light); text-align:center;">Secure checkout. Free shipping on all orders.</p>
@@ -2119,10 +2331,106 @@
         </div>
     </footer>
 
+    <!-- Quick Buy Bar -->
+    <div class="buy-bar" id="buyBar" aria-hidden="true">
+        <div class="buy-bar-inner">
+            <div class="buy-bar-text">
+                <div class="buy-bar-title">Sensa At-Home Test Kit</div>
+                <div class="buy-bar-sub">Free shipping. Results in 15 minutes. No needles.</div>
+            </div>
+            <div class="buy-bar-actions">
+                <button type="button" class="btn btn-outline buy-bar-hide-sm" onclick="handleCheckout('price_1test', this)">1 Kit &middot; $49</button>
+                <button type="button" class="btn buy-bar-featured" onclick="handleCheckout('price_3pack', this)">Buy 3-Pack &middot; $99</button>
+                <button type="button" class="btn btn-outline buy-bar-hide-sm" onclick="handleCheckout('price_4pack', this)">4-Pack &middot; $129</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
+        // Direct Stripe checkout
+        function handleCheckout(priceId, btn) {
+            if (typeof gtag === 'function') {
+                var prices = { price_1test: 49, price_3pack: 99, price_4pack: 129 };
+                var labels = { price_1test: '1 Test Kit', price_3pack: '3-Pack Progress Tracker', price_4pack: '4-Pack Bundle' };
+                gtag('event', 'begin_checkout', {
+                    currency: 'USD',
+                    value: prices[priceId] || 0,
+                    items: [{ item_name: labels[priceId] || priceId, price: prices[priceId] || 0, quantity: 1 }]
+                });
+            }
+            var originalText = btn ? btn.textContent : '';
+            if (btn) {
+                btn.disabled = true;
+                btn.textContent = 'Processing...';
+                btn.style.opacity = '0.7';
+            }
+            fetch('/api/checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ priceId: priceId, hearAboutUs: 'not_answered' })
+            })
+            .then(function(response) {
+                if (!response.ok) throw new Error('Checkout request failed');
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    throw new Error('No checkout URL returned');
+                }
+            })
+            .catch(function(err) {
+                console.error('Checkout error:', err);
+                if (btn) {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                    btn.style.opacity = '1';
+                }
+                var errorEl = document.getElementById('checkoutError');
+                if (errorEl) {
+                    errorEl.textContent = 'Something went wrong. Taking you to our order page...';
+                    errorEl.style.display = 'block';
+                }
+                // Fall back to the dedicated order page so the click still leads to purchase
+                setTimeout(function() { window.location.href = 'pay-now.html#waitlist'; }, 1200);
+            });
+        }
+
+        // Quick buy bar: appears after the hero, hides over the pricing and order sections
+        (function() {
+            var bar = document.getElementById('buyBar');
+            var hero = document.querySelector('.hero');
+            if (!bar || !hero || !('IntersectionObserver' in window)) return;
+
+            var pastHero = false;
+            var sectionVisible = { pricing: false, waitlist: false };
+
+            function update() {
+                var show = pastHero && !sectionVisible.pricing && !sectionVisible.waitlist;
+                bar.classList.toggle('visible', show);
+                bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+                document.body.classList.toggle('buy-bar-on', show);
+            }
+
+            new IntersectionObserver(function(entries) {
+                pastHero = !entries[0].isIntersecting;
+                update();
+            }).observe(hero);
+
+            ['pricing', 'waitlist'].forEach(function(id) {
+                var el = document.getElementById(id);
+                if (!el) return;
+                new IntersectionObserver(function(entries) {
+                    sectionVisible[id] = entries[0].isIntersecting;
+                    update();
+                }, { threshold: 0.15 }).observe(el);
+            });
+        })();
+
         // Reading Progress Bar
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
@@ -2160,6 +2468,7 @@
         document.getElementById('waitlistForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
+            if (!btn) return;
             btn.textContent = 'Submitting…';
             btn.disabled = true;
             fetch('https://script.google.com/macros/s/AKfycbyQVIxWJrJNYp0KgEMAeF-pfCpGJPmS3w3O4enN_Dv_KITjfjfl5qeZB9uEMAnJ7CWc_g/exec', {
