@@ -1839,7 +1839,7 @@
                 </div>
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <div class="hero-stat-number" data-target="7" data-prefix="" data-suffix=" in 10">7 in 10</div>
+                        <div class="hero-stat-number" data-target="10" data-prefix="" data-suffix=" in 10">10 in 10</div>
                         <div class="hero-stat-label">Leading causes of death linked to inflammation</div>
                     </div>
                     <div class="hero-stat">
@@ -2673,12 +2673,15 @@
                 if (statsAnimated) return;
                 statsAnimated = true;
 
+                // Render the final values directly (no count-up) so the stats
+                // always show their true numbers and never flash partial frames
+                // like "0 in 10" or "4%".
                 var statNumbers = document.querySelectorAll('.hero-stat-number');
                 statNumbers.forEach(function(el) {
                     var target = parseInt(el.getAttribute('data-target'), 10);
                     var suffix = el.getAttribute('data-suffix') || '';
                     var prefix = el.getAttribute('data-prefix') || '';
-                    animateCounter(el, target, suffix, prefix, 1200);
+                    el.textContent = prefix + target + suffix;
                 });
             }
 
