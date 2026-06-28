@@ -146,6 +146,13 @@
             margin-bottom: 0.8rem;
         }
 
+        .wl-countdown-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; margin: 0 auto 2.6rem; }
+        .wl-countdown-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.74rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-coral); }
+        .wl-countdown { display: inline-flex; align-items: flex-start; gap: 0.45rem; font-variant-numeric: tabular-nums; }
+        .wl-cc-unit { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; background: var(--accent-navy); border-radius: 11px; padding: 0.5rem 0.7rem; min-width: 3.3rem; }
+        .wl-cc-num { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1; color: #fff; }
+        .wl-cc-lbl { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(255,255,255,0.72); }
+
         .section-head { text-align: center; max-width: 640px; margin: 0 auto 3rem; }
 
         .section-head h2 {
@@ -614,7 +621,7 @@
     <header>
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img src="logo.jpg" alt="Sensa" class="logo-img">
+                <img src="logo.png" alt="Sensa" class="logo-img">
             </a>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -787,6 +794,16 @@
                 <span class="section-label">Summer Reset Sale &middot; 20% Off</span>
                 <h2>Pick your reset</h2>
                 <p>One-time purchase, no subscription, free shipping on every order. The sale price is already applied below.</p>
+            </div>
+
+            <div class="wl-countdown-wrap reveal">
+                <span class="wl-countdown-label">Summer Reset Sale ends in</span>
+                <span class="wl-countdown" data-sale-countdown aria-live="polite">
+                    <span class="wl-cc-unit"><span class="wl-cc-num" data-unit="days">00</span><span class="wl-cc-lbl">Days</span></span>
+                    <span class="wl-cc-unit"><span class="wl-cc-num" data-unit="hours">00</span><span class="wl-cc-lbl">Hrs</span></span>
+                    <span class="wl-cc-unit"><span class="wl-cc-num" data-unit="mins">00</span><span class="wl-cc-lbl">Min</span></span>
+                    <span class="wl-cc-unit"><span class="wl-cc-num" data-unit="secs">00</span><span class="wl-cc-lbl">Sec</span></span>
+                </span>
             </div>
 
             <div class="pricing-grid">
@@ -1027,6 +1044,7 @@
         }
     </script>
 
+<script src="sale.js" defer></script>
 <script src="theme-fx.js" defer></script>
 </body>
 </html>

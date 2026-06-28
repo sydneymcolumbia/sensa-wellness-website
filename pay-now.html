@@ -326,6 +326,30 @@
             }
         }
 
+        .sale-tag {
+            display: inline-block;
+            background: rgba(250, 194, 52, 0.22);
+            color: var(--accent-orange);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.2rem 0.6rem;
+            border-radius: 14px;
+            margin-bottom: 0.6rem;
+        }
+
+        .sale-old {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
         /* ============================================
            QUICK-BUY STICKY BAR
            ============================================ */
@@ -1146,7 +1170,7 @@
     <header>
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img loading="lazy" src="logo.jpg" alt="Sensa" class="logo-img">
+                <img loading="lazy" src="logo.png" alt="Sensa" class="logo-img">
             </a>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                 <span></span>
@@ -1346,8 +1370,9 @@
             <div class="waitlist-form-card reveal" id="waitlistFormCard">
                 <div class="pricing-cards">
                     <div class="pricing-card">
+                        <span class="sale-tag">Summer Reset &middot; 20% Off</span>
                         <h3>1 Test Kit</h3>
-                        <div class="pricing-price"><span>$</span>49</div>
+                        <div class="pricing-price"><span class="sale-old">$49</span><span>$</span>39</div>
                         <p class="pricing-subtitle">Perfect for trying Sensa</p>
                         <ul class="pricing-features">
                             <li>1 at-home test</li>
@@ -1359,8 +1384,9 @@
                     </div>
                     <div class="pricing-card featured">
                         <span class="pricing-badge">Most Popular</span>
+                        <span class="sale-tag">Summer Reset &middot; 20% Off</span>
                         <h3>3-Pack Bundle</h3>
-                        <div class="pricing-price"><span>$</span>99</div>
+                        <div class="pricing-price"><span class="sale-old">$99</span><span>$</span>79</div>
                         <p class="pricing-subtitle">Best for tracking over time</p>
                         <ul class="pricing-features">
                             <li>3 at-home tests</li>
@@ -1373,8 +1399,9 @@
                     </div>
                     <div class="pricing-card">
                         <span class="pricing-badge" style="background:rgba(114,103,242,0.12); color:var(--accent-purple);">Best Value</span>
+                        <span class="sale-tag">Summer Reset &middot; 20% Off</span>
                         <h3>4-Pack Bundle</h3>
-                        <div class="pricing-price"><span>$</span>129</div>
+                        <div class="pricing-price"><span class="sale-old">$129</span><span>$</span>103</div>
                         <p class="pricing-subtitle">Ideal for families</p>
                         <ul class="pricing-features">
                             <li>4 at-home tests</li>
@@ -1455,12 +1482,12 @@
         <div class="buy-bar-inner">
             <div class="buy-bar-text">
                 <div class="buy-bar-title">Sensa At-Home Test Kit</div>
-                <div class="buy-bar-sub">Free shipping. Results in 15 minutes. No needles.</div>
+                <div class="buy-bar-sub">Summer Reset Sale: 20% off. Free shipping. Results in 15 minutes.</div>
             </div>
             <div class="buy-bar-actions">
-                <button type="button" class="btn buy-bar-hide-sm" onclick="handleCheckout('price_1test', this)">1 Kit &middot; $49</button>
-                <button type="button" class="btn buy-bar-featured" onclick="handleCheckout('price_3pack', this)">Buy 3-Pack &middot; $99</button>
-                <button type="button" class="btn buy-bar-hide-sm" onclick="handleCheckout('price_4pack', this)">4-Pack &middot; $129</button>
+                <button type="button" class="btn buy-bar-hide-sm" onclick="handleCheckout('price_1test', this)">1 Kit &middot; $39</button>
+                <button type="button" class="btn buy-bar-featured" onclick="handleCheckout('price_3pack', this)">Buy 3-Pack &middot; $79</button>
+                <button type="button" class="btn buy-bar-hide-sm" onclick="handleCheckout('price_4pack', this)">4-Pack &middot; $103</button>
             </div>
         </div>
     </div>
@@ -1594,8 +1621,14 @@
         .srs-close:hover { color: var(--text-dark); }
         .srs-badge { display: inline-block; background: var(--accent-gold); color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.66rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.32rem 0.95rem; border-radius: 20px; margin-bottom: 0.9rem; }
         .srs-modal h2 { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.9rem; letter-spacing: -0.04em; color: var(--accent-navy); margin-bottom: 0.4rem; }
-        .srs-sub { color: var(--text-gray); font-size: 1rem; line-height: 1.5; margin-bottom: 1.5rem; }
+        .srs-sub { color: var(--text-gray); font-size: 1rem; line-height: 1.5; margin-bottom: 1.1rem; }
         .srs-sub strong { color: var(--accent-orange); }
+        .srs-countdown-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 1.4rem; }
+        .srs-countdown-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.74rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-coral); }
+        .srs-countdown { display: inline-flex; align-items: flex-start; gap: 0.4rem; font-variant-numeric: tabular-nums; }
+        .srs-cc-unit { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; background: var(--accent-navy); border-radius: 10px; padding: 0.45rem 0.6rem; min-width: 3rem; }
+        .srs-cc-num { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.35rem; line-height: 1; color: #fff; }
+        .srs-cc-lbl { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); }
         .srs-rows { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.4rem; text-align: left; }
         .srs-row { display: flex; align-items: center; gap: 1rem; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 0.85rem 1rem; }
         .srs-row.feat { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(250,194,52,0.18); }
@@ -1619,6 +1652,15 @@
             <span class="srs-badge"><span aria-hidden="true">&#9728;</span> Summer Reset Sale &middot; Limited Time</span>
             <h2 id="srsTitle">20% Off Every Kit</h2>
             <p class="srs-sub">Your <strong>Summer Reset</strong> starts now. We dropped the price on every Sensa kit. Lock in the lower price before the sale ends.</p>
+            <div class="srs-countdown-wrap">
+                <span class="srs-countdown-label">Summer Reset Sale ends in</span>
+                <span class="srs-countdown" data-sale-countdown aria-live="polite">
+                    <span class="srs-cc-unit"><span class="srs-cc-num" data-unit="days">00</span><span class="srs-cc-lbl">Days</span></span>
+                    <span class="srs-cc-unit"><span class="srs-cc-num" data-unit="hours">00</span><span class="srs-cc-lbl">Hrs</span></span>
+                    <span class="srs-cc-unit"><span class="srs-cc-num" data-unit="mins">00</span><span class="srs-cc-lbl">Min</span></span>
+                    <span class="srs-cc-unit"><span class="srs-cc-num" data-unit="secs">00</span><span class="srs-cc-lbl">Sec</span></span>
+                </span>
+            </div>
             <div class="srs-rows">
                 <div class="srs-row">
                     <div class="srs-row-info">
@@ -1658,6 +1700,7 @@
             overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
             document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
             if (fab) fab.addEventListener('click', openModal);
+
             // Auto-open once per browser session; the floating chip reopens it after that.
             try {
                 if (!sessionStorage.getItem('srsModalSeen')) {
@@ -1669,6 +1712,7 @@
         })();
     </script>
 
+<script src="sale.js" defer></script>
 <script src="theme-fx.js" defer></script>
 </body>
 </html>
