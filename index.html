@@ -169,17 +169,19 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.1rem;
+            margin-left: auto;
         }
 
         nav a {
             text-decoration: none;
             color: var(--text-dark);
-            font-size: 0.9rem;
+            font-size: 0.78rem;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             text-transform: uppercase;
             transition: color 0.2s;
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -229,6 +231,114 @@
         .scroll-top:focus-visible {
             outline: 3px solid var(--accent-purple);
             outline-offset: 2px;
+        }
+
+        /* Summer Reset Sale promo bar */
+        .promo-bar {
+            background: linear-gradient(100deg, var(--accent-navy) 0%, #3a1fd6 55%, var(--accent-purple) 100%);
+            color: #fff;
+            position: relative;
+        }
+
+        .promo-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.85rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .promo-badge {
+            position: absolute;
+            top: -0.7rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.62rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.25rem 0.85rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+            white-space: nowrap;
+        }
+
+        .promo-headline {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+        }
+
+        .promo-headline .promo-pct { color: var(--accent-gold); }
+        .promo-sun { font-size: 1.2rem; line-height: 1; }
+
+        .promo-sub {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.88);
+            border-left: 1px solid rgba(255,255,255,0.28);
+            padding-left: 1.5rem;
+        }
+
+        .promo-cta {
+            background: #fff;
+            color: var(--accent-navy);
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.55rem 1.4rem;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .promo-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+        }
+
+        @media (max-width: 760px) {
+            .promo-sub { border-left: none; padding-left: 0; }
+            .promo-bar-inner { gap: 0.75rem; padding: 1rem 1.2rem; }
+            .promo-headline { font-size: 1rem; }
+        }
+
+        /* Sale price styling on pricing cards */
+        .sale-old {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .sale-tag {
+            display: inline-block;
+            background: rgba(250, 194, 52, 0.22);
+            color: var(--accent-orange);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.2rem 0.6rem;
+            border-radius: 14px;
+            margin-bottom: 0.6rem;
         }
 
         /* Mobile Menu */
@@ -1683,12 +1793,28 @@
                 <a href="#team">Team</a>
                 <a href="our-story.html">Our Story</a>
                 <a href="#press">Press</a>
+                <a href="weight-loss.html">Weight Loss</a>
                 <a href="what-is-crp.html">What is CRP?</a>
                 <a href="#faq">FAQ</a>
                 <a href="#pricing" class="btn">Buy Now</a>
             </nav>
         </div>
     </header>
+
+    <!-- Summer Reset Sale promo bar -->
+    <div class="promo-bar" role="region" aria-label="Summer Reset Sale">
+        <span class="promo-badge">Limited Time Only</span>
+        <div class="promo-bar-inner">
+            <div class="promo-headline">
+                <span class="promo-sun" aria-hidden="true">&#9728;&#65039;</span>
+                <span>Summer Reset Sale <span class="promo-pct">&middot; 20% Off</span></span>
+            </div>
+            <div class="promo-sub">
+                <span>Save on 1 kit, 3-pack, and 4-pack options</span>
+            </div>
+            <a href="#pricing" class="promo-cta">Shop the Sale</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -1708,7 +1834,7 @@
                     </div>
                 </div>
                 <div class="hero-buttons">
-                    <a href="#pricing" class="btn btn-pulse">Buy Now &middot; From $49</a>
+                    <a href="#pricing" class="btn btn-pulse">Shop the Summer Reset Sale &middot; From $39</a>
                     <a href="#about" class="btn btn-outline">Learn More</a>
                 </div>
                 <div class="hero-stats">
@@ -1965,8 +2091,9 @@
             </div>
             <div class="pricing-cards reveal">
                 <div class="pricing-card">
+                    <span class="sale-tag">Summer Reset &middot; 20% Off</span>
                     <h3>1 Test Kit</h3>
-                    <div class="pricing-price"><span>$</span>49</div>
+                    <div class="pricing-price"><span class="sale-old">$49</span><span>$</span>39</div>
                     <p class="pricing-subtitle">Perfect for trying Sensa</p>
                     <ul class="pricing-features">
                         <li>1 at-home test</li>
@@ -1978,8 +2105,9 @@
                 </div>
                 <div class="pricing-card featured">
                     <span class="pricing-badge">Most Popular</span>
+                    <span class="sale-tag">Summer Reset &middot; 20% Off</span>
                     <h3>3-Pack Progress Tracker</h3>
-                    <div class="pricing-price"><span>$</span>99</div>
+                    <div class="pricing-price"><span class="sale-old">$99</span><span>$</span>79</div>
                     <p class="pricing-subtitle">Test, change, retest. See your progress.</p>
                     <ul class="pricing-features">
                         <li>3 at-home tests</li>
@@ -1993,8 +2121,9 @@
                 </div>
                 <div class="pricing-card">
                     <span class="pricing-badge" style="background:rgba(114,103,242,0.12); color:var(--accent-purple);">Best Value</span>
+                    <span class="sale-tag">Summer Reset &middot; 20% Off</span>
                     <h3>4-Pack Bundle</h3>
-                    <div class="pricing-price"><span>$</span>129</div>
+                    <div class="pricing-price"><span class="sale-old">$129</span><span>$</span>103</div>
                     <p class="pricing-subtitle">Ideal for families</p>
                     <ul class="pricing-features">
                         <li>4 at-home tests</li>
@@ -2266,9 +2395,9 @@
                             </select>
                         </div>
                         <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.5rem;">
-                            <button type="button" class="btn" style="width:100%; text-align:center; display:block;" onclick="handleCheckout('price_1test', this)">Buy 1 for $49</button>
-                            <button type="button" class="btn" style="width:100%; text-align:center; display:block; background:#1a1464;" onclick="handleCheckout('price_3pack', this)">Buy 3-Pack for $99</button>
-                            <button type="button" class="btn" style="width:100%; text-align:center; display:block;" onclick="handleCheckout('price_4pack', this)">Buy 4-Pack for $129</button>
+                            <button type="button" class="btn" style="width:100%; text-align:center; display:block;" onclick="handleCheckout('price_1test', this)">Buy 1 for $39 (was $49)</button>
+                            <button type="button" class="btn" style="width:100%; text-align:center; display:block; background:#1a1464;" onclick="handleCheckout('price_3pack', this)">Buy 3-Pack for $79 (was $99)</button>
+                            <button type="button" class="btn" style="width:100%; text-align:center; display:block;" onclick="handleCheckout('price_4pack', this)">Buy 4-Pack for $103 (was $129)</button>
                         </div>
                     </form>
                     <p style="margin-top:1rem; font-size:0.8rem; color:var(--text-light); text-align:center;">Secure checkout. Free shipping on all orders.</p>
@@ -2336,12 +2465,12 @@
         <div class="buy-bar-inner">
             <div class="buy-bar-text">
                 <div class="buy-bar-title">Sensa At-Home Test Kit</div>
-                <div class="buy-bar-sub">Free shipping. Results in 15 minutes. No needles.</div>
+                <div class="buy-bar-sub">Summer Reset Sale: 20% off. Free shipping. Results in 15 minutes.</div>
             </div>
             <div class="buy-bar-actions">
-                <button type="button" class="btn btn-outline buy-bar-hide-sm" onclick="handleCheckout('price_1test', this)">1 Kit &middot; $49</button>
-                <button type="button" class="btn buy-bar-featured" onclick="handleCheckout('price_3pack', this)">Buy 3-Pack &middot; $99</button>
-                <button type="button" class="btn btn-outline buy-bar-hide-sm" onclick="handleCheckout('price_4pack', this)">4-Pack &middot; $129</button>
+                <button type="button" class="btn btn-outline buy-bar-hide-sm" onclick="handleCheckout('price_1test', this)">1 Kit &middot; $39</button>
+                <button type="button" class="btn buy-bar-featured" onclick="handleCheckout('price_3pack', this)">Buy 3-Pack &middot; $79</button>
+                <button type="button" class="btn btn-outline buy-bar-hide-sm" onclick="handleCheckout('price_4pack', this)">4-Pack &middot; $103</button>
             </div>
         </div>
     </div>
