@@ -1584,6 +1584,91 @@
         }
     </script>
 
+    <!-- Summer Reset Sale popup -->
+    <style>
+        .srs-overlay { position: fixed; inset: 0; z-index: 4000; display: flex; align-items: center; justify-content: center; padding: 1.2rem; background: rgba(16,10,60,0.55); backdrop-filter: blur(6px); opacity: 0; visibility: hidden; transition: opacity 0.28s ease, visibility 0.28s ease; }
+        .srs-overlay.is-open { opacity: 1; visibility: visible; }
+        .srs-modal { position: relative; width: 100%; max-width: 520px; background: var(--bg-white); border-radius: 22px; box-shadow: 0 30px 80px rgba(16,10,60,0.4); padding: 2.4rem 2rem 2rem; text-align: center; transform: translateY(18px) scale(0.98); transition: transform 0.3s ease; max-height: 92vh; overflow-y: auto; }
+        .srs-overlay.is-open .srs-modal { transform: translateY(0) scale(1); }
+        .srs-close { position: absolute; top: 0.9rem; right: 1rem; background: none; border: none; font-size: 1.7rem; line-height: 1; color: var(--text-light); cursor: pointer; padding: 0.2rem; }
+        .srs-close:hover { color: var(--text-dark); }
+        .srs-badge { display: inline-block; background: var(--accent-gold); color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.66rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.32rem 0.95rem; border-radius: 20px; margin-bottom: 0.9rem; }
+        .srs-modal h2 { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.9rem; letter-spacing: -0.04em; color: var(--accent-navy); margin-bottom: 0.4rem; }
+        .srs-sub { color: var(--text-gray); font-size: 1rem; line-height: 1.5; margin-bottom: 1.5rem; }
+        .srs-sub strong { color: var(--accent-orange); }
+        .srs-rows { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.4rem; text-align: left; }
+        .srs-row { display: flex; align-items: center; gap: 1rem; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 0.85rem 1rem; }
+        .srs-row.feat { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(250,194,52,0.18); }
+        .srs-row-info { flex: 1; }
+        .srs-row-name { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.98rem; color: var(--text-dark); }
+        .srs-row-prices { margin-top: 0.2rem; }
+        .srs-old { color: var(--text-light); text-decoration: line-through; margin-right: 0.45rem; font-size: 0.95rem; }
+        .srs-new { color: var(--accent-navy); font-weight: 700; font-size: 1.15rem; }
+        .srs-save { display: inline-block; margin-left: 0.5rem; background: rgba(232,90,57,0.12); color: var(--accent-coral); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.72rem; padding: 0.14rem 0.5rem; border-radius: 10px; }
+        .srs-buy { background: var(--accent-gold); color: var(--text-dark); border: none; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.05rem; border-radius: 10px; cursor: pointer; white-space: nowrap; transition: transform 0.15s, box-shadow 0.15s; }
+        .srs-buy:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(250,194,52,0.4); }
+        .srs-fine { font-size: 0.8rem; color: var(--text-light); }
+        .srs-fab { position: fixed; left: 1.1rem; bottom: 1.1rem; z-index: 3500; display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(100deg, var(--accent-navy), var(--accent-purple)); color: #fff; border: none; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.1rem; border-radius: 30px; box-shadow: 0 8px 24px rgba(24,0,173,0.35); cursor: pointer; transition: transform 0.2s; }
+        .srs-fab:hover { transform: translateY(-2px); }
+        @media (max-width: 560px) { .srs-modal h2 { font-size: 1.55rem; } .srs-row { flex-wrap: wrap; } .srs-fab { font-size: 0.78rem; left: 0.8rem; bottom: 0.8rem; } }
+    </style>
+
+    <div class="srs-overlay" id="srsOverlay" role="dialog" aria-modal="true" aria-labelledby="srsTitle">
+        <div class="srs-modal">
+            <button class="srs-close" id="srsClose" aria-label="Close">&times;</button>
+            <span class="srs-badge"><span aria-hidden="true">&#9728;</span> Summer Reset Sale &middot; Limited Time</span>
+            <h2 id="srsTitle">20% Off Every Kit</h2>
+            <p class="srs-sub">Your <strong>Summer Reset</strong> starts now. We dropped the price on every Sensa kit. Lock in the lower price before the sale ends.</p>
+            <div class="srs-rows">
+                <div class="srs-row">
+                    <div class="srs-row-info">
+                        <div class="srs-row-name">1 Test Kit</div>
+                        <div class="srs-row-prices"><span class="srs-old">$49</span><span class="srs-new">$39</span><span class="srs-save">Save $10</span></div>
+                    </div>
+                    <button type="button" class="srs-buy" onclick="handleCheckout('price_1test', this)">Buy</button>
+                </div>
+                <div class="srs-row feat">
+                    <div class="srs-row-info">
+                        <div class="srs-row-name">3-Pack Bundle &middot; Most Popular</div>
+                        <div class="srs-row-prices"><span class="srs-old">$99</span><span class="srs-new">$79</span><span class="srs-save">Save $20</span></div>
+                    </div>
+                    <button type="button" class="srs-buy" onclick="handleCheckout('price_3pack', this)">Buy</button>
+                </div>
+                <div class="srs-row">
+                    <div class="srs-row-info">
+                        <div class="srs-row-name">4-Pack Bundle</div>
+                        <div class="srs-row-prices"><span class="srs-old">$129</span><span class="srs-new">$103</span><span class="srs-save">Save $26</span></div>
+                    </div>
+                    <button type="button" class="srs-buy" onclick="handleCheckout('price_4pack', this)">Buy</button>
+                </div>
+            </div>
+            <p class="srs-fine">Discount applied automatically at checkout. Free shipping. No subscription.</p>
+        </div>
+    </div>
+    <button class="srs-fab" id="srsFab" type="button"><span aria-hidden="true">&#9728;</span> Summer Reset Sale &middot; 20% off</button>
+
+    <script>
+        (function () {
+            var overlay = document.getElementById('srsOverlay');
+            if (!overlay) return;
+            var fab = document.getElementById('srsFab');
+            function openModal() { overlay.classList.add('is-open'); }
+            function closeModal() { overlay.classList.remove('is-open'); }
+            document.getElementById('srsClose').addEventListener('click', closeModal);
+            overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+            if (fab) fab.addEventListener('click', openModal);
+            // Auto-open once per browser session; the floating chip reopens it after that.
+            try {
+                if (!sessionStorage.getItem('srsModalSeen')) {
+                    setTimeout(function () { openModal(); sessionStorage.setItem('srsModalSeen', '1'); }, 1100);
+                }
+            } catch (e) {
+                setTimeout(openModal, 1100);
+            }
+        })();
+    </script>
+
 <script src="theme-fx.js" defer></script>
 </body>
 </html>
