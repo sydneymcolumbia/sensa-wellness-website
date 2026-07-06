@@ -39,6 +39,14 @@ State of Sensa Wellness (static HTML, Vercel, www.sensawellness.org) after the J
 
 **Reviewer byline upgrade path (TODO when founder recruits a credentialed reviewer):** replace the "Reviewed by the Sensa Wellness editorial team" text with "Medically reviewed by [Name, credentials]" on the 21 pages, AND add `reviewedBy` (Person with name + credentials) to each Article schema. Do NOT add reviewedBy schema until a real named person exists (finding 3: cited commercial health sites have named credentialed reviewers 71.1% of the time).
 
+**Phase 4 (July 2026, word-depth + related-card consistency):**
+- Word-depth audit of all 79 posts (substantive post-body words, excluding nav/footer/scripts, counted from `<div class="post-body">` to the first of `.post-cta`/`.related-posts`). Before: distribution <800=5, 800-1099=54, 1100-1499=14, 1500-1999=6, 2000+=0 (median 934). After: <800=2, 800-1099=45, 1100-1499=9, 1500-1999=23 (median 980).
+- Deepened all 20 phase-1 priority posts to 1,500+ words. 17 were below 1,500 and were expanded honestly (no fabricated stats/studies): gut, stress, alcohol, exercise, smoking, obesity, intermittent-fasting, omega3, vitamin-d, sugar, silent, inflammatory-foods, aging, diabetes, heart-disease, understanding-crp, longevity. Method: expand mechanisms already named + add same-cluster context with verified internal links + a consistent "tracking at home" CRP/Sensa section per post. The other 3 priority posts (anti-inflammatory-diet 1901, brain 1939, sleep 1626) were already 1,500+ and untouched. Every priority post now 1,500-1,649 words.
+- Related-card title sweep: updated 85 related-posts card `<h4>` texts across 60 post files to the phase-3 question-form titles for the 10 retitled posts (heart-disease, stress, diabetes, gut, brain, exercise, obesity, sugar, smoking, omega3). Text-only; links were already correct. 0 stale card texts remain (verified by rescan).
+- Fixed 3 pre-existing em dashes in post-aging-inflammation.html meta/og/schema description ("inflammaging — how" -> "inflammaging, how"). No other protected files touched. All my phase-4 commits changed only post-*.html.
+- THIN NON-PRIORITY POSTS still under 800 words (candidates for a future deepening phase, NOT expanded in phase 4 per scope): post-autoimmune-inflammation.html (761), post-kidney-inflammation.html (774). Everything else is 800+.
+- Note: my word-count method runs a few words below a browser render; I targeted ~1,500+ with a small buffer so all priority posts clear the threshold.
+
 **Known remaining gaps / not done:**
 - Footer "Solutions" list links to `href="#"` placeholders (Inflammation Monitoring, Preventive Screening, Community Programs, Corporate Wellness) across ~100 files — dead links, left intact.
 - privacy.html is a noindex duplicate of privacy-policy.html; canonical now points to privacy-policy.html.
