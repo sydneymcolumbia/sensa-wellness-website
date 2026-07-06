@@ -493,6 +493,10 @@
     <!-- INTRO -->
     <section class="cmp-section bg-white">
         <div class="container">
+            <div class="answer-box" style="max-width: 820px; margin: 0 auto 3rem;">
+                <span class="answer-label">The short answer</span>
+                <p>An at-home CRP test and a lab blood test both measure C-reactive protein, but they serve different purposes. A lab test gives a single, clinically precise reading suited to diagnosis, while an at-home test like Sensa uses saliva instead of a blood draw and lets you track CRP trends across weeks and months for everyday wellness. Neither is universally better. Use a lab test for diagnosis and at-home testing for ongoing <a href="post-understanding-crp.html">CRP monitoring</a>.</p>
+            </div>
             <div class="two-col">
                 <div class="intro-text reveal">
                     <span class="section-label">The Background</span>
@@ -725,6 +729,47 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What is the difference between an at-home CRP test and a lab blood test?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Both measure C-reactive protein, but a traditional lab test uses a venipuncture blood draw to give a single, clinically precise reading, usually about once a year. An at-home test like Sensa uses saliva instead of a blood draw, returns a result in minutes, and is designed to be repeated so you can track CRP trends across weeks and months."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is an at-home CRP test as accurate as a lab test?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A clinical lab test remains the gold standard for a single, precise CRP measurement used to guide diagnosis or treatment. An at-home CRP test is designed for a different purpose: tracking your inflammatory trends over time for general wellness. The two are complementary rather than interchangeable."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can an at-home CRP test replace a doctor's blood test?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Sensa is a general wellness tool for monitoring CRP trends at home, not a diagnostic device. It does not diagnose, treat, or prevent any disease. For clinical diagnosis or if you have health concerns, you should consult a qualified healthcare provider and use a lab test."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Which CRP testing option is right for me?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Choose a lab blood test when you need a precise reading for a clinical diagnosis or treatment decision. Choose at-home CRP testing when your goal is ongoing wellness monitoring, such as seeing how your diet, sleep, and exercise affect your inflammatory baseline over time. Many people benefit from using both for their respective strengths."
+            }
+        }
+    ]
+}
+</script>
 
 <script src="theme-fx.js" defer></script>
 </body>

@@ -493,6 +493,10 @@
     <!-- INTRO -->
     <section class="cmp-section bg-white">
         <div class="container">
+            <div class="answer-box" style="max-width: 820px; margin: 0 auto 3rem;">
+                <span class="answer-label">The short answer</span>
+                <p>The most practical way to test for inflammation is measuring C-reactive protein (CRP), the most clinically validated inflammatory marker, produced by the liver in response to inflammation. Other markers include ESR, IL-6, and TNF-alpha. Options range from a traditional lab blood draw, which gives a single precise reading for clinical use, to at-home CRP tests like Sensa that use saliva instead of a needle and let you track trends across weeks and months. The right choice depends on whether you need a clinical diagnosis or ongoing wellness monitoring.</p>
+            </div>
             <div class="two-col">
                 <div class="intro-text reveal">
                     <span class="section-label">Why It Matters</span>
@@ -746,6 +750,47 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What is the best way to test for inflammation?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Measuring C-reactive protein (CRP) is the most practical way to test for inflammation, because CRP is the most clinically validated and widely used inflammatory marker. You can measure it through a traditional lab blood draw for a single precise reading, or through an at-home CRP test for ongoing tracking. Other markers include ESR, IL-6, and TNF-alpha."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What blood tests measure inflammation?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The main markers measured are C-reactive protein (CRP), erythrocyte sedimentation rate (ESR), interleukin-6 (IL-6), and tumor necrosis factor alpha (TNF-alpha). CRP is the most clinically validated and widely used because it responds quickly to changes in inflammation, typically within 6 to 12 hours, making it suitable for both acute and chronic monitoring."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can you test for inflammation at home?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. At-home CRP tests like Sensa measure C-reactive protein from saliva with no blood draw and no clinic visit, letting you track your inflammatory trends across weeks and months. At-home testing is a general wellness tool for monitoring, not a diagnostic replacement for clinical testing."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How often should you test your inflammation?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A single CRP reading at an annual physical gives you just one data point per year. Testing more frequently, across different diet patterns, sleep schedules, and stress loads, gives a continuous picture of how your body responds to your lifestyle, which is where at-home monitoring is most useful."
+            }
+        }
+    ]
+}
+</script>
 
 <script src="theme-fx.js" defer></script>
 </body>

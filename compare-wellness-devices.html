@@ -534,6 +534,10 @@
     <!-- INTRO -->
     <section class="cmp-section bg-white">
         <div class="container">
+            <div class="answer-box" style="max-width: 820px; margin: 0 auto 3rem;">
+                <span class="answer-label">The short answer</span>
+                <p>Fitness trackers and smartwatches measure outputs like steps, heart rate, sleep, and glucose, but none can measure inflammation, the internal biochemical process that shapes energy, recovery, aging, and chronic disease risk. Wearables detect surface signals, while inflammation happens inside your tissues and bloodstream. Measuring C-reactive protein (CRP), the most clinically validated inflammatory marker, fills this gap, and at-home tests like Sensa let you track it from saliva alongside your other wellness data.</p>
+            </div>
             <div class="two-col">
                 <div class="intro-text reveal">
                     <span class="section-label">The Invisible Gap</span>
@@ -768,6 +772,39 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Can fitness trackers or smartwatches measure inflammation?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Fitness trackers, smartwatches, smart scales, and CGMs measure outputs like steps, heart rate, sleep, weight, and glucose, but none can measure inflammation directly. Wearables detect surface signals such as movement, skin temperature, and optical heart rate, while inflammation is a biochemical process happening inside your tissues and bloodstream that no wrist sensor can see."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How can you measure inflammation at home?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can measure inflammation at home by testing C-reactive protein (CRP), the most clinically validated inflammatory biomarker. At-home tests like Sensa measure CRP from saliva with no blood draw, letting you track how diet, sleep, stress, and exercise affect your inflammatory baseline alongside the data from your other wellness devices."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Why isn't inflammation tracked by wearable devices?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Wearables measure signals that originate at the body's surface, such as movement, skin temperature, and optical heart rate. Inflammation is a biochemical process happening inside your tissues and bloodstream, so it requires measuring a biomarker like CRP rather than a surface sensor. This is why CRP testing complements, rather than duplicates, the data from wearables."
+            }
+        }
+    ]
+}
+</script>
 
 <script src="theme-fx.js" defer></script>
 </body>
