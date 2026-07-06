@@ -29,6 +29,16 @@ State of Sensa Wellness (static HTML, Vercel, www.sensawellness.org) after the J
 
 **Audits passed:** 0 broken internal .html links, 0 images missing alt (128 imgs), every indexable page has exactly one H1 (only noindex admin/chat/cuvet-animation differ). Assets sensa-og.jpg, logo.png, favicon.png, theme.css, theme-fx.js all exist.
 
+**Phase 3 (July 2026, evidence-density + definitive CRP resource):**
+- Evidence pass on the 20 phase-1 answer-box posts: each now has (a) a `.key-definition` callout (crisp one-line definition of the core term, before the first h2) and (b) a `.data-table` comparison table (topic-specific, 3-5 rows, `<caption>`, all figures sourced from that post's own body or the AHA hsCRP ranges). No new FAQ blocks (finding 4: FAQ formatting is slightly negative). New shared CSS in styles.css: `.key-definition`, `.data-table`/`.data-table-wrap`, `.post-reviewer`.
+- Reviewer byline shipped on the 20 posts + what-is-crp: `<p class="post-reviewer"><strong>Reviewed by the Sensa Wellness editorial team.</strong> ...</p>` (in post header after subtitle; in what-is-crp hero as `.crp-reviewer`). NO reviewedBy schema yet (no named reviewer exists).
+- 3 compare pages got a CRP reference-range table (AHA hsCRP ranges) via their existing `.compare-table` class, inserted before the `<!-- HOW SENSA WORKS -->` section. They already had answer boxes + head-to-head tables + FAQPage.
+- what-is-crp.html expanded 1001 -> 2508 words: added hsCRP-vs-standard-CRP comparison table, What Raises CRP / What Lowers CRP (internally linked to supporting posts with sourced stats), How CRP Works (biology + 1930 history), CRP-vs-other-markers, testing cadence, when-to-see-a-doctor, and a Sources section with outbound institutional links (MedlinePlus, heart.org, PubMed). Article schema extended with dateModified, articleSection, keywords, about (MedicalEntity), citation[]. Still Article + FAQPage.
+- Retitled 10 posts to question form (AIO triggers how 84.3% / why 73.4%): heart-disease, stress, diabetes, gut, brain, exercise, obesity, sugar, smoking, omega3. Updated title/og/twitter (with " - Sensa Wellness" suffix), h1, breadcrumb name, Article headline (now WITHOUT suffix to match visible h1), and blog.html card h3. URLs/filenames unchanged. Related-posts h4 in OTHER post files still show the old descriptive titles (intentionally out of scope; links unaffected).
+- sitemap.xml unchanged by retitles (titles aren't in it); still 101 URLs.
+
+**Reviewer byline upgrade path (TODO when founder recruits a credentialed reviewer):** replace the "Reviewed by the Sensa Wellness editorial team" text with "Medically reviewed by [Name, credentials]" on the 21 pages, AND add `reviewedBy` (Person with name + credentials) to each Article schema. Do NOT add reviewedBy schema until a real named person exists (finding 3: cited commercial health sites have named credentialed reviewers 71.1% of the time).
+
 **Known remaining gaps / not done:**
 - Footer "Solutions" list links to `href="#"` placeholders (Inflammation Monitoring, Preventive Screening, Community Programs, Corporate Wellness) across ~100 files — dead links, left intact.
 - privacy.html is a noindex duplicate of privacy-policy.html; canonical now points to privacy-policy.html.
