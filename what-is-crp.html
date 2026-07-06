@@ -22,10 +22,19 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "What is CRP? Understanding C-Reactive Protein",
-        "description": "Learn what CRP (C-reactive protein) is, what your levels mean, and how to test at home. Understand the link between inflammation and your health.",
+        "description": "Learn what CRP (C-reactive protein) is, what your levels mean, what raises and lowers it, the difference between hsCRP and standard CRP, and how to test at home.",
         "author": {"@type": "Organization", "name": "Sensa Wellness", "url": "https://www.sensawellness.org"},
         "publisher": {"@type": "Organization", "name": "Sensa Wellness", "url": "https://www.sensawellness.org"},
         "image": "https://www.sensawellness.org/sensa-og.jpg",
+        "dateModified": "2026-07-06",
+        "articleSection": ["What is CRP", "hsCRP vs standard CRP", "CRP reference ranges", "What raises CRP", "What lowers CRP", "At-home CRP testing"],
+        "keywords": "CRP, C-reactive protein, hsCRP, high-sensitivity CRP, CRP levels, CRP reference range, inflammation marker, at-home CRP test",
+        "about": {"@type": "MedicalEntity", "name": "C-reactive protein"},
+        "citation": [
+            "https://medlineplus.gov/lab-tests/c-reactive-protein-crp-test/",
+            "https://www.heart.org/",
+            "https://pubmed.ncbi.nlm.nih.gov/"
+        ],
         "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.sensawellness.org/what-is-crp.html"}
     }
     </script>
@@ -578,6 +587,61 @@
             text-align: center;
         }
 
+        /* ── Prose lists and sources (GEO deep content) ── */
+        .crp-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
+        }
+
+        .crp-list li {
+            position: relative;
+            padding-left: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--text-gray);
+            font-size: 1.02rem;
+            line-height: 1.75;
+        }
+
+        .crp-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-coral);
+        }
+
+        .crp-list li strong { color: var(--text-dark); }
+
+        .crp-list a { color: var(--accent-navy); font-weight: 600; }
+
+        .crp-sources {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
+            max-width: 760px;
+        }
+
+        .crp-sources li {
+            margin-bottom: 0.9rem;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: var(--text-gray);
+        }
+
+        .crp-sources a { color: var(--accent-navy); font-weight: 600; }
+
+        .crp-reviewer {
+            margin-top: 1.4rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .crp-reviewer strong { color: var(--text-gray); }
+
         /* ── Responsive ── */
         @media (max-width: 992px) {
             .two-col {
@@ -666,6 +730,7 @@
                     <a href="pay-now.html" class="btn">Test Your CRP at Home</a>
                     <a href="#crp-levels" class="btn-secondary">See What Levels Mean</a>
                 </div>
+                <p class="crp-reviewer"><strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
     </section>
@@ -868,6 +933,157 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ HSCRP VS STANDARD CRP ══ -->
+    <section class="crp-section bg-white">
+        <div class="container">
+            <div class="reveal" style="max-width: 760px; margin-bottom: 1rem;">
+                <span class="section-label">Two Tests, One Protein</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">What Is the Difference Between hsCRP and Standard CRP?</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">Standard CRP and high-sensitivity CRP (hsCRP) measure the same protein, but at different sensitivities. Standard CRP assays detect levels above roughly 5 to 10 mg/L and are used to flag acute inflammation, infection, or a disease flare. High-sensitivity CRP assays detect levels as low as 0.1 to 0.3 mg/L, which is what makes them useful for tracking the low-grade, chronic inflammation tied to everyday diet, sleep, stress, and activity.</p>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75; margin-top: 1.1rem;">For general wellness monitoring, hsCRP is the relevant measurement. The number itself is identical chemistry; the difference is the precision of the assay reading it. Sensa is built around the high-sensitivity range because that is where lifestyle-driven changes actually show up.</p>
+            </div>
+            <div class="reveal">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="col-traditional">Standard CRP</th>
+                            <th class="col-sensa">High-Sensitivity CRP (hsCRP)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Detection Floor</td>
+                            <td>Roughly 5 to 10 mg/L</td>
+                            <td>As low as 0.1 to 0.3 mg/L</td>
+                        </tr>
+                        <tr>
+                            <td>Primary Use</td>
+                            <td>Acute infection, injury, inflammatory flares</td>
+                            <td>Chronic low-grade inflammation and cardiovascular risk</td>
+                        </tr>
+                        <tr>
+                            <td>Question It Answers</td>
+                            <td>Is something acutely wrong right now?</td>
+                            <td>What is my baseline inflammation over time?</td>
+                        </tr>
+                        <tr>
+                            <td>Best For Wellness Tracking</td>
+                            <td class="check-no">Too coarse for small shifts</td>
+                            <td class="check-yes">Sensitive enough to see lifestyle effects</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ WHAT RAISES CRP ══ -->
+    <section class="crp-section bg-primary">
+        <div class="container">
+            <div class="reveal" style="max-width: 760px;">
+                <span class="section-label">Drivers of Inflammation</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">What Raises CRP?</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">CRP rises whenever the body mounts an inflammatory response. Acute triggers like infection or injury can push CRP to 20 to 100 mg/L or higher, and a single intense workout can transiently raise it two to five-fold. More relevant to everyday wellness is chronically elevated baseline CRP, which is driven by a consistent set of lifestyle factors.</p>
+                <ul class="crp-list">
+                    <li><strong>Visceral fat.</strong> Fat around the abdominal organs is highly inflammatory. Losing 5 to 10 percent of body weight has been shown to cut CRP by about 26 percent. See <a href="post-obesity-inflammation.html">obesity and inflammation</a>.</li>
+                    <li><strong>Poor sleep.</strong> Restricting sleep to four hours a night for 10 days significantly raises CRP, and rotating shift workers run CRP roughly 20 percent higher than day workers. See <a href="post-sleep-inflammation.html">sleep and inflammation</a>.</li>
+                    <li><strong>Chronic stress.</strong> A UK Biobank analysis of more than 400,000 people linked work, financial, and life stress to higher CRP. See <a href="post-stress-inflammation.html">stress and inflammation</a>.</li>
+                    <li><strong>Refined sugar and ultra-processed food.</strong> Americans average 17 teaspoons of added sugar a day, a meal-by-meal inflammatory stimulus. See <a href="post-sugar-inflammation.html">sugar and inflammation</a> and <a href="post-inflammatory-foods.html">the top inflammatory foods</a>.</li>
+                    <li><strong>Smoking.</strong> Current smokers carry CRP levels roughly 50 percent higher than lifelong nonsmokers. See <a href="post-smoking-inflammation.html">smoking and inflammation</a>.</li>
+                    <li><strong>Excess alcohol.</strong> Above about two drinks a day, CRP rises in a dose-dependent way. See <a href="post-alcohol-inflammation.html">alcohol and inflammation</a>.</li>
+                    <li><strong>A leaky gut barrier.</strong> When the intestinal barrier becomes permeable, bacterial LPS enters the blood and drives systemic inflammation. See <a href="post-gut-inflammation.html">gut health and inflammation</a>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ WHAT LOWERS CRP ══ -->
+    <section class="crp-section bg-subtle">
+        <div class="container">
+            <div class="reveal" style="max-width: 760px;">
+                <span class="section-label">Bringing It Down</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">What Lowers CRP?</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">CRP is highly responsive to lifestyle, which is what makes it worth tracking. Because hsCRP reflects your current inflammatory state rather than a fixed trait, the same habits that reduce inflammation show up as measurable drops in your number over weeks and months.</p>
+                <ul class="crp-list">
+                    <li><strong>Regular exercise.</strong> A meta-analysis of 83 randomized trials found regular aerobic exercise reduced resting CRP by 10 to 30 percent, and even walking 30 minutes five days a week cut CRP 16 percent over 12 weeks. See <a href="post-exercise-inflammation.html">exercise and inflammation</a>.</li>
+                    <li><strong>An anti-inflammatory diet.</strong> The Mediterranean pattern is the most evidence-backed, cutting cardiovascular events by about 30 percent in the PREDIMED trial while lowering CRP and IL-6. See <a href="post-anti-inflammatory-diet.html">the anti-inflammatory diet</a>.</li>
+                    <li><strong>Omega-3 fatty acids.</strong> A meta-analysis of 68 trials found omega-3 supplementation lowered CRP, IL-6, and TNF-alpha, especially in people with elevated baseline inflammation. See <a href="post-omega3-inflammation.html">omega-3s and inflammation</a>.</li>
+                    <li><strong>Weight loss.</strong> Losing 5 to 10 percent of body weight, especially visceral fat, reduced CRP by about 26 percent in a 2019 meta-analysis. See <a href="post-weight-loss-inflammation.html">inflammation and weight loss</a>.</li>
+                    <li><strong>Intermittent fasting.</strong> A 2019 meta-analysis of 18 trials found fasting protocols reduced CRP by about 0.9 mg/L on average. See <a href="post-intermittent-fasting-inflammation.html">intermittent fasting and inflammation</a>.</li>
+                    <li><strong>Consistent, sufficient sleep.</strong> Because poor sleep and inflammation form a feedback loop, restoring sleep is one of the most reliable ways to lower CRP. See <a href="post-sleep-inflammation.html">sleep and inflammation</a>.</li>
+                    <li><strong>Correcting vitamin D deficiency.</strong> Supplementation lowers CRP and IL-6 mainly in people who start deficient (below 20 ng/mL), which affects about 42 percent of American adults. See <a href="post-vitamin-d-inflammation.html">vitamin D and inflammation</a>.</li>
+                </ul>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75; margin-top: 1.4rem;">Some medications also lower CRP. Statins have well-documented CRP-lowering effects independent of their cholesterol effect, and aspirin, metformin, and omega-3 supplements lower it modestly. Any medication decision belongs with your healthcare provider.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ HOW CRP WORKS ══ -->
+    <section class="crp-section bg-white">
+        <div class="container">
+            <div class="reveal" style="max-width: 760px;">
+                <span class="section-label">The Biology</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">How Does CRP Work in the Body?</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">CRP is a pentameric protein produced primarily by liver cells in response to interleukin-6 (IL-6), one of the central pro-inflammatory cytokines. When IL-6 rises, whether from infection, tissue injury, or chronic low-grade inflammation, the liver ramps up CRP production within 4 to 6 hours. During an acute event, CRP levels can climb more than 1,000-fold, which is what makes it such a sensitive and fast-moving signal of the body's inflammatory state.</p>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75; margin-top: 1.1rem;">CRP was first described in 1930 by William Tillett and Thomas Francis, who found that blood from patients with acute pneumococcal pneumonia contained a substance that reacted with the C polysaccharide of the bacterium. The protein was named for that reaction. Decades of research since have established CRP as both a marker of inflammation and, in the case of cardiovascular disease, a signal that carries independent predictive value beyond cholesterol. See <a href="post-heart-disease-inflammation.html">how inflammation drives heart disease</a> and the deeper explainer on <a href="post-understanding-crp.html">understanding your CRP numbers</a>.</p>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75; margin-top: 1.1rem;">A single CRP reading is a snapshot. Because acute events like a cold, a hard workout, or a minor injury can raise CRP temporarily, the most useful signal comes from tracking the trend over time. A CRP of 8 mg/L during a cold means something very different from a CRP of 8 mg/L in a person who has been well for weeks. Repeated measurement is what separates a transient spike from a true chronic baseline.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ WHEN TO SEE A DOCTOR ══ -->
+    <section class="crp-section bg-primary">
+        <div class="container">
+            <div class="reveal" style="max-width: 760px;">
+                <span class="section-label">Clinical Guidance</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">When Should You See a Doctor About CRP?</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">Consistently elevated CRP above 3 mg/L in a person who is not acutely ill, and who has no obvious lifestyle cause, is worth a conversation with a healthcare provider. A reading above 10 mg/L usually reflects an acute process such as an active infection or injury rather than chronic low-grade inflammation. CRP does not diagnose any specific condition, but it can prompt appropriate follow-up. Sensa is a general wellness tool for tracking trends, not a diagnostic device, and it does not replace professional medical evaluation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CRP VS OTHER MARKERS ══ -->
+    <section class="crp-section bg-subtle">
+        <div class="container">
+            <div class="reveal" style="max-width: 760px;">
+                <span class="section-label">CRP In Context</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">Is Testing CRP the Same as Testing for Inflammation?</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">CRP is the most clinically validated and widely used inflammation marker, but it is not the only one. Inflammation biomarkers are measurable substances that rise or fall with the inflammatory process, and the main options include C-reactive protein (CRP), erythrocyte sedimentation rate (ESR), interleukin-6 (IL-6), and tumor necrosis factor alpha (TNF-alpha).</p>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75; margin-top: 1.1rem;">CRP earns its central role because it responds quickly, typically within 6 to 12 hours of a change in inflammatory activity, and because it has the deepest research base linking it to long-term health outcomes. IL-6 and TNF-alpha are the upstream cytokines that trigger CRP production, so CRP effectively integrates their signal into a single, stable, easy-to-measure number. For a full breakdown of the options, see the guide on <a href="compare-inflammation-tests.html">how to test for inflammation</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ HOW OFTEN TO TEST ══ -->
+    <section class="crp-section bg-white">
+        <div class="container">
+            <div class="reveal" style="max-width: 760px;">
+                <span class="section-label">Testing Cadence</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">How Often Should You Test Your CRP?</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">Because CRP reflects your current inflammatory state rather than a fixed trait, testing regularly is more informative than a single annual reading. A traditional lab CRP test is typically done only once a year at a checkup, which captures a snapshot but misses the trend. At-home testing changes that: you can measure as often as you want to see how a specific change, a new eating pattern, a training block, or better sleep, is landing on your inflammation.</p>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75; margin-top: 1.1rem;">A practical approach is to establish a baseline with a few readings when you are healthy and rested, then retest every few weeks or after a meaningful lifestyle change. Avoid testing right after an intense workout, an illness, or an injury, since acute events temporarily raise CRP and can obscure your true baseline. To compare at-home and lab testing directly, see <a href="compare-crp-tests.html">at-home CRP test vs lab blood test</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ SOURCES ══ -->
+    <section class="crp-section bg-white">
+        <div class="container">
+            <div class="reveal" style="max-width: 760px;">
+                <span class="section-label">Sources and Further Reading</span>
+                <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.3rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.25;">Where These Ranges and Facts Come From</h2>
+                <p style="color: var(--text-gray); font-size: 1.02rem; line-height: 1.75;">The reference ranges and biology on this page reflect widely used clinical conventions and peer-reviewed research. For primary institutional sources, see the references below.</p>
+                <ul class="crp-sources">
+                    <li><a href="https://medlineplus.gov/lab-tests/c-reactive-protein-crp-test/" target="_blank" rel="noopener">MedlinePlus (U.S. National Library of Medicine): C-Reactive Protein (CRP) Test</a> covers what CRP is, why the test is done, and how results are interpreted.</li>
+                    <li><a href="https://www.heart.org/" target="_blank" rel="noopener">American Heart Association</a> for the hsCRP cardiovascular risk categories (below 1.0 low, 1.0 to 3.0 average, above 3.0 high mg/L) referenced throughout this page.</li>
+                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed (National Library of Medicine)</a>, the primary database for the clinical trials cited across our articles, including CANTOS, PREDIMED, and REDUCE-IT.</li>
+                </ul>
+                <p style="color: var(--text-light); font-size: 0.85rem; line-height: 1.65; margin-top: 1.4rem;">These references are provided for education. Sensa is a general wellness product and does not diagnose, treat, or prevent any disease. Consult a qualified healthcare provider for interpretation of your results.</p>
             </div>
         </div>
     </section>
