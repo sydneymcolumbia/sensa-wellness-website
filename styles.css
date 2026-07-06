@@ -639,6 +639,94 @@ footer {
     color: var(--text-dark);
 }
 
+/* Crisp key-term definition (GEO: extractable definition genre) */
+.post-body .key-definition {
+    background: #fbfaff;
+    border: 1px solid rgba(24, 0, 173, 0.14);
+    border-radius: 10px;
+    padding: 1.1rem 1.4rem;
+    margin: 0 0 1.9rem;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-dark);
+}
+
+.post-body .key-definition strong {
+    color: var(--accent-navy);
+}
+
+/* Post-body comparison / data table (GEO: extraction-friendly comparison genre) */
+.post-body .data-table-wrap {
+    overflow-x: auto;
+    margin: 1.9rem 0 2.1rem;
+}
+
+.post-body table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+    background: var(--bg-white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.05);
+}
+
+.post-body table.data-table caption {
+    caption-side: top;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 1.05rem;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+}
+
+.post-body table.data-table th,
+.post-body table.data-table td {
+    padding: 0.85rem 1.1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    line-height: 1.55;
+    vertical-align: top;
+}
+
+.post-body table.data-table thead th {
+    background: var(--accent-navy);
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.post-body table.data-table tbody td:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.post-body table.data-table tbody tr:nth-child(even) td {
+    background: var(--bg-primary);
+}
+
+.post-body table.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Editorial / medical reviewer byline (GEO: credibility signal) */
+.post-reviewer {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.5;
+}
+
+.post-reviewer strong {
+    color: var(--text-gray);
+    font-weight: 700;
+}
+
 /* Post CTA */
 .post-cta {
     margin-top: 3rem;
