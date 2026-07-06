@@ -574,6 +574,33 @@ footer {
     padding: 3rem 0;
 }
 
+/* Answer-first summary box (GEO: extractable direct answer) */
+.answer-box {
+    background: linear-gradient(165deg, #eef3ff 0%, #f5f3ff 100%);
+    border-left: 4px solid var(--accent-navy);
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 2.2rem;
+}
+
+.answer-box .answer-label {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-navy);
+    margin-bottom: 0.5rem;
+}
+
+.answer-box p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: var(--text-dark);
+    margin-bottom: 0;
+}
+
 .post-body p {
     font-size: 1.05rem;
     line-height: 1.85;
