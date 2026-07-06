@@ -52,3 +52,26 @@ State of Sensa Wellness (static HTML, Vercel, www.sensawellness.org) after the J
 - privacy.html is a noindex duplicate of privacy-policy.html; canonical now points to privacy-policy.html.
 - index.html H1 is a brand slogan ("Go Beyond The Scale. Wellness You Can See.") not entity-aligned; left per instruction (title/meta/hero carry the keywords).
 - GA4 (G-X24JYKBTXB) and Google Ads (AW-XXXXXXXXXX placeholder) tags present; Ads ID is still a placeholder.
+
+## Phase 5 target-query audit (2026-07-06)
+Gap: 79 posts skew to conditions/lifestyle; the CRP-measurement + test-intent cluster (where a commercial at-home CRP brand should be the AI-cited authority) was thin. 9 new posts commissioned to fill it:
+- post-normal-crp-levels.html: "what is a normal CRP level", "CRP levels by age", "CRP chart"
+- post-high-crp.html: "what does a high CRP mean", "causes of high CRP"
+- post-how-to-lower-crp.html: "how to lower CRP naturally/fast"
+- post-crp-vs-esr.html: "CRP vs ESR", "inflammation markers/blood tests"
+- post-test-inflammation-at-home.html: "how to test inflammation at home"
+- post-signs-of-inflammation.html: "signs/symptoms of chronic inflammation"
+- post-how-to-reduce-inflammation-fast.html: "how to reduce inflammation quickly"
+- post-how-often-test-inflammation.html: "how often should you test CRP"
+- post-crp-test-cost.html: "CRP test cost / hs-CRP price"
+Fact anchors: AHA hs-CRP <1.0 low, 1.0-3.0 average, >3.0 high CV risk, >10 acute; standard CRP normal <10 mg/L; CRP made by liver via IL-6, rises 6-8h peaks ~48h. Web-verify all ranges/costs; cite AHA/NIH/PubMed; never fabricate stats; wellness-not-diagnosis.
+
+### Phase 5 SHIPPED (2026-07-06)
+All 9 posts written, web-fact-checked, committed in 3 batches, pushed to master (commits b524149, 1370447, b7dc4fe). Word counts (strict body counter, runs ~40 below browser render): normal-crp-levels 1561, high-crp 1580, how-to-lower-crp 1501, crp-vs-esr 1578, test-inflammation-at-home 1586, signs-of-inflammation 1550, how-to-reduce-inflammation-fast 1505, how-often-test-inflammation 1547, crp-test-cost ~1500. All 1,500+.
+- Schema per post: Article (with about MedicalEntity C-reactive protein/Chronic inflammation/Inflammation, dateModified, articleSection, keywords) + BreadcrumbList + FAQPage (4 genuine Q&A each, sourced from body). No reviewedBy (still no named reviewer; editorial-team byline only, consistent with phases 3-4). Post schema type inventory now: 9 new posts = Article + BreadcrumbList + FAQPage (raises FAQPage-bearing posts to 14 total).
+- Structure matches template: answer-box, key-definition, 2 data-tables typical (reference ranges / comparisons), post-reviewer byline, Sources section with outbound institutional links (AHA/ahajournals, NIH MedlinePlus, PubMed, Cleveland Clinic, UCSF, Harvard Health, ACC, BMC Primary Care, MDsave, Testing.com), .post-cta, 3 related cards to EXISTING posts.
+- Categories: 7 Science (normal-crp-levels, high-crp, crp-vs-esr, test-inflammation-at-home, signs-of-inflammation, how-often-test-inflammation, crp-test-cost), 2 Wellness (how-to-lower-crp, how-to-reduce-inflammation-fast). All 9 added as blog.html cards at top of grid (data-category science/wellness).
+- Sitemap: gen-sitemap.js re-run, now 110 URLs (was 101). 0 em dashes, 0 broken internal links (all verified on disk), single H1 each, all JSON-LD parses.
+- index.html untouched (user's uncommitted work; became clean between turns via user action, never in my commits).
+- Verified key facts via WebSearch: AHA/CDC hs-CRP tiers; NEJM median CRP by age (1.4 at 20-29 -> 2.7 at 80+); ESR Westergren ranges (M<50 ~15, M>50 ~20, F<50 ~20, F>50 ~30 mm/hr, lab-dependent); CRP half-life ~19h; CDC two-readings-two-weeks-apart-averaged protocol; Mediterranean diet lowers hsCRP ~0.98 mg/L; weight loss ~0.13 mg/dL CRP per kg; point-of-care capillary CRP accuracy comparable to lab; US CRP cost ~$8-50 DTC/independent, ~$75-250 hospital, hs-CRP slightly higher.
+- REMAINING CRP-cluster gaps not yet covered: "CRP and COVID/long covid" test-intent, "CRP normal but symptoms", pediatric CRP, "fasting for CRP test". Candidates if a phase 6 is commissioned.
