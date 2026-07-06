@@ -87,3 +87,14 @@ All 4 flagged phase-5 gaps now filled. Written, web-fact-checked, committed in 2
 - 4 blog.html cards added at top of grid, all data-category="science". Sitemap re-run: 114 URLs (was 110). 0 em dashes, all JSON-LD parses (3 blocks/post), single H1 each, 0 missing internal links (verified on disk).
 - Facts verified via WebSearch: CRP fasting not required (Cleveland Clinic/MedlinePlus/Testing.com, caveat = bundled lipid/glucose panel); pediatric ranges (<3 older kids, <10 neonate, AAP NeoReviews + PubMed 28667188 newborn 48h rise); long COVID marker prevalence (PMC9895110 systematic review + PMC11900244); CRP nonspecific/misses localized-chronic-low-grade inflammation.
 - index.html never touched. 79 -> 83 post-*.html files now.
+
+## Phase 7 / Content wave 1 (2026-07-07): 40 new posts
+User asked for 200 more posts; flagged scaled-content-spam risk + research finding that page count barely correlates with AI visibility (~0.19). Agreed to STAGED approach: 40 high-value distinct posts now (wave 1), then check Search Console indexing + AI citations before continuing in waves toward 200.
+Wave 1 shipped (commit c78d196), 4 parallel agents (10 each, files only, no git; orchestrator did blog cards + sitemap + single commit to avoid parallel-git corruption):
+- A: is-X-inflammatory foods (dairy, gluten, eggs, nightshades, seed-oils, soy, artificial-sweeteners, coffee, corn, chocolate) - written with real nuance (several are NET anti-inflammatory or myths)
+- B: anti-inflammatory foods (ginger, green-tea, olive-oil, berries, leafy-greens, nuts, honey, bone-broth, garlic, avocado) - honest evidence ratings, bone-broth/honey/green-tea flagged weak
+- C: supplements does-X-reduce-inflammation (magnesium, zinc, vitamin-c, probiotics, quercetin, boswellia, ashwagandha, collagen, cbd, tart-cherry) - evidence-strength verdicts, not sales pitches
+- D: conditions (gout, migraine, asthma, gerd, rosacea, acne) + how-to-reduce-inflammation-in-joints/knees/back + anti-inflammatory-meal-plan
+All: 1,500+ words, answer-box + key-definition + data-table, real PubMed PMIDs/DOIs (no fabrication), Breadcrumb+Article+FAQPage schema, editorial-team byline (no reviewedBy). Site now 132 posts, 154 sitemap URLs, 137 blog cards.
+Category filters: no "nutrition" filter exists; foods+how-tos+mealplan=wellness, supplements=science, diseases=conditions.
+NEXT: before wave 2, check Google Search Console that wave-1 URLs index cleanly and none are flagged; monitor whether spammy-at-scale signal appears. Remaining topic space for waves 2-5 (toward 200): more "is X inflammatory" foods, "inflammation in [body part]", more conditions, "X vs Y" comparisons, myth-busting, symptom queries. Keep the honest-evidence angle; it is the anti-spam differentiator.
