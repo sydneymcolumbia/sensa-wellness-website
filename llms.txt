@@ -1,0 +1,41 @@
+# Sensa Wellness
+
+> Sensa is an at-home CRP (C-reactive protein) inflammation test kit. You run a simple saliva-based vial test at home, scan the cuvette with the Sensa mobile app, and get a 0 to 100 inflammation score in about 15 minutes. No needles and no clinic visit. Sensa is a general wellness product for tracking inflammation trends over time, not a medical diagnostic device.
+
+Key facts:
+- Product: at-home inflammation (CRP) test kit with a companion scanning app
+- How it works: run the vial test, scan it with the app, receive a 0 to 100 inflammation score
+- Results: about 15 minutes, at home, no needles, no lab visit
+- Pricing: $49 single kit, $99 three-pack, $129 four-pack
+- Web app: https://app.sensawellness.org
+- Positioning: general wellness and lifestyle tracking, not diagnosis or treatment of disease
+
+## Core Pages
+- [Homepage](https://www.sensawellness.org/): what Sensa is, how it works, pricing
+- [What is CRP?](https://www.sensawellness.org/what-is-crp.html): plain-language explanation of C-reactive protein
+- [How to Use Sensa](https://www.sensawellness.org/how-to.html): step-by-step testing guide
+- [The Sensa App](https://www.sensawellness.org/app.html): how the scanning app produces your score
+- [Buy a Kit](https://www.sensawellness.org/pay-now.html): kits and pricing
+- [Our Story](https://www.sensawellness.org/our-story.html): why Sensa was built
+
+## Comparisons
+- [At-Home CRP Test vs Lab Blood Test](https://www.sensawellness.org/compare-crp-tests.html)
+- [How to Test for Inflammation: Your Options](https://www.sensawellness.org/compare-inflammation-tests.html)
+- [Inflammation Monitoring vs Fitness Trackers](https://www.sensawellness.org/compare-wellness-devices.html)
+
+## Topic Hubs
+- [Inflammation and Aging](https://www.sensawellness.org/hub-aging-inflammation.html)
+- [Inflammation and Diet](https://www.sensawellness.org/hub-diet-inflammation.html)
+- [Inflammation and Lifestyle](https://www.sensawellness.org/hub-lifestyle-inflammation.html)
+- [Inflammation and Mental Health](https://www.sensawellness.org/hub-mental-health-inflammation.html)
+- [Inflammation and Chronic Disease](https://www.sensawellness.org/hub-chronic-disease-inflammation.html)
+
+## Blog
+- [Blog index](https://www.sensawellness.org/blog.html): 79+ articles on inflammation science, diet, lifestyle, and related conditions
+- [Understanding Your CRP Numbers](https://www.sensawellness.org/post-understanding-crp.html)
+- [Inflammaging and Aging](https://www.sensawellness.org/post-aging-inflammation.html)
+- [Anti-Inflammatory Diet](https://www.sensawellness.org/post-anti-inflammatory-diet.html)
+- [Sleep and Inflammation](https://www.sensawellness.org/post-sleep-inflammation.html)
+- [Stress and Inflammation](https://www.sensawellness.org/post-stress-inflammation.html)
+- [Gut Health and Inflammation](https://www.sensawellness.org/post-gut-inflammation.html)
+- [Heart Disease and Inflammation](https://www.sensawellness.org/post-heart-disease-inflammation.html)
