@@ -1108,68 +1108,99 @@
             color: var(--text-light);
         }
 
-        /* FAQ Section */
+        /* FAQ Section - connected timeline */
         .faq {
             padding: var(--section-padding);
             background: var(--bg-white);
         }
 
-        .faq-list {
+        .faq-timeline {
             max-width: 760px;
             margin: 0 auto;
+            position: relative;
         }
 
-        .faq-item {
-            border-bottom: 1px solid rgba(0,0,0,0.08);
+        /* The connecting line that flows from the first question to the last */
+        .faq-timeline::before {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 24px;
+            bottom: 24px;
+            width: 3px;
+            border-radius: 3px;
+            background: linear-gradient(180deg, var(--accent-coral) 0%, var(--accent-orange) 28%, var(--accent-navy) 68%, var(--accent-purple) 100%);
+            opacity: 0.85;
         }
 
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 1.4rem 0;
-            font-family: 'Nunito', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            cursor: pointer;
+        .faq-step {
+            position: relative;
+            padding: 0 0 2.6rem 78px;
+        }
+
+        .faq-step:last-child {
+            padding-bottom: 0;
+        }
+
+        .faq-node {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-navy), var(--accent-purple));
+            color: #fff;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            text-align: left;
-            line-height: 1.4;
+            justify-content: center;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            box-shadow: 0 6px 18px rgba(24,0,173,0.28);
+            z-index: 2;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .faq-question:hover {
-            color: var(--accent-coral);
+        .faq-step:hover .faq-node {
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px rgba(114,103,242,0.45);
         }
 
-        .faq-icon {
-            font-size: 1.4rem;
-            transition: transform 0.3s;
-            flex-shrink: 0;
-            margin-left: 1rem;
+        .faq-step-content {
+            background: var(--bg-primary);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 14px;
+            padding: 1.3rem 1.5rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
+        .faq-step:hover .faq-step-content {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(24,0,173,0.10);
+            border-color: rgba(114,103,242,0.35);
         }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+        .faq-q {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--accent-navy);
+            line-height: 1.35;
+            margin-bottom: 0.5rem;
         }
 
-        .faq-answer p {
-            padding-bottom: 1.4rem;
+        .faq-a {
             color: var(--text-gray);
-            font-size: 0.95rem;
+            font-size: 0.97rem;
             line-height: 1.7;
         }
 
-        .faq-item.active .faq-answer {
-            max-height: 300px;
+        @media (max-width: 600px) {
+            .faq-step { padding-left: 60px; padding-bottom: 2rem; }
+            .faq-node { width: 40px; height: 40px; font-size: 1rem; }
+            .faq-timeline::before { left: 18px; top: 20px; bottom: 20px; }
+            .faq-step-content { padding: 1.1rem 1.2rem; }
         }
 
         /* Contact Section */
@@ -2297,77 +2328,61 @@
                 <h2>Frequently Asked Questions</h2>
                 <p>Everything you need to know about Sensa before you buy.</p>
             </div>
-            <div class="faq-list reveal">
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        What exactly is Sensa?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Sensa is a simple, at-home saliva wellness kit. You provide a saliva sample, and the device measures your C-reactive protein (CRP) level, a key marker of inflammation in your body. It is not a drug, not a diagnosis, and not a replacement for medical care. It is a wellness tool that gives you a clearer picture of what is happening inside your body.</p>
+            <div class="faq-timeline">
+                <div class="faq-step reveal">
+                    <div class="faq-node">1</div>
+                    <div class="faq-step-content">
+                        <h3 class="faq-q">What exactly is Sensa?</h3>
+                        <p class="faq-a">Sensa is a simple, at-home saliva wellness kit. You provide a saliva sample, and the device measures your C-reactive protein (CRP) level, a key marker of inflammation in your body. It is not a drug, not a diagnosis, and not a replacement for medical care. It is a wellness tool that gives you a clearer picture of what is happening inside your body.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        How can Sensa help with weight loss?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Chronic inflammation can stall weight loss, increase cravings, and disrupt your metabolism. If the scale is not moving despite your efforts, hidden inflammation may be part of the picture. Sensa helps you see whether inflammation could be a factor so you can adjust your approach with better information.</p>
+                <div class="faq-step reveal">
+                    <div class="faq-node">2</div>
+                    <div class="faq-step-content">
+                        <h3 class="faq-q">How can Sensa help with weight loss?</h3>
+                        <p class="faq-a">Chronic inflammation can stall weight loss, increase cravings, and disrupt your metabolism. If the scale is not moving despite your efforts, hidden inflammation may be part of the picture. Sensa helps you see whether inflammation could be a factor so you can adjust your approach with better information.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        Is Sensa a medical device?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No. Sensa is a wellness product designed for general self-monitoring. It does not diagnose, treat, or cure any disease. If your results suggest elevated inflammation, we recommend consulting a healthcare professional for further evaluation.</p>
+                <div class="faq-step reveal">
+                    <div class="faq-node">3</div>
+                    <div class="faq-step-content">
+                        <h3 class="faq-q">Is Sensa a medical device?</h3>
+                        <p class="faq-a">No. Sensa is a wellness product designed for general self-monitoring. It does not diagnose, treat, or cure any disease. If your results suggest elevated inflammation, we recommend consulting a healthcare professional for further evaluation.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        How does the test work?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>You provide a small saliva sample into the Sensa device. The device uses a color-change reaction to indicate your inflammation level. Open the Sensa app, scan the device, and receive your result with personalized guidance. The whole process takes about 15 minutes.</p>
+                <div class="faq-step reveal">
+                    <div class="faq-node">4</div>
+                    <div class="faq-step-content">
+                        <h3 class="faq-q">How does the test work?</h3>
+                        <p class="faq-a">You provide a small saliva sample into the Sensa device. The device uses a color-change reaction to indicate your inflammation level. Open the Sensa app, scan the device, and receive your result with personalized guidance. The whole process takes about 15 minutes.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        Why should I get the 3-pack instead of a single test?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A single test gives you a snapshot. The 3-pack lets you track your progress over time: test now, make lifestyle changes, then retest to see whether those changes are working. It turns Sensa from a one-time check into a wellness routine.</p>
+                <div class="faq-step reveal">
+                    <div class="faq-node">5</div>
+                    <div class="faq-step-content">
+                        <h3 class="faq-q">Why should I get the 3-pack instead of a single test?</h3>
+                        <p class="faq-a">A single test gives you a snapshot. The 3-pack lets you track your progress over time: test now, make lifestyle changes, then retest to see whether those changes are working. It turns Sensa from a one-time check into a wellness routine.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        Is the saliva test safe and non-invasive?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes. Sensa requires only a small saliva sample. There are no needles, no blood, and no discomfort. It is safe for adults of all ages, including pregnant women and people managing chronic conditions like diabetes.</p>
+                <div class="faq-step reveal">
+                    <div class="faq-node">6</div>
+                    <div class="faq-step-content">
+                        <h3 class="faq-q">Is the saliva test safe and non-invasive?</h3>
+                        <p class="faq-a">Yes. Sensa requires only a small saliva sample. There are no needles, no blood, and no discomfort. It is safe for adults of all ages, including pregnant women and people managing chronic conditions like diabetes.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        How is Sensa different from a blood test at the doctor?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Traditional CRP testing requires a blood draw, a lab visit, and days of waiting. Sensa uses saliva-based biomarkers to give you a result at home in minutes. It is designed for regular wellness monitoring between doctor visits, not as a replacement for clinical lab work.</p>
+                <div class="faq-step reveal">
+                    <div class="faq-node">7</div>
+                    <div class="faq-step-content">
+                        <h3 class="faq-q">How is Sensa different from a blood test at the doctor?</h3>
+                        <p class="faq-a">Traditional CRP testing requires a blood draw, a lab visit, and days of waiting. Sensa uses saliva-based biomarkers to give you a result at home in minutes. It is designed for regular wellness monitoring between doctor visits, not as a replacement for clinical lab work.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        Do I need a prescription?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No. Sensa is available for purchase directly from our website. No prescription, no referral, and no insurance needed.</p>
+                <div class="faq-step reveal">
+                    <div class="faq-node">8</div>
+                    <div class="faq-step-content">
+                        <h3 class="faq-q">Do I need a prescription?</h3>
+                        <p class="faq-a">No. Sensa is available for purchase directly from our website. No prescription, no referral, and no insurance needed.</p>
                     </div>
                 </div>
             </div>
@@ -2478,11 +2493,11 @@
                 <div class="footer-links">
                     <h4>Solutions</h4>
                     <ul>
-                        <li><a href="#">Inflammation Monitoring</a></li>
-                        <li><a href="#">Preventive Screening</a></li>
+                        <li><a href="what-is-crp.html">Inflammation Monitoring</a></li>
+                        <li><a href="compare-crp-tests.html">Preventive Screening</a></li>
                         <li><a href="app.html">Mobile Integration</a></li>
-                        <li><a href="#">Community Programs</a></li>
-                        <li><a href="#">Corporate Wellness</a></li>
+                        <li><a href="work-with-us.html">Community Programs</a></li>
+                        <li><a href="work-with-us.html">Corporate Wellness</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -2752,24 +2767,6 @@
                 }
             }
         })();
-    </script>
-
-    <!-- FAQ Toggle -->
-    <script>
-        document.querySelectorAll('.faq-question').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                var item = this.parentElement;
-                var isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item.active').forEach(function(el) {
-                    el.classList.remove('active');
-                    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                });
-                if (!isActive) {
-                    item.classList.add('active');
-                    this.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
     </script>
 
     <!-- Structured Data: Product -->
