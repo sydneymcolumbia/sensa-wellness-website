@@ -98,3 +98,17 @@ Wave 1 shipped (commit c78d196), 4 parallel agents (10 each, files only, no git;
 All: 1,500+ words, answer-box + key-definition + data-table, real PubMed PMIDs/DOIs (no fabrication), Breadcrumb+Article+FAQPage schema, editorial-team byline (no reviewedBy). Site now 132 posts, 154 sitemap URLs, 137 blog cards.
 Category filters: no "nutrition" filter exists; foods+how-tos+mealplan=wellness, supplements=science, diseases=conditions.
 NEXT: before wave 2, check Google Search Console that wave-1 URLs index cleanly and none are flagged; monitor whether spammy-at-scale signal appears. Remaining topic space for waves 2-5 (toward 200): more "is X inflammatory" foods, "inflammation in [body part]", more conditions, "X vs Y" comparisons, myth-busting, symptom queries. Keep the honest-evidence angle; it is the anti-spam differentiator.
+
+## Content wave 2 (2026-07-07): +40 posts -> 172 total (commit 9049227)
+Same 4-parallel-agent pattern (files only, orchestrator did cards+sitemap+commit). Groups: A more "is X inflammatory" foods (fried, fast-food, white-bread, cheese, yogurt, butter, bacon, processed-meats, msg, salt); B mixed (hfcs, margarine, pork, shellfish, turmeric, cinnamon, salmon, tomatoes, broccoli, spinach); C fermented+drinks (mushrooms, pineapple, matcha, chia, flax, kefir, kimchi, sauerkraut, ginger-tea, drinks-roundup); D roundups/explainers/conditions (herbs, breakfast, snacks, what-causes-inflammation, how-long-does-inflammation-last, reduce-in-body, reduce-in-stomach, tendinitis, bursitis, sinusitis). Honest-evidence angle held (MSG exonerated, tendinitis=degeneration-not-inflammation, matcha consistent w/ green-tea mixed). Real PubMed PMIDs throughout. Blog cards now read each post's own category chip -> filter. 194 sitemap URLs, ~177 blog cards.
+
+## Technical SEO pass (2026-07-07, commit 052197e)
+- LCP hero-product.png 841KB -> WebP 59KB (93% smaller); 8 team/press photos -> WebP (846->425KB); added width/height to hero img (CLS). Deleted UNUSED hero-bg.png (2.1MB dead file).
+- Neutralized broken AW-XXXXXXXXXX Google Ads tag (commented out) on index.html, pay-now.html, success.html; was firing invalid requests. Scaffolding kept for real Conversion ID later.
+- screenshot-*.webp created too (app.html still refs jpg; optional future swap).
+
+## Still open / needs founder (highest leverage, per research)
+1. Named credentialed medical reviewer -> then ship Person + reviewedBy schema across all 170+ posts (biggest remaining on-site E-E-A-T lever; byline currently "Sensa Wellness editorial team", no reviewedBy).
+2. Off-site (dominant signal ~0.7 vs on-site ~0.19): YouTube channel (CRP explainers), earned editorial mentions, LinkedIn founder content, at-home-testing review/directory listings. Offered to build a done-for-you off-site asset kit (YouTube scripts, press/pitch kit, target list).
+3. Org schema logo points to wide sensa-og.jpg; sameAs has only IG+LinkedIn (add YouTube etc once real). GSC: submit sitemap, verify wave-1/2 URLs index cleanly before wave 3.
+4. Content waves 3-5 remain toward 200 (~28 more): more foods, "inflammation in [body part]", more conditions, X-vs-Y comparisons, myth-busting, symptom queries. Keep honest-evidence angle (anti-spam differentiator). CHECK indexing health before continuing.
