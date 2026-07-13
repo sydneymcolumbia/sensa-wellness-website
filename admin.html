@@ -632,6 +632,10 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Scans
     </div>
+    <div class="nav-item" onclick="showPage('reviews')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.5 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+      Reviews <span id="reviews-nav-badge" style="margin-left:auto;background:#ef4444;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 7px;display:none"></span>
+    </div>
 
     <div class="sidebar-bottom">
       <button class="signout-btn" onclick="signOut()">Sign out</button>
@@ -734,6 +738,21 @@
       </div>
     </div>
 
+    <!-- REVIEWS PAGE -->
+    <div class="page" id="page-reviews">
+      <div class="page-header">
+        <h1>Pending Reviews</h1>
+        <button class="refresh-btn" onclick="loadReviews()">Refresh</button>
+      </div>
+      <div class="table-card">
+        <div class="table-header">
+          <h2>Awaiting Approval</h2>
+          <span class="count" id="reviews-count"></span>
+        </div>
+        <div id="reviews-list"><div class="loading">Loading...</div></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -814,6 +833,7 @@
       renderOverview();
       renderUsers();
       renderScans();
+      loadReviews();
       document.getElementById('last-updated').textContent =
         'Updated ' + new Date().toLocaleTimeString();
     } catch (e) {
@@ -1015,6 +1035,7 @@
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
     event.currentTarget.classList.add('active');
+    if (name === 'reviews') loadReviews();
   }
 
   function filterUsers(val) { renderUsers(val); }
@@ -1036,6 +1057,96 @@
     if (score >= 50) return '#f59e0b';
     if (score >= 30) return '#f97316';
     return '#ef4444';
+  }
+
+  function escapeHtml(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function starGlyphs(rating) {
+    var out = '';
+    for (var i = 1; i <= 5; i++) {
+      out += '<span style="color:' + (i <= rating ? '#f59d06' : '#d1d5db') + '">&#9733;</span>';
+    }
+    return '<span style="font-size:16px;letter-spacing:1px">' + out + '</span>';
+  }
+
+  // ---- Review moderation ----
+  async function loadReviews() {
+    const listEl = document.getElementById('reviews-list');
+    listEl.innerHTML = '<div class="loading">Loading...</div>';
+    try {
+      const token = await window._currentUser.getIdToken();
+      const res = await fetch('/api/reviews-admin', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+      renderReviews(data.pending || []);
+    } catch (e) {
+      console.error(e);
+      listEl.innerHTML = '<div class="loading">Failed to load reviews.</div>';
+    }
+  }
+
+  function renderReviews(pending) {
+    const listEl = document.getElementById('reviews-list');
+    const countEl = document.getElementById('reviews-count');
+    const badge = document.getElementById('reviews-nav-badge');
+
+    countEl.textContent = `${pending.length} pending`;
+    if (badge) {
+      if (pending.length) { badge.textContent = pending.length; badge.style.display = 'inline-block'; }
+      else { badge.style.display = 'none'; }
+    }
+
+    if (!pending.length) {
+      listEl.innerHTML = '<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No reviews awaiting approval.</div>';
+      return;
+    }
+
+    listEl.innerHTML = pending.map(r => `
+      <div style="border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:16px 18px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <strong>${escapeHtml(r.firstName)}</strong>
+            ${starGlyphs(r.rating)}
+            <span style="color:var(--gray);font-size:12px">${formatDate(r.createdAt)}</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="refresh-btn" style="background:#22c55e;color:#fff;border:none" onclick="moderateReview('${r.id}','approve',this)">Approve</button>
+            <button class="refresh-btn" style="background:#ef4444;color:#fff;border:none" onclick="moderateReview('${r.id}','delete',this)">Delete</button>
+          </div>
+        </div>
+        ${r.title ? `<div style="font-weight:700;margin-bottom:4px">${escapeHtml(r.title)}</div>` : ''}
+        <div style="color:var(--gray);white-space:pre-wrap;line-height:1.6">${escapeHtml(r.body)}</div>
+      </div>
+    `).join('');
+  }
+
+  async function moderateReview(id, action, btn) {
+    if (action === 'delete' && !confirm('Delete this review permanently?')) return;
+    const row = btn.closest('div[style*="border"]');
+    btn.disabled = true;
+    try {
+      const token = await window._currentUser.getIdToken();
+      const res = await fetch('/api/reviews-admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ id, action })
+      });
+      if (!res.ok) throw new Error(await res.text());
+      loadReviews();
+    } catch (e) {
+      console.error(e);
+      alert('Action failed. Please try again.');
+      btn.disabled = false;
+    }
   }
 </script>
 
