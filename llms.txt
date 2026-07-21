@@ -17,6 +17,7 @@ Key facts:
 - [The Sensa App](https://www.sensawellness.org/app): how the scanning app produces your score
 - [Buy a Kit](https://www.sensawellness.org/pay-now): kits and pricing
 - [Our Story](https://www.sensawellness.org/our-story): why Sensa was built
+- [Editorial Standards](https://www.sensawellness.org/editorial-standards): how Sensa researches, sources, and updates its inflammation and CRP content
 
 ## Comparisons
 - [At-Home CRP Test vs Lab Blood Test](https://www.sensawellness.org/compare-crp-tests)

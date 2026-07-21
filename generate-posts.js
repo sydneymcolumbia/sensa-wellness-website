@@ -110,6 +110,7 @@ ${relatedHTML}
                         <li><a href="/blog">Blog</a></li>
                         <li><a href="/pay-now">Buy Now</a></li>
                         <li><a href="/work-with-us">Work With Us</a></li>
+                        <li><a href="/editorial-standards">Editorial Standards</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
