@@ -13,6 +13,146 @@
         <link>https://www.sensawellness.org/blog</link>
     </image>
     <item>
+        <title>Fatty Liver Disease and Inflammation: How NAFLD Becomes NASH</title>
+        <link>https://www.sensawellness.org/post-fatty-liver-inflammation</link>
+        <guid>https://www.sensawellness.org/post-fatty-liver-inflammation</guid>
+        <description>Fatty liver disease begins quietly, but inflammation is what turns simple fat accumulation into progressive liver damage. Here is how NAFLD becomes NASH.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Osteoporosis and Inflammation: How Inflammatory Signals Weaken Bone</title>
+        <link>https://www.sensawellness.org/post-osteoporosis-inflammation</link>
+        <guid>https://www.sensawellness.org/post-osteoporosis-inflammation</guid>
+        <description>Bone is living tissue in constant renewal. Inflammatory cytokines like IL-6 and TNF-alpha tip that balance toward breakdown, driving the bone loss of osteoporosis.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Prostatitis and Inflammation: Understanding the Inflamed Prostate</title>
+        <link>https://www.sensawellness.org/post-prostatitis-inflammation</link>
+        <guid>https://www.sensawellness.org/post-prostatitis-inflammation</guid>
+        <description>Prostatitis is one of the most common urological complaints in men, and inflammation sits at its center. Here is how the inflamed prostate causes pain.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Raynaud's and Inflammation: Blood Vessels, Autoimmunity, and Cold Hands</title>
+        <link>https://www.sensawellness.org/post-raynauds-inflammation</link>
+        <guid>https://www.sensawellness.org/post-raynauds-inflammation</guid>
+        <description>Raynaud's turns fingers white and blue in the cold. When it is secondary to autoimmune disease, inflammation of the blood vessels is often part of the story.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Sjogren's Syndrome and Inflammation: When the Immune System Attacks Moisture Glands</title>
+        <link>https://www.sensawellness.org/post-sjogrens-inflammation</link>
+        <guid>https://www.sensawellness.org/post-sjogrens-inflammation</guid>
+        <description>Sjogren's syndrome is an autoimmune disease in which lymphocytes infiltrate the moisture-producing glands. Learn how chronic inflammation drives dry eyes, dry mouth, and systemic symptoms.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Lyme Disease and Inflammation: The Immune Aftermath of Infection</title>
+        <link>https://www.sensawellness.org/post-lyme-inflammation</link>
+        <guid>https://www.sensawellness.org/post-lyme-inflammation</guid>
+        <description>Lyme disease triggers a powerful inflammatory response to the Borrelia bacterium. Learn how that inflammation causes symptoms and why it can persist as post-treatment Lyme disease syndrome.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Vasculitis and Inflammation: When Blood Vessels Become Inflamed</title>
+        <link>https://www.sensawellness.org/post-vasculitis-inflammation</link>
+        <guid>https://www.sensawellness.org/post-vasculitis-inflammation</guid>
+        <description>Vasculitis is a group of diseases defined by inflammation of the blood vessels themselves. Learn how giant cell arteritis, ANCA-associated vasculitis, and others drive markedly elevated CRP and ESR.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Shingles and Inflammation: The Inflammatory Nerve Attack of Reactivated Virus</title>
+        <link>https://www.sensawellness.org/post-shingles-inflammation</link>
+        <guid>https://www.sensawellness.org/post-shingles-inflammation</guid>
+        <description>Shingles occurs when the dormant varicella-zoster virus reactivates and inflames the nerves. Learn how neuroinflammation drives the rash and pain, and why it can linger as postherpetic neuralgia.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>POTS and Inflammation: Autonomic Dysfunction and the Immune Connection</title>
+        <link>https://www.sensawellness.org/post-pots-inflammation</link>
+        <guid>https://www.sensawellness.org/post-pots-inflammation</guid>
+        <description>POTS causes a racing heart on standing, and a growing body of research links it to autoimmune and post-viral inflammation, autoantibodies, and overlap with Long COVID and MCAS.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Tinnitus and Inflammation: Can Inflammation Cause Ringing in the Ears?</title>
+        <link>https://www.sensawellness.org/post-tinnitus-inflammation</link>
+        <guid>https://www.sensawellness.org/post-tinnitus-inflammation</guid>
+        <description>Emerging research links tinnitus to cochlear inflammation and neuroinflammation, with activated microglia in the auditory pathway. Here is what the evidence does and does not show.</description>
+        <category>Conditions</category>
+    </item>
+    <item>
+        <title>Can CRP Be Too Low? What a Very Low CRP Really Means</title>
+        <link>https://www.sensawellness.org/post-can-crp-be-too-low</link>
+        <guid>https://www.sensawellness.org/post-can-crp-be-too-low</guid>
+        <description>A very low hs-CRP below 1 mg/L is generally a good sign of low inflammatory and cardiovascular risk. There is no established harm from a low CRP. Here is what the number really means.</description>
+        <category>Science</category>
+    </item>
+    <item>
+        <title>CRP and Exercise: How Workouts Affect Your Inflammation Reading</title>
+        <link>https://www.sensawellness.org/post-crp-and-exercise</link>
+        <guid>https://www.sensawellness.org/post-crp-and-exercise</guid>
+        <description>A single hard workout can transiently raise CRP for 1 to 3 days through muscle damage, while regular training lowers your baseline over time. Learn when to test around exercise.</description>
+        <category>Science</category>
+    </item>
+    <item>
+        <title>CRP and Cancer: What Elevated Inflammation Does and Does Not Mean</title>
+        <link>https://www.sensawellness.org/post-crp-and-cancer</link>
+        <guid>https://www.sensawellness.org/post-crp-and-cancer</guid>
+        <description>Chronically elevated CRP is associated with higher risk and worse prognosis in some cancers, but CRP is nonspecific and cannot diagnose or screen for cancer. Here is what the science says.</description>
+        <category>Science</category>
+    </item>
+    <item>
+        <title>CRP and Pregnancy: How Inflammation Changes and What Is Normal</title>
+        <link>https://www.sensawellness.org/post-crp-and-pregnancy</link>
+        <guid>https://www.sensawellness.org/post-crp-and-pregnancy</guid>
+        <description>CRP rises modestly during normal pregnancy and climbs further in labor. Learn how inflammation shifts across pregnancy, the associations with preeclampsia and infection, and why reference ranges need care.</description>
+        <category>Science</category>
+    </item>
+    <item>
+        <title>CRP and Autoimmune Disease: Reading Inflammation in RA, Lupus, and Beyond</title>
+        <link>https://www.sensawellness.org/post-crp-and-autoimmune-disease</link>
+        <guid>https://www.sensawellness.org/post-crp-and-autoimmune-disease</guid>
+        <description>CRP tracks disease activity well in rheumatoid arthritis and vasculitis, but is often normal or only mildly elevated in lupus. Understanding the CRP-ESR dissociation is key to reading autoimmune inflammation.</description>
+        <category>Science</category>
+    </item>
+    <item>
+        <title>Red Light Therapy and Inflammation: What the Evidence Actually Shows</title>
+        <link>https://www.sensawellness.org/post-red-light-therapy-inflammation</link>
+        <guid>https://www.sensawellness.org/post-red-light-therapy-inflammation</guid>
+        <description>Red light therapy, or photobiomodulation, targets mitochondrial cytochrome c oxidase to influence inflammation and recovery. The evidence for local inflammation is mixed but promising, and worth an honest look.</description>
+        <category>Lifestyle</category>
+    </item>
+    <item>
+        <title>The Carnivore Diet and Inflammation: Does an All-Meat Diet Help or Harm?</title>
+        <link>https://www.sensawellness.org/post-carnivore-diet-inflammation</link>
+        <guid>https://www.sensawellness.org/post-carnivore-diet-inflammation</guid>
+        <description>The carnivore diet has passionate advocates who report less inflammation. We separate the anecdotal elimination-diet benefits from the real concerns around fiber, polyphenols, and saturated fat.</description>
+        <category>Lifestyle</category>
+    </item>
+    <item>
+        <title>The Vegan Diet and Inflammation: Does Going Plant-Based Lower CRP?</title>
+        <link>https://www.sensawellness.org/post-vegan-diet-inflammation</link>
+        <guid>https://www.sensawellness.org/post-vegan-diet-inflammation</guid>
+        <description>Whole-food vegan diets are rich in fiber and polyphenols that studies link to lower CRP. But ultra-processed vegan foods and nutrient gaps like B12 and omega-3 complicate the picture.</description>
+        <category>Lifestyle</category>
+    </item>
+    <item>
+        <title>The Paleo Diet and Inflammation: Does Eating Like an Ancestor Reduce CRP?</title>
+        <link>https://www.sensawellness.org/post-paleo-diet-inflammation</link>
+        <guid>https://www.sensawellness.org/post-paleo-diet-inflammation</guid>
+        <description>The paleo diet removes ultra-processed foods and refined sugar, which can lower CRP. But it also excludes legumes and whole grains that carry their own anti-inflammatory fiber. The evidence is mixed.</description>
+        <category>Lifestyle</category>
+    </item>
+    <item>
+        <title>Breathwork and Inflammation: Can Breathing Techniques Lower Your Inflammatory Load?</title>
+        <link>https://www.sensawellness.org/post-breathwork-inflammation</link>
+        <guid>https://www.sensawellness.org/post-breathwork-inflammation</guid>
+        <description>Slow breathing activates the vagus nerve and the cholinergic anti-inflammatory pathway, and the Wim Hof method has shown effects on cytokines in a small trial. Here is what the evidence supports.</description>
+        <category>Lifestyle</category>
+    </item>
+    <item>
         <title>Gallbladder Inflammation (Cholecystitis): Causes, CRP, and What Helps</title>
         <link>https://www.sensawellness.org/post-gallbladder-inflammation</link>
         <guid>https://www.sensawellness.org/post-gallbladder-inflammation</guid>
