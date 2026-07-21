@@ -58,7 +58,7 @@ module.exports = async function handler(req, res) {
       { expiresIn: '30d' }
     );
 
-    const chatUrl = `https://sensawellness.org/chat.html?t=${token}`;
+    const chatUrl = `https://sensawellness.org/chat?t=${token}`;
 
     await resend.emails.send({
       from: 'Melissa at Sensa <onboarding@resend.dev>',

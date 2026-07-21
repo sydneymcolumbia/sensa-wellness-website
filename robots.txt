@@ -5,11 +5,17 @@ User-agent: *
 Allow: /
 
 Disallow: /admin.html
+Disallow: /admin
 Disallow: /success.html
+Disallow: /success
 Disallow: /chat.html
+Disallow: /chat
 Disallow: /deck.html
+Disallow: /deck
 Disallow: /cuvet-animation.html
+Disallow: /cuvet-animation
 Disallow: /start.html
+Disallow: /start
 Disallow: /video-demo/
 Disallow: /marketing/
 Disallow: /node_modules/

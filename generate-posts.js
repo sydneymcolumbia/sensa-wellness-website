@@ -40,7 +40,7 @@ function buildPost(p) {
 
     <header>
         <div class="header-inner">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <img src="logo.jpg" alt="Sensa" class="logo-img">
             </a>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
@@ -49,12 +49,12 @@ function buildPost(p) {
                 <span></span>
             </button>
             <nav id="mainNav">
-                <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="blog.html" class="nav-active">Blog</a>
-                <a href="app.html">App</a>
-                <a href="index.html#team">Team</a>
-                <a href="pay-now.html" class="btn">Buy Now</a>
+                <a href="/">Home</a>
+                <a href="/#about">About</a>
+                <a href="/blog" class="nav-active">Blog</a>
+                <a href="/app">App</a>
+                <a href="/#team">Team</a>
+                <a href="/pay-now" class="btn">Buy Now</a>
             </nav>
         </div>
     </header>
@@ -62,7 +62,7 @@ function buildPost(p) {
     <article class="post">
         <div class="post-header-section">
             <div class="container post-container">
-                <a href="blog.html" class="back-link">&larr; Back to Blog</a>
+                <a href="/blog" class="back-link">&larr; Back to Blog</a>
                 <div class="post-meta">
                     <span class="post-category">${p.category}</span>
                     <span class="post-date">${p.dateDisplay}</span>
@@ -82,7 +82,7 @@ ${sectionsHTML}
                 <div class="post-cta">
                     <h3>${p.ctaH3}</h3>
                     <p>${p.ctaP}</p>
-                    <a href="pay-now.html" class="btn">Buy Now</a>
+                    <a href="/pay-now" class="btn">Buy Now</a>
                 </div>
             </div>
 
@@ -105,11 +105,11 @@ ${relatedHTML}
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="pay-now.html">Buy Now</a></li>
-                        <li><a href="work-with-us.html">Work With Us</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/pay-now">Buy Now</a></li>
+                        <li><a href="/work-with-us">Work With Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -117,7 +117,7 @@ ${relatedHTML}
                     <ul>
                         <li><a href="#">Inflammation Monitoring</a></li>
                         <li><a href="#">Preventive Screening</a></li>
-                        <li><a href="app.html">Mobile Integration</a></li>
+                        <li><a href="/app">Mobile Integration</a></li>
                         <li><a href="#">Community Programs</a></li>
                         <li><a href="#">Corporate Wellness</a></li>
                     </ul>
@@ -213,9 +213,9 @@ const posts = [
     ctaH3: 'Track inflammation as part of your wellness routine.',
     ctaP: 'Sensa is a general wellness tool that lets you measure CRP at home. Whether you are managing a chronic condition or simply monitoring your baseline, tracking inflammatory trends over time gives you objective data to share with your healthcare provider.',
     related: [
-      { href: 'post-brain-inflammation.html', cat: 'Science', title: 'Brain Inflammation and Cognitive Decline: What the Research Shows' },
-      { href: 'post-sleep-inflammation.html', cat: 'Lifestyle', title: 'How Poor Sleep Drives Inflammation' },
-      { href: 'post-depression-inflammation.html', cat: 'Science', title: 'The Inflammation-Depression Connection' }
+      { href: '/post-brain-inflammation', cat: 'Science', title: 'Brain Inflammation and Cognitive Decline: What the Research Shows' },
+      { href: '/post-sleep-inflammation', cat: 'Lifestyle', title: 'How Poor Sleep Drives Inflammation' },
+      { href: '/post-depression-inflammation', cat: 'Science', title: 'The Inflammation-Depression Connection' }
     ]
   },
 
@@ -270,9 +270,9 @@ const posts = [
     ctaH3: 'Monitor your inflammation from home.',
     ctaP: 'Sensa is a general wellness tool for measuring CRP levels at home. If you are managing a chronic pain condition, tracking your inflammatory baseline can help you and your healthcare provider identify patterns and assess how lifestyle changes are affecting your body.',
     related: [
-      { href: 'post-arthritis-inflammation.html', cat: 'Conditions', title: 'Arthritis and Inflammation: Beyond the Joint' },
-      { href: 'post-sleep-inflammation.html', cat: 'Lifestyle', title: 'How Poor Sleep Drives Inflammation' },
-      { href: 'post-mecfs-inflammation.html', cat: 'Conditions', title: 'ME/CFS and Inflammation: When the Immune System Fails to Reset' }
+      { href: '/post-arthritis-inflammation', cat: 'Conditions', title: 'Arthritis and Inflammation: Beyond the Joint' },
+      { href: '/post-sleep-inflammation', cat: 'Lifestyle', title: 'How Poor Sleep Drives Inflammation' },
+      { href: '/post-mecfs-inflammation', cat: 'Conditions', title: 'ME/CFS and Inflammation: When the Immune System Fails to Reset' }
     ]
   },
 
@@ -327,9 +327,9 @@ const posts = [
     ctaH3: 'See how your training is affecting your inflammation.',
     ctaP: 'Sensa is a general wellness tool for measuring CRP at home. Tracking your CRP alongside your training load can reveal whether your recovery is keeping pace with your effort and help you optimize your training approach.',
     related: [
-      { href: 'post-sleep-inflammation.html', cat: 'Lifestyle', title: 'How Poor Sleep Drives Inflammation' },
-      { href: 'post-anti-inflammatory-diet.html', cat: 'Lifestyle', title: 'The Anti-Inflammatory Diet: A Complete Guide' },
-      { href: 'post-aging-inflammation.html', cat: 'Science', title: 'Inflammaging: How Chronic Inflammation Accelerates the Aging Process' }
+      { href: '/post-sleep-inflammation', cat: 'Lifestyle', title: 'How Poor Sleep Drives Inflammation' },
+      { href: '/post-anti-inflammatory-diet', cat: 'Lifestyle', title: 'The Anti-Inflammatory Diet: A Complete Guide' },
+      { href: '/post-aging-inflammation', cat: 'Science', title: 'Inflammaging: How Chronic Inflammation Accelerates the Aging Process' }
     ]
   },
 
@@ -384,9 +384,9 @@ const posts = [
     ctaH3: 'Support your anti-inflammatory lifestyle with real data.',
     ctaP: 'Sensa is a general wellness tool for measuring CRP at home. Tracking your CRP over time lets you see how lifestyle habits, including hydration, diet, and sleep, are affecting your inflammatory baseline.',
     related: [
-      { href: 'post-anti-inflammatory-diet.html', cat: 'Lifestyle', title: 'The Anti-Inflammatory Diet: A Complete Guide' },
-      { href: 'post-gut-inflammation.html', cat: 'Science', title: 'The Gut Inflammation Connection' },
-      { href: 'post-exercise-recovery-inflammation.html', cat: 'Lifestyle', title: 'Exercise, Recovery, and Inflammation: How to Train Smarter' }
+      { href: '/post-anti-inflammatory-diet', cat: 'Lifestyle', title: 'The Anti-Inflammatory Diet: A Complete Guide' },
+      { href: '/post-gut-inflammation', cat: 'Science', title: 'The Gut Inflammation Connection' },
+      { href: '/post-exercise-recovery-inflammation', cat: 'Lifestyle', title: 'Exercise, Recovery, and Inflammation: How to Train Smarter' }
     ]
   },
 
@@ -443,9 +443,9 @@ const posts = [
     ctaH3: 'Measure your CRP at home with Sensa.',
     ctaP: 'Sensa is a general wellness tool that lets you test your CRP without a clinic visit. Track your baseline over time, see how lifestyle changes affect your inflammatory state, and share your data with your healthcare provider.',
     related: [
-      { href: 'post-silent-inflammation.html', cat: 'Science', title: 'Silent Inflammation: The Hidden Driver of Chronic Disease' },
-      { href: 'post-inflammation-cause-of-disease.html', cat: 'Science', title: 'Inflammation: The Common Thread in Chronic Disease' },
-      { href: 'post-anti-inflammatory-diet.html', cat: 'Lifestyle', title: 'The Anti-Inflammatory Diet: A Complete Guide' }
+      { href: '/post-silent-inflammation', cat: 'Science', title: 'Silent Inflammation: The Hidden Driver of Chronic Disease' },
+      { href: '/post-inflammation-cause-of-disease', cat: 'Science', title: 'Inflammation: The Common Thread in Chronic Disease' },
+      { href: '/post-anti-inflammatory-diet', cat: 'Lifestyle', title: 'The Anti-Inflammatory Diet: A Complete Guide' }
     ]
   },
 
@@ -500,9 +500,9 @@ const posts = [
     ctaH3: 'Start measuring your inflammatory age today.',
     ctaP: 'Sensa is a general wellness tool for measuring CRP at home. Track your baseline, monitor the effects of lifestyle changes, and build a long-term picture of your inflammatory health.',
     related: [
-      { href: 'post-aging-inflammation.html', cat: 'Science', title: 'Inflammaging: How Chronic Inflammation Accelerates the Aging Process' },
-      { href: 'post-understanding-crp.html', cat: 'Science', title: 'Understanding Your CRP: What the Numbers Actually Mean' },
-      { href: 'post-anti-inflammatory-diet.html', cat: 'Lifestyle', title: 'The Anti-Inflammatory Diet: A Complete Guide' }
+      { href: '/post-aging-inflammation', cat: 'Science', title: 'Inflammaging: How Chronic Inflammation Accelerates the Aging Process' },
+      { href: '/post-understanding-crp', cat: 'Science', title: 'Understanding Your CRP: What the Numbers Actually Mean' },
+      { href: '/post-anti-inflammatory-diet', cat: 'Lifestyle', title: 'The Anti-Inflammatory Diet: A Complete Guide' }
     ]
   }
 

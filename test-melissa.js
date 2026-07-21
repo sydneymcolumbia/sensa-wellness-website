@@ -15,4 +15,4 @@ const token = jwt.sign({
 }, secret, { expiresIn: '1h' });
 
 console.log('\nOpen this URL to test Melissa:');
-console.log(`https://sensawellness.org/chat.html?t=${token}\n`);
+console.log(`https://sensawellness.org/chat?t=${token}\n`);

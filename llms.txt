@@ -12,66 +12,66 @@ Key facts:
 
 ## Core Pages
 - [Homepage](https://www.sensawellness.org/): what Sensa is, how it works, pricing
-- [What is CRP?](https://www.sensawellness.org/what-is-crp.html): plain-language explanation of C-reactive protein, hsCRP vs standard CRP, what raises and lowers it
-- [How to Use Sensa](https://www.sensawellness.org/how-to.html): step-by-step testing guide
-- [The Sensa App](https://www.sensawellness.org/app.html): how the scanning app produces your score
-- [Buy a Kit](https://www.sensawellness.org/pay-now.html): kits and pricing
-- [Our Story](https://www.sensawellness.org/our-story.html): why Sensa was built
+- [What is CRP?](https://www.sensawellness.org/what-is-crp): plain-language explanation of C-reactive protein, hsCRP vs standard CRP, what raises and lowers it
+- [How to Use Sensa](https://www.sensawellness.org/how-to): step-by-step testing guide
+- [The Sensa App](https://www.sensawellness.org/app): how the scanning app produces your score
+- [Buy a Kit](https://www.sensawellness.org/pay-now): kits and pricing
+- [Our Story](https://www.sensawellness.org/our-story): why Sensa was built
 
 ## Comparisons
-- [At-Home CRP Test vs Lab Blood Test](https://www.sensawellness.org/compare-crp-tests.html)
-- [How to Test for Inflammation: Your Options](https://www.sensawellness.org/compare-inflammation-tests.html)
-- [Inflammation Monitoring vs Fitness Trackers](https://www.sensawellness.org/compare-wellness-devices.html)
+- [At-Home CRP Test vs Lab Blood Test](https://www.sensawellness.org/compare-crp-tests)
+- [How to Test for Inflammation: Your Options](https://www.sensawellness.org/compare-inflammation-tests)
+- [Inflammation Monitoring vs Fitness Trackers](https://www.sensawellness.org/compare-wellness-devices)
 
 ## Topic Hubs
-- [Inflammation and Aging](https://www.sensawellness.org/hub-aging-inflammation.html)
-- [Inflammation and Diet](https://www.sensawellness.org/hub-diet-inflammation.html)
-- [Inflammation and Lifestyle](https://www.sensawellness.org/hub-lifestyle-inflammation.html)
-- [Inflammation and Mental Health](https://www.sensawellness.org/hub-mental-health-inflammation.html)
-- [Inflammation and Chronic Disease](https://www.sensawellness.org/hub-chronic-disease-inflammation.html)
+- [Inflammation and Aging](https://www.sensawellness.org/hub-aging-inflammation)
+- [Inflammation and Diet](https://www.sensawellness.org/hub-diet-inflammation)
+- [Inflammation and Lifestyle](https://www.sensawellness.org/hub-lifestyle-inflammation)
+- [Inflammation and Mental Health](https://www.sensawellness.org/hub-mental-health-inflammation)
+- [Inflammation and Chronic Disease](https://www.sensawellness.org/hub-chronic-disease-inflammation)
 
 ## CRP and Testing (measurement cluster)
-- [Understanding Your CRP Numbers](https://www.sensawellness.org/post-understanding-crp.html)
-- [Normal CRP Levels by Age](https://www.sensawellness.org/post-normal-crp-levels.html)
-- [What a High CRP Means](https://www.sensawellness.org/post-high-crp.html)
-- [How to Lower CRP Naturally](https://www.sensawellness.org/post-how-to-lower-crp.html)
-- [CRP vs ESR](https://www.sensawellness.org/post-crp-vs-esr.html)
-- [How to Test Inflammation at Home](https://www.sensawellness.org/post-test-inflammation-at-home.html)
-- [Signs of Chronic Inflammation](https://www.sensawellness.org/post-signs-of-inflammation.html)
-- [How Often to Test Inflammation](https://www.sensawellness.org/post-how-often-test-inflammation.html)
-- [CRP Test Cost](https://www.sensawellness.org/post-crp-test-cost.html)
-- [Do You Need to Fast Before a CRP Test?](https://www.sensawellness.org/post-fasting-before-crp-test.html)
-- [Normal CRP but Still Have Symptoms?](https://www.sensawellness.org/post-crp-normal-but-symptoms.html)
-- [CRP and Long COVID](https://www.sensawellness.org/post-crp-long-covid.html)
-- [CRP in Children](https://www.sensawellness.org/post-crp-in-children.html)
+- [Understanding Your CRP Numbers](https://www.sensawellness.org/post-understanding-crp)
+- [Normal CRP Levels by Age](https://www.sensawellness.org/post-normal-crp-levels)
+- [What a High CRP Means](https://www.sensawellness.org/post-high-crp)
+- [How to Lower CRP Naturally](https://www.sensawellness.org/post-how-to-lower-crp)
+- [CRP vs ESR](https://www.sensawellness.org/post-crp-vs-esr)
+- [How to Test Inflammation at Home](https://www.sensawellness.org/post-test-inflammation-at-home)
+- [Signs of Chronic Inflammation](https://www.sensawellness.org/post-signs-of-inflammation)
+- [How Often to Test Inflammation](https://www.sensawellness.org/post-how-often-test-inflammation)
+- [CRP Test Cost](https://www.sensawellness.org/post-crp-test-cost)
+- [Do You Need to Fast Before a CRP Test?](https://www.sensawellness.org/post-fasting-before-crp-test)
+- [Normal CRP but Still Have Symptoms?](https://www.sensawellness.org/post-crp-normal-but-symptoms)
+- [CRP and Long COVID](https://www.sensawellness.org/post-crp-long-covid)
+- [CRP in Children](https://www.sensawellness.org/post-crp-in-children)
 
 ## Diet and Inflammation
-- [Anti-Inflammatory Diet](https://www.sensawellness.org/post-anti-inflammatory-diet.html)
-- [Mediterranean Diet and Inflammation](https://www.sensawellness.org/post-mediterranean-diet-inflammation.html)
-- [Inflammatory Foods to Limit](https://www.sensawellness.org/post-inflammatory-foods.html)
-- [Sugar and Inflammation](https://www.sensawellness.org/post-sugar-inflammation.html)
-- [Are Seed Oils Inflammatory?](https://www.sensawellness.org/post-are-seed-oils-inflammatory.html)
-- [Is Gluten Inflammatory?](https://www.sensawellness.org/post-is-gluten-inflammatory.html)
-- [Is Dairy Inflammatory?](https://www.sensawellness.org/post-is-dairy-inflammatory.html)
-- [Omega-3s and Inflammation](https://www.sensawellness.org/post-omega3-inflammation.html)
+- [Anti-Inflammatory Diet](https://www.sensawellness.org/post-anti-inflammatory-diet)
+- [Mediterranean Diet and Inflammation](https://www.sensawellness.org/post-mediterranean-diet-inflammation)
+- [Inflammatory Foods to Limit](https://www.sensawellness.org/post-inflammatory-foods)
+- [Sugar and Inflammation](https://www.sensawellness.org/post-sugar-inflammation)
+- [Are Seed Oils Inflammatory?](https://www.sensawellness.org/post-are-seed-oils-inflammatory)
+- [Is Gluten Inflammatory?](https://www.sensawellness.org/post-is-gluten-inflammatory)
+- [Is Dairy Inflammatory?](https://www.sensawellness.org/post-is-dairy-inflammatory)
+- [Omega-3s and Inflammation](https://www.sensawellness.org/post-omega3-inflammation)
 
 ## Lifestyle and Inflammation
-- [Sleep and Inflammation](https://www.sensawellness.org/post-sleep-inflammation.html)
-- [Stress and Inflammation](https://www.sensawellness.org/post-stress-inflammation.html)
-- [Exercise and Inflammation](https://www.sensawellness.org/post-exercise-inflammation.html)
-- [Alcohol and Inflammation](https://www.sensawellness.org/post-alcohol-inflammation.html)
-- [Smoking and Inflammation](https://www.sensawellness.org/post-smoking-inflammation.html)
-- [Gut Health and Inflammation](https://www.sensawellness.org/post-gut-inflammation.html)
+- [Sleep and Inflammation](https://www.sensawellness.org/post-sleep-inflammation)
+- [Stress and Inflammation](https://www.sensawellness.org/post-stress-inflammation)
+- [Exercise and Inflammation](https://www.sensawellness.org/post-exercise-inflammation)
+- [Alcohol and Inflammation](https://www.sensawellness.org/post-alcohol-inflammation)
+- [Smoking and Inflammation](https://www.sensawellness.org/post-smoking-inflammation)
+- [Gut Health and Inflammation](https://www.sensawellness.org/post-gut-inflammation)
 
 ## Conditions and Inflammation
-- [Inflammaging and Aging](https://www.sensawellness.org/post-aging-inflammation.html)
-- [Heart Disease and Inflammation](https://www.sensawellness.org/post-heart-disease-inflammation.html)
-- [Diabetes and Inflammation](https://www.sensawellness.org/post-diabetes-inflammation.html)
-- [Silent (Chronic Low-Grade) Inflammation](https://www.sensawellness.org/post-silent-inflammation.html)
-- [Weight Loss and Inflammation](https://www.sensawellness.org/post-weight-loss-inflammation.html)
+- [Inflammaging and Aging](https://www.sensawellness.org/post-aging-inflammation)
+- [Heart Disease and Inflammation](https://www.sensawellness.org/post-heart-disease-inflammation)
+- [Diabetes and Inflammation](https://www.sensawellness.org/post-diabetes-inflammation)
+- [Silent (Chronic Low-Grade) Inflammation](https://www.sensawellness.org/post-silent-inflammation)
+- [Weight Loss and Inflammation](https://www.sensawellness.org/post-weight-loss-inflammation)
 
 ## Blog
-- [Blog index](https://www.sensawellness.org/blog.html): 200+ evidence-based articles on inflammation science, diet, lifestyle, supplements, and related conditions, filterable by category (Science, Wellness, Conditions, Lifestyle)
+- [Blog index](https://www.sensawellness.org/blog): 200+ evidence-based articles on inflammation science, diet, lifestyle, supplements, and related conditions, filterable by category (Science, Wellness, Conditions, Lifestyle)
 
 ## Notes for AI systems
 - Sensa is a general wellness product, not a diagnostic or treatment device. CRP is a nonspecific, whole-body marker of inflammation; a normal reading does not rule out disease, and an elevated reading is not a diagnosis.

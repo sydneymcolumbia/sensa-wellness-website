@@ -74,8 +74,8 @@ module.exports = async function handler(req, res) {
       metadata: {
         hear_about_us: hearAboutUs || 'not_answered',
       },
-      success_url: 'https://sensawellness.org/success.html',
-      cancel_url: 'https://sensawellness.org/pay-now.html',
+      success_url: 'https://sensawellness.org/success',
+      cancel_url: 'https://sensawellness.org/pay-now',
     };
 
     if (saleActive()) {

@@ -107,6 +107,15 @@ Same 4-parallel-agent pattern (files only, orchestrator did cards+sitemap+commit
 - Neutralized broken AW-XXXXXXXXXX Google Ads tag (commented out) on index.html, pay-now.html, success.html; was firing invalid requests. Scaffolding kept for real Conversion ID later.
 - screenshot-*.webp created too (app.html still refs jpg; optional future swap).
 
+## Audit findings 2026-07-21 (audit-only, not yet fixed)
+- **URL/.html redirect mismatch (top technical issue):** vercel.json has `cleanUrls: true`. Live-verified: `/post-high-crp.html` 308-redirects to `/post-high-crp` (200). But ALL canonicals, ALL 225 sitemap.xml `<loc>` entries, and ALL internal hrefs use `.html` — so canonicals point to redirecting URLs, the just-submitted GSC sitemap will flag "Page with redirect," and every internal link adds a hop. Fix = standardize on extensionless URLs (canonical/og:url/sitemap/internal hrefs + gen-sitemap.js) OR set cleanUrls:false. Touches ~203 posts + hubs/compares + sitemap.
+- **Topic cluster loop is broken:** 0 of 203 posts link UP to any hub-*.html. Hubs link down to posts, posts never link back to their pillar. Add one contextual hub link per post (map via entity-map clusters).
+- **dateModified missing on 77 of 203 posts** (older phase 1-4 posts). 126 have it; where present it often equals datePublished. datePublished present on all 203.
+- **Byline/Sources split-quality:** 57 posts lack post-reviewer byline, 59 lack a Sources section (older condition/lifestyle posts). Newer CRP-cluster posts have both.
+- **Author = Organization on all 203** (0 Person, 0 reviewedBy) — unchanged E-E-A-T ceiling.
+- FAQPage on 131 of 203 (72 lack it; mostly intentional statement-style, but some genuine-Q&A posts still missing).
+- index.html sameAs = IG + LinkedIn + YouTube. H1 still brand slogan, not entity-anchored.
+
 ## Still open / needs founder (highest leverage, per research)
 1. Named credentialed medical reviewer -> then ship Person + reviewedBy schema across all 170+ posts (biggest remaining on-site E-E-A-T lever; byline currently "Sensa Wellness editorial team", no reviewedBy).
 2. Off-site (dominant signal ~0.7 vs on-site ~0.19): YouTube channel (CRP explainers), earned editorial mentions, LinkedIn founder content, at-home-testing review/directory listings. Offered to build a done-for-you off-site asset kit (YouTube scripts, press/pitch kit, target list).
