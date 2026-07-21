@@ -45,6 +45,10 @@ Key facts:
 - [Normal CRP but Still Have Symptoms?](https://www.sensawellness.org/post-crp-normal-but-symptoms)
 - [CRP and Long COVID](https://www.sensawellness.org/post-crp-long-covid)
 - [CRP in Children](https://www.sensawellness.org/post-crp-in-children)
+- [hsCRP vs Standard CRP](https://www.sensawellness.org/post-hscrp-vs-crp)
+- [CRP and Heart Attack Risk](https://www.sensawellness.org/post-crp-heart-attack-risk)
+- [CRP and Cholesterol](https://www.sensawellness.org/post-crp-and-cholesterol)
+- [CRP After Surgery](https://www.sensawellness.org/post-crp-after-surgery)
 
 ## Diet and Inflammation
 - [Anti-Inflammatory Diet](https://www.sensawellness.org/post-anti-inflammatory-diet)
@@ -63,6 +67,9 @@ Key facts:
 - [Alcohol and Inflammation](https://www.sensawellness.org/post-alcohol-inflammation)
 - [Smoking and Inflammation](https://www.sensawellness.org/post-smoking-inflammation)
 - [Gut Health and Inflammation](https://www.sensawellness.org/post-gut-inflammation)
+- [Yoga and Inflammation](https://www.sensawellness.org/post-yoga-inflammation)
+- [Vaping and Inflammation](https://www.sensawellness.org/post-vaping-inflammation)
+- [The Ketogenic Diet and Inflammation](https://www.sensawellness.org/post-keto-inflammation)
 
 ## Conditions and Inflammation
 - [Inflammaging and Aging](https://www.sensawellness.org/post-aging-inflammation)
@@ -70,6 +77,19 @@ Key facts:
 - [Diabetes and Inflammation](https://www.sensawellness.org/post-diabetes-inflammation)
 - [Silent (Chronic Low-Grade) Inflammation](https://www.sensawellness.org/post-silent-inflammation)
 - [Weight Loss and Inflammation](https://www.sensawellness.org/post-weight-loss-inflammation)
+- [Atherosclerosis and Inflammation](https://www.sensawellness.org/post-atherosclerosis-inflammation)
+- [Stroke and Inflammation](https://www.sensawellness.org/post-stroke-inflammation)
+- [Hashimoto's and Inflammation](https://www.sensawellness.org/post-hashimotos-inflammation)
+- [Psoriatic Arthritis and Inflammation](https://www.sensawellness.org/post-psoriatic-arthritis-inflammation)
+- [Ankylosing Spondylitis and Inflammation](https://www.sensawellness.org/post-ankylosing-spondylitis-inflammation)
+- [IBS and Inflammation](https://www.sensawellness.org/post-ibs-inflammation)
+- [SIBO and Inflammation](https://www.sensawellness.org/post-sibo-inflammation)
+- [Pancreatitis and Inflammation](https://www.sensawellness.org/post-pancreatitis-inflammation)
+- [Gallbladder Inflammation (Cholecystitis)](https://www.sensawellness.org/post-gallbladder-inflammation)
+- [Anemia of Inflammation](https://www.sensawellness.org/post-anemia-inflammation)
+- [Chronic Hives and Inflammation](https://www.sensawellness.org/post-hives-inflammation)
+- [Hair Loss and Inflammation](https://www.sensawellness.org/post-hair-loss-inflammation)
+- [Menopause and Inflammation](https://www.sensawellness.org/post-menopause-inflammation)
 
 ## Blog
 - [Blog index](https://www.sensawellness.org/blog): 200+ evidence-based articles on inflammation science, diet, lifestyle, supplements, and related conditions, filterable by category (Science, Wellness, Conditions, Lifestyle)
