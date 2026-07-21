@@ -2947,7 +2947,7 @@
     </script>
 
     <!-- Structured Data: Product -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="product-schema">
     {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -3104,6 +3104,25 @@
   }
 
   // Build each card with textContent so review text can never inject markup.
+  // Add a real aggregateRating to the Product schema so it reflects the
+  // actual approved reviews shown on the page (never a hardcoded value).
+  function injectAggregateRating(average, count) {
+    if (!count || !average) return;
+    var el = document.getElementById('product-schema');
+    if (!el) return;
+    try {
+      var obj = JSON.parse(el.textContent);
+      obj.aggregateRating = {
+        "@type": "AggregateRating",
+        "ratingValue": Number(average).toFixed(1),
+        "reviewCount": count,
+        "bestRating": "5",
+        "worstRating": "1"
+      };
+      el.textContent = JSON.stringify(obj, null, 4);
+    } catch (e) { /* leave schema untouched on parse failure */ }
+  }
+
   function renderReviews(data) {
     grid.innerHTML = '';
     var reviews = (data && data.reviews) || [];
@@ -3125,6 +3144,7 @@
       document.getElementById('rs-count').textContent =
         'from ' + data.count + ' review' + (data.count === 1 ? '' : 's');
       summary.style.display = 'flex';
+      injectAggregateRating(data.average, data.count);
     }
 
     reviews.forEach(function (r) {
