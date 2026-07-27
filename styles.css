@@ -125,6 +125,21 @@ nav a.nav-active {
     color: var(--accent-coral);
 }
 
+nav a.nav-app-link {
+    background: var(--accent-gold);
+    color: var(--text-dark);
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+}
+
+nav a.nav-app-link:hover {
+    background: var(--accent-orange);
+    color: var(--text-dark);
+    transform: translateY(-1px);
+}
+
 .btn {
     display: inline-block;
     padding: 0.6rem 1.4rem;
@@ -824,6 +839,10 @@ footer {
         padding: 1.5rem 2rem;
         border-bottom: 1px solid rgba(0,0,0,0.06);
         box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    nav.active a.nav-app-link {
+        align-self: flex-start;
     }
 
     .blog-grid {
