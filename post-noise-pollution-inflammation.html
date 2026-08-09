@@ -117,6 +117,57 @@
 
                 <p>For daytime occupational or environmental noise, noise-canceling headphones provide substantial protection from continuous noise sources. Regular quiet periods, nature exposure, and time away from urban noise environments reduce cumulative HPA stress activation meaningfully. The WHO recommends maintaining bedroom nighttime noise levels below 40 decibels as a health standard, a target achievable with appropriate acoustic modifications even in many urban environments. Given noise pollution's consistent association with elevated CRP and cardiovascular risk, treating the noise environment as a modifiable health factor rather than an unavoidable urban condition is a meaningful shift in preventive health thinking.</p>
 
+                <div class="post-share">
+                    <span class="post-share-label">Share this article</span>
+                    <div class="post-share-buttons">
+                        <a href="#" data-share="facebook" class="share-btn" target="_blank" rel="noopener" aria-label="Share on Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                            Facebook
+                        </a>
+                        <a href="#" data-share="x" class="share-btn" target="_blank" rel="noopener" aria-label="Share on X, formerly Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>
+                            X
+                        </a>
+                        <button type="button" data-share="copy" class="share-btn" aria-label="Copy link to share on Instagram or anywhere else">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            <span>Copy Link</span>
+                        </button>
+                        <button type="button" data-share="native" class="share-btn" hidden aria-label="Share using your device">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                            <span>More</span>
+                        </button>
+                    </div>
+                </div>
+                <script>
+                (function() {
+                    var canonical = document.querySelector('link[rel="canonical"]');
+                    var shareUrl = canonical ? canonical.href : window.location.href;
+                    var shareTitle = document.title.replace(/\s*\|\s*Sensa Wellness\s*$/, '');
+                    var fb = document.querySelector('[data-share="facebook"]');
+                    if (fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+                    var xBtn = document.querySelector('[data-share="x"]');
+                    if (xBtn) xBtn.href = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(shareUrl) + '&text=' + encodeURIComponent(shareTitle);
+                    var copyBtn = document.querySelector('[data-share="copy"]');
+                    if (copyBtn) copyBtn.addEventListener('click', function() {
+                        navigator.clipboard.writeText(shareUrl).then(function() {
+                            var label = copyBtn.querySelector('span');
+                            copyBtn.classList.add('copied');
+                            label.textContent = 'Link Copied';
+                            setTimeout(function() {
+                                copyBtn.classList.remove('copied');
+                                label.textContent = 'Copy Link';
+                            }, 2000);
+                        });
+                    });
+                    var nativeBtn = document.querySelector('[data-share="native"]');
+                    if (nativeBtn && navigator.share) {
+                        nativeBtn.hidden = false;
+                        nativeBtn.addEventListener('click', function() {
+                            navigator.share({ title: shareTitle, url: shareUrl }).catch(function() {});
+                        });
+                    }
+                })();
+                </script>
                 <div class="post-cta">
                     <h3>Want to see how your environment affects your inflammatory baseline?</h3>
                     <p>Sensa lets you measure CRP from home. Tracking your markers over time can reveal how environmental changes, including reducing noise exposure, affect your body's inflammatory status.</p>
