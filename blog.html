@@ -4801,12 +4801,22 @@
         // Newsletter form
         document.getElementById('newsletterForm').addEventListener('submit', (e) => {
             e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value.trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
             const btn = e.target.querySelector('button[type="submit"]');
-            btn.textContent = 'Subscribed!';
-            btn.style.background = '#41a6f0';
+            btn.textContent = 'Submitting…';
             btn.disabled = true;
-            e.target.reset();
-            setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; btn.disabled = false; }, 3000);
+            fetch('https://script.google.com/macros/s/AKfycbyQVIxWJrJNYp0KgEMAeF-pfCpGJPmS3w3O4enN_Dv_KITjfjfl5qeZB9uEMAnJ7CWc_g/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-index' })
+            }).finally(() => {
+                btn.textContent = 'Subscribed!';
+                btn.style.background = '#41a6f0';
+                e.target.reset();
+                setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; btn.disabled = false; }, 3000);
+            });
         });
     </script>
 
