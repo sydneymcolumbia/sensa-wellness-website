@@ -8,24 +8,20 @@ const PRICE_IDS = {
 
 // ── Summer Reset Sale ──────────────────────────────────────────────
 // 20% off, applied server-side so the discount is real (the checkout
-// total reflects it) and cannot be claimed after the window closes.
-// To change or end the promo, edit these constants. Set SALE_ENABLED
-// to false to switch the site back to full price without a code change
-// to the front end (the on-page sale copy can then be reverted).
+// total reflects it). Evergreen on purpose: the front end (sale.js)
+// runs a self-resetting weekly countdown with no end date, so the
+// discount must never expire on its own or the site would advertise
+// sale prices while checkout charges full price. To end the promo,
+// set enabled to false AND revert the on-page sale copy together.
 const SALE = {
   enabled: true,
   couponId: 'summer_reset_2026',   // fixed id so coupon creation is idempotent
   percentOff: 20,
   name: 'Summer Reset Sale',
-  // Active through Aug 31, 2026 (08:00 UTC ≈ end of Aug 31 in US Pacific).
-  startsAt: Date.parse('2026-06-01T00:00:00Z'),
-  endsAt:   Date.parse('2026-09-01T08:00:00Z'),
 };
 
 function saleActive() {
-  if (!SALE.enabled) return false;
-  const now = Date.now();
-  return now >= SALE.startsAt && now < SALE.endsAt;
+  return SALE.enabled;
 }
 
 // Retrieve the promo coupon, creating it once if it does not exist yet.
