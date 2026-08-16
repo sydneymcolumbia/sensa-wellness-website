@@ -69,6 +69,21 @@ def check_block(path, data, problems):
                 problems.append(f"{path}: FAQ answer empty for '{q.get('name', '?')}'")
 
 
+def check_index_drift(problems):
+    """New posts must appear in sitemap.xml, blog.html, and llms.txt."""
+    disk = {p[:-5] for p in glob.glob("post-*.html")}
+    for name, source, pattern in (
+        ("sitemap.xml", open("sitemap.xml").read(), r"sensawellness\.org/(post-[a-z0-9-]+)"),
+        ("blog.html", open("blog.html").read(), r'href="/(post-[a-z0-9-]+)"'),
+        ("llms.txt", open("llms.txt").read(), r"sensawellness\.org/(post-[a-z0-9-]+)"),
+    ):
+        listed = set(re.findall(pattern, source))
+        for slug in sorted(disk - listed):
+            problems.append(f"{name}: missing {slug}")
+        for slug in sorted(listed - disk):
+            problems.append(f"{name}: links non-existent {slug}")
+
+
 def main():
     files = sys.argv[1:] or sorted(glob.glob("*.html"))
     internal = {"admin.html", "chat.html", "deck.html", "success.html", "cuvet-animation.html"}
@@ -92,6 +107,11 @@ def main():
                 problems.append(f"{path}: missing og:site_name meta")
             if 'rel="canonical"' not in src:
                 problems.append(f"{path}: missing canonical link")
+        if '"FAQPage"' in src and path.startswith("post-") and 'class="post-faq"' not in src:
+            problems.append(f"{path}: FAQPage schema without visible FAQ section (Google requires visible content)")
+
+    if not sys.argv[1:]:
+        check_index_drift(problems)
 
     print(f"checked {len(files)} files, {blocks} JSON-LD blocks")
     if problems:
