@@ -541,7 +541,8 @@
             height: 100%;
             object-fit: contain;
             object-position: center right;
-            transform: scale(1.5);
+            --hero-scale: 1.5;
+            transform: scale(var(--hero-scale));
             transform-origin: 100% 50%;
         }
 
@@ -1473,13 +1474,13 @@
             }
 
             @keyframes heroImgIn {
-                from { opacity: 0; transform: translateX(60px) scale(0.97); }
-                to { opacity: 1; transform: translateX(0) scale(1); }
+                from { opacity: 0; transform: translateX(60px) scale(calc(var(--hero-scale, 1) * 0.97)); }
+                to { opacity: 1; transform: translateX(0) scale(var(--hero-scale, 1)); }
             }
 
             @keyframes heroFloat {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-14px); }
+                0%, 100% { transform: translateY(0) scale(var(--hero-scale, 1)); }
+                50% { transform: translateY(-14px) scale(var(--hero-scale, 1)); }
             }
 
             /* Shimmering gradient headline */
@@ -1717,6 +1718,7 @@
 
             .hero-img {
                 object-position: center;
+                --hero-scale: 1;
                 transform: none;
             }
 
