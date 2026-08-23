@@ -19,6 +19,8 @@ Key facts:
 - [Our Story](https://www.sensawellness.org/our-story): why Sensa was built
 - [Editorial Standards](https://www.sensawellness.org/editorial-standards): how Sensa researches, sources, and updates its inflammation and CRP content
 
+- [About the author: Sydney Murphy](https://www.sensawellness.org/authors/sydney-murphy)
+
 ## Comparisons
 - [At-Home CRP Test vs Lab Blood Test](https://www.sensawellness.org/compare-crp-tests)
 - [How to Test for Inflammation: Your Options](https://www.sensawellness.org/compare-inflammation-tests)
@@ -32,6 +34,7 @@ Key facts:
 - [Inflammation and Chronic Disease](https://www.sensawellness.org/hub-chronic-disease-inflammation)
 
 ## CRP and Testing (measurement cluster)
+- [CRP and Inflammation Statistics 2026](https://www.sensawellness.org/crp-statistics)
 - [Understanding Your CRP Numbers](https://www.sensawellness.org/post-understanding-crp)
 - [Normal CRP Levels by Age](https://www.sensawellness.org/post-normal-crp-levels)
 - [What a High CRP Means](https://www.sensawellness.org/post-high-crp)
