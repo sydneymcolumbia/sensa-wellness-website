@@ -81,3 +81,47 @@
         initAll();
     }
 })();
+
+/* ============================================================
+   Seasonal branding. The Summer Reset name retires when the
+   weekly cycle ending 2026-08-30 at local midnight runs out,
+   and the Fall Reset Sale takes over. The text swap is symmetric
+   so every visitor sees the season that matches their own clock,
+   regardless of which name the static HTML was built with.
+   ============================================================ */
+(function () {
+    var REBRAND_AT = new Date('2026-08-30T00:00:00').getTime();
+    var LEAF = '🍂';
+
+    function applySeason() {
+        var fall = Date.now() >= REBRAND_AT;
+        var from = fall ? 'Summer Reset' : 'Fall Reset';
+        var to = fall ? 'Fall Reset' : 'Summer Reset';
+        if (document.title.indexOf(from) !== -1) {
+            document.title = document.title.split(from).join(to);
+        }
+        var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+        var node;
+        while ((node = walker.nextNode())) {
+            if (node.nodeValue && node.nodeValue.indexOf(from) !== -1) {
+                node.nodeValue = node.nodeValue.split(from).join(to);
+            }
+        }
+        if (fall) {
+            var glyphs = document.querySelectorAll('.sale-badge .sun, .srs-badge [aria-hidden="true"], .srs-fab [aria-hidden="true"], .promo-sun');
+            for (var i = 0; i < glyphs.length; i++) {
+                glyphs[i].textContent = LEAF;
+            }
+        }
+    }
+
+    function start() {
+        applySeason();
+        setInterval(applySeason, 60000);
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+    } else {
+        start();
+    }
+})();
