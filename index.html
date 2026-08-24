@@ -1869,6 +1869,7 @@
     <link rel="stylesheet" href="theme.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Reading Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
@@ -1901,6 +1902,7 @@
             </nav>
         </div>
     </header>
+    <main id="main-content">
 
     <!-- Summer Reset Sale promo bar -->
     <div class="promo-bar" role="region" aria-label="Summer Reset Sale">
@@ -1912,7 +1914,7 @@
             </div>
             <div class="promo-sub">
                 <span>Summer Reset Sale ends in</span>
-                <span class="promo-countdown" data-sale-countdown aria-live="polite">
+                <span class="promo-countdown" data-sale-countdown role="timer">
                     <span class="promo-clock-unit"><span class="promo-clock-num" data-unit="days">00</span><span class="promo-clock-lbl">d</span></span>
                     <span class="promo-clock-sep">:</span>
                     <span class="promo-clock-unit"><span class="promo-clock-num" data-unit="hours">00</span><span class="promo-clock-lbl">h</span></span>
@@ -2646,14 +2648,14 @@
                     <h3>Place Your Order</h3>
                     <form id="waitlistForm">
                         <div class="form-group">
-                            <input type="text" id="wl-name" placeholder="Full Name" required>
+                            <input type="text" id="wl-name" aria-label="Full name" placeholder="Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="wl-email" placeholder="Email Address" required>
+                            <input type="email" id="wl-email" aria-label="Email address" placeholder="Email Address" required>
                             <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                         </div>
                         <div class="form-group">
-                            <select id="wl-interest">
+                            <select id="wl-interest" aria-label="What are you most interested in?">
                                 <option value="" disabled selected>Who is this for?</option>
                                 <option value="personal">Myself</option>
                                 <option value="family">My family</option>
@@ -2675,6 +2677,7 @@
     </section>
 
     <!-- Footer -->
+    </main>
     <footer>
         <div class="container">
             <div class="footer-grid">

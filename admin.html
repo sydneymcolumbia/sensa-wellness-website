@@ -591,11 +591,11 @@
     <h2>Sign in</h2>
     <p>Admin access only. Use your Sensa email.</p>
     <div class="form-group">
-      <label>Email</label>
+      <label for="login-email">Email</label>
       <input type="email" id="login-email" placeholder="you@sensawellness.org">
     </div>
     <div class="form-group">
-      <label>Password</label>
+      <label for="login-password">Password</label>
       <input type="password" id="login-password" placeholder="Password">
     </div>
     <button class="login-btn" onclick="signIn()">Sign In</button>
@@ -688,7 +688,7 @@
     <div class="page" id="page-users">
       <div class="page-header">
         <h1>Users</h1>
-        <input class="search-bar" type="text" placeholder="Search by name or email..." oninput="filterUsers(this.value)">
+        <input class="search-bar" type="text" aria-label="Search users by name or email" placeholder="Search by name or email..." oninput="filterUsers(this.value)">
       </div>
       <div class="table-card">
         <div class="table-header">
@@ -715,7 +715,7 @@
     <div class="page" id="page-scans">
       <div class="page-header">
         <h1>All Scans</h1>
-        <input class="search-bar" type="text" placeholder="Search by label..." oninput="filterScans(this.value)">
+        <input class="search-bar" type="text" aria-label="Search scans by label" placeholder="Search by label..." oninput="filterScans(this.value)">
       </div>
       <div class="table-card">
         <div class="table-header">

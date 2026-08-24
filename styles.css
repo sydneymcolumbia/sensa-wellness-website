@@ -9,10 +9,11 @@
     --bg-white: #ffffff;
     --text-dark: #1a1a2e;
     --text-gray: #4a4a5a;
-    --text-light: #7a7a8a;
+    --text-light: #6b6b7b;
     --accent-gold: #fac234;
     --accent-orange: #f59d06;
     --accent-coral: #e85a39;
+    --accent-coral-text: #c2401f;
     --accent-navy: #1800ad;
     --accent-purple: #7267f2;
     --accent-blue: #41a6f0;
@@ -21,7 +22,36 @@
     --section-padding: 5rem 0;
 }
 
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    background: var(--accent-navy);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0 0 8px 0;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--accent-navy);
+    outline-offset: 2px;
+}
 
 body {
     font-family: 'Quicksand', sans-serif;
@@ -122,7 +152,7 @@ nav a {
 
 nav a:hover,
 nav a.nav-active {
-    color: var(--accent-coral);
+    color: var(--accent-coral-text);
 }
 
 .btn {
@@ -370,7 +400,7 @@ footer {
 
 .post-category {
     background: rgba(114, 103, 242, 0.1);
-    color: var(--accent-coral);
+    color: var(--accent-coral-text);
     padding: 0.2rem 0.7rem;
     border-radius: 20px;
     font-size: 0.78rem;
@@ -386,7 +416,7 @@ footer {
 }
 
 .read-more {
-    color: var(--accent-coral);
+    color: var(--accent-coral-text);
     font-weight: 500;
     font-size: 0.9rem;
 }
@@ -420,7 +450,7 @@ footer {
 
 .filter-btn:hover {
     border-color: var(--accent-coral);
-    color: var(--accent-coral);
+    color: var(--accent-coral-text);
 }
 
 .filter-btn.active {
@@ -522,6 +552,7 @@ footer {
 .newsletter-form input:focus {
     outline: none;
     border-color: var(--accent-coral);
+    box-shadow: 0 0 0 3px rgba(232, 90, 57, 0.4);
 }
 
 .newsletter-note {
@@ -553,7 +584,7 @@ footer {
     transition: color 0.2s;
 }
 
-.back-link:hover { color: var(--accent-coral); }
+.back-link:hover { color: var(--accent-coral-text); }
 
 .post-header-section h1 {
     font-size: clamp(1.8rem, 3.5vw, 2.6rem);
