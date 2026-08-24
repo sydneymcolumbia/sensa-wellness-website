@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Jun 2026 12:20:43 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 07:09:12 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Inflammation Joins the Short List of Modifiable Heart Risk Factors</title>
+        <link>https://www.sensawellness.org/post-inflammation-modifiable-heart-risk</link>
+        <guid>https://www.sensawellness.org/post-inflammation-modifiable-heart-risk</guid>
+        <description>The 2025 American College of Cardiology Scientific Statement calls inflammation "clinically actionable" for cardiovascular disease. Here is what it means for tracking hsCRP at home.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Fatty Liver Disease and Inflammation: How NAFLD Becomes NASH</title>
         <link>https://www.sensawellness.org/post-fatty-liver-inflammation</link>
