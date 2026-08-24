@@ -117,7 +117,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Do you need to fast? CRP by scenario</caption>
-                        <thead><tr><th>What is being tested</th><th>Fasting needed?</th><th>Why</th></tr></thead>
+                        <thead><tr><th scope="col">What is being tested</th><th scope="col">Fasting needed?</th><th scope="col">Why</th></tr></thead>
                         <tbody>
                         <tr><td>CRP alone</td><td>No</td><td>Eating does not meaningfully affect CRP</td></tr>
                         <tr><td>hs-CRP alone</td><td>No</td><td>Same as standard CRP; no fasting required</td></tr>
@@ -138,7 +138,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>What matters for CRP test preparation</caption>
-                        <thead><tr><th>Factor</th><th>Effect on CRP</th></tr></thead>
+                        <thead><tr><th scope="col">Factor</th><th scope="col">Effect on CRP</th></tr></thead>
                         <tbody>
                         <tr><td>Eating a normal meal</td><td>No meaningful effect</td></tr>
                         <tr><td>Time of day</td><td>No special requirement</td></tr>
@@ -257,9 +257,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -278,6 +279,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

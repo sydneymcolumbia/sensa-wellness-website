@@ -124,7 +124,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>The type 2 cytokines in asthma</caption>
-                        <thead><tr><th>Cytokine</th><th>Main effects in the airway</th></tr></thead>
+                        <thead><tr><th scope="col">Cytokine</th><th scope="col">Main effects in the airway</th></tr></thead>
                         <tbody>
                         <tr><td>IL-4</td><td>IgE class switching, recruits inflammatory cells, barrier disruption</td></tr>
                         <tr><td>IL-5</td><td>Drives eosinophil production and trafficking</td></tr>
@@ -141,7 +141,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Broad asthma inflammatory patterns</caption>
-                        <thead><tr><th>Pattern</th><th>Key feature</th></tr></thead>
+                        <thead><tr><th scope="col">Pattern</th><th scope="col">Key feature</th></tr></thead>
                         <tbody>
                         <tr><td>Type 2 (eosinophilic/allergic)</td><td>IL-4/IL-5/IL-13, eosinophils; most common; often allergy-linked</td></tr>
                         <tr><td>Non-type-2</td><td>Neutrophilic or low-inflammation; less allergy-driven</td></tr>
@@ -167,7 +167,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Common asthma triggers</caption>
-                        <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+                        <thead><tr><th scope="col">Category</th><th scope="col">Examples</th></tr></thead>
                         <tbody>
                         <tr><td>Allergens</td><td>Pollen, dust mites, pet dander, mold</td></tr>
                         <tr><td>Irritants</td><td>Tobacco smoke, air pollution, strong fumes</td></tr>
@@ -270,9 +270,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -291,6 +292,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

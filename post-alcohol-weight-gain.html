@@ -106,7 +106,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Approximate calories in common alcoholic drinks</caption>
-                        <thead><tr><th>Drink</th><th>Typical serving</th><th>Approx. calories</th></tr></thead>
+                        <thead><tr><th scope="col">Drink</th><th scope="col">Typical serving</th><th scope="col">Approx. calories</th></tr></thead>
                         <tbody>
                         <tr><td>Light beer</td><td>12 oz</td><td>100 to 110</td></tr>
                         <tr><td>Regular beer</td><td>12 oz</td><td>150 to 170</td></tr>
@@ -272,9 +272,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -293,6 +294,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

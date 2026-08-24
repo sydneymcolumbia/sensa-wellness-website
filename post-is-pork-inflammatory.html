@@ -113,7 +113,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Pork by type and its relationship with inflammation</caption>
-                        <thead><tr><th>Type of pork</th><th>Examples</th><th>Inflammation relevance</th></tr></thead>
+                        <thead><tr><th scope="col">Type of pork</th><th scope="col">Examples</th><th scope="col">Inflammation relevance</th></tr></thead>
                         <tbody>
                         <tr><td>Processed pork</td><td>Bacon, sausage, ham, hot dogs, deli meat</td><td>Clearest link to higher inflammatory markers; high sodium and preservatives</td></tr>
                         <tr><td>Fatty fresh cuts</td><td>Pork belly, untrimmed shoulder</td><td>Higher saturated fat; moderate concern, largely via calories and weight</td></tr>
@@ -224,9 +224,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -245,6 +246,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

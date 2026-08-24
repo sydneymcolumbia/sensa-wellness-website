@@ -102,7 +102,7 @@
 
                 <p>Neck discomfort is extremely common, and people often reach for the phrase reduce inflammation in the neck without distinguishing between two quite different things. One is a localized flare in the neck itself, the everyday stiff or sore neck. The other is systemic inflammation, a background state throughout the body. Both are real, but they call for different responses, and mixing them up leads to frustration. This guide covers both, starting with the local neck issue most people mean.</p>
 
-                <div class="key-definition"><strong>Localized neck inflammation</strong> is irritation confined to the neck's muscles, joints, discs, or soft tissue, usually from mechanical strain or wear. <strong>Systemic inflammation</strong> is a low-grade, whole-body process reflected in blood markers like C-reactive protein. The neck can be affected by either, but the two require different approaches.</p></div>
+                <div class="key-definition"><strong>Localized neck inflammation</strong> is irritation confined to the neck's muscles, joints, discs, or soft tissue, usually from mechanical strain or wear. <strong>Systemic inflammation</strong> is a low-grade, whole-body process reflected in blood markers like C-reactive protein. The neck can be affected by either, but the two require different approaches.</div>
 
                 <h2>Localized vs Systemic: Know the Difference</h2>
                 <p>Localized neck inflammation is typically triggered by something identifiable: sleeping in an awkward position, hunching over a phone or laptop, a sudden movement, muscle strain, or arthritis in the cervical spine. It usually presents as pain, stiffness, and sometimes swelling or warmth in one area, and it tends to improve over days to a couple of weeks. Systemic inflammation, by contrast, is not confined to the neck. It is the low-grade, body-wide state associated with factors like a poor diet, excess visceral fat, chronic stress, and inadequate sleep, and it is the kind measured with blood markers rather than felt as a stiff neck.</p>
@@ -113,7 +113,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Self-care measures for a localized stiff or sore neck</caption>
-                        <thead><tr><th>Measure</th><th>How it helps</th></tr></thead>
+                        <thead><tr><th scope="col">Measure</th><th scope="col">How it helps</th></tr></thead>
                         <tbody>
                         <tr><td>Ice (first 1 to 2 days)</td><td>Calms acute irritation and swelling</td></tr>
                         <tr><td>Heat (after the first days)</td><td>Eases muscle tension and stiffness</td></tr>
@@ -227,9 +227,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -248,6 +249,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

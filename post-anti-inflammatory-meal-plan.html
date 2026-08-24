@@ -126,7 +126,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Core anti-inflammatory food swaps</caption>
-                        <thead><tr><th>Instead of</th><th>Choose</th><th>Why</th></tr></thead>
+                        <thead><tr><th scope="col">Instead of</th><th scope="col">Choose</th><th scope="col">Why</th></tr></thead>
                         <tbody>
                         <tr><td>White bread, white rice</td><td>Oats, brown rice, whole-wheat, quinoa</td><td>Whole grains lowered CRP and IL-6 in trials</td></tr>
                         <tr><td>Processed or red meat</td><td>Fish, beans, lentils, poultry</td><td>Fish adds omega-3s; legumes add fiber</td></tr>
@@ -142,7 +142,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>A 7-day anti-inflammatory framework (adapt portions to your needs)</caption>
-                        <thead><tr><th>Day</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th><th>Snack</th></tr></thead>
+                        <thead><tr><th scope="col">Day</th><th scope="col">Breakfast</th><th scope="col">Lunch</th><th scope="col">Dinner</th><th scope="col">Snack</th></tr></thead>
                         <tbody>
                         <tr><td>Monday</td><td>Oatmeal with berries and walnuts</td><td>Lentil and vegetable soup with whole-grain bread</td><td>Baked salmon, quinoa, roasted broccoli</td><td>Apple and a handful of almonds</td></tr>
                         <tr><td>Tuesday</td><td>Greek yogurt with fruit and seeds</td><td>Chickpea and mixed-greens salad, olive oil dressing</td><td>Stir-fried tofu and vegetables over brown rice</td><td>Carrot sticks with hummus</td></tr>
@@ -166,7 +166,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Foods to limit on an anti-inflammatory plan</caption>
-                        <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+                        <thead><tr><th scope="col">Category</th><th scope="col">Examples</th></tr></thead>
                         <tbody>
                         <tr><td>Added sugar</td><td>Soda, sweetened drinks, candy, most desserts</td></tr>
                         <tr><td>Refined carbohydrates</td><td>White bread, pastries, many packaged snacks</td></tr>
@@ -184,7 +184,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Anti-inflammatory pantry and fridge staples</caption>
-                        <thead><tr><th>Category</th><th>Staples to keep on hand</th></tr></thead>
+                        <thead><tr><th scope="col">Category</th><th scope="col">Staples to keep on hand</th></tr></thead>
                         <tbody>
                         <tr><td>Whole grains</td><td>Oats, brown rice, quinoa, whole-grain bread, barley</td></tr>
                         <tr><td>Proteins</td><td>Fish (fresh, frozen, or canned), beans, lentils, eggs, poultry</td></tr>
@@ -284,9 +284,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -305,6 +306,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

@@ -102,7 +102,7 @@
 
                 <p>Lupus is one of the clearest examples of inflammation gone wrong. In a healthy body, inflammation is a defensive tool aimed at outside threats. In lupus, that tool is turned inward, and the immune system treats normal tissue as if it were dangerous. Understanding lupus means understanding autoimmunity, and it also carries an important caution: lupus is a serious medical condition that requires professional diagnosis and ongoing care, not something to manage on your own.</p>
 
-                <div class="key-definition"><strong>Systemic lupus erythematosus (SLE)</strong> is a chronic autoimmune disease in which the immune system produces antibodies against the body's own cells and proteins, causing widespread inflammation. It is called systemic because it can affect many organ systems, and its course typically alternates between flares of higher activity and periods of remission.</p></div>
+                <div class="key-definition"><strong>Systemic lupus erythematosus (SLE)</strong> is a chronic autoimmune disease in which the immune system produces antibodies against the body's own cells and proteins, causing widespread inflammation. It is called systemic because it can affect many organ systems, and its course typically alternates between flares of higher activity and periods of remission.</div>
 
                 <h2>How Lupus Drives Inflammation</h2>
                 <p>In lupus, the immune system loses its ability to tell self from non-self. It produces autoantibodies, including antinuclear antibodies, that target components of the body's own cells. When these antibodies bind their targets, they form immune complexes that deposit in tissues and blood vessels and trigger inflammation. This is why lupus can inflame so many different sites, from the small joints of the hands to the filtering units of the kidneys. The inflammation is not a reaction to an external invader; it is generated and sustained by the immune system's own miscalibration.</p>
@@ -113,7 +113,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Organ systems commonly affected by lupus</caption>
-                        <thead><tr><th>System</th><th>Typical involvement</th></tr></thead>
+                        <thead><tr><th scope="col">System</th><th scope="col">Typical involvement</th></tr></thead>
                         <tbody>
                         <tr><td>Skin</td><td>Butterfly rash, photosensitivity, discoid lesions</td></tr>
                         <tr><td>Joints</td><td>Pain, stiffness, and swelling, often symmetric</td></tr>
@@ -226,9 +226,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -247,6 +248,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

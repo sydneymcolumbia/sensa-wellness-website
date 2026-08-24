@@ -102,7 +102,7 @@
 
                 <p>People often use the word inflammation as if it means one thing, but biologists distinguish two very different processes. One is a rapid, coordinated defense that heals injuries and fights infection. The other is a smoldering, long-term state that damages tissue slowly and underlies much of modern chronic disease. Knowing which is which changes how you think about swelling after a sprain, a lingering sense of fatigue, and a blood test result. This article lays out the differences clearly.</p>
 
-                <div class="key-definition"><strong>Inflammation</strong> is the immune system's response to harm, whether from injury, infection, toxins, or internal stress. <strong>Acute inflammation</strong> is short-term and protective. <strong>Chronic inflammation</strong> is long-term and, past a point, damaging. The same basic machinery drives both, but the timing, intensity, and consequences differ profoundly.</p></div>
+                <div class="key-definition"><strong>Inflammation</strong> is the immune system's response to harm, whether from injury, infection, toxins, or internal stress. <strong>Acute inflammation</strong> is short-term and protective. <strong>Chronic inflammation</strong> is long-term and, past a point, damaging. The same basic machinery drives both, but the timing, intensity, and consequences differ profoundly.</div>
 
                 <h2>What Is Acute Inflammation?</h2>
                 <p>Acute inflammation is the body's immediate response to something harmful, such as a cut, a splinter, a burn, or an invading microbe. Within minutes, small blood vessels near the site widen and become leakier, allowing immune cells, fluid, and proteins to flood into the tissue. This is a fast, purposeful process designed to isolate the threat, destroy pathogens, clear debris, and begin repair. In most cases it resolves within a few days once the job is done, and the tissue returns to normal. Acute inflammation is not a malfunction; it is a sign the immune system is working as intended.</p>
@@ -118,7 +118,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Acute vs chronic inflammation compared</caption>
-                        <thead><tr><th>Feature</th><th>Acute inflammation</th><th>Chronic inflammation</th></tr></thead>
+                        <thead><tr><th scope="col">Feature</th><th scope="col">Acute inflammation</th><th scope="col">Chronic inflammation</th></tr></thead>
                         <tbody>
                         <tr><td>Onset</td><td>Minutes to hours</td><td>Gradual, over weeks to years</td></tr>
                         <tr><td>Duration</td><td>A few days, self-limiting</td><td>Months to years, persistent</td></tr>
@@ -228,9 +228,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -249,6 +250,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

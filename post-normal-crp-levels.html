@@ -111,7 +111,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>hs-CRP reference range chart (AHA/CDC categories)</caption>
-                        <thead><tr><th>hs-CRP level (mg/L)</th><th>Category</th><th>What it generally reflects</th></tr></thead>
+                        <thead><tr><th scope="col">hs-CRP level (mg/L)</th><th scope="col">Category</th><th scope="col">What it generally reflects</th></tr></thead>
                         <tbody>
                         <tr><td>Below 1.0</td><td>Low risk (optimal)</td><td>Little detectable low-grade inflammation</td></tr>
                         <tr><td>1.0 to 3.0</td><td>Average risk</td><td>Moderate low-grade inflammation</td></tr>
@@ -130,7 +130,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Standard CRP vs high-sensitivity CRP</caption>
-                        <thead><tr><th>Feature</th><th>Standard CRP</th><th>hs-CRP</th></tr></thead>
+                        <thead><tr><th scope="col">Feature</th><th scope="col">Standard CRP</th><th scope="col">hs-CRP</th></tr></thead>
                         <tbody>
                         <tr><td>Detection floor</td><td>About 5 to 10 mg/L</td><td>About 0.1 to 0.5 mg/L</td></tr>
                         <tr><td>Main use</td><td>Acute infection, injury, disease flares</td><td>Chronic low-grade inflammation, cardiovascular risk</td></tr>
@@ -149,7 +149,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Approximate median CRP by age (U.S. population data, NEJM)</caption>
-                        <thead><tr><th>Age group</th><th>Approximate median CRP (mg/L)</th></tr></thead>
+                        <thead><tr><th scope="col">Age group</th><th scope="col">Approximate median CRP (mg/L)</th></tr></thead>
                         <tbody>
                         <tr><td>20 to 29</td><td>About 1.4</td></tr>
                         <tr><td>Middle age</td><td>Rising through the 1 to 2 range</td></tr>
@@ -264,9 +264,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -285,6 +286,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

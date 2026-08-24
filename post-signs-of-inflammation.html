@@ -111,7 +111,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Common signs of chronic inflammation by system</caption>
-                        <thead><tr><th>Area</th><th>Common signs</th></tr></thead>
+                        <thead><tr><th scope="col">Area</th><th scope="col">Common signs</th></tr></thead>
                         <tbody>
                         <tr><td>Energy</td><td>Persistent fatigue that rest does not fix, low stamina</td></tr>
                         <tr><td>Musculoskeletal</td><td>Joint pain, morning stiffness, muscle aches</td></tr>
@@ -154,7 +154,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Acute vs chronic inflammation signs</caption>
-                        <thead><tr><th>Feature</th><th>Acute</th><th>Chronic</th></tr></thead>
+                        <thead><tr><th scope="col">Feature</th><th scope="col">Acute</th><th scope="col">Chronic</th></tr></thead>
                         <tbody>
                         <tr><td>Location</td><td>Specific site</td><td>Systemic, diffuse</td></tr>
                         <tr><td>Onset</td><td>Sudden, clear trigger</td><td>Gradual, no clear start</td></tr>
@@ -253,9 +253,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -274,6 +275,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

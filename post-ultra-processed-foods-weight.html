@@ -101,12 +101,12 @@
 
                 <p>Understanding why these foods slip past your body's brakes is one of the most practical things you can do for weight and long-term health. It shifts the goal away from raw willpower and toward changing what is in front of you.</p>
 
-                <div class="key-definition"><strong>Ultra-processed foods (UPFs)</strong> sit at the top of the NOVA classification, a system that sorts foods by how much industrial processing they undergo rather than by nutrients. NOVA runs from unprocessed and minimally processed foods, through processed culinary ingredients and processed foods, to ultra-processed foods: industrial formulations built largely from refined substances and additives, often containing ingredients you would never find in a home kitchen.</p></div>
+                <div class="key-definition"><strong>Ultra-processed foods (UPFs)</strong> sit at the top of the NOVA classification, a system that sorts foods by how much industrial processing they undergo rather than by nutrients. NOVA runs from unprocessed and minimally processed foods, through processed culinary ingredients and processed foods, to ultra-processed foods: industrial formulations built largely from refined substances and additives, often containing ingredients you would never find in a home kitchen.</div>
 
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Processed versus ultra-processed: everyday examples</caption>
-                        <thead><tr><th>Processed foods</th><th>Ultra-processed foods</th></tr></thead>
+                        <thead><tr><th scope="col">Processed foods</th><th scope="col">Ultra-processed foods</th></tr></thead>
                         <tbody>
                         <tr><td>Canned beans or vegetables</td><td>Instant flavored noodle cups</td></tr>
                         <tr><td>Fresh bread from flour, water, salt, yeast</td><td>Packaged bread with emulsifiers and preservatives</td></tr>
@@ -242,9 +242,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -263,6 +264,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

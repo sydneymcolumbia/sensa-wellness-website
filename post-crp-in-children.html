@@ -111,7 +111,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>General CRP reference ranges by age (educational, lab-dependent)</caption>
-                        <thead><tr><th>Age group</th><th>Generally considered normal</th><th>Notes</th></tr></thead>
+                        <thead><tr><th scope="col">Age group</th><th scope="col">Generally considered normal</th><th scope="col">Notes</th></tr></thead>
                         <tbody>
                         <tr><td>Newborn, first hours to days</td><td>Up to about 10 mg/L can be normal</td><td>CRP rises naturally after birth; interpreted with age in hours</td></tr>
                         <tr><td>Infants past the newborn period</td><td>Generally below about 10 mg/L (standard CRP)</td><td>Approaches childhood ranges</td></tr>
@@ -137,7 +137,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>How CRP is typically used in pediatric care</caption>
-                        <thead><tr><th>Purpose</th><th>What CRP contributes</th></tr></thead>
+                        <thead><tr><th scope="col">Purpose</th><th scope="col">What CRP contributes</th></tr></thead>
                         <tbody>
                         <tr><td>Assessing an unwell or febrile child</td><td>Adds context on whether significant inflammation may be present</td></tr>
                         <tr><td>Helping distinguish causes of symptoms</td><td>One input among several, never used alone</td></tr>
@@ -247,9 +247,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -268,6 +269,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

@@ -113,7 +113,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>CBD and inflammation: preclinical versus human evidence</caption>
-                        <thead><tr><th>Setting</th><th>Finding</th><th>Evidence strength</th></tr></thead>
+                        <thead><tr><th scope="col">Setting</th><th scope="col">Finding</th><th scope="col">Evidence strength</th></tr></thead>
                         <tbody>
                         <tr><td>Cell and animal studies</td><td>Clear anti-inflammatory activity</td><td>Preclinical only</td></tr>
                         <tr><td>Human inflammation-marker trials</td><td>Scarce and inconsistent</td><td>Weak</td></tr>
@@ -138,7 +138,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>CBD at a glance</caption>
-                        <thead><tr><th>Measure</th><th>Detail</th></tr></thead>
+                        <thead><tr><th scope="col">Measure</th><th scope="col">Detail</th></tr></thead>
                         <tbody>
                         <tr><td>Established anti-inflammatory dose</td><td>None defined in humans</td></tr>
                         <tr><td>FDA-approved product</td><td>One, for rare seizure disorders only</td></tr>
@@ -250,9 +250,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -271,6 +272,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

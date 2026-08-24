@@ -102,14 +102,14 @@
 
                 <p>Because the feet carry your entire body weight over thousands of steps a day, they are prone to a range of inflammatory problems. The phrase reduce inflammation in the feet can mean anything from calming a freshly sprained ankle to easing chronic heel pain to preventing gout attacks, and these need different responses. This guide walks through the common causes, matches them to sensible measures, and flags when to see a healthcare provider.</p>
 
-                <div class="key-definition"><strong>Foot inflammation</strong> is a sign, not a diagnosis. It can be acute and localized, as in an injury or a gout flare, or it can reflect an overuse condition or, less directly, a body-wide inflammatory state. The right approach depends on which of these is driving the swelling, redness, warmth, or pain.</p></div>
+                <div class="key-definition"><strong>Foot inflammation</strong> is a sign, not a diagnosis. It can be acute and localized, as in an injury or a gout flare, or it can reflect an overuse condition or, less directly, a body-wide inflammatory state. The right approach depends on which of these is driving the swelling, redness, warmth, or pain.</div>
 
                 <h2>First, Identify the Cause</h2>
                 <p>Reducing foot inflammation effectively starts with figuring out what is causing it. Acute injuries like sprains and strains cause sudden swelling and pain after a specific event. Overuse conditions such as plantar fasciitis or tendinitis build up gradually with activity and often hurt most at certain times, like the first steps in the morning. Gout produces a sudden, intensely painful, red, hot, swollen joint, classically the big toe. Swelling in both feet without pain can have other causes entirely, from prolonged standing to circulation or medical issues. And underlying all of this, systemic inflammation is a separate, body-wide phenomenon. The table below maps common causes to typical patterns.</p>
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Common causes of foot inflammation and their patterns</caption>
-                        <thead><tr><th>Cause</th><th>Typical pattern</th></tr></thead>
+                        <thead><tr><th scope="col">Cause</th><th scope="col">Typical pattern</th></tr></thead>
                         <tbody>
                         <tr><td>Sprain or strain</td><td>Sudden swelling and pain after an injury</td></tr>
                         <tr><td>Plantar fasciitis</td><td>Heel pain, worst with first morning steps</td></tr>
@@ -226,9 +226,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -247,6 +248,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

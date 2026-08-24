@@ -109,7 +109,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>What bone broth may contain and how solid the evidence is</caption>
-                        <thead><tr><th>Component</th><th>Proposed benefit</th><th>Evidence status</th></tr></thead>
+                        <thead><tr><th scope="col">Component</th><th scope="col">Proposed benefit</th><th scope="col">Evidence status</th></tr></thead>
                         <tbody>
                         <tr><td>Collagen and gelatin</td><td>Joint and skin support</td><td>Studied as supplements, not as broth</td></tr>
                         <tr><td>Glycine</td><td>Anti-inflammatory signaling</td><td>Lab and animal signals, not confirmed via broth</td></tr>
@@ -225,9 +225,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -246,6 +247,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

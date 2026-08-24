@@ -109,7 +109,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Key compounds in matcha and their proposed action</caption>
-                        <thead><tr><th>Compound</th><th>Role</th><th>Proposed anti-inflammatory action</th></tr></thead>
+                        <thead><tr><th scope="col">Compound</th><th scope="col">Role</th><th scope="col">Proposed anti-inflammatory action</th></tr></thead>
                         <tbody>
                         <tr><td>EGCG</td><td>Dominant catechin</td><td>Inhibits NF-kB signaling in lab studies</td></tr>
                         <tr><td>Other catechins</td><td>EGC, ECG, EC</td><td>Antioxidant, free-radical scavenging</td></tr>
@@ -131,7 +131,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Matcha compared with brewed green tea</caption>
-                        <thead><tr><th>Feature</th><th>Matcha</th><th>Brewed green tea</th></tr></thead>
+                        <thead><tr><th scope="col">Feature</th><th scope="col">Matcha</th><th scope="col">Brewed green tea</th></tr></thead>
                         <tbody>
                         <tr><td>What you consume</td><td>Whole powdered leaf</td><td>Steeped extract, leaf discarded</td></tr>
                         <tr><td>Catechin (EGCG) dose</td><td>Higher per serving</td><td>Lower per serving</td></tr>
@@ -232,9 +232,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -253,6 +254,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

@@ -102,7 +102,7 @@
 
                 <p>Getting a normal CRP result when you feel unwell is one of the most confusing outcomes in inflammation testing. The number says one thing, your body says another. Both can be true at once, because CRP was never designed to detect every kind of inflammation. Understanding what CRP does and does not capture is the key to reading a normal result correctly rather than dismissing your symptoms or panicking about a hidden problem.</p>
 
-                <div class="key-definition"><strong>C-reactive protein (CRP)</strong> is a protein made by the liver that rises when there is inflammation somewhere in the body. It is a sensitive but nonspecific marker: it tells you that inflammation may be present, not where it is or what is causing it. A normal CRP lowers the probability of significant systemic inflammation but does not exclude localized or low-grade inflammation.</p></div>
+                <div class="key-definition"><strong>C-reactive protein (CRP)</strong> is a protein made by the liver that rises when there is inflammation somewhere in the body. It is a sensitive but nonspecific marker: it tells you that inflammation may be present, not where it is or what is causing it. A normal CRP lowers the probability of significant systemic inflammation but does not exclude localized or low-grade inflammation.</div>
 
                 <h2>Can You Have Inflammation With a Normal CRP?</h2>
 
@@ -119,7 +119,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Why CRP can read normal despite real inflammation</caption>
-                        <thead><tr><th>Reason</th><th>What is happening</th><th>Why CRP stays low</th></tr></thead>
+                        <thead><tr><th scope="col">Reason</th><th scope="col">What is happening</th><th scope="col">Why CRP stays low</th></tr></thead>
                         <tbody>
                         <tr><td>Localized inflammation</td><td>A single joint, tendon, or small tissue area is inflamed</td><td>Too little inflammation to raise a whole-body marker</td></tr>
                         <tr><td>Low-grade chronic inflammation</td><td>Smoldering, long-term, low-level inflammation</td><td>May stay below the standard assay's detection threshold</td></tr>
@@ -153,7 +153,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Reading a normal CRP in context</caption>
-                        <thead><tr><th>Situation</th><th>How much a normal CRP reassures</th></tr></thead>
+                        <thead><tr><th scope="col">Situation</th><th scope="col">How much a normal CRP reassures</th></tr></thead>
                         <tbody>
                         <tr><td>Screening a healthy person with no symptoms</td><td>Strongly reassuring for low systemic inflammation</td></tr>
                         <tr><td>Concern about a large acute infection</td><td>Meaningfully reassuring</td></tr>
@@ -257,9 +257,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -278,6 +279,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

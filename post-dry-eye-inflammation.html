@@ -116,7 +116,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>The two main types of dry eye</caption>
-                        <thead><tr><th>Type</th><th>What goes wrong</th><th>Common features</th></tr></thead>
+                        <thead><tr><th scope="col">Type</th><th scope="col">What goes wrong</th><th scope="col">Common features</th></tr></thead>
                         <tbody>
                         <tr><td>Aqueous-deficient</td><td>The lacrimal glands do not produce enough of the watery layer of tears.</td><td>Often linked to aging, hormonal changes, and autoimmune conditions such as Sjogren's syndrome.</td></tr>
                         <tr><td>Evaporative</td><td>Tears are produced but evaporate too quickly, most often due to meibomian gland dysfunction (MGD).</td><td>The oil glands in the eyelids become blocked or produce poor-quality oil, so the tear film loses its protective outer layer.</td></tr>
@@ -249,9 +249,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -270,6 +271,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });

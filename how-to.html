@@ -1415,9 +1415,25 @@
             <p class="section-sub">Your Sensa reading gives you two key pieces of information:</p>
 
             <div class="results-visual">
-                <video class="results-video" autoplay loop muted playsinline>
+                <video class="results-video" autoplay loop muted playsinline aria-label="Silent looping demonstration of a Sensa cuvette test changing color as it reads inflammation levels">
                     <source src="cuvette-test.mp4" type="video/mp4">
                 </video>
+                <button type="button" id="videoToggle" style="display:block; margin:0.5rem auto 0; padding:0.35rem 1rem; font-size:0.85rem; font-family:inherit; background:#fff; color:#1a1a2e; border:1px solid rgba(0,0,0,0.45); border-radius:6px; cursor:pointer;">Pause video</button>
+                <script>
+                    (function() {
+                        var v = document.querySelector('.results-video');
+                        var t = document.getElementById('videoToggle');
+                        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                            v.removeAttribute('autoplay');
+                            v.pause();
+                            t.textContent = 'Play video';
+                        }
+                        t.addEventListener('click', function() {
+                            if (v.paused) { v.play(); t.textContent = 'Pause video'; }
+                            else { v.pause(); t.textContent = 'Play video'; }
+                        });
+                    })();
+                </script>
                 <div class="crp-hscale">
                     <div class="crp-hs-title">Inflammation Level</div>
                     <div class="crp-hs-track">
@@ -1438,9 +1454,9 @@
                     <table class="result-table">
                         <thead>
                             <tr>
-                                <th>Level</th>
-                                <th>CRP Range</th>
-                                <th>What it means</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">CRP Range</th>
+                                <th scope="col">What it means</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1623,13 +1639,13 @@
                     </div>
                     <div class="social-links">
                         <a href="https://instagram.com/sensawellness" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                         </a>
                         <a href="https://linkedin.com/company/sensawellness" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                         </a>
                         <a href="https://www.youtube.com/@sensawellness" class="social-link" aria-label="YouTube" target="_blank" rel="noopener">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
                         </a>
                     </div>
                 </div>

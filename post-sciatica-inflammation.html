@@ -102,7 +102,7 @@
 
                 <p>Sciatica is a symptom rather than a diagnosis, and understanding it helps explain why it hurts the way it does and why patience is usually rewarded. The word describes the distinctive radiating leg pain, but the real action is happening at the nerve root in the lower back. Inflammation around that nerve root is a key reason a mechanical issue turns into sharp, shooting pain, and it is also part of why the pain tends to settle over time.</p>
 
-                <div class="key-definition"><strong>Sciatica</strong> is pain caused by irritation or compression of one of the nerve roots that form the sciatic nerve, usually in the lower lumbar spine. It is a form of lumbar radiculopathy, meaning nerve-root pain, and it typically causes pain, tingling, numbness, or weakness that travels down one leg.</p></div>
+                <div class="key-definition"><strong>Sciatica</strong> is pain caused by irritation or compression of one of the nerve roots that form the sciatic nerve, usually in the lower lumbar spine. It is a form of lumbar radiculopathy, meaning nerve-root pain, and it typically causes pain, tingling, numbness, or weakness that travels down one leg.</div>
 
                 <h2>What Causes Sciatica?</h2>
                 <p>The most common cause of sciatica is a herniated, or slipped, disc in the lower spine. Discs are cushions between the vertebrae, and when the soft inner material pushes out through the tougher outer layer, it can press on a nearby nerve root. Other causes include spinal stenosis, a narrowing of the spinal canal that is more common with age, and bony changes that crowd the nerve. Less often, muscle-related irritation or other structural issues contribute. In each case the shared theme is a nerve root that is being physically disturbed where it exits the spine.</p>
@@ -117,7 +117,7 @@
                 <div class="data-table-wrap">
                     <table class="data-table">
                         <caption>Typical features of sciatica</caption>
-                        <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+                        <thead><tr><th scope="col">Feature</th><th scope="col">Description</th></tr></thead>
                         <tbody>
                         <tr><td>Pain location</td><td>Lower back to buttock, down one leg</td></tr>
                         <tr><td>Pain quality</td><td>Sharp, shooting, burning, or electric</td></tr>
@@ -229,9 +229,10 @@
                 <h3>Get inflammation insights in your inbox</h3>
                 <p>New articles on inflammation science, plus updates on the Sensa at-home CRP test and app.</p>
                 <form class="newsletter-form" id="postNewsletterForm">
-                    <input type="email" id="postNewsletterEmail" aria-label="Email address" placeholder="Your email address" required>
+                    <input type="email" id="postNewsletterEmail" aria-label="Email address" autocomplete="email" placeholder="Your email address" required>
                     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                     <button type="submit" class="btn">Subscribe</button>
+                    <span class="visually-hidden" role="status"></span>
                 </form>
                 <span class="newsletter-note">No spam. Unsubscribe anytime.</span>
             </div>
@@ -250,6 +251,7 @@
                         body: JSON.stringify({ name: '', email: email, interest: 'newsletter', source: 'blog-post:' + location.pathname })
                     }).finally(function() {
                         btn.textContent = 'Subscribed!';
+                        var st = e.target.querySelector('[role="status"]'); if (st) st.textContent = 'Subscribed. Thank you.';
                         btn.style.background = '#41a6f0';
                         e.target.reset();
                     });
