@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Aug 2026 07:09:12 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Shinrin-Yoku and Inflammation: What Happens to Your CRP When You Walk in a Forest</title>
+        <link>https://www.sensawellness.org/post-nature-inflammation</link>
+        <guid>https://www.sensawellness.org/post-nature-inflammation</guid>
+        <description>Forest bathing has measurable effects on cortisol, immune activity, and inflammatory markers. Here is what the science of shinrin-yoku actually shows about inflammation and CRP.</description>
+        <category>Lifestyle</category>
+    </item>
     <item>
         <title>Inflammation Joins the Short List of Modifiable Heart Risk Factors</title>
         <link>https://www.sensawellness.org/post-inflammation-modifiable-heart-risk</link>
