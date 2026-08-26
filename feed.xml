@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Aug 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>When Lowering CRP Wasn't Enough: What the ZEUS Trial Tells Us About Inflammation</title>
+        <link>https://www.sensawellness.org/post-zeus-trial-crp-inflammation</link>
+        <guid>https://www.sensawellness.org/post-zeus-trial-crp-inflammation</guid>
+        <description>A major Phase 3 trial showed that an IL-6 inhibitor sharply reduced CRP — but did not prevent heart attacks or strokes. Here is what the null result means for inflammation science and CRP monitoring.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Shinrin-Yoku and Inflammation: What Happens to Your CRP When You Walk in a Forest</title>
         <link>https://www.sensawellness.org/post-nature-inflammation</link>

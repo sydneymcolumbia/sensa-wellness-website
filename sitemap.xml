@@ -13,14 +13,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.sensawellness.org/post-cold-flu-crp.html</loc>
-    <lastmod>2026-08-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.sensawellness.org/blog.html</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -50,7 +44,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/sitemap-page.html</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -435,6 +429,12 @@
   <url>
     <loc>https://www.sensawellness.org/post-cold-exposure-inflammation.html</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/post-cold-flu-crp.html</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1442,7 +1442,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-nature-inflammation.html</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1869,6 +1869,12 @@
   <url>
     <loc>https://www.sensawellness.org/post-yoga-inflammation.html</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/post-zeus-trial-crp-inflammation.html</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
