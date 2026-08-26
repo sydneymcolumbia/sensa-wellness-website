@@ -384,8 +384,9 @@
 
         .sale-tag {
             display: inline-block;
-            background: rgba(250, 194, 52, 0.22);
-            color: var(--accent-orange);
+            background: linear-gradient(90deg, rgba(245, 157, 6, 0.16), rgba(250, 194, 52, 0.22));
+            color: #b45309;
+            border: 1px solid rgba(245, 157, 6, 0.45);
             font-family: 'Nunito', sans-serif;
             font-weight: 700;
             font-size: 0.72rem;
@@ -1677,11 +1678,11 @@
     <style>
         .srs-overlay { position: fixed; inset: 0; z-index: 4000; display: flex; align-items: center; justify-content: center; padding: 1.2rem; background: rgba(16,10,60,0.55); backdrop-filter: blur(6px); opacity: 0; visibility: hidden; transition: opacity 0.28s ease, visibility 0.28s ease; }
         .srs-overlay.is-open { opacity: 1; visibility: visible; }
-        .srs-modal { position: relative; width: 100%; max-width: 520px; background: var(--bg-white); border-radius: 22px; box-shadow: 0 30px 80px rgba(16,10,60,0.4); padding: 2.4rem 2rem 2rem; text-align: center; transform: translateY(18px) scale(0.98); transition: transform 0.3s ease; max-height: 92vh; overflow-y: auto; }
+        .srs-modal { position: relative; width: 100%; max-width: 520px; background: linear-gradient(90deg, var(--accent-coral), var(--accent-orange), var(--accent-gold)) top / 100% 5px no-repeat, var(--bg-white); border-radius: 22px; box-shadow: 0 30px 80px rgba(16,10,60,0.4); padding: 2.4rem 2rem 2rem; text-align: center; transform: translateY(18px) scale(0.98); transition: transform 0.3s ease; max-height: 92vh; overflow-y: auto; }
         .srs-overlay.is-open .srs-modal { transform: translateY(0) scale(1); }
         .srs-close { position: absolute; top: 0.9rem; right: 1rem; background: none; border: none; font-size: 1.7rem; line-height: 1; color: var(--text-light); cursor: pointer; padding: 0.2rem; }
         .srs-close:hover { color: var(--text-dark); }
-        .srs-badge { display: inline-block; background: var(--accent-gold); color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.66rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.32rem 0.95rem; border-radius: 20px; margin-bottom: 0.9rem; }
+        .srs-badge { display: inline-block; background: linear-gradient(90deg, var(--accent-orange), var(--accent-gold)); color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.66rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.32rem 0.95rem; border-radius: 20px; margin-bottom: 0.9rem; }
         .srs-modal h2 { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.9rem; letter-spacing: -0.04em; color: var(--accent-navy); margin-bottom: 0.4rem; }
         .srs-sub { color: var(--text-gray); font-size: 1rem; line-height: 1.5; margin-bottom: 1.1rem; }
         .srs-sub strong { color: var(--accent-orange); }
@@ -1693,7 +1694,7 @@
         .srs-cc-lbl { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); }
         .srs-rows { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.4rem; text-align: left; }
         .srs-row { display: flex; align-items: center; gap: 1rem; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 0.85rem 1rem; }
-        .srs-row.feat { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(250,194,52,0.18); }
+        .srs-row.feat { border-color: var(--accent-orange); box-shadow: 0 6px 20px rgba(245,157,6,0.22); }
         .srs-row-info { flex: 1; }
         .srs-row-name { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.98rem; color: var(--text-dark); }
         .srs-row-prices { margin-top: 0.2rem; }
@@ -1703,7 +1704,7 @@
         .srs-buy { background: var(--accent-gold); color: var(--text-dark); border: none; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.05rem; border-radius: 10px; cursor: pointer; white-space: nowrap; transition: transform 0.15s, box-shadow 0.15s; }
         .srs-buy:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(250,194,52,0.4); }
         .srs-fine { font-size: 0.8rem; color: var(--text-light); }
-        .srs-fab { position: fixed; left: 1.1rem; bottom: 1.1rem; z-index: 3500; display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(100deg, var(--accent-navy), var(--accent-purple)); color: #fff; border: none; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.1rem; border-radius: 30px; box-shadow: 0 8px 24px rgba(24,0,173,0.35); cursor: pointer; transition: transform 0.2s; }
+        .srs-fab { position: fixed; left: 1.1rem; bottom: 1.1rem; z-index: 3500; display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(100deg, var(--accent-navy), var(--accent-purple)); color: #fff; border: 2px solid var(--accent-orange); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.1rem; border-radius: 30px; box-shadow: 0 8px 24px rgba(24,0,173,0.35); cursor: pointer; transition: transform 0.2s; }
         .srs-fab:hover { transform: translateY(-2px); }
         @media (max-width: 560px) { .srs-modal h2 { font-size: 1.55rem; } .srs-row { flex-wrap: wrap; } .srs-fab { font-size: 0.78rem; left: 0.8rem; bottom: 0.8rem; } }
     </style>
