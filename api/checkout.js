@@ -6,7 +6,7 @@ const PRICE_IDS = {
   price_4pack:  'price_1TGmyGKrHFkD3MC3MlqR1Z2d',
 };
 
-// ── Summer Reset Sale ──────────────────────────────────────────────
+// ── Fall Reset Sale ────────────────────────────────────────────────
 // 20% off, applied server-side so the discount is real (the checkout
 // total reflects it). Evergreen on purpose: the front end (sale.js)
 // runs a self-resetting weekly countdown with no end date, so the
@@ -15,9 +15,9 @@ const PRICE_IDS = {
 // set enabled to false AND revert the on-page sale copy together.
 const SALE = {
   enabled: true,
-  couponId: 'summer_reset_2026',   // fixed id so coupon creation is idempotent
+  couponId: 'fall_reset_2026',     // fixed id so coupon creation is idempotent
   percentOff: 20,
-  name: 'Summer Reset Sale',
+  name: 'Fall Reset Sale',
 };
 
 function saleActive() {

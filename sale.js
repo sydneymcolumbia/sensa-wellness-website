@@ -1,5 +1,5 @@
 /* ============================================================
-   Summer Reset Sale — self-resetting weekly countdown.
+   Fall Reset Sale, a self-resetting weekly countdown.
 
    The sale runs in rolling 7-day cycles. When a cycle's clock
    hits zero it automatically rolls forward to the next week,
@@ -83,14 +83,14 @@
 })();
 
 /* ============================================================
-   Seasonal branding. The Summer Reset name retires when the
-   weekly cycle ending 2026-08-30 at local midnight runs out,
-   and the Fall Reset Sale takes over. The text swap is symmetric
-   so every visitor sees the season that matches their own clock,
-   regardless of which name the static HTML was built with.
+   Seasonal branding. The Fall Reset Sale launched 2026-08-26,
+   ahead of the originally scheduled 2026-08-30 swap, and the
+   static HTML now carries the fall name. The symmetric text swap
+   below is kept so any cached or straggler page still shows the
+   season that matches the visitor's clock.
    ============================================================ */
 (function () {
-    var REBRAND_AT = new Date('2026-08-30T00:00:00').getTime();
+    var REBRAND_AT = new Date('2026-08-26T00:00:00').getTime();
     var LEAF = '🍂';
 
     function applySeason() {
