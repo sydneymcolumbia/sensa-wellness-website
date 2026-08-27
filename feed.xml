@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Aug 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Magnesium Deficiency and Inflammation: The Mineral Most People Are Not Getting Enough Of</title>
+        <link>https://www.sensawellness.org/post-magnesium-inflammation</link>
+        <guid>https://www.sensawellness.org/post-magnesium-inflammation</guid>
+        <description>Roughly half of Americans fall short of the recommended magnesium intake. Research consistently links low magnesium status to elevated CRP and chronic low-grade inflammation. Here is what the science shows.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>When Lowering CRP Wasn't Enough: What the ZEUS Trial Tells Us About Inflammation</title>
         <link>https://www.sensawellness.org/post-zeus-trial-crp-inflammation</link>
