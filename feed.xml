@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Aug 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>One Month on a Vegan Diet Shifted Inflammatory Gene Activity, Randomized Trial Finds</title>
+        <link>https://www.sensawellness.org/post-vegan-diet-epigenetics-aging</link>
+        <guid>https://www.sensawellness.org/post-vegan-diet-epigenetics-aging</guid>
+        <description>A new randomized trial from UC San Diego and the University of Freiburg found that just four weeks on a vegan diet altered DNA methylation patterns linked to immune function, inflammation, and biological aging.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Magnesium Deficiency and Inflammation: The Mineral Most People Are Not Getting Enough Of</title>
         <link>https://www.sensawellness.org/post-magnesium-inflammation</link>
