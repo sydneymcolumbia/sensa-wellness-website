@@ -5,13 +5,27 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Aug 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Turmeric vs Omega-3: Which Supplement Fights Inflammation Better?</title>
+        <link>https://www.sensawellness.org/post-turmeric-vs-omega3-inflammation</link>
+        <guid>https://www.sensawellness.org/post-turmeric-vs-omega3-inflammation</guid>
+        <description>Curcumin and omega-3 fish oil both lower CRP modestly in meta-analyses, but they suit different goals: omega-3 has stronger cardiovascular evidence while curcumin leads for joint comfort. Compare doses, absorption, and safety.</description>
+        <category>Science</category>
+    </item>
+    <item>
+        <title>Sauna vs Cold Plunge: Which Is Better for Inflammation?</title>
+        <link>https://www.sensawellness.org/post-sauna-vs-cold-plunge-inflammation</link>
+        <guid>https://www.sensawellness.org/post-sauna-vs-cold-plunge-inflammation</guid>
+        <description>Sauna bathing has the stronger long-term evidence for lowering baseline inflammation and CRP, while cold plunges shine for acute recovery and mood. Compare the science, benefits, and risks of heat and cold therapy.</description>
+        <category>Lifestyle</category>
+    </item>
     <item>
         <title>One Month on a Vegan Diet Shifted Inflammatory Gene Activity, Randomized Trial Finds</title>
         <link>https://www.sensawellness.org/post-vegan-diet-epigenetics-aging</link>
