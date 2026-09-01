@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Aug 2026 07:05:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 08:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Is Dark Chocolate Anti-Inflammatory? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-is-dark-chocolate-anti-inflammatory</link>
+        <guid>https://www.sensawellness.org/post-is-dark-chocolate-anti-inflammatory</guid>
+        <description>Dark chocolate with a high cocoa content is rich in flavanols that genuinely affect NF-kB, oxidative stress, and CRP. Here is what clinical trials and meta-analyses actually show, and how cocoa percentage and dose affect the results.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>Why Scientists Are Targeting IL-6 to Tame Inflammation: What a New Drug Trial Reveals About CRP and Heart Risk</title>
         <link>https://www.sensawellness.org/post-il6-inflammation-heart-risk</link>
