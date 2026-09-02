@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Sep 2026 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Semaglutide Cuts Inflammation Before the Weight Loss Starts: New SELECT Trial Data</title>
+        <link>https://www.sensawellness.org/post-semaglutide-crp-select-trial</link>
+        <guid>https://www.sensawellness.org/post-semaglutide-crp-select-trial</guid>
+        <description>A prespecified secondary analysis of the SELECT trial published in Circulation in August 2026 found semaglutide reduced hsCRP by 37.8 percent in cardiovascular patients, with inflammation dropping within weeks before major weight loss.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Is Dark Chocolate Anti-Inflammatory? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-is-dark-chocolate-anti-inflammatory</link>
