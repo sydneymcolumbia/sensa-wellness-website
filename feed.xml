@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Do Fermented Foods Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-do-fermented-foods-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-do-fermented-foods-reduce-inflammation</guid>
+        <description>A landmark Stanford trial and multiple meta-analyses suggest fermented foods can lower inflammatory markers and boost microbiome diversity. Here is what the research actually shows.</description>
+        <category>Lifestyle</category>
+    </item>
     <item>
         <title>Semaglutide Cuts Inflammation Before the Weight Loss Starts: New SELECT Trial Data</title>
         <link>https://www.sensawellness.org/post-semaglutide-crp-select-trial</link>
