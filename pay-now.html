@@ -1489,6 +1489,8 @@
                         <option value="advertisement">Advertisement</option>
                         <option value="other">Other</option>
                     </select>
+                    <label for="promoCode" style="display:block; font-size:0.9rem; color:rgba(255,255,255,0.7); margin:1.2rem 0 0.6rem; font-family:'Quicksand',sans-serif;">Promo code (optional)</label>
+                    <input type="text" id="promoCode" autocomplete="off" placeholder="e.g. SENSA-XXXXXX" style="width:100%; padding:0.75rem 1rem; border-radius:8px; border:1px solid rgba(255,255,255,0.55); background:rgba(255,255,255,0.07); color:#fff; font-size:0.95rem; font-family:'Nunito',sans-serif; text-transform:uppercase;">
                 </div>
 
                 <p id="checkoutError" style="display:none; color:#e85a39; margin-top:1rem; font-size:0.95rem; text-align:center;"></p>
@@ -1614,6 +1616,12 @@
             }
         })();
 
+        // Prefill promo code from ?code= links sent in customer emails
+        (function() {
+            var code = new URLSearchParams(window.location.search).get('code');
+            if (code) document.getElementById('promoCode').value = code.toUpperCase();
+        })();
+
         // Stripe checkout handler
         function handleCheckout(priceId, btnEl) {
             // GA4 begin_checkout event - TODO: update values once Conversion IDs are set
@@ -1647,14 +1655,21 @@
             errorEl.style.display = 'none';
 
             var hearAboutUs = document.getElementById('hearAboutUs').value || 'not_answered';
+            var promoCode = (document.getElementById('promoCode').value || '').trim();
 
             fetch('/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ priceId: priceId, hearAboutUs: hearAboutUs })
+                body: JSON.stringify({ priceId: priceId, hearAboutUs: hearAboutUs, promoCode: promoCode })
             })
             .then(function(response) {
-                if (!response.ok) throw new Error('Checkout request failed');
+                if (!response.ok) {
+                    return response.json().catch(function() { return {}; }).then(function(data) {
+                        var err = new Error(data.error || 'Checkout request failed');
+                        if (response.status === 400 && data.error) err.showToUser = true;
+                        throw err;
+                    });
+                }
                 return response.json();
             })
             .then(function(data) {
@@ -1666,7 +1681,7 @@
             })
             .catch(function(err) {
                 console.error('Checkout error:', err);
-                errorEl.textContent = 'Something went wrong. Please try again.';
+                errorEl.textContent = err.showToUser ? err.message : 'Something went wrong. Please try again.';
                 errorEl.style.display = 'block';
                 if (clickedBtn) {
                     clickedBtn.disabled = false;

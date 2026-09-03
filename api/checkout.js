@@ -53,7 +53,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { priceId, hearAboutUs } = req.body;
+  const { priceId, hearAboutUs, promoCode } = req.body;
   const stripePriceId = PRICE_IDS[priceId];
 
   if (!stripePriceId) {
@@ -61,6 +61,22 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    // A Checkout session only allows one discount, so a customer promo code
+    // replaces the sale coupon. Every code we issue ($49 off) is worth more
+    // than the 20% sale on any bundle, so the customer always comes out ahead.
+    let promo = null;
+    if (promoCode && typeof promoCode === 'string' && promoCode.trim()) {
+      const found = await stripe.promotionCodes.list({
+        code: promoCode.trim().toUpperCase(),
+        active: true,
+        limit: 1,
+      });
+      promo = found.data[0] || null;
+      if (!promo) {
+        return res.status(400).json({ error: 'That code is not valid or has already been used.' });
+      }
+    }
+
     const params = {
       mode: 'payment',
       line_items: [{ price: stripePriceId, quantity: 1 }],
@@ -74,7 +90,10 @@ module.exports = async function handler(req, res) {
       cancel_url: 'https://sensawellness.org/pay-now',
     };
 
-    if (saleActive()) {
+    if (promo) {
+      params.discounts = [{ promotion_code: promo.id }];
+      params.metadata.promo = promo.code;
+    } else if (saleActive()) {
       const coupon = await getSaleCoupon();
       params.discounts = [{ coupon: coupon.id }];
       params.metadata.promo = SALE.couponId;
