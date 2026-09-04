@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Anti-Inflammatory Diets Ease Fatigue in Multiple Sclerosis: New Meta-Analysis Findings</title>
+        <link>https://www.sensawellness.org/post-anti-inflammatory-diet-ms</link>
+        <guid>https://www.sensawellness.org/post-anti-inflammatory-diet-ms</guid>
+        <description>A meta-analysis of 10 clinical trials published in August 2026 found that anti-inflammatory diets significantly reduced fatigue severity and improved physical health scores in people with multiple sclerosis.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Do Fermented Foods Reduce Inflammation? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-do-fermented-foods-reduce-inflammation</link>
