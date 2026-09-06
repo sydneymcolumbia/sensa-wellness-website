@@ -1,4 +1,40 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { Resend } = require('resend');
+
+// Where new-order alerts go. Override with ORDER_ALERT_EMAIL in Vercel env.
+const ORDER_ALERT_EMAIL = process.env.ORDER_ALERT_EMAIL || 'sydneylizmurphy@gmail.com';
+
+async function sendOrderAlert(session) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  let items = '';
+  try {
+    const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 10 });
+    items = lineItems.data.map((li) => `${li.quantity} x ${li.description}`).join(', ');
+  } catch (err) {
+    items = '(could not load line items)';
+  }
+  const total = `$${(session.amount_total / 100).toFixed(2)} ${(session.currency || 'usd').toUpperCase()}`;
+  const name = session.customer_details?.name || 'Unknown name';
+  const email = session.customer_details?.email || 'no email';
+  const addr = session.shipping_details?.address || session.customer_details?.address;
+  const where = addr ? [addr.city, addr.state, addr.country].filter(Boolean).join(', ') : 'no address';
+
+  await resend.emails.send({
+    from: 'Sensa Orders <onboarding@resend.dev>',
+    to: ORDER_ALERT_EMAIL,
+    subject: `New Sensa order: ${items} (${total})`,
+    text: [
+      'New order on sensawellness.org',
+      '',
+      `Items: ${items}`,
+      `Total: ${total}`,
+      `Customer: ${name} <${email}>`,
+      `Ships to: ${where}`,
+      '',
+      `Stripe: https://dashboard.stripe.com/payments/${session.payment_intent || ''}`,
+    ].join('\n'),
+  });
+}
 
 // Disable body parsing so we can access the raw body for signature verification
 module.exports.config = {
@@ -45,6 +81,12 @@ module.exports = async function handler(req, res) {
       currency: session.currency,
       paymentStatus: session.payment_status,
     });
+    // Alert failures must never make Stripe retry the webhook.
+    try {
+      await sendOrderAlert(session);
+    } catch (err) {
+      console.error('Order alert email failed:', err.message);
+    }
   }
 
   return res.status(200).json({ received: true });
