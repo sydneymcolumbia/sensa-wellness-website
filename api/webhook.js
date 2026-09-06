@@ -2,7 +2,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { Resend } = require('resend');
 
 // Where new-order alerts go. Override with ORDER_ALERT_EMAIL in Vercel env.
-const ORDER_ALERT_EMAIL = process.env.ORDER_ALERT_EMAIL || 'sydneylizmurphy@gmail.com';
+const ORDER_ALERT_EMAIL = process.env.ORDER_ALERT_EMAIL || 'info@sensawellness.org';
 
 async function sendOrderAlert(session) {
   const resend = new Resend(process.env.RESEND_API_KEY);
