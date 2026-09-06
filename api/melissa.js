@@ -5,6 +5,10 @@ const { Resend } = require('resend');
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Resend only delivers from a verified domain. Override once one is verified
+// under a different address.
+const MELISSA_FROM = process.env.MELISSA_FROM || 'Melissa at Sensa <melissa@sensawellness.org>';
+
 const SYSTEM_PROMPT = `You are Melissa, a customer care specialist at Sensa Wellness. You are warm, professional, and genuinely care about each customer's wellbeing. You speak like a knowledgeable friend, not a corporate representative. You were the one who proactively reached out to this customer to check in after their order arrived.
 
 ABOUT SENSA:
@@ -144,8 +148,9 @@ module.exports = async function handler(req, res) {
         .map(m => `${m.role === 'user' ? customer.name : 'Melissa'}: ${m.content}`)
         .join('\n\n');
 
+      // A failed alert email must not turn Melissa's reply into a 500.
       await resend.emails.send({
-        from: 'Melissa at Sensa <onboarding@resend.dev>',
+        from: MELISSA_FROM,
         to: 'info@sensawellness.org',
         subject: `Customer Needs Personal Attention - ${customer.name}`,
         html: `
@@ -164,6 +169,10 @@ module.exports = async function handler(req, res) {
             </div>
           </div>
         `,
+      }).then((result) => {
+        if (result?.error) console.error('Melissa escalation email failed:', result.error.message);
+      }).catch((err) => {
+        console.error('Melissa escalation email failed:', err.message);
       });
     }
 

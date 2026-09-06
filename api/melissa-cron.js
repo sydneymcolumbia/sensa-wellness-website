@@ -4,6 +4,10 @@ const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Resend only delivers from a verified domain. Override once one is verified
+// under a different address.
+const MELISSA_FROM = process.env.MELISSA_FROM || 'Melissa at Sensa <melissa@sensawellness.org>';
+
 const PRICE_NAMES = {
   'price_1TGmnPKrHFkD3MC35eXx5OM5': '1-Test Kit',
   'price_1TGmoOKrHFkD3MC33tp7m4LU': '3-Test Pack',
@@ -27,6 +31,7 @@ module.exports = async function handler(req, res) {
 
   let sent = 0;
   let skipped = 0;
+  const failed = [];
 
   for (const session of sessions.data) {
     if (session.metadata?.melissa_email_sent === 'true') {
@@ -60,8 +65,11 @@ module.exports = async function handler(req, res) {
 
     const chatUrl = `https://sensawellness.org/chat?t=${token}`;
 
-    await resend.emails.send({
-      from: 'Melissa at Sensa <onboarding@resend.dev>',
+    // The Resend SDK reports API errors in the result rather than throwing.
+    // Only mark the session as emailed when the send actually succeeded, so
+    // a failed send is retried on the next run instead of being lost.
+    const result = await resend.emails.send({
+      from: MELISSA_FROM,
       to: email,
       subject: 'A quick hello from Melissa at Sensa',
       html: `
@@ -84,7 +92,13 @@ module.exports = async function handler(req, res) {
           </div>
         </div>
       `,
-    });
+    }).catch((err) => ({ error: { message: err.message } }));
+
+    if (result?.error) {
+      console.error(`Melissa check-in email failed for ${session.id}:`, result.error.message);
+      failed.push({ sessionId: session.id, error: result.error.message });
+      continue;
+    }
 
     await stripe.checkout.sessions.update(session.id, {
       metadata: { ...session.metadata, melissa_email_sent: 'true' },
@@ -93,5 +107,5 @@ module.exports = async function handler(req, res) {
     sent++;
   }
 
-  return res.status(200).json({ sent, skipped });
+  return res.status(200).json({ sent, skipped, failed });
 };

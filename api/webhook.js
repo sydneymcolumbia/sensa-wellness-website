@@ -3,6 +3,9 @@ const { Resend } = require('resend');
 
 // Where new-order alerts go. Override with ORDER_ALERT_EMAIL in Vercel env.
 const ORDER_ALERT_EMAIL = process.env.ORDER_ALERT_EMAIL || 'info@sensawellness.org';
+// Resend only delivers from a verified domain. Override once one is verified
+// under a different address.
+const ORDER_ALERT_FROM = process.env.ORDER_ALERT_FROM || 'Sensa Orders <orders@sensawellness.org>';
 
 async function sendOrderAlert(session) {
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -19,8 +22,8 @@ async function sendOrderAlert(session) {
   const addr = session.shipping_details?.address || session.customer_details?.address;
   const where = addr ? [addr.city, addr.state, addr.country].filter(Boolean).join(', ') : 'no address';
 
-  await resend.emails.send({
-    from: 'Sensa Orders <onboarding@resend.dev>',
+  const result = await resend.emails.send({
+    from: ORDER_ALERT_FROM,
     to: ORDER_ALERT_EMAIL,
     subject: `New Sensa order: ${items} (${total})`,
     text: [
@@ -34,6 +37,7 @@ async function sendOrderAlert(session) {
       `Stripe: https://dashboard.stripe.com/payments/${session.payment_intent || ''}`,
     ].join('\n'),
   });
+  if (result?.error) throw new Error(result.error.message);
 }
 
 // Disable body parsing so we can access the raw body for signature verification

@@ -1,8 +1,25 @@
 const Anthropic = require('@anthropic-ai/sdk');
+const admin = require('firebase-admin');
 const { Resend } = require('resend');
+
+// Verify Firebase ID tokens with the Admin SDK (same setup as admin.js and
+// reviews-admin.js). The previous identitytoolkit lookup depended on a
+// FIREBASE_API_KEY env var that was never set on Vercel, so every app
+// request was rejected with 401 before Melissa ever ran.
+if (!admin.apps.length) {
+  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    projectId: 'sensa-app-7b2b7',
+  });
+}
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Resend only delivers from a verified domain. Override once one is verified
+// under a different address.
+const MELISSA_FROM = process.env.MELISSA_FROM || 'Melissa at Sensa <melissa@sensawellness.org>';
 
 const SYSTEM_PROMPT = `You are Melissa, a support specialist at Sensa Wellness. You are warm, professional, and genuinely care about helping users succeed with their inflammation tracking goals. You speak like a knowledgeable friend, not a corporate representative.
 
@@ -108,23 +125,12 @@ module.exports = async function handler(req, res) {
   let email = '';
 
   try {
-    const firebaseRes = await fetch(
-      `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${process.env.FIREBASE_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idToken }),
-      }
-    );
-    const firebaseData = await firebaseRes.json();
-    if (!firebaseRes.ok || !firebaseData.users?.[0]) {
-      return res.status(401).json({ error: 'Invalid token' });
-    }
-    const user = firebaseData.users[0];
-    displayName = user.displayName?.split(' ')[0] || 'there';
-    email = user.email || '';
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    displayName = decoded.name?.split(' ')[0] || 'there';
+    email = decoded.email || '';
   } catch (err) {
-    return res.status(401).json({ error: 'Token verification failed' });
+    console.error('Melissa app token verification failed:', err.message);
+    return res.status(401).json({ error: 'Invalid token' });
   }
 
   const { messages } = req.body;
@@ -160,8 +166,9 @@ module.exports = async function handler(req, res) {
         .map(m => `${m.role === 'user' ? displayName : 'Melissa'}: ${m.content}`)
         .join('\n\n');
 
+      // A failed alert email must not turn Melissa's reply into a 500.
       await resend.emails.send({
-        from: 'Melissa at Sensa <onboarding@resend.dev>',
+        from: MELISSA_FROM,
         to: 'info@sensawellness.org',
         subject: `App User Needs Personal Attention - ${displayName}`,
         html: `
@@ -177,6 +184,10 @@ module.exports = async function handler(req, res) {
             </div>
           </div>
         `,
+      }).then((result) => {
+        if (result?.error) console.error('Melissa app escalation email failed:', result.error.message);
+      }).catch((err) => {
+        console.error('Melissa app escalation email failed:', err.message);
       });
     }
 
