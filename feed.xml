@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Johns Hopkins Researchers Pinpoint How a Common Protein Triggers Chronic Inflammation and Raises CRP</title>
+        <link>https://www.sensawellness.org/post-resistin-nlrp3-inflammasome</link>
+        <guid>https://www.sensawellness.org/post-resistin-nlrp3-inflammasome</guid>
+        <description>A new PLOS One study from Johns Hopkins identifies the protein resistin as a molecular switch for the NLRP3 inflammasome, the powerful inflammatory pathway linked to heart disease, diabetes, and elevated CRP levels.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Anti-Inflammatory Diets Ease Fatigue in Multiple Sclerosis: New Meta-Analysis Findings</title>
         <link>https://www.sensawellness.org/post-anti-inflammatory-diet-ms</link>
