@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Butyrate Reduce Inflammation? What the Research Shows</title>
+        <link>https://www.sensawellness.org/post-does-butyrate-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-butyrate-reduce-inflammation</guid>
+        <description>Butyrate, the short-chain fatty acid your gut bacteria produce from dietary fiber, blocks the NF-kB pathway and lowers CRP. Randomized trials show measurable effects on inflammatory markers. Here is what the science shows and how to increase your levels.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>Johns Hopkins Researchers Pinpoint How a Common Protein Triggers Chronic Inflammation and Raises CRP</title>
         <link>https://www.sensawellness.org/post-resistin-nlrp3-inflammasome</link>
