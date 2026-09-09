@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study: Anti-Inflammatory Diet Plus Exercise Cuts Mortality Risk in Older Adults</title>
+        <link>https://www.sensawellness.org/post-anti-inflammatory-diet-exercise-mortality</link>
+        <guid>https://www.sensawellness.org/post-anti-inflammatory-diet-exercise-mortality</guid>
+        <description>A 2026 prospective cohort study of 6,468 older adults found that the highest anti-inflammatory diet scores were linked to 15% lower all-cause mortality, with even greater protection when combined with regular exercise.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Does Butyrate Reduce Inflammation? What the Research Shows</title>
         <link>https://www.sensawellness.org/post-does-butyrate-reduce-inflammation</link>
