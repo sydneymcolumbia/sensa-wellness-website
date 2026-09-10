@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Can Lectins Cause Inflammation? What the Science Actually Says</title>
+        <link>https://www.sensawellness.org/post-lectins-inflammation</link>
+        <guid>https://www.sensawellness.org/post-lectins-inflammation</guid>
+        <description>Raw lectins from undercooked beans can damage the gut lining and trigger acute inflammation, but thorough cooking destroys most of them. Here is what the research shows about lectins, intestinal permeability, and chronic inflammatory markers like CRP.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>New Study: Anti-Inflammatory Diet Plus Exercise Cuts Mortality Risk in Older Adults</title>
         <link>https://www.sensawellness.org/post-anti-inflammatory-diet-exercise-mortality</link>
