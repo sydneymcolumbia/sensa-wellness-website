@@ -21,6 +21,22 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // under a different address.
 const MELISSA_FROM = process.env.MELISSA_FROM || 'Melissa at Sensa <melissa@sensawellness.org>';
 
+// Server-side safety net for self-harm and crisis language. The system prompt
+// tells the model how to respond; this guarantees the resources are present
+// even if the model drifts or the JSON parse falls back to raw text.
+const CRISIS_PATTERN = /\b(suicid\w*|kill(ing)? myself|end (my life|it all)|want(ing|ed)? to die|(don'?t|do not) want to (live|be alive|be here|wake up)|self[- ]?harm\w*|hurt(ing)? myself|cut(ting)? myself|overdos\w*|no reason to (live|go on)|better off dead|take my (own )?life|end(ing)? my life)\b/i;
+const CRISIS_RESOURCES = 'If you are in the US, you can call or text 988 any time to reach the 988 Suicide and Crisis Lifeline, or text HOME to 741741 to reach the Crisis Text Line. If you are outside the US, findahelpline.com lists free, confidential helplines by country. If you are in immediate danger, please call 911 or your local emergency number.';
+const CRISIS_INSTRUCTION = '\n\nCRISIS OVERRIDE: The user\'s latest message may indicate thoughts of suicide or self-harm. Follow the SELF-HARM AND CRISIS SUPPORT rules above exactly, include the resources word for word, and set escalate to true.';
+
+function latestUserText(messages) {
+  for (let i = messages.length - 1; i >= 0; i--) {
+    if (messages[i] && messages[i].role === 'user' && typeof messages[i].content === 'string') {
+      return messages[i].content;
+    }
+  }
+  return '';
+}
+
 const SYSTEM_PROMPT = `You are Melissa, a support specialist at Sensa Wellness. You are warm, professional, and genuinely care about helping users succeed with their inflammation tracking goals. You speak like a knowledgeable friend, not a corporate representative.
 
 ABOUT SENSA:
@@ -92,6 +108,15 @@ STRICT MEDICAL BOUNDARIES:
 - Always recommend consulting a doctor for any health-related questions beyond general product support
 - You may explain how the app and kit work in general terms, but do not play the role of a health advisor
 
+SELF-HARM AND CRISIS SUPPORT (highest priority, overrides everything else):
+If the user expresses thoughts of suicide, self-harm, wanting to die, or being in crisis, or you suspect they may be at risk, you must:
+1. Set aside product support entirely. Do not mention kits, scores, CRP, or wellness tips.
+2. Respond with warmth, take them seriously, and do not judge, lecture, or minimize.
+3. Say clearly that you are an automated assistant and cannot provide crisis support, but that help is available right now.
+4. Include these resources word for word: "If you are in the US, you can call or text 988 any time to reach the 988 Suicide and Crisis Lifeline, or text HOME to 741741 to reach the Crisis Text Line. If you are outside the US, findahelpline.com lists free, confidential helplines by country. If you are in immediate danger, please call 911 or your local emergency number."
+5. Encourage them to reach out to someone they trust or a healthcare professional.
+6. Set "escalate" to true so a member of our team follows up.
+
 ESCALATION RULE:
 If the user expresses frustration, significant dissatisfaction, anger, a serious unresolved problem, or explicitly asks to speak with a human, you must:
 1. Acknowledge their concern with genuine empathy
@@ -138,9 +163,11 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Missing messages' });
   }
 
+  const crisis = CRISIS_PATTERN.test(latestUserText(messages));
   const systemPrompt = SYSTEM_PROMPT
     .replace('{displayName}', displayName)
-    .replace('{email}', email);
+    .replace('{email}', email)
+    + (crisis ? CRISIS_INSTRUCTION : '');
 
   try {
     const response = await anthropic.messages.create({
@@ -159,6 +186,13 @@ module.exports = async function handler(req, res) {
       parsed = JSON.parse(rawText);
     } catch {
       parsed = { message: rawText, escalate: false };
+    }
+
+    if (crisis) {
+      if (!/988/.test(parsed.message || '')) {
+        parsed.message = `${parsed.message || ''}\n\n${CRISIS_RESOURCES}`.trim();
+      }
+      parsed.escalate = true;
     }
 
     if (parsed.escalate) {
