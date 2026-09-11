@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/blog.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/sitemap-page.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -127,12 +127,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.sensawellness.org/post-do-statins-lower-crp.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.sensawellness.org/post-acne-inflammation.html</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -200,7 +194,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-anti-inflammatory-diet-exercise-mortality.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -607,6 +601,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.sensawellness.org/post-do-statins-lower-crp.html</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.sensawellness.org/post-does-ashwagandha-reduce-inflammation.html</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -812,7 +812,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-falsely-elevated-crp.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -962,7 +962,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-how-to-reduce-inflammation-fast.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1418,7 +1418,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-lectins-inflammation.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1887,6 +1887,12 @@
   <url>
     <loc>https://www.sensawellness.org/post-tinnitus-inflammation.html</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/post-tranquility-trial-pacibekitug-inflammation.html</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
