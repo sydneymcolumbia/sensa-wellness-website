@@ -2,3 +2,6 @@ node_modules/
 .vercel
 scripts/customers.json
 .env*
+
+# Customer-specific emails (real names/addresses; repo is public)
+emails/late-order-*
