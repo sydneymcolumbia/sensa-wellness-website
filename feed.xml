@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Sep 2026 07:03:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>The New Science of Inflammation: How Researchers Are Connecting It to Every Major Disease</title>
+        <link>https://www.sensawellness.org/post-chronic-inflammation-new-science</link>
+        <guid>https://www.sensawellness.org/post-chronic-inflammation-new-science</guid>
+        <description>A landmark New York Times Magazine investigation argues that chronic low-grade inflammation is not just a symptom of disease but a root cause behind nearly every major illness. Here is what the science shows and what it means for your health.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>A New Drug Cut CRP by 89% in Six Months: What the TRANQUILITY Trial Means for Inflammation Research</title>
         <link>https://www.sensawellness.org/post-tranquility-trial-pacibekitug-inflammation</link>
