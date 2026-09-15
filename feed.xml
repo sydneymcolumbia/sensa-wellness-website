@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does the Vagus Nerve Control Inflammation? What the Science Shows</title>
+        <link>https://www.sensawellness.org/post-vagus-nerve-inflammation</link>
+        <guid>https://www.sensawellness.org/post-vagus-nerve-inflammation</guid>
+        <description>The vagus nerve runs a hardwired anti-inflammatory circuit that can suppress cytokine release within seconds. Here is what scientists know about the cholinergic anti-inflammatory pathway, how it connects to CRP, and what lifestyle practices do to vagal tone.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>The New Science of Inflammation: How Researchers Are Connecting It to Every Major Disease</title>
         <link>https://www.sensawellness.org/post-chronic-inflammation-new-science</link>
