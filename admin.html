@@ -770,7 +770,7 @@
 <!-- Firebase JS SDK -->
 <script type="module">
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-  import { getAuth, signInWithEmailAndPassword, signOut as fbSignOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+  import { getAuth, signInWithEmailAndPassword, signOut as fbSignOut, onAuthStateChanged, sendEmailVerification } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 
   const firebaseConfig = {
     apiKey: 'AIzaSyBgQp_ZTGul5jFwXbTlB0gJKjfR17j1D44',
@@ -786,6 +786,21 @@
   window._signOutFn = fbSignOut;
 
   onAuthStateChanged(auth, async (user) => {
+    if (user && !user.emailVerified) {
+      // The admin API only accepts verified email claims. Send the
+      // verification link once, then sign out so the token is refreshed
+      // with email_verified=true on the next sign-in.
+      const errEl = document.getElementById('login-error');
+      try {
+        await sendEmailVerification(user);
+        errEl.textContent = 'Verification email sent to ' + user.email + '. Click the link in it, then sign in again.';
+      } catch (e) {
+        errEl.textContent = 'Your email is not verified and the verification email could not be sent. Try again in a few minutes.';
+      }
+      errEl.style.display = 'block';
+      await fbSignOut(auth);
+      return;
+    }
     if (user) {
       document.getElementById('login-screen').style.display = 'none';
       document.getElementById('dashboard').style.display = 'block';

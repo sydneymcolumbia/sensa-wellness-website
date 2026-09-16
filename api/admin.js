@@ -18,7 +18,9 @@ const ADMIN_EMAILS = [
 ];
 
 module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // admin.html is served from this same origin; do not open the endpoint to
+  // every site on the web.
+  res.setHeader('Access-Control-Allow-Origin', 'https://www.sensawellness.org');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
 
@@ -39,7 +41,9 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: 'Invalid token' });
   }
 
-  if (!ADMIN_EMAILS.includes(decodedToken.email)) {
+  // Email/password sign-up does not verify the address, so an allowlisted
+  // email alone is not proof of identity. Require a verified email claim.
+  if (!decodedToken.email_verified || !ADMIN_EMAILS.includes(decodedToken.email)) {
     return res.status(403).json({ error: 'Access denied' });
   }
 

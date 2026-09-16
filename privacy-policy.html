@@ -501,10 +501,10 @@
         <p>Each time you perform a wellness scan using the Sensa app, we collect and store the following data points:</p>
         <ul>
             <li><strong>Wellness score</strong> (a value from 0 to 100)</li>
-            <li><strong>Score label</strong> (e.g., Low, Moderate, Elevated)</li>
+            <li><strong>Score range</strong> (In range, Worth watching, or Time to reset)</li>
             <li><strong>Timestamp</strong> of the scan</li>
-            <li><strong>CRP-derived measurement</strong> used to calculate the score</li>
-            <li><strong>Average blue channel value</strong> from the test strip image analysis</li>
+            <li><strong>Optical color index</strong> derived from the vial image and used to calculate the score</li>
+            <li><strong>Average blue channel value</strong> from the vial image analysis</li>
         </ul>
 
         <h3>Health Profile (Optional)</h3>
@@ -517,15 +517,23 @@
             <li>Average sleep hours</li>
             <li>Stress level</li>
             <li>Smoking status</li>
-            <li>Primary health goal</li>
+            <li>Primary wellness goal</li>
+            <li>Race and ethnicity</li>
+            <li>Alcohol use</li>
+            <li>Body weight range</li>
+            <li>Self-reported health conditions</li>
+            <li>Supplement use</li>
+            <li>Peptide use</li>
+            <li>Oral health</li>
+            <li>Gut health</li>
         </ul>
         <p>This information is collected only if you voluntarily provide it. You are never required to complete your Health Profile to use the core scanning features of the app.</p>
 
         <h3>Scan Images</h3>
-        <p>When you photograph a test strip, the image is processed entirely on your device. <strong>Scan images are stored locally on your device only and are never uploaded to our servers.</strong> Only the numerical results derived from image analysis are transmitted and stored.</p>
+        <p>When you scan a Sensa vial, the photo is processed entirely on your device. <strong>Scan images are stored locally on your device only and are never uploaded to our servers.</strong> Only the numerical results derived from image analysis are transmitted and stored.</p>
 
         <h3>Support Chat Messages</h3>
-        <p>The app and website include Melissa, an automated support assistant. Messages you type to Melissa are sent to our servers and to our AI provider, Anthropic, to generate a reply (see Section 5). We do not keep chat transcripts in a database. If the assistant flags a conversation for human follow-up, for example because you asked for a person, reported a problem, or expressed distress, the transcript together with your name and email address is emailed to our support team so someone can reach out.</p>
+        <p>The app and website include Melissa, an automated support assistant. Messages you type to Melissa, along with your first name, are sent to our servers and to our AI provider, Anthropic, to generate a reply (see Section 5). Your email address is not sent to Anthropic. We do not keep chat transcripts in a database. If the assistant flags a conversation for human follow-up, for example because you asked for a person, reported a problem, or expressed distress, the transcript together with your name and email address is emailed to our support team so someone can reach out.</p>
 
         <h3>Website Orders</h3>
         <p>When you buy a test kit on sensawellness.org, we collect your <strong>name, email address, shipping address, and the items ordered</strong>. Payment is handled by Stripe. Your card details are entered on Stripe's secure checkout page and never reach our servers. We use your email to send an order confirmation and a check-in message after delivery.</p>
@@ -555,7 +563,7 @@
         <p><strong>We never use your data for advertising. We never sell your data to third parties.</strong></p>
 
         <h2>4. Health Data</h2>
-        <p>The health profile fields you provide (age range, biological sex, activity level, diet type, sleep hours, stress level, smoking status, and primary health goal) are used solely to personalize wellness recommendations within the Sensa app.</p>
+        <p>The health profile fields you provide (age range, biological sex, activity level, diet type, sleep hours, stress level, smoking status, primary wellness goal, race and ethnicity, alcohol use, body weight range, self-reported health conditions, supplement use, peptide use, oral health, and gut health) are used solely to personalize wellness recommendations within the Sensa app. Every field is optional, and you can choose "prefer not to say" for the sensitive ones.</p>
         <p>This data is <strong>not</strong> a clinical assessment. It is not shared with healthcare providers, insurance companies, employers, or any third party. Your health profile information remains within your Sensa account and is used exclusively to improve the relevance of the wellness content and action plans presented to you.</p>
 
         <h2>5. Artificial Intelligence</h2>
@@ -597,7 +605,7 @@
             <li><strong>Delete individual scans:</strong> You can remove any individual scan record directly within the app's history view.</li>
             <li><strong>Delete your entire account:</strong> Navigate to <strong>Profile &rarr; Delete Account &amp; Data</strong> within the app to permanently delete your account and all associated data, including scan history and health profile information.</li>
             <li><strong>Request deletion by email:</strong> You may also request account and data deletion by contacting us at <a href="mailto:info@sensawellness.org">info@sensawellness.org</a>. We will process your request within 30 days.</li>
-            <li><strong>Scan photos:</strong> Photos of your test strip stay on your device only. They are removed when you delete your account from the app or uninstall the app.</li>
+            <li><strong>Scan photos:</strong> Photos of your vial stay on your device only. They are removed when you delete your account from the app or uninstall the app.</li>
             <li><strong>Support chats:</strong> We do not keep chat transcripts unless a conversation is escalated to our team by email. You can ask us to delete an escalated transcript at any time.</li>
             <li><strong>Orders, reviews, and newsletter sign-ups:</strong> Order records are kept as long as needed for accounting and tax purposes. Reviews stay published until you ask us to remove them. Newsletter addresses are kept until you unsubscribe.</li>
         </ul>

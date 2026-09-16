@@ -32,7 +32,9 @@ async function requireAdmin(req, res) {
     res.status(401).json({ error: 'Invalid token' });
     return null;
   }
-  if (!ADMIN_EMAILS.includes(decoded.email)) {
+  // Require a verified email claim: email/password sign-up alone does not
+  // prove the caller owns an allowlisted address.
+  if (!decoded.email_verified || !ADMIN_EMAILS.includes(decoded.email)) {
     res.status(403).json({ error: 'Access denied' });
     return null;
   }
