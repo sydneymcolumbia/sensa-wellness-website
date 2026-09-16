@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Could a Daily Pill Switch Off Chronic Inflammation? NLRP3 Inhibitor Trials Show Promise</title>
+        <link>https://www.sensawellness.org/post-nlrp3-inhibitor-clinical-trials-inflammation</link>
+        <guid>https://www.sensawellness.org/post-nlrp3-inhibitor-clinical-trials-inflammation</guid>
+        <description>New Phase 2 clinical trials of oral NLRP3 inflammasome inhibitors show dramatic CRP reductions. A Phase 1b trial of ruvonoflast cut hsCRP by 82% in 28 days. Here is what the 2026 trial data means for inflammation science and consumer wellness.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Does the Vagus Nerve Control Inflammation? What the Science Shows</title>
         <link>https://www.sensawellness.org/post-vagus-nerve-inflammation</link>
