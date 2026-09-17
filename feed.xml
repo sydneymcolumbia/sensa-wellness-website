@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Ginger Reduce Inflammation? What the Science Shows</title>
+        <link>https://www.sensawellness.org/post-does-ginger-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-ginger-reduce-inflammation</guid>
+        <description>Ginger's active compounds, particularly 6-gingerol and shogaols, block COX-2 and NF-kB. Two independent meta-analyses of randomized controlled trials confirm significant reductions in CRP and TNF-alpha. Here is what the clinical evidence shows.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>Could a Daily Pill Switch Off Chronic Inflammation? NLRP3 Inhibitor Trials Show Promise</title>
         <link>https://www.sensawellness.org/post-nlrp3-inhibitor-clinical-trials-inflammation</link>
