@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Could Eating Less Protein Reduce Inflammation and Help You Live Longer?</title>
+        <link>https://www.sensawellness.org/post-protein-restriction-longevity-inflammation</link>
+        <guid>https://www.sensawellness.org/post-protein-restriction-longevity-inflammation</guid>
+        <description>Two new 2026 studies from the University of Wisconsin show that restricting specific amino acids cuts inflammation, reduces cellular aging, and extended lifespan by 23% in male mice. Here is what the science means for you.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Does Ginger Reduce Inflammation? What the Science Shows</title>
         <link>https://www.sensawellness.org/post-does-ginger-reduce-inflammation</link>

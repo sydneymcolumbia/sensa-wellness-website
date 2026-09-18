@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/blog.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/sitemap-page.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -104,7 +104,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/hub-chronic-disease-inflammation.html</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -680,7 +680,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-does-ginger-reduce-inflammation.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -878,7 +878,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-gerd-inflammation.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1574,7 +1574,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-nlrp3-inhibitor-clinical-trials-inflammation.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1677,6 +1677,12 @@
   <url>
     <loc>https://www.sensawellness.org/post-prostatitis-inflammation.html</loc>
     <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/post-protein-restriction-longevity-inflammation.html</loc>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2084,7 +2090,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/privacy-policy.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
