@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Scientists Found the Body's Natural Off Switch for Inflammation</title>
+        <link>https://www.sensawellness.org/post-body-inflammation-off-switch</link>
+        <guid>https://www.sensawellness.org/post-body-inflammation-off-switch</guid>
+        <description>A 2026 study in Nature Communications identified fat-derived molecules called epoxy-oxylipins that act as the body's built-in brake on inflammation. Boosting them in human volunteers sped up pain resolution and cut a key class of inflammatory immune cells. Here is what the discovery means for chronic disease and CRP tracking.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Could Eating Less Protein Reduce Inflammation and Help You Live Longer?</title>
         <link>https://www.sensawellness.org/post-protein-restriction-longevity-inflammation</link>
