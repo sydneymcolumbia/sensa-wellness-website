@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Vitamin K Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-does-vitamin-k-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-vitamin-k-reduce-inflammation</guid>
+        <description>Vitamin K activates proteins like MGP and Gas6 that may dampen inflammatory signals. The biology is compelling, but a 24-month trial of high-dose K2 found no significant CRP reduction. Here is an honest look at what the evidence shows for K1, K2, and inflammation.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>Scientists Found the Body's Natural Off Switch for Inflammation</title>
         <link>https://www.sensawellness.org/post-body-inflammation-off-switch</link>
