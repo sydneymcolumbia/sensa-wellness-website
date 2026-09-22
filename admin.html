@@ -598,7 +598,7 @@
       <label for="login-password">Password</label>
       <input type="password" id="login-password" placeholder="Password">
     </div>
-    <button class="login-btn" onclick="signIn()">Sign In</button>
+    <button class="login-btn" id="login-btn" type="button">Sign In</button>
     <div class="login-error" id="login-error"></div>
   </div>
 </div>
@@ -620,25 +620,25 @@
 
     <div class="sidebar-label">Navigation</div>
 
-    <div class="nav-item active" onclick="showPage('overview')">
+    <div class="nav-item active" data-page="overview" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       Overview
     </div>
-    <div class="nav-item" onclick="showPage('users')">
+    <div class="nav-item" data-page="users" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       Users
     </div>
-    <div class="nav-item" onclick="showPage('scans')">
+    <div class="nav-item" data-page="scans" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Scans
     </div>
-    <div class="nav-item" onclick="showPage('reviews')">
+    <div class="nav-item" data-page="reviews" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.5 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
       Reviews <span id="reviews-nav-badge" style="margin-left:auto;background:#ef4444;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 7px;display:none"></span>
     </div>
 
     <div class="sidebar-bottom">
-      <button class="signout-btn" onclick="signOut()">Sign out</button>
+      <button class="signout-btn" id="signout-btn" type="button">Sign out</button>
     </div>
   </div>
 
@@ -651,7 +651,7 @@
         <h1>Overview</h1>
         <div style="display:flex;gap:10px;align-items:center;">
           <span class="last-updated" id="last-updated"></span>
-          <button class="refresh-btn" onclick="loadData()">Refresh</button>
+          <button class="refresh-btn" id="overview-refresh-btn" type="button">Refresh</button>
         </div>
       </div>
 
@@ -675,7 +675,7 @@
               <th scope="col">User</th>
               <th scope="col">Score</th>
               <th scope="col">Label</th>
-              <th scope="col">CRP (mg/L)</th>
+              <th scope="col">Optical index</th>
               <th scope="col">Date</th>
             </tr>
           </thead>
@@ -688,7 +688,7 @@
     <div class="page" id="page-users">
       <div class="page-header">
         <h1>Users</h1>
-        <input class="search-bar" type="text" aria-label="Search users by name or email" placeholder="Search by name or email..." oninput="filterUsers(this.value)">
+        <input class="search-bar" type="text" aria-label="Search users by name or email" placeholder="Search by name or email..." id="users-search">
       </div>
       <div class="table-card">
         <div class="table-header">
@@ -715,7 +715,7 @@
     <div class="page" id="page-scans">
       <div class="page-header">
         <h1>All Scans</h1>
-        <input class="search-bar" type="text" aria-label="Search scans by label" placeholder="Search by label..." oninput="filterScans(this.value)">
+        <input class="search-bar" type="text" aria-label="Search scans by label" placeholder="Search by label..." id="scans-search">
       </div>
       <div class="table-card">
         <div class="table-header">
@@ -728,7 +728,7 @@
               <th scope="col">User</th>
               <th scope="col">Score</th>
               <th scope="col">Label</th>
-              <th scope="col">CRP (mg/L)</th>
+              <th scope="col">Optical index</th>
               <th scope="col">Avg Blue</th>
               <th scope="col">Date</th>
             </tr>
@@ -742,7 +742,7 @@
     <div class="page" id="page-reviews">
       <div class="page-header">
         <h1>Pending Reviews</h1>
-        <button class="refresh-btn" onclick="loadReviews()">Refresh</button>
+        <button class="refresh-btn" id="reviews-refresh-btn" type="button">Refresh</button>
       </div>
       <div class="table-card">
         <div class="table-header">
@@ -761,13 +761,25 @@
   <div class="modal">
     <div class="modal-header">
       <h2 id="modal-name"></h2>
-      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close">&#x2715;</button>
     </div>
     <div id="modal-content"></div>
   </div>
 </div>
 
 <!-- Firebase JS SDK -->
+<!--
+  CSP note: /admin is served with a script-src that has no 'unsafe-inline'
+  (see the "/admin" headers entry in vercel.json). Both inline script blocks
+  below are allowlisted by SHA-256 hash of their exact text. If you change
+  anything inside either block, including whitespace, recompute and update
+  the two 'sha256-...' sources in vercel.json:
+
+    node -e "const c=require('crypto'),h=require('fs').readFileSync('admin.html','utf8'),re=new RegExp('<'+'script[^>]*>([^]*?)</'+'script>','g');for(const m of h.matchAll(re))console.log('sha256-'+c.createHash('sha256').update(m[1]).digest('base64'))"
+
+  Inline event handler attributes (onclick, oninput, ...) are blocked by that
+  policy as well. Attach handlers with addEventListener in the script.
+-->
 <script type="module">
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
   import { getAuth, signInWithEmailAndPassword, signOut as fbSignOut, onAuthStateChanged, sendEmailVerification } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
@@ -816,6 +828,20 @@
 <script>
   let _data = null;
 
+  // Labels the API is expected to return. Anything else gets the neutral
+  // badge so a hostile label can never inject a class name.
+  const KNOWN_LABELS = ['low', 'moderate', 'elevated', 'high'];
+  function badgeClass(label) {
+    const key = String(label == null ? '' : label).toLowerCase();
+    return KNOWN_LABELS.includes(key) ? 'badge ' + key : 'badge';
+  }
+
+  // Numeric formatter that tolerates missing or non numeric API values.
+  function fixed(v, digits) {
+    const n = Number(v);
+    return n ? n.toFixed(digits) : 'N/A';
+  }
+
   async function signIn() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
@@ -832,10 +858,6 @@
   async function signOut() {
     await window._signOutFn(window._auth);
   }
-
-  document.getElementById('login-password').addEventListener('keydown', e => {
-    if (e.key === 'Enter') signIn();
-  });
 
   async function loadData() {
     try {
@@ -864,23 +886,23 @@
     document.getElementById('stats-grid').innerHTML = `
       <div class="stat-card">
         <div class="label">Total Users</div>
-        <div class="value">${s.totalUsers}</div>
-        <div class="sub"><span class="dot" style="background:#22c55e"></span>${s.newUsersThisWeek} new this week</div>
+        <div class="value">${escapeHtml(s.totalUsers)}</div>
+        <div class="sub"><span class="dot" style="background:#22c55e"></span>${escapeHtml(s.newUsersThisWeek)} new this week</div>
       </div>
       <div class="stat-card">
         <div class="label">Total Scans</div>
-        <div class="value">${s.totalScans}</div>
-        <div class="sub">${s.totalUsers ? (s.totalScans / s.totalUsers).toFixed(1) : 0} avg per user</div>
+        <div class="value">${escapeHtml(s.totalScans)}</div>
+        <div class="sub">${escapeHtml(s.totalUsers ? (s.totalScans / s.totalUsers).toFixed(1) : 0)} avg per user</div>
       </div>
       <div class="stat-card">
         <div class="label">Avg Wellness Score</div>
-        <div class="value">${s.avgScore}<small style="font-size:18px;opacity:0.5">/100</small></div>
+        <div class="value">${escapeHtml(s.avgScore)}<small style="font-size:18px;opacity:0.5">/100</small></div>
         <div class="sub">Across all scans</div>
       </div>
       <div class="stat-card">
         <div class="label">Health Intake Done</div>
-        <div class="value">${s.intakeCompletePct}<small style="font-size:18px;opacity:0.5">%</small></div>
-        <div class="sub">${s.intakeComplete} of ${s.totalUsers} users</div>
+        <div class="value">${escapeHtml(s.intakeCompletePct)}<small style="font-size:18px;opacity:0.5">%</small></div>
+        <div class="sub">${escapeHtml(s.intakeComplete)} of ${escapeHtml(s.totalUsers)} users</div>
       </div>
     `;
 
@@ -894,16 +916,16 @@
     };
 
     document.getElementById('dist-bars').innerHTML = Object.entries(s.labelCounts).map(([label, count]) => {
-      const pct = Math.round((count / total) * 100);
+      const pct = Math.round((Number(count) / total) * 100);
       return `
         <div class="dist-bar-row">
-          <div class="dist-bar-label">${label}</div>
+          <div class="dist-bar-label">${escapeHtml(label)}</div>
           <div class="dist-bar-track">
-            <div class="dist-bar-fill" style="width:${Math.max(pct, 3)}%;background:${colors[label]}">
+            <div class="dist-bar-fill" style="width:${Math.max(pct, 3)}%;background:${colors[label] || '#9ca3af'}">
               <span>${pct}%</span>
             </div>
           </div>
-          <div class="dist-bar-count">${count}</div>
+          <div class="dist-bar-count">${escapeHtml(count)}</div>
         </div>`;
     }).join('');
 
@@ -915,12 +937,12 @@
 
     const rows = _data.recentScans.slice(0, 20).map(scan => {
       const u = userMap[scan.userId];
-      const name = u ? u.displayName || u.email : scan.userId.slice(0, 8);
+      const name = u ? u.displayName || u.email : String(scan.userId || '').slice(0, 8);
       return `<tr>
-        <td><div class="user-cell"><div class="avatar">${initials(name)}</div>${name}</div></td>
-        <td><span class="score-pill" style="background:${scoreColor(scan.score)}">${scan.score}</span></td>
-        <td><span class="badge ${scan.label.toLowerCase()}">${scan.label}</span></td>
-        <td>${scan.opticalScore ? scan.opticalScore.toFixed(2) : 'N/A'}</td>
+        <td><div class="user-cell"><div class="avatar">${initials(name)}</div>${escapeHtml(name)}</div></td>
+        <td><span class="score-pill" style="background:${scoreColor(scan.score)}">${escapeHtml(scan.score)}</span></td>
+        <td><span class="${badgeClass(scan.label)}">${escapeHtml(scan.label)}</span></td>
+        <td>${fixed(scan.opticalScore, 2)}</td>
         <td>${formatDate(scan.timestamp)}</td>
       </tr>`;
     }).join('');
@@ -932,21 +954,23 @@
 
   function renderUsers(filter = '') {
     const users = _data ? _data.users.filter(u =>
-      (u.displayName + u.email).toLowerCase().includes(filter.toLowerCase())
+      (String(u.displayName || '') + ' ' + String(u.email || '')).toLowerCase().includes(filter.toLowerCase())
     ) : [];
 
     document.getElementById('users-count').textContent = `${users.length} users`;
 
+    // Rows carry the uid in a data attribute; a delegated listener on the
+    // tbody opens the modal. No inline handlers, so the CSP can drop
+    // 'unsafe-inline' and a crafted uid cannot break out of an attribute.
     document.getElementById('users-body').innerHTML = users.map(u => {
       const score = u.lastScan?.score;
-      const label = u.lastScan?.label || '';
-      return `<tr onclick="openUserModal('${u.uid}')" style="cursor:pointer">
-        <td><div class="user-cell"><div class="avatar">${initials(u.displayName || u.email)}</div><div><div style="font-weight:700">${u.displayName || 'No name'}</div><div style="color:var(--gray);font-size:12px">${u.email}</div></div></div></td>
+      return `<tr data-uid="${escapeHtml(u.uid)}" style="cursor:pointer">
+        <td><div class="user-cell"><div class="avatar">${initials(u.displayName || u.email)}</div><div><div style="font-weight:700">${escapeHtml(u.displayName || 'No name')}</div><div style="color:var(--gray);font-size:12px">${escapeHtml(u.email)}</div></div></div></td>
         <td>${formatDate(u.createdAt)}</td>
-        <td>${u.scanCount}</td>
-        <td>${score !== undefined ? `<span class="score-pill" style="background:${scoreColor(score)}">${score}</span>` : '<span style="color:var(--gray)">None</span>'}</td>
+        <td>${escapeHtml(u.scanCount)}</td>
+        <td>${score !== undefined ? `<span class="score-pill" style="background:${scoreColor(score)}">${escapeHtml(score)}</span>` : '<span style="color:var(--gray)">None</span>'}</td>
         <td><span class="badge ${u.healthIntakeComplete ? 'yes' : 'no'}">${u.healthIntakeComplete ? 'Yes' : 'No'}</span></td>
-        <td style="color:var(--gray)">${u.reminderInterval === 'none' ? 'Off' : u.reminderInterval}</td>
+        <td style="color:var(--gray)">${u.reminderInterval === 'none' ? 'Off' : escapeHtml(u.reminderInterval)}</td>
       </tr>`;
     }).join('') || '<tr><td colspan="6" class="empty">No users found</td></tr>';
   }
@@ -957,20 +981,20 @@
     for (const u of _data.users) userMap[u.uid] = u;
 
     const scans = _data.recentScans.filter(s =>
-      s.label.toLowerCase().includes(filter.toLowerCase())
+      String(s.label || '').toLowerCase().includes(filter.toLowerCase())
     );
 
     document.getElementById('scans-count').textContent = `${scans.length} scans`;
 
     document.getElementById('scans-body').innerHTML = scans.map(scan => {
       const u = userMap[scan.userId];
-      const name = u ? u.displayName || u.email : scan.userId.slice(0, 8);
+      const name = u ? u.displayName || u.email : String(scan.userId || '').slice(0, 8);
       return `<tr>
-        <td><div class="user-cell"><div class="avatar">${initials(name)}</div>${name}</div></td>
-        <td><span class="score-pill" style="background:${scoreColor(scan.score)}">${scan.score}</span></td>
-        <td><span class="badge ${scan.label.toLowerCase()}">${scan.label}</span></td>
-        <td>${scan.opticalScore ? scan.opticalScore.toFixed(2) : 'N/A'}</td>
-        <td>${scan.avgBlue ? scan.avgBlue.toFixed(1) : 'N/A'}</td>
+        <td><div class="user-cell"><div class="avatar">${initials(name)}</div>${escapeHtml(name)}</div></td>
+        <td><span class="score-pill" style="background:${scoreColor(scan.score)}">${escapeHtml(scan.score)}</span></td>
+        <td><span class="${badgeClass(scan.label)}">${escapeHtml(scan.label)}</span></td>
+        <td>${fixed(scan.opticalScore, 2)}</td>
+        <td>${fixed(scan.avgBlue, 1)}</td>
         <td>${formatDate(scan.timestamp)}</td>
       </tr>`;
     }).join('') || '<tr><td colspan="6" class="empty">No scans found</td></tr>';
@@ -987,17 +1011,18 @@
 
     document.getElementById('modal-name').textContent = u.displayName || u.email;
 
-    const fmt = (v) => v ? v.replace(/_/g, ' ') : 'N/A';
+    // Intake values are user controlled strings: always escape.
+    const fmt = (v) => v ? escapeHtml(String(v).replace(/_/g, ' ')) : 'N/A';
 
     document.getElementById('modal-content').innerHTML = `
       <div class="modal-section">
         <h3>Account</h3>
         <div class="profile-grid">
-          <div class="profile-item"><div class="key">Email</div><div class="val">${u.email}</div></div>
+          <div class="profile-item"><div class="key">Email</div><div class="val">${escapeHtml(u.email)}</div></div>
           <div class="profile-item"><div class="key">Joined</div><div class="val">${formatDate(u.createdAt)}</div></div>
-          <div class="profile-item"><div class="key">Scan Count</div><div class="val">${u.scanCount}</div></div>
+          <div class="profile-item"><div class="key">Scan Count</div><div class="val">${escapeHtml(u.scanCount)}</div></div>
           <div class="profile-item"><div class="key">Intake Complete</div><div class="val">${u.healthIntakeComplete ? 'Yes' : 'No'}</div></div>
-          <div class="profile-item"><div class="key">Reminders</div><div class="val">${u.reminderInterval === 'none' ? 'Off' : u.reminderInterval}</div></div>
+          <div class="profile-item"><div class="key">Reminders</div><div class="val">${u.reminderInterval === 'none' ? 'Off' : escapeHtml(u.reminderInterval)}</div></div>
         </div>
       </div>
       ${u.healthIntakeComplete ? `
@@ -1020,13 +1045,13 @@
         ${userScans.length ? `
         <table style="width:100%">
           <thead><tr>
-            <th scope="col">Score</th><th scope="col">Label</th><th scope="col">CRP (mg/L)</th><th scope="col">Date</th>
+            <th scope="col">Score</th><th scope="col">Label</th><th scope="col">Optical index</th><th scope="col">Date</th>
           </tr></thead>
           <tbody>
             ${userScans.map(s => `<tr>
-              <td><span class="score-pill" style="background:${scoreColor(s.score)}">${s.score}</span></td>
-              <td><span class="badge ${s.label.toLowerCase()}">${s.label}</span></td>
-              <td>${s.opticalScore ? s.opticalScore.toFixed(2) : 'N/A'}</td>
+              <td><span class="score-pill" style="background:${scoreColor(s.score)}">${escapeHtml(s.score)}</span></td>
+              <td><span class="${badgeClass(s.label)}">${escapeHtml(s.label)}</span></td>
+              <td>${fixed(s.opticalScore, 2)}</td>
               <td>${formatDate(s.timestamp)}</td>
             </tr>`).join('')}
           </tbody>
@@ -1041,36 +1066,35 @@
     document.getElementById('modal').classList.remove('open');
   }
 
-  document.getElementById('modal').addEventListener('click', e => {
-    if (e.target === document.getElementById('modal')) closeModal();
-  });
-
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('page-' + name).classList.add('active');
-    event.currentTarget.classList.add('active');
+    const page = document.getElementById('page-' + name);
+    const nav = document.querySelector('.nav-item[data-page="' + name + '"]');
+    if (page) page.classList.add('active');
+    if (nav) nav.classList.add('active');
     if (name === 'reviews') loadReviews();
   }
-
-  function filterUsers(val) { renderUsers(val); }
-  function filterScans(val) { renderScans(val); }
 
   // Helpers
   function initials(name) {
     if (!name) return '?';
-    return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    const out = String(name).split(' ').filter(Boolean).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    return escapeHtml(out || '?');
   }
 
   function formatDate(iso) {
     if (!iso) return 'N/A';
-    return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const d = new Date(iso);
+    if (isNaN(d)) return 'N/A';
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
   function scoreColor(score) {
-    if (score >= 70) return '#22c55e';
-    if (score >= 50) return '#f59e0b';
-    if (score >= 30) return '#f97316';
+    const n = Number(score);
+    if (n >= 70) return '#22c55e';
+    if (n >= 50) return '#f59e0b';
+    if (n >= 30) return '#f97316';
     return '#ef4444';
   }
 
@@ -1084,9 +1108,10 @@
   }
 
   function starGlyphs(rating) {
+    var r = Number(rating) || 0;
     var out = '';
     for (var i = 1; i <= 5; i++) {
-      out += '<span style="color:' + (i <= rating ? '#f59d06' : '#d1d5db') + '">&#9733;</span>';
+      out += '<span style="color:' + (i <= r ? '#f59d06' : '#d1d5db') + '">&#9733;</span>';
     }
     return '<span style="font-size:16px;letter-spacing:1px">' + out + '</span>';
   }
@@ -1126,7 +1151,7 @@
     }
 
     listEl.innerHTML = pending.map(r => `
-      <div style="border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:16px 18px;margin-bottom:12px">
+      <div class="review-card" style="border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:16px 18px;margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px">
           <div style="display:flex;align-items:center;gap:10px">
             <strong>${escapeHtml(r.firstName)}</strong>
@@ -1134,8 +1159,8 @@
             <span style="color:var(--gray);font-size:12px">${formatDate(r.createdAt)}</span>
           </div>
           <div style="display:flex;gap:8px">
-            <button class="refresh-btn" style="background:#22c55e;color:#fff;border:none" onclick="moderateReview('${r.id}','approve',this)">Approve</button>
-            <button class="refresh-btn" style="background:#ef4444;color:#fff;border:none" onclick="moderateReview('${r.id}','delete',this)">Delete</button>
+            <button class="refresh-btn" style="background:#22c55e;color:#fff;border:none" data-review-id="${escapeHtml(r.id)}" data-action="approve">Approve</button>
+            <button class="refresh-btn" style="background:#ef4444;color:#fff;border:none" data-review-id="${escapeHtml(r.id)}" data-action="delete">Delete</button>
           </div>
         </div>
         ${r.title ? `<div style="font-weight:700;margin-bottom:4px">${escapeHtml(r.title)}</div>` : ''}
@@ -1145,8 +1170,8 @@
   }
 
   async function moderateReview(id, action, btn) {
+    if (!['approve', 'delete'].includes(action)) return;
     if (action === 'delete' && !confirm('Delete this review permanently?')) return;
-    const row = btn.closest('div[style*="border"]');
     btn.disabled = true;
     try {
       const token = await window._currentUser.getIdToken();
@@ -1163,6 +1188,37 @@
       btn.disabled = false;
     }
   }
+
+  // ---- Event wiring ----
+  // The /admin CSP has no 'unsafe-inline', so every handler is attached
+  // here instead of through onclick/oninput attributes in the markup.
+  document.getElementById('login-btn').addEventListener('click', signIn);
+  document.getElementById('login-password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') signIn();
+  });
+  document.getElementById('signout-btn').addEventListener('click', signOut);
+  document.getElementById('overview-refresh-btn').addEventListener('click', loadData);
+  document.getElementById('reviews-refresh-btn').addEventListener('click', loadReviews);
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('modal')) closeModal();
+  });
+  document.getElementById('users-search').addEventListener('input', e => renderUsers(e.target.value));
+  document.getElementById('scans-search').addEventListener('input', e => renderScans(e.target.value));
+  document.querySelectorAll('.nav-item[data-page]').forEach(item => {
+    item.addEventListener('click', () => showPage(item.dataset.page));
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showPage(item.dataset.page); }
+    });
+  });
+  document.getElementById('users-body').addEventListener('click', e => {
+    const row = e.target.closest('tr[data-uid]');
+    if (row) openUserModal(row.dataset.uid);
+  });
+  document.getElementById('reviews-list').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-review-id]');
+    if (btn) moderateReview(btn.dataset.reviewId, btn.dataset.action, btn);
+  });
 </script>
 
 </body>

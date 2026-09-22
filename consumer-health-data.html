@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumer Health Data Privacy Policy - Sensa Wellness</title>
+    <meta name="description" content="Sensa Wellness Consumer Health Data Privacy Policy, published for the Washington My Health My Data Act, Nevada SB 370, and similar state laws.">
+    <meta name="keywords" content="consumer health data privacy policy, My Health My Data Act, Washington MHMDA, Nevada SB 370, Sensa Wellness health data">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sensawellness.org/consumer-health-data">
+    <meta property="og:title" content="Consumer Health Data Privacy Policy - Sensa Wellness">
+    <meta property="og:site_name" content="Sensa Wellness">
+    <meta property="og:description" content="How Sensa Wellness collects, uses, shares, and deletes consumer health data, and how to exercise your rights under state consumer health data laws.">
+    <meta property="og:image" content="https://www.sensawellness.org/sensa-og.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Consumer Health Data Privacy Policy - Sensa Wellness">
+    <meta name="twitter:description" content="How Sensa Wellness collects, uses, shares, and deletes consumer health data, and how to exercise your rights.">
+    <link rel="canonical" href="https://www.sensawellness.org/consumer-health-data">
+    <meta name="theme-color" content="#1800AD">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .skip-link { position: absolute; left: -9999px; top: 0; z-index: 3000; background: #1800AD; color: #ffffff; padding: 0.6rem 1.2rem; border-radius: 0 0 8px 0; font-weight: 600; text-decoration: none; }
+        .skip-link:focus { left: 0; }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #fffff7;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-gray: #4a4a5a;
+            --text-light: #7a7a8a;
+            --accent-gold: #fac234;
+            --accent-orange: #f59d06;
+            --accent-coral: #e85a39;
+            --accent-navy: #1800ad;
+            --accent-purple: #7267f2;
+            --accent-blue: #41a6f0;
+            --btn-dark: #1800ad;
+            --btn-hover: #2a10c0;
+            --section-padding: 5rem 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-primary);
+            line-height: 1.2;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.065em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-navy);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            background: var(--btn-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(24, 0, 173, 0.25);
+        }
+
+        .btn:hover {
+            background: var(--btn-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(24, 0, 173, 0.35);
+        }
+
+        /* Accessibility */
+        .btn:focus-visible,
+        nav a:focus-visible,
+        .social-link:focus-visible,
+        .scroll-top:focus-visible {
+            outline: 3px solid var(--accent-purple);
+            outline-offset: 2px;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Policy Hero */
+        .policy-hero {
+            background: linear-gradient(135deg, var(--accent-navy), #2a10c0);
+            color: white;
+            padding: 5rem 0 4rem;
+            text-align: center;
+        }
+
+        .policy-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.04em;
+        }
+
+        .policy-hero .last-updated {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+        }
+
+        /* Policy Content */
+        .policy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .policy-content h2 {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(24, 0, 173, 0.1);
+        }
+
+        .policy-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .policy-content h3 {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .policy-content ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .policy-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .policy-content a {
+            color: var(--accent-navy);
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .policy-content a:hover {
+            color: var(--btn-hover);
+        }
+
+        .policy-content strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.8);
+            padding: 4rem 0 2rem;
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, var(--accent-coral), var(--accent-purple), var(--accent-blue)) 1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: background 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .wellness-disclaimer {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--btn-dark);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 999;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            background: var(--btn-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .policy-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .policy-hero {
+                padding: 3.5rem 0 3rem;
+            }
+
+            .policy-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .policy-content {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .policy-content h2 {
+                font-size: 1.35rem;
+                margin-top: 2.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <img src="logo.png" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="/">Home</a>
+                <a href="/#about">About</a>
+                <a href="/blog">Blog</a>
+                <a href="/app">App</a>
+                <a href="/how-to">How To</a>
+                <a href="/pay-now" class="btn">Buy Now</a>
+            </nav>
+        </div>
+    </header>
+    <main id="main-content">
+
+    <!-- Policy Hero -->
+    <section class="policy-hero">
+        <div class="container">
+            <h1>Consumer Health Data Privacy Policy</h1>
+            <p class="last-updated">Last updated: September 22, 2026</p>
+        </div>
+    </section>
+
+    <!-- Policy Content -->
+    <div class="policy-content">
+
+        <h2>1. Why This Policy Exists</h2>
+        <p>Several states have passed laws that protect health information held by companies that are not hospitals, clinics, or insurers. The two that shape this document are the <strong>Washington My Health My Data Act</strong> and <strong>Nevada Senate Bill 370</strong>. Both require companies like ours to publish a consumer health data privacy policy that is separate from our general privacy policy. This is that policy.</p>
+        <p>Sensa Wellness is a <strong>general wellness product</strong>. It is not a medical device, it does not diagnose or treat anything, and we are not a covered entity under HIPAA. That is exactly why these state laws matter here: they are the rules that apply to wellness information when HIPAA does not.</p>
+        <p>This policy covers the Sensa mobile and web app and the website at <a href="https://www.sensawellness.org">sensawellness.org</a>. It sits alongside our <a href="/privacy-policy">Privacy Policy</a>, which covers everything else we collect, such as account details, orders, and newsletter sign-ups. Where the two documents describe the same practice, they are meant to say the same thing.</p>
+
+        <h2>2. What We Mean by Consumer Health Data</h2>
+        <p>These laws define consumer health data broadly: information that identifies you and relates to your past, present, or future physical or mental health. For Sensa, that means the following.</p>
+
+        <h3>Scan results</h3>
+        <ul>
+            <li><strong>Wellness score:</strong> a value from 0 to 100 produced by each vial scan</li>
+            <li><strong>Score range:</strong> In range, Worth watching, or Time to reset</li>
+            <li><strong>Timestamp</strong> of each scan, which together with your other scans forms your history</li>
+            <li><strong>Optical color index:</strong> the color measurement derived from the vial image, which is what the score is calculated from</li>
+            <li><strong>Average blue channel value:</strong> a second measurement taken from the same image analysis</li>
+        </ul>
+
+        <h3>Health profile answers (optional)</h3>
+        <p>If you choose to fill in the health profile, the answers are consumer health data. The fields are age range, biological sex, activity level, diet type, average sleep hours, stress level, smoking status, primary wellness goal, race and ethnicity, alcohol use, body weight range, self-reported health conditions, supplement use, peptide use, oral health, and gut health. Every field is optional, and the sensitive ones include a "prefer not to say" choice.</p>
+
+        <h3>Support messages</h3>
+        <p>When you write to our support assistant, Melissa, or email our team, your message may describe symptoms, a diagnosis, or how you are feeling. We treat that content as consumer health data even though you, not a form, decided what to put in it.</p>
+
+        <h3>What is not consumer health data</h3>
+        <p>Your email address, display name, shipping address, order history, and newsletter sign-up are personal data but not health data on their own. Website analytics collected on our marketing pages, described in Section 6, are not health data and are never joined to any of the information listed above. Our <a href="/privacy-policy">Privacy Policy</a> explains how we handle those categories.</p>
+
+        <h2>3. Where This Data Comes From</h2>
+        <p>Every piece of consumer health data we hold comes from you.</p>
+        <ul>
+            <li><strong>The vial scan your device performs.</strong> The photo of the vial is analyzed on your phone. The image itself stays on your device and is never uploaded to our servers. Only the resulting numbers, the score, range, optical color index, and blue channel value, are sent to your account.</li>
+            <li><strong>Answers you type.</strong> The health profile is filled in by you inside the app.</li>
+            <li><strong>Messages you write.</strong> Support chats and emails are written by you.</li>
+        </ul>
+        <p>We do not buy health data from data brokers, we do not collect it from other apps or devices, and we do not infer health conditions about you from your browsing or purchase behavior.</p>
+
+        <h2>4. Why We Collect It</h2>
+        <p>We collect and use consumer health data only for these purposes:</p>
+        <ul>
+            <li><strong>Showing you your results:</strong> your current score, your range, and your history over time in the app</li>
+            <li><strong>Personalizing wellness content:</strong> if you provided health profile answers, we use them to tailor the action plans and suggestions you see</li>
+            <li><strong>Producing your exportable report:</strong> the PDF summary you can download and choose to share with anyone you like, including a healthcare provider</li>
+            <li><strong>Answering support questions:</strong> generating a reply to your message and, if you ask for a person or the assistant flags a concern, letting a member of our team follow up</li>
+            <li><strong>Keeping the service running:</strong> operating, securing, and troubleshooting the app and its infrastructure</li>
+            <li><strong>Meeting legal obligations:</strong> responding to your rights requests and complying with law</li>
+        </ul>
+        <p>We do <strong>not</strong> use consumer health data to advertise to you, to build marketing profiles, to score or rank you for any purpose outside the app, or to train artificial intelligence models. Your scores are calculated by fixed image-analysis rules on your device, not by AI.</p>
+
+        <h2>5. Who Can Receive It</h2>
+        <p>Sensa Wellness has no corporate parent, subsidiaries, or affiliates, so there is no internal sharing beyond our own team. Outside our team, the only recipients are the service providers that run our infrastructure. Each is bound by contract to process data only on our instructions, and each receives only what its function requires.</p>
+        <ul>
+            <li><strong>Google Firebase</strong> (Google LLC) hosts Cloud Firestore and authentication. This is where your account, scan records, and health profile are stored. Firebase can technically access the stored data as the hosting provider, and our security rules restrict reads and writes to the authenticated account that owns the record. See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</li>
+            <li><strong>Vercel Inc.</strong> hosts our website and the server functions that sit between the app and our other providers, and keeps standard server logs. See the <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Vercel Privacy Policy</a>.</li>
+            <li><strong>Anthropic PBC</strong> provides the AI model behind Melissa. It receives <strong>only your support chat text and your first name</strong>. It does not receive your scan results, your health profile, or your email address, and it does not train its models on what is sent through its API. See the <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a>.</li>
+            <li><strong>Resend</strong> delivers the escalation email that is sent when a support conversation is handed to a human. That email contains <strong>the chat transcript together with your name and email address</strong>. See the <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend Privacy Policy</a>.</li>
+        </ul>
+        <p>We may also disclose consumer health data if we are required to by law, such as a valid subpoena or court order, or where disclosure is necessary to protect someone's safety. If we ever receive a legal demand for your health data, we will tell you unless we are legally prohibited from doing so.</p>
+
+        <h2>6. We Do Not Sell Your Consumer Health Data</h2>
+        <p><strong>Sensa Wellness does not sell consumer health data.</strong> We do not exchange it for money or for anything else of value, and we have never done so. Because we do not sell it, we do not collect the signed authorizations that Washington law requires before such a sale, and you will never be asked for one.</p>
+        <p><strong>We do not share consumer health data with advertisers.</strong> There are no advertising networks, remarketing tags, conversion pixels, social media trackers, or data brokers in the Sensa app or on our website.</p>
+        <p>Our marketing website uses <strong>Google Analytics 4</strong> to count visits and see which articles people read. That is website measurement, and it is limited to the marketing site. Google Analytics is not present in the Sensa app, and it never receives scan results, health profile answers, or support chat contents. IP addresses are truncated by Google, and ad personalization, Google Signals, and advertising reporting features are not used. You can opt out of it with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out browser add-on</a>, with your browser's tracking protection, or with a content blocker.</p>
+
+        <h2>7. Consent and How to Withdraw It</h2>
+        <p>Collecting and storing your scan results is part of delivering the app you asked us for, and it is limited to the purposes listed in Section 4.</p>
+        <p>The <strong>health profile is collected only with your affirmative opt-in</strong>. You choose to open it, you choose which questions to answer, and you can skip all of them. Nothing in the scanning experience requires it.</p>
+        <p>You can <strong>withdraw your consent at any time</strong>:</p>
+        <ul>
+            <li>Delete your health profile in the app to remove those answers</li>
+            <li>Go to <strong>Profile &rarr; Delete Account &amp; Data</strong> to delete your account, your scan history, and your profile together</li>
+            <li>Email <a href="mailto:info@sensawellness.org">info@sensawellness.org</a> and ask us to do it for you</li>
+        </ul>
+        <p>Withdrawing consent stops any further collection or use of that data. It does not undo processing that already lawfully took place before you withdrew, and it does not affect records we are required to keep by law, such as order and tax records, which contain no health data.</p>
+
+        <h2>8. We Do Not Use Geofencing</h2>
+        <p><strong>Sensa Wellness does not use geofences.</strong> We do not create virtual boundaries around health care facilities, pharmacies, clinics, or any other location. We do not use your location to identify you, track you, send you advertising or notifications, or collect any data about you.</p>
+
+        <h2>9. Your Rights</h2>
+        <p>If you are a resident of Washington, Nevada, or another state with a consumer health data law, and in practice for anyone who asks us, you have the following rights.</p>
+        <ul>
+            <li><strong>Right to know and access:</strong> ask for confirmation of whether we hold consumer health data about you, get a copy of it, and receive a list of the third parties in Section 5 that have received it, along with contact details for them.</li>
+            <li><strong>Right to withdraw consent:</strong> withdraw your consent to our collection or sharing of consumer health data, as described in Section 7.</li>
+            <li><strong>Right to delete:</strong> ask us to delete your consumer health data. When you do, we delete it from our own systems and <strong>instruct each processor listed in Section 5 to delete their copies as well</strong>, including backups, on their standard deletion schedules. We will tell you if any legal obligation requires us to retain something, and what it is.</li>
+        </ul>
+
+        <h3>How to make a request</h3>
+        <p>Email <a href="mailto:info@sensawellness.org">info@sensawellness.org</a> and tell us what you want. Please write from the email address on your Sensa account, or tell us enough for us to match the request to an account, so we can confirm the request is really yours. We will not charge you for a request, and we will not treat you differently for making one.</p>
+        <p>We will respond <strong>within 30 days</strong>. Where the law allows and the request is complex, we may extend that period once, and we will tell you within the first 30 days that we are doing so and why.</p>
+
+        <h3>If we say no: your appeal</h3>
+        <p>If we decline your request, our reply will explain why. You can appeal by emailing <a href="mailto:info@sensawellness.org?subject=Privacy%20Appeal">info@sensawellness.org</a> with <strong>"Privacy Appeal"</strong> in the subject line. A person who was not involved in the original decision will review it, and we will write back within a reasonable period with our decision and the reasoning behind it. If we still deny the request, we will tell you how to complain to your state regulator.</p>
+
+        <h3>Complaining to your attorney general</h3>
+        <p>You can complain to a regulator at any point, and you do not have to appeal to us first.</p>
+        <ul>
+            <li><strong>Washington residents:</strong> the Washington My Health My Data Act is enforced under the state Consumer Protection Act. You can file a complaint with the <a href="https://www.atg.wa.gov/file-complaint" target="_blank" rel="noopener">Washington State Attorney General</a>.</li>
+            <li><strong>Nevada residents:</strong> you can file a complaint with the <a href="https://ag.nv.gov/Complaints/File_Complaint/" target="_blank" rel="noopener">Nevada Attorney General</a>.</li>
+        </ul>
+
+        <h2>10. How Long We Keep It</h2>
+        <ul>
+            <li><strong>Scan results and health profile:</strong> kept while your account is active, so your history stays meaningful, and deleted when you delete the record, the profile, or the account.</li>
+            <li><strong>Scan photos:</strong> never uploaded. They stay on your device and are removed when you delete your account in the app or uninstall it.</li>
+            <li><strong>Support chats:</strong> not stored in a database. If a conversation is escalated to a person, the transcript sits in our support mailbox and is <strong>deleted after 90 days</strong>, unless an open request still depends on it. You can ask us to delete it sooner.</li>
+            <li><strong>Inactive accounts:</strong> if you do not sign in for <strong>24 months</strong>, we may delete the account and its data. We will email you a warning first so you can sign in or export your history.</li>
+        </ul>
+        <p>Once data is deleted it cannot be recovered.</p>
+
+        <h2>11. How We Protect It</h2>
+        <p>Consumer health data is encrypted <strong>in transit</strong> with TLS and <strong>at rest</strong> on Google's servers. Firebase Security Rules restrict every record to the authenticated account that owns it, so no other user can read or change your data, and no member of our team outside of authorized administrators can reach your personal records. We collect the minimum we need for the purposes in Section 4.</p>
+        <p><strong>Security incidents.</strong> If we discover a breach of security affecting your unencrypted personal or health data, we will notify affected users <strong>without unreasonable delay and no later than 60 days after discovery</strong>, describing what happened, what data was involved, and what you can do. Where the law requires it, we will also notify the Federal Trade Commission, state attorneys general, or other regulators within the timelines they set.</p>
+
+        <h2>12. Children</h2>
+        <p>Sensa Wellness is not directed to children under 13, and we do not knowingly collect consumer health data from them. If you believe a child under 13 has created an account or given us data, email <a href="mailto:info@sensawellness.org">info@sensawellness.org</a> and we will delete it promptly.</p>
+
+        <h2>13. Changes to This Policy</h2>
+        <p>If we change how we handle consumer health data, we will update this page and change the "Last updated" date at the top. We will not use consumer health data we already hold for a materially new purpose without asking for your consent first.</p>
+
+        <h2>14. Contact Us</h2>
+        <p>Questions, requests, and appeals all go to the same place:</p>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:info@sensawellness.org">info@sensawellness.org</a></li>
+            <li><strong>Appeals:</strong> <a href="mailto:info@sensawellness.org?subject=Privacy%20Appeal">info@sensawellness.org</a> with "Privacy Appeal" in the subject line</li>
+            <li><strong>Website:</strong> <a href="https://www.sensawellness.org">sensawellness.org</a></li>
+        </ul>
+        <p>For everything outside consumer health data, see our full <a href="/privacy-policy">Privacy Policy</a>.</p>
+
+    </div>
+
+    <!-- Footer -->
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation tracking as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/how-to">How To</a></li>
+                        <li><a href="https://app.sensawellness.org" target="_blank" rel="noopener">Open the Web App</a></li>
+                        <li><a href="/pay-now">Buy Now</a></li>
+                        <li><a href="/work-with-us">Work With Us</a></li>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/consumer-health-data">Consumer Health Data</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="/what-is-crp">Inflammation Tracking</a></li>
+                        <li><a href="/compare-crp-tests">Wellness Insights</a></li>
+                        <li><a href="/app">Mobile Integration</a></li>
+                        <li><a href="/work-with-us">Community Programs</a></li>
+                        <li><a href="/work-with-us">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">Info@sensawellness.org</div>
+                    <div class="social-links">
+                        <a href="https://instagram.com/sensawellness" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://linkedin.com/company/sensawellness" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@sensawellness" class="social-link" aria-label="YouTube" target="_blank" rel="noopener">
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="wellness-disclaimer">Sensa is a general wellness product intended to support a healthy lifestyle. It is not intended to diagnose, treat, cure, or prevent any disease or medical condition.</p>
+                &copy; 2026 Sensa Wellness. All Rights Reserved. &nbsp;&middot;&nbsp; <a href="/privacy-policy" style="color:rgba(255,255,255,0.4);">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/consumer-health-data" style="color:rgba(255,255,255,0.4);">Consumer Health Data</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
+
+    <script>
+        // Scroll to top button
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTop');
+            if (document.documentElement.scrollTop > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile nav toggle
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+    </script>
+
+<script src="theme-fx.js" defer></script>
+</body>
+</html>

@@ -4,7 +4,7 @@ const base = 'https://www.sensawellness.org/';
 
 const exclude = new Set([
   'admin.html','success.html','chat.html','deck.html','cuvet-animation.html',
-  'start.html','privacy.html'
+  'start.html'
 ]);
 
 const priority = (f) => {
@@ -14,7 +14,7 @@ const priority = (f) => {
   if (f.startsWith('compare-') || f.startsWith('hub-') || f === 'weight-loss.html') return '0.8';
   if (f.startsWith('post-')) return '0.7';
   if (['our-story.html','press-kit.html','work-with-us.html','sitemap-page.html'].includes(f)) return '0.6';
-  if (['privacy-policy.html','terms-of-service.html','delete-account.html'].includes(f)) return '0.3';
+  if (['privacy-policy.html','terms-of-service.html','delete-account.html','consumer-health-data.html'].includes(f)) return '0.3';
   return '0.5';
 };
 const changefreq = (f) => {

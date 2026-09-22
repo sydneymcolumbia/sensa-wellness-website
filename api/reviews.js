@@ -34,12 +34,28 @@ function clean(str, max) {
     .slice(0, max);
 }
 
+// Rate-limit fingerprint. An HMAC keyed with a server-side secret, so a
+// stored ipHash cannot be reversed by brute-forcing the IPv4 address space
+// the way a plain sha256 can.
+//
+// Set IP_HASH_SECRET in Vercel. Until it is set, the key falls back to a
+// constant derived from JWT_SECRET (which already exists in Vercel) so the
+// rate limit keeps working. Changing the key only stops matches against
+// hashes written before the change, which is fine because the rate-limit
+// window is 45 seconds.
+const IP_HASH_KEY =
+  process.env.IP_HASH_SECRET ||
+  crypto
+    .createHash('sha256')
+    .update(`sensa-ip-hash:${process.env.JWT_SECRET || ''}`)
+    .digest();
+
 function hashIp(req) {
   const ip =
     (req.headers['x-forwarded-for'] || '').split(',')[0].trim() ||
     req.socket?.remoteAddress ||
     'unknown';
-  return crypto.createHash('sha256').update(ip).digest('hex');
+  return crypto.createHmac('sha256', IP_HASH_KEY).update(ip).digest('hex');
 }
 
 async function listApproved(res) {

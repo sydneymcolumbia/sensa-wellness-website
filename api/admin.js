@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const admin = require('firebase-admin');
 
 // Initialize Firebase Admin SDK (once across hot reloads)
@@ -17,12 +18,81 @@ const ADMIN_EMAILS = [
   'ryan@sensawellness.org',
 ];
 
+// Optional second factor gate. Off by default so nobody is locked out before
+// MFA exists in Firebase. To turn it on:
+//   1. Firebase console > Authentication > Sign-in method > Multi-factor
+//      authentication: enable SMS or TOTP and enroll every admin account.
+//   2. Set ADMIN_REQUIRE_MFA=true in the Vercel project environment and
+//      redeploy. ID tokens from sessions that did not complete a second
+//      factor are then rejected with 403.
+const REQUIRE_MFA = process.env.ADMIN_REQUIRE_MFA === 'true';
+
+// Firestore document ids as the app writes them (Firebase Auth uids).
+const DOC_ID_RE = /^[A-Za-z0-9_-]{1,128}$/;
+
+// Defensive output sanitization. The dashboard escapes on render, but these
+// values are user controlled (set from the app), so strip markup and control
+// characters (Unicode category Cc) here as well and cap lengths.
+function cleanString(value, max) {
+  if (value == null) return '';
+  let s;
+  if (Array.isArray(value)) s = value.map(v => (v == null ? '' : String(v))).join(', ');
+  else if (typeof value === 'object') s = '';
+  else s = String(value);
+  return s
+    .replace(/[<>]/g, '')
+    .replace(/\p{Cc}/gu, '')
+    .trim()
+    .slice(0, max);
+}
+
+function cleanNumber(value) {
+  const n = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function hashIp(req) {
+  const fwd = req.headers['x-forwarded-for'];
+  const ip = (typeof fwd === 'string' && fwd.split(',')[0].trim())
+    || req.headers['x-real-ip']
+    || (req.socket && req.socket.remoteAddress)
+    || 'unknown';
+  return crypto.createHash('sha256').update(String(ip)).digest('hex');
+}
+
+// Audit log: one adminAccess document per authorized request. A logging
+// failure is reported but never blocks the response.
+async function writeAuditLog(req, entry) {
+  try {
+    await db.collection('adminAccess').add({
+      ...entry,
+      route: 'admin',
+      method: req.method,
+      ipHash: hashIp(req),
+      timestamp: admin.firestore.FieldValue.serverTimestamp(),
+    });
+  } catch (err) {
+    console.error('Admin audit log write failed:', err);
+  }
+}
+
+function getQuery(req) {
+  if (req.query && typeof req.query === 'object') return req.query;
+  try {
+    return Object.fromEntries(new URL(req.url || '/', 'http://localhost').searchParams);
+  } catch (e) {
+    return {};
+  }
+}
+
 module.exports = async function handler(req, res) {
   // admin.html is served from this same origin; do not open the endpoint to
   // every site on the web.
   res.setHeader('Access-Control-Allow-Origin', 'https://www.sensawellness.org');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
+  // Responses carry personal data; never let a browser or proxy cache them.
+  res.setHeader('Cache-Control', 'no-store');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
@@ -47,43 +117,83 @@ module.exports = async function handler(req, res) {
     return res.status(403).json({ error: 'Access denied' });
   }
 
-  try {
-    // Fetch all users and scans in parallel
-    const [usersSnap, scansSnap] = await Promise.all([
-      db.collection('users').get(),
-      db.collection('scans').get(),
-    ]);
+  if (REQUIRE_MFA && !(decodedToken.firebase && decodedToken.firebase.sign_in_second_factor)) {
+    return res.status(403).json({ error: 'Multi-factor authentication required' });
+  }
 
-    const users = usersSnap.docs.map(doc => {
-      const d = doc.data();
+  // Optional ?uid=<uid> narrows the export to a single user so the dashboard
+  // can open one profile without pulling every record.
+  const rawUid = getQuery(req).uid;
+  let uid = null;
+  if (rawUid !== undefined) {
+    if (typeof rawUid !== 'string' || !DOC_ID_RE.test(rawUid)) {
+      return res.status(400).json({ error: 'Invalid uid' });
+    }
+    uid = rawUid;
+  }
+
+  const audit = {
+    adminEmail: decodedToken.email,
+    action: uid ? 'user' : 'list',
+    uid: uid,
+    userCount: 0,
+    scanCount: 0,
+  };
+
+  try {
+    let userDocs;
+    let scanDocs;
+    if (uid) {
+      const [userSnap, scansSnap] = await Promise.all([
+        db.collection('users').doc(uid).get(),
+        db.collection('scans').where('userId', '==', uid).get(),
+      ]);
+      if (!userSnap.exists) {
+        await writeAuditLog(req, { ...audit, result: 'not_found' });
+        return res.status(404).json({ error: 'User not found' });
+      }
+      userDocs = [userSnap];
+      scanDocs = scansSnap.docs;
+    } else {
+      // Fetch all users and scans in parallel
+      const [usersSnap, scansSnap] = await Promise.all([
+        db.collection('users').get(),
+        db.collection('scans').get(),
+      ]);
+      userDocs = usersSnap.docs;
+      scanDocs = scansSnap.docs;
+    }
+
+    const users = userDocs.map(doc => {
+      const d = doc.data() || {};
       return {
         uid: doc.id,
-        displayName: d.displayName || '',
-        email: d.email || '',
+        displayName: cleanString(d.displayName, 80),
+        email: cleanString(d.email, 254),
         createdAt: d.createdAt?.toDate?.()?.toISOString() || null,
-        reminderInterval: d.reminderInterval || 'none',
-        healthIntakeComplete: d.healthIntakeComplete || false,
-        ageRange: d.ageRange || null,
-        biologicalSex: d.biologicalSex || null,
-        activityLevel: d.activityLevel || null,
-        dietType: d.dietType || null,
-        sleepHours: d.sleepHours || null,
-        stressLevel: d.stressLevel || null,
-        smokingStatus: d.smokingStatus || null,
-        primaryGoal: d.primaryGoal || null,
-        healthConditions: d.healthConditions || null,
+        reminderInterval: cleanString(d.reminderInterval, 40) || 'none',
+        healthIntakeComplete: d.healthIntakeComplete === true,
+        ageRange: cleanString(d.ageRange, 60) || null,
+        biologicalSex: cleanString(d.biologicalSex, 60) || null,
+        activityLevel: cleanString(d.activityLevel, 60) || null,
+        dietType: cleanString(d.dietType, 120) || null,
+        sleepHours: cleanString(d.sleepHours, 60) || null,
+        stressLevel: cleanString(d.stressLevel, 60) || null,
+        smokingStatus: cleanString(d.smokingStatus, 60) || null,
+        primaryGoal: cleanString(d.primaryGoal, 200) || null,
+        healthConditions: cleanString(d.healthConditions, 500) || null,
       };
     });
 
-    const scans = scansSnap.docs.map(doc => {
-      const d = doc.data();
+    const scans = scanDocs.map(doc => {
+      const d = doc.data() || {};
       return {
         id: doc.id,
-        userId: d.userId || '',
-        score: d.score || 0,
-        label: d.label || '',
-        opticalScore: d.opticalScore || d.crpMgDl || 0,
-        avgBlue: d.avgBlue || 0,
+        userId: cleanString(d.userId, 128),
+        score: cleanNumber(d.score),
+        label: cleanString(d.label, 20),
+        opticalScore: cleanNumber(d.opticalScore) || cleanNumber(d.crpMgDl),
+        avgBlue: cleanNumber(d.avgBlue),
         timestamp: d.timestamp?.toDate?.()?.toISOString() || null,
       };
     });
@@ -125,7 +235,11 @@ module.exports = async function handler(req, res) {
 
     const recentScans = scans
       .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-      .slice(0, 50);
+      .slice(0, uid ? 500 : 50);
+
+    audit.userCount = totalUsers;
+    audit.scanCount = totalScans;
+    await writeAuditLog(req, audit);
 
     return res.status(200).json({
       stats: {
@@ -142,6 +256,7 @@ module.exports = async function handler(req, res) {
     });
   } catch (err) {
     console.error('Admin API error:', err);
+    await writeAuditLog(req, { ...audit, result: 'error' });
     return res.status(500).json({ error: 'Internal server error' });
   }
 };

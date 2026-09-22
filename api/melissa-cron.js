@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const jwt = require('jsonwebtoken');
 const { Resend } = require('resend');
@@ -8,6 +9,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // under a different address.
 const MELISSA_FROM = process.env.MELISSA_FROM || 'Melissa at Sensa <melissa@sensawellness.org>';
 
+// Stripe price id to product name. Kept in sync with melissa.js.
 const PRICE_NAMES = {
   'price_1TGmnPKrHFkD3MC35eXx5OM5': '1-Test Kit',
   'price_1TGmoOKrHFkD3MC33tp7m4LU': '3-Test Pack',
@@ -15,7 +17,18 @@ const PRICE_NAMES = {
 };
 
 module.exports = async function handler(req, res) {
-  if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
+  // Refuse to run at all if the secret is not configured, so a missing env var
+  // can never be matched by an empty or "undefined" header.
+  if (!process.env.CRON_SECRET) {
+    console.error('Melissa cron: CRON_SECRET is not configured');
+    return res.status(500).json({ error: 'Server misconfigured' });
+  }
+
+  // Constant-time comparison. timingSafeEqual requires equal-length buffers,
+  // so a length mismatch is rejected up front.
+  const expected = Buffer.from(`Bearer ${process.env.CRON_SECRET}`, 'utf8');
+  const provided = Buffer.from(String(req.headers.authorization || ''), 'utf8');
+  if (provided.length !== expected.length || !crypto.timingSafeEqual(provided, expected)) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
@@ -57,10 +70,13 @@ module.exports = async function handler(req, res) {
       month: 'long', day: 'numeric', year: 'numeric',
     });
 
+    // The link token carries only the checkout session id. /api/melissa looks
+    // up the name, email, items, and order date from Stripe on each request,
+    // so no customer data travels in the URL or email.
     const token = jwt.sign(
-      { name: firstName, email, sessionId: session.id, items, orderDate },
+      { sid: session.id },
       process.env.JWT_SECRET,
-      { expiresIn: '30d' }
+      { expiresIn: '7d' }
     );
 
     const chatUrl = `https://sensawellness.org/chat?t=${token}`;

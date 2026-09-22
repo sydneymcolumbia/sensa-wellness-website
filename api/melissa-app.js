@@ -21,6 +21,71 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // under a different address.
 const MELISSA_FROM = process.env.MELISSA_FROM || 'Melissa at Sensa <melissa@sensawellness.org>';
 
+// Message validation limits. Anything outside these bounds is rejected with a
+// 400 before the request reaches the AI provider.
+const MAX_MESSAGES = 30;
+const MAX_CONTENT_LENGTH = 2000;
+
+// Returns a fresh array of { role, content } objects with trimmed content, or
+// null if the payload is not a valid conversation. Only the sanitized array is
+// ever passed to Anthropic or written into the escalation email.
+function sanitizeMessages(messages) {
+  if (!Array.isArray(messages) || messages.length < 1 || messages.length > MAX_MESSAGES) return null;
+  const clean = [];
+  for (const m of messages) {
+    if (!m || typeof m !== 'object' || Array.isArray(m)) return null;
+    if (m.role !== 'user' && m.role !== 'assistant') return null;
+    if (typeof m.content !== 'string') return null;
+    const content = m.content.trim();
+    if (content.length < 1 || content.length > MAX_CONTENT_LENGTH) return null;
+    clean.push({ role: m.role, content });
+  }
+  if (clean[clean.length - 1].role !== 'user') return null;
+  return clean;
+}
+
+// Escapes text for safe interpolation into email HTML.
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Firestore-backed fixed-window rate limiter: RATE_LIMIT_MAX requests per
+// RATE_LIMIT_WINDOW_MS per key. Intentionally duplicated in melissa.js:
+// Vercel turns every module under api/ into a public route, so a shared helper
+// file cannot live in this directory. Keep both copies identical.
+const RATE_LIMIT_MAX = 20;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
+async function checkRateLimit(key) {
+  try {
+    const db = admin.firestore();
+    const ref = db.collection('rateLimits').doc(key);
+    return await db.runTransaction(async (tx) => {
+      const snap = await tx.get(ref);
+      const now = Date.now();
+      const data = snap.exists ? snap.data() : null;
+      if (!data || typeof data.windowStart !== 'number' || now - data.windowStart >= RATE_LIMIT_WINDOW_MS) {
+        tx.set(ref, { count: 1, windowStart: now });
+        return true;
+      }
+      if (data.count >= RATE_LIMIT_MAX) return false;
+      tx.update(ref, { count: data.count + 1 });
+      return true;
+    });
+  } catch (err) {
+    // A limiter outage must not take the assistant down. Fail open and log.
+    console.warn('Melissa rate limiter unavailable, allowing request:', err.message);
+    return true;
+  }
+}
+
+const RATE_LIMIT_MESSAGE = 'You have sent quite a few messages in a short time. Please wait a few minutes and try again, or email info@sensawellness.org and a member of our team will help you directly.';
+
 // Server-side safety net for self-harm and crisis language. The system prompt
 // tells the model how to respond; this guarantees the resources are present
 // even if the model drifts or the JSON parse falls back to raw text.
@@ -156,26 +221,35 @@ module.exports = async function handler(req, res) {
   const idToken = authHeader.slice(7);
   let displayName = 'there';
   let email = '';
+  let uid = '';
 
   try {
     const decoded = await admin.auth().verifyIdToken(idToken);
     displayName = decoded.name?.split(' ')[0] || 'there';
     email = decoded.email || '';
+    uid = decoded.uid;
   } catch (err) {
     console.error('Melissa app token verification failed:', err.message);
     return res.status(401).json({ error: 'Invalid token' });
   }
 
-  const { messages } = req.body;
-  if (!Array.isArray(messages) || messages.length === 0) {
-    return res.status(400).json({ error: 'Missing messages' });
+  const messages = sanitizeMessages((req.body || {}).messages);
+  if (!messages) {
+    return res.status(400).json({ error: 'Invalid messages' });
+  }
+
+  const allowed = await checkRateLimit(`melissa-app_${uid}`);
+  if (!allowed) {
+    return res.status(429).json({ error: RATE_LIMIT_MESSAGE });
   }
 
   const crisis = CRISIS_PATTERN.test(latestUserText(messages));
   // Only the first name is sent to the AI provider. The email stays server-side
   // and is used solely for the escalation email to the support inbox.
+  // Function replacement so that "$" sequences in the name are inserted
+  // literally instead of being interpreted as replacement patterns.
   const systemPrompt = SYSTEM_PROMPT
-    .replace('{displayName}', displayName)
+    .replace('{displayName}', () => displayName)
     + (crisis ? CRISIS_INSTRUCTION : '');
 
   try {
@@ -206,7 +280,7 @@ module.exports = async function handler(req, res) {
 
     if (parsed.escalate) {
       const transcript = messages
-        .map(m => `${m.role === 'user' ? displayName : 'Melissa'}: ${m.content}`)
+        .map(m => escapeHtml(`${m.role === 'user' ? displayName : 'Melissa'}: ${m.content}`))
         .join('\n\n');
 
       // A failed alert email must not turn Melissa's reply into a 500.
@@ -220,8 +294,8 @@ module.exports = async function handler(req, res) {
               <h2 style="color:#fff;margin:0;font-size:1.1rem;">App User Needs Personal Follow-Up Within 24 Hours</h2>
             </div>
             <div style="background:#f9f9f9;padding:24px;border-radius:0 0 8px 8px;border:1px solid #eee;">
-              <p style="margin:0 0 8px;"><strong>Name:</strong> ${displayName}</p>
-              <p style="margin:0 0 24px;"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+              <p style="margin:0 0 8px;"><strong>Name:</strong> ${escapeHtml(displayName)}</p>
+              <p style="margin:0 0 24px;"><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
               <h3 style="margin:0 0 12px;font-size:0.95rem;color:#555;text-transform:uppercase;letter-spacing:0.05em;">Conversation Transcript</h3>
               <pre style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:16px;white-space:pre-wrap;font-family:monospace;font-size:0.85rem;line-height:1.7;color:#333;">${transcript}</pre>
             </div>

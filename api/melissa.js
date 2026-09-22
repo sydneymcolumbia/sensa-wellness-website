@@ -1,9 +1,93 @@
 const Anthropic = require('@anthropic-ai/sdk');
+const admin = require('firebase-admin');
 const jwt = require('jsonwebtoken');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { Resend } = require('resend');
+
+// Firestore is used only for the per-session rate limiter below (same init as
+// admin.js, reviews.js, and melissa-app.js).
+if (!admin.apps.length) {
+  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    projectId: 'sensa-app-7b2b7',
+  });
+}
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Stripe price id to product name. Kept in sync with melissa-cron.js.
+const PRICE_NAMES = {
+  'price_1TGmnPKrHFkD3MC35eXx5OM5': '1-Test Kit',
+  'price_1TGmoOKrHFkD3MC33tp7m4LU': '3-Test Pack',
+  'price_1TGmyGKrHFkD3MC3MlqR1Z2d': '4-Test Pack',
+};
+
+// Message validation limits. Anything outside these bounds is rejected with a
+// 400 before the request reaches the AI provider.
+const MAX_MESSAGES = 30;
+const MAX_CONTENT_LENGTH = 2000;
+
+// Returns a fresh array of { role, content } objects with trimmed content, or
+// null if the payload is not a valid conversation. Only the sanitized array is
+// ever passed to Anthropic or written into the escalation email.
+function sanitizeMessages(messages) {
+  if (!Array.isArray(messages) || messages.length < 1 || messages.length > MAX_MESSAGES) return null;
+  const clean = [];
+  for (const m of messages) {
+    if (!m || typeof m !== 'object' || Array.isArray(m)) return null;
+    if (m.role !== 'user' && m.role !== 'assistant') return null;
+    if (typeof m.content !== 'string') return null;
+    const content = m.content.trim();
+    if (content.length < 1 || content.length > MAX_CONTENT_LENGTH) return null;
+    clean.push({ role: m.role, content });
+  }
+  if (clean[clean.length - 1].role !== 'user') return null;
+  return clean;
+}
+
+// Escapes text for safe interpolation into email HTML.
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Firestore-backed fixed-window rate limiter: RATE_LIMIT_MAX requests per
+// RATE_LIMIT_WINDOW_MS per key. Intentionally duplicated in melissa-app.js:
+// Vercel turns every module under api/ into a public route, so a shared helper
+// file cannot live in this directory. Keep both copies identical.
+const RATE_LIMIT_MAX = 20;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
+async function checkRateLimit(key) {
+  try {
+    const db = admin.firestore();
+    const ref = db.collection('rateLimits').doc(key);
+    return await db.runTransaction(async (tx) => {
+      const snap = await tx.get(ref);
+      const now = Date.now();
+      const data = snap.exists ? snap.data() : null;
+      if (!data || typeof data.windowStart !== 'number' || now - data.windowStart >= RATE_LIMIT_WINDOW_MS) {
+        tx.set(ref, { count: 1, windowStart: now });
+        return true;
+      }
+      if (data.count >= RATE_LIMIT_MAX) return false;
+      tx.update(ref, { count: data.count + 1 });
+      return true;
+    });
+  } catch (err) {
+    // A limiter outage must not take the assistant down. Fail open and log.
+    console.warn('Melissa rate limiter unavailable, allowing request:', err.message);
+    return true;
+  }
+}
+
+const RATE_LIMIT_MESSAGE = 'You have sent quite a few messages in a short time. Please wait a few minutes and try again, or email info@sensawellness.org and a member of our team will help you directly.';
 
 // Resend only delivers from a verified domain. Override once one is verified
 // under a different address.
@@ -133,25 +217,79 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { token, messages } = req.body;
+  const { token, messages: rawMessages } = req.body || {};
 
-  if (!token || !Array.isArray(messages)) {
-    return res.status(400).json({ error: 'Missing token or messages' });
+  if (!token || typeof token !== 'string') {
+    return res.status(400).json({ error: 'Missing token' });
   }
 
-  let customer;
+  const messages = sanitizeMessages(rawMessages);
+  if (!messages) {
+    return res.status(400).json({ error: 'Invalid messages' });
+  }
+
+  let payload;
   try {
-    customer = jwt.verify(token, process.env.JWT_SECRET);
+    payload = jwt.verify(token, process.env.JWT_SECRET);
   } catch (err) {
     return res.status(401).json({ error: 'Invalid or expired session' });
   }
 
+  // Resolve the customer context. New tokens carry only the Stripe checkout
+  // session id and everything else is looked up fresh from Stripe on every
+  // request (nothing is cached).
+  let customer;
+  if (payload && typeof payload.sid === 'string' && payload.sid) {
+    let session;
+    try {
+      session = await stripe.checkout.sessions.retrieve(payload.sid, { expand: ['line_items'] });
+    } catch (err) {
+      if (err && err.code === 'resource_missing') {
+        return res.status(401).json({ error: 'Invalid or expired session' });
+      }
+      console.error('Melissa Stripe lookup failed:', err.message);
+      return res.status(500).json({ error: 'Something went wrong' });
+    }
+
+    const fullName = session.customer_details?.name || '';
+    const lineItems = session.line_items?.data || [];
+    customer = {
+      name: fullName.split(' ')[0] || 'there',
+      email: session.customer_details?.email || '',
+      sessionId: session.id,
+      items: lineItems.map(item => PRICE_NAMES[item.price?.id] || item.description || 'Sensa Kit').join(', ') || 'Sensa Kit',
+      orderDate: new Date(session.created * 1000).toLocaleDateString('en-US', {
+        month: 'long', day: 'numeric', year: 'numeric',
+      }),
+    };
+  } else if (payload && typeof payload.name === 'string' && typeof payload.email === 'string') {
+    // Legacy token format: the cron used to sign the full customer context
+    // with a 30-day expiry. The last of those tokens was issued on 2026-09-22,
+    // so this branch can be removed after 2026-10-22.
+    customer = {
+      name: payload.name,
+      email: payload.email,
+      sessionId: String(payload.sessionId || ''),
+      items: String(payload.items || ''),
+      orderDate: String(payload.orderDate || ''),
+    };
+  } else {
+    return res.status(401).json({ error: 'Invalid or expired session' });
+  }
+
+  const allowed = await checkRateLimit(`melissa-web_${customer.sessionId}`);
+  if (!allowed) {
+    return res.status(429).json({ error: RATE_LIMIT_MESSAGE });
+  }
+
   const crisis = CRISIS_PATTERN.test(latestUserText(messages));
+  // Function replacements so that "$" sequences in customer data are inserted
+  // literally instead of being interpreted as replacement patterns.
   const systemPrompt = SYSTEM_PROMPT
-    .replace('{customerName}', customer.name)
-    .replace('{sessionId}', customer.sessionId)
-    .replace('{items}', customer.items)
-    .replace('{orderDate}', customer.orderDate)
+    .replace('{customerName}', () => customer.name)
+    .replace('{sessionId}', () => customer.sessionId)
+    .replace('{items}', () => customer.items)
+    .replace('{orderDate}', () => customer.orderDate)
     + (crisis ? CRISIS_INSTRUCTION : '');
 
   try {
@@ -179,7 +317,7 @@ module.exports = async function handler(req, res) {
 
     if (parsed.escalate) {
       const transcript = messages
-        .map(m => `${m.role === 'user' ? customer.name : 'Melissa'}: ${m.content}`)
+        .map(m => escapeHtml(`${m.role === 'user' ? customer.name : 'Melissa'}: ${m.content}`))
         .join('\n\n');
 
       // A failed alert email must not turn Melissa's reply into a 500.
@@ -193,11 +331,11 @@ module.exports = async function handler(req, res) {
               <h2 style="color:#fff;margin:0;font-size:1.1rem;">Customer Needs Personal Follow-Up Within 24 Hours</h2>
             </div>
             <div style="background:#f9f9f9;padding:24px;border-radius:0 0 8px 8px;border:1px solid #eee;">
-              <p style="margin:0 0 8px;"><strong>Name:</strong> ${customer.name}</p>
-              <p style="margin:0 0 8px;"><strong>Email:</strong> <a href="mailto:${customer.email}">${customer.email}</a></p>
-              <p style="margin:0 0 8px;"><strong>Order ID:</strong> ${customer.sessionId}</p>
-              <p style="margin:0 0 8px;"><strong>Items:</strong> ${customer.items}</p>
-              <p style="margin:0 0 24px;"><strong>Order Date:</strong> ${customer.orderDate}</p>
+              <p style="margin:0 0 8px;"><strong>Name:</strong> ${escapeHtml(customer.name)}</p>
+              <p style="margin:0 0 8px;"><strong>Email:</strong> <a href="mailto:${escapeHtml(customer.email)}">${escapeHtml(customer.email)}</a></p>
+              <p style="margin:0 0 8px;"><strong>Order ID:</strong> ${escapeHtml(customer.sessionId)}</p>
+              <p style="margin:0 0 8px;"><strong>Items:</strong> ${escapeHtml(customer.items)}</p>
+              <p style="margin:0 0 24px;"><strong>Order Date:</strong> ${escapeHtml(customer.orderDate)}</p>
               <h3 style="margin:0 0 12px;font-size:0.95rem;color:#555;text-transform:uppercase;letter-spacing:0.05em;">Conversation Transcript</h3>
               <pre style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:16px;white-space:pre-wrap;font-family:monospace;font-size:0.85rem;line-height:1.7;color:#333;">${transcript}</pre>
             </div>
@@ -210,7 +348,7 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    return res.status(200).json({ message: parsed.message, escalate: parsed.escalate });
+    return res.status(200).json({ message: parsed.message, escalate: parsed.escalate, customerName: customer.name });
   } catch (err) {
     console.error('Melissa error:', err.message);
     return res.status(500).json({ error: 'Something went wrong' });

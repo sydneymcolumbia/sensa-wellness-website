@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sensa-v1';
+const CACHE_NAME = 'sensa-v2';
 const PRECACHE_URLS = [
     '/',
     '/index.html',
@@ -26,18 +26,53 @@ self.addEventListener('activate', event => {
     );
 });
 
+// Only same-origin, unauthenticated, non-JSON, non-API, non-admin GETs are
+// ever handled by this worker. Everything else is left to the browser so no
+// user data (API JSON, admin pages, Google/Firebase responses) can land in
+// Cache Storage.
+function shouldHandle(request) {
+    if (request.method !== 'GET') return false;
+
+    let url;
+    try {
+        url = new URL(request.url);
+    } catch (e) {
+        return false;
+    }
+    if (url.origin !== self.location.origin) return false;
+    if (url.pathname.startsWith('/api/')) return false;
+    if (url.pathname.startsWith('/admin')) return false;
+
+    if (request.headers.has('Authorization')) return false;
+
+    const accept = (request.headers.get('Accept') || '').toLowerCase();
+    if (accept.includes('application/json') && !accept.includes('text/html')) return false;
+
+    return true;
+}
+
+// Cache only plain same-origin 200 responses that the server has not
+// marked no-store.
+function isCacheable(response) {
+    if (!response || response.status !== 200 || response.type !== 'basic') return false;
+    const cacheControl = (response.headers.get('Cache-Control') || '').toLowerCase();
+    if (cacheControl.includes('no-store')) return false;
+    return true;
+}
+
 self.addEventListener('fetch', event => {
-    if (event.request.method !== 'GET') return;
+    const request = event.request;
+    if (!shouldHandle(request)) return;
 
     event.respondWith(
-        fetch(event.request)
+        fetch(request)
             .then(response => {
-                if (response.ok) {
+                if (isCacheable(response)) {
                     const clone = response.clone();
-                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                    caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
                 }
                 return response;
             })
-            .catch(() => caches.match(event.request))
+            .catch(() => caches.match(request))
     );
 });

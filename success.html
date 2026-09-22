@@ -14,14 +14,7 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-X24JYKBTXB');
-        // Google Ads purchase conversion disabled until a real Conversion ID exists.
-        // To enable: replace AW-XXXXXXXXXX/CONVERSION_LABEL with your values and uncomment.
-        // gtag('config', 'AW-XXXXXXXXXX');
-        // gtag('event', 'conversion', {
-        //     'send_to': 'AW-XXXXXXXXXX/CONVERSION_LABEL',
-        //     'transaction_id': ''
-        // });
+        gtag('config', 'G-X24JYKBTXB', { allow_google_signals: false, allow_ad_personalization_signals: false });
         // GA4 purchase event
         gtag('event', 'purchase', {
             currency: 'USD',

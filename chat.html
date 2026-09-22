@@ -314,28 +314,24 @@
     const input = document.getElementById('chatInput');
     const sendBtn = document.getElementById('sendBtn');
 
+    // The link token lives only in this closure variable for the life of the
+    // page. It is never written to localStorage, sessionStorage, cookies, or
+    // any URL other than the JSON body of the POST to /api/melissa.
     let token = null;
-    let customerName = '';
     let conversationHistory = [];
     let isLoading = false;
 
-    // Decode JWT payload (client-side, no verification needed)
-    function decodeToken(t) {
-        try {
-            return JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
-        } catch {
-            return null;
-        }
-    }
-
-    // Get token from URL
+    // Read the token from the URL, then scrub it from the address bar and
+    // browser history so it cannot leak through history, bookmarks, referrers,
+    // or shoulder surfing. The token no longer carries any customer data, so
+    // nothing is decoded client-side.
     const params = new URLSearchParams(window.location.search);
     token = params.get('t');
-
-    if (token) {
-        const payload = decodeToken(token);
-        if (payload) {
-            customerName = payload.name || '';
+    if (window.location.search) {
+        try {
+            history.replaceState(null, '', '/chat');
+        } catch (e) {
+            // Ignore: some embedded browsers block history changes.
         }
     }
 
@@ -417,7 +413,22 @@
 
             removeTyping();
 
-            if (!resp.ok) throw new Error('Request failed');
+            if (!resp.ok) {
+                let serverMessage = '';
+                try {
+                    const errData = await resp.json();
+                    serverMessage = errData && typeof errData.error === 'string' ? errData.error : '';
+                } catch (e) {
+                    serverMessage = '';
+                }
+                if (resp.status === 429) {
+                    throw new Error(serverMessage || 'Please wait a few minutes before sending more messages.');
+                }
+                if (resp.status === 401) {
+                    throw new Error('This chat link has expired. Please use the link from your most recent email from Melissa, or email info@sensawellness.org.');
+                }
+                throw new Error('Request failed');
+            }
 
             const data = await resp.json();
 
@@ -432,7 +443,9 @@
             removeTyping();
             const errRow = document.createElement('div');
             errRow.className = 'error-notice';
-            errRow.textContent = 'Something went wrong. Please try again.';
+            errRow.textContent = (err && err.message && err.message !== 'Request failed')
+                ? err.message
+                : 'Something went wrong. Please try again.';
             messagesEl.appendChild(errRow);
             scrollToBottom();
             // Remove from history since it failed
@@ -445,12 +458,13 @@
         input.focus();
     }
 
-    // Opening message
-    const greeting = customerName
-        ? `Hi ${customerName}! My name is Melissa, and I'm on the Sensa customer care team. I wanted to personally check in now that your order has arrived. How is everything going? Do you have any questions about getting started with your kit?`
-        : `Hi there! My name is Melissa, and I'm on the Sensa customer care team. I wanted to personally check in and see how your order went. Is there anything I can help you with?`;
+    // Opening message. The greeting is generic on purpose: the token no longer
+    // carries the customer's name, so Melissa uses it in her replies instead.
+    const greeting = token
+        ? `Hi there! My name is Melissa, and I'm on the Sensa customer care team. I wanted to personally check in now that your order has arrived. How is everything going? Do you have any questions about getting started with your kit?`
+        : `Hi there! My name is Melissa, and I'm on the Sensa customer care team. This chat opens from the personal link in your check-in email. If you have questions in the meantime, email info@sensawellness.org and we will be happy to help.`;
 
-    // Show the greeting in the UI but don't add it to history —
+    // Show the greeting in the UI but don't add it to history.
     // Claude API requires the first message to be from the user.
     addMessage('melissa', greeting);
 

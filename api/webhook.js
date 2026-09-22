@@ -80,7 +80,6 @@ module.exports = async function handler(req, res) {
     const session = event.data.object;
     console.log('Order completed:', {
       sessionId: session.id,
-      customerEmail: session.customer_details?.email,
       amountTotal: session.amount_total,
       currency: session.currency,
       paymentStatus: session.payment_status,
