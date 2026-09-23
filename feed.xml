@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Your Gut Microbiome May Predict Inflammation Better Than Your Age, New Research Finds</title>
+        <link>https://www.sensawellness.org/post-gut-microbiome-inflammation-age</link>
+        <guid>https://www.sensawellness.org/post-gut-microbiome-inflammation-age</guid>
+        <description>A September 2026 Nature Communications study of 1,199 adults found that gut microbiota composition predicts systemic inflammation and disease risk more accurately than chronological age. Here is what the science means for CRP tracking and your health.</description>
+        <category>News</category>
+    </item>
     <item>
         <title>Does Vitamin K Reduce Inflammation? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-does-vitamin-k-reduce-inflammation</link>
