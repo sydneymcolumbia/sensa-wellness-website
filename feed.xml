@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Leaky Gut and Systemic Inflammation: What Science Says About Intestinal Permeability</title>
+        <link>https://www.sensawellness.org/post-leaky-gut-inflammation</link>
+        <guid>https://www.sensawellness.org/post-leaky-gut-inflammation</guid>
+        <description>When the gut barrier becomes permeable, bacterial LPS can enter the bloodstream and activate immune receptors that raise CRP and drive low-grade chronic inflammation. Here is what the research says about intestinal permeability and what you can do about it.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>Your Gut Microbiome May Predict Inflammation Better Than Your Age, New Research Finds</title>
         <link>https://www.sensawellness.org/post-gut-microbiome-inflammation-age</link>
