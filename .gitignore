@@ -6,3 +6,4 @@ scripts/customers.json
 # Customer-specific emails (real names/addresses; repo is public)
 emails/late-order-*
 emails/shipped-*
+emails/delayed-transit-*
