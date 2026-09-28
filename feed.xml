@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Sep 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 07:12:05 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study: CRP Reveals Stroke Recurrence Risk That Cholesterol Tests Miss</title>
+        <link>https://www.sensawellness.org/post-crp-stroke-recurrence-risk</link>
+        <guid>https://www.sensawellness.org/post-crp-stroke-recurrence-risk</guid>
+        <description>A September 2026 JAHA study found elevated hsCRP doubled cardiovascular event risk in stroke survivors with intracranial artery disease, even when LDL was well-controlled.</description>
+        <category>News</category>
+        <pubDate>Mon, 28 Sep 2026 07:12:05 +0000</pubDate>
+    </item>
     <item>
         <title>Chronic Stress Triggers Inflammation That Silently Damages the Heart, Largest Study of Its Kind Finds</title>
         <link>https://www.sensawellness.org/post-chronic-stress-heart-inflammation</link>
