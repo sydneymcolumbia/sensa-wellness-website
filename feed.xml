@@ -5,13 +5,20 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Sep 2026 07:12:05 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 07:15:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Alpha-Lipoic Acid Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-does-alpha-lipoic-acid-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-alpha-lipoic-acid-reduce-inflammation</guid>
+        <description>Alpha-lipoic acid is a potent antioxidant that quenches oxidative stress and suppresses NF-kB. Multiple meta-analyses of clinical trials confirm it significantly lowers CRP, IL-6, and TNF-alpha.</description>
+        <category>Science</category>
+    </item>
     <item>
         <title>New Study: CRP Reveals Stroke Recurrence Risk That Cholesterol Tests Miss</title>
         <link>https://www.sensawellness.org/post-crp-stroke-recurrence-risk</link>
