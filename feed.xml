@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Sep 2026 07:15:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 07:10:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>How Scientists Are Learning to Block Chronic Inflammation Without Turning Off the Body's Defenses</title>
+        <link>https://www.sensawellness.org/post-il6-trans-signaling-selective-inflammation</link>
+        <guid>https://www.sensawellness.org/post-il6-trans-signaling-selective-inflammation</guid>
+        <description>A September 2026 Nature Reviews Drug Discovery review explains how selective IL-6 trans-signaling blockade can quiet chronic inflammatory disease while leaving protective immune functions intact, with a 58.6% phase 2 response rate in ulcerative colitis.</description>
+        <category>News</category>
+        <pubDate>Wed, 30 Sep 2026 07:10:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Alpha-Lipoic Acid Reduce Inflammation? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-does-alpha-lipoic-acid-reduce-inflammation</link>
