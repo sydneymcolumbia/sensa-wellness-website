@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Oct 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study: An Inflammation Marker That Outperforms CRP in Heart Failure Survival Prediction</title>
+        <link>https://www.sensawellness.org/post-npar-heart-failure-inflammation</link>
+        <guid>https://www.sensawellness.org/post-npar-heart-failure-inflammation</guid>
+        <description>A September 2026 nationwide study found that the neutrophil-percentage-to-albumin ratio (NPAR) outperformed hs-CRP for predicting death in 4,622 heart failure patients, adding a new dimension to how inflammation drives cardiovascular risk.</description>
+        <category>News</category>
+        <pubDate>Fri, 02 Oct 2026 07:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Gratitude Lower Inflammation? What the Research Shows</title>
         <link>https://www.sensawellness.org/post-gratitude-inflammation</link>
