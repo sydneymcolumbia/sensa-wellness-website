@@ -3,7 +3,7 @@ const dir = __dirname;
 const base = 'https://www.sensawellness.org/';
 
 const exclude = new Set([
-  'admin.html','success.html','chat.html','deck.html','cuvet-animation.html',
+  'admin.html','reset-password.html','success.html','chat.html','deck.html','cuvet-animation.html',
   'start.html'
 ]);
 

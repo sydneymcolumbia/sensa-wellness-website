@@ -128,6 +128,72 @@
     display: none;
   }
 
+  .login-btn:disabled { opacity: 0.6; cursor: wait; }
+
+  .link-btn {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--purple);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .link-btn:hover { text-decoration: underline; }
+
+  .login-info {
+    display: none;
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: var(--light);
+    border-radius: 8px;
+    color: var(--navy);
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .enroll-qr { display: flex; justify-content: center; margin: 0 0 14px; }
+  .enroll-qr svg { width: 180px; height: 180px; }
+
+  .enroll-secret {
+    display: block;
+    margin-bottom: 18px;
+    padding: 8px 10px;
+    background: var(--light);
+    border-radius: 8px;
+    font-size: 12px;
+    word-break: break-all;
+    user-select: all;
+  }
+
+  .password-rules {
+    list-style: none;
+    margin: -6px 0 16px;
+    padding: 0;
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  .password-rules li { position: relative; padding: 2px 0 2px 20px; }
+
+  .password-rules li::before {
+    content: '';
+    position: absolute;
+    left: 4px; top: 7px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .password-rules li.met { color: #15803d; }
+  .password-rules li.met::before { background: var(--green); }
+
   /* ---- DASHBOARD ---- */
   #dashboard { display: none; min-height: 100vh; }
 
@@ -577,7 +643,8 @@
 
 <!-- LOGIN -->
 <div id="login-screen">
-  <div class="login-card">
+  <!-- Step 1: email and password -->
+  <div class="login-card" id="step-login">
     <div class="login-logo">
       <svg aria-hidden="true" width="30" height="30" viewBox="0 0 60 60" fill="none">
         <circle cx="20" cy="20" r="10" fill="#f59d06"/>
@@ -592,14 +659,72 @@
     <p>Admin access only. Use your Sensa email.</p>
     <div class="form-group">
       <label for="login-email">Email</label>
-      <input type="email" id="login-email" placeholder="you@sensawellness.org">
+      <input type="email" id="login-email" placeholder="you@sensawellness.org" autocomplete="username">
     </div>
     <div class="form-group">
       <label for="login-password">Password</label>
-      <input type="password" id="login-password" placeholder="Password">
+      <input type="password" id="login-password" placeholder="Password" autocomplete="current-password">
     </div>
     <button class="login-btn" id="login-btn" type="button">Sign In</button>
-    <div class="login-error" id="login-error"></div>
+    <button class="link-btn" id="forgot-btn" type="button">Forgot password?</button>
+    <div class="login-error" id="login-error" role="alert"></div>
+    <div class="login-info" id="login-info" role="status"></div>
+  </div>
+
+  <!-- Step 2: one-time code from the authenticator app -->
+  <div class="login-card" id="step-mfa" style="display:none">
+    <h2>Enter your code</h2>
+    <p>Open your authenticator app and enter the 6-digit code for Sensa Admin.</p>
+    <div class="form-group">
+      <label for="mfa-code">One-time code</label>
+      <input type="text" id="mfa-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456">
+    </div>
+    <button class="login-btn" id="mfa-btn" type="button">Verify</button>
+    <button class="link-btn" id="mfa-cancel-btn" type="button">Back to sign in</button>
+    <div class="login-error" id="mfa-error" role="alert"></div>
+  </div>
+
+  <!-- First sign-in without a second factor: enroll an authenticator app -->
+  <div class="login-card" id="step-enroll" style="display:none">
+    <h2>Set up two-factor authentication</h2>
+    <div id="enroll-form">
+      <p>Admin accounts need an authenticator app (Google Authenticator, 1Password, Authy or similar). Scan this code with the app, then enter the 6-digit code it shows.</p>
+      <div class="enroll-qr" id="enroll-qr" role="img" aria-label="QR code to scan with your authenticator app"></div>
+      <p style="margin-bottom:6px">Cannot scan? Enter this key in the app by hand:</p>
+      <code class="enroll-secret" id="enroll-secret"></code>
+      <div class="form-group">
+        <label for="enroll-code">Code from the app</label>
+        <input type="text" id="enroll-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456">
+      </div>
+      <button class="login-btn" id="enroll-btn" type="button">Turn on two-factor</button>
+      <button class="link-btn" id="enroll-cancel-btn" type="button">Sign out</button>
+      <div class="login-error" id="enroll-error" role="alert"></div>
+    </div>
+    <div id="enroll-fallback" style="display:none">
+      <div class="login-error" style="display:block;text-align:left;margin:0 0 16px">
+        Two-factor setup could not start (<code id="enroll-fallback-code"></code>). The usual cause is that authenticator (TOTP) multi-factor sign-in is not switched on for the Firebase project yet: Firebase console, Authentication, Sign-in method, Multi-factor authentication.
+      </div>
+      <button class="login-btn" id="enroll-skip-btn" type="button">Continue without two-factor for now</button>
+      <button class="link-btn" id="enroll-fallback-signout-btn" type="button">Sign out</button>
+    </div>
+  </div>
+
+  <!-- Required or voluntary password change -->
+  <div class="login-card" id="step-password" style="display:none">
+    <h2>Set a new password</h2>
+    <p id="password-reason"></p>
+    <div class="form-group">
+      <label for="new-password">New password</label>
+      <input type="password" id="new-password" autocomplete="new-password">
+    </div>
+    <ul class="password-rules" id="password-rules" aria-live="polite"></ul>
+    <div class="form-group">
+      <label for="new-password-confirm">Confirm new password</label>
+      <input type="password" id="new-password-confirm" autocomplete="new-password">
+    </div>
+    <button class="login-btn" id="password-btn" type="button">Save password</button>
+    <button class="link-btn" id="password-cancel-btn" type="button">Cancel</button>
+    <div class="login-error" id="password-error" role="alert"></div>
   </div>
 </div>
 
@@ -638,6 +763,7 @@
     </div>
 
     <div class="sidebar-bottom">
+      <button class="signout-btn" id="change-password-btn" type="button" style="margin-bottom:8px">Change password</button>
       <button class="signout-btn" id="signout-btn" type="button">Sign out</button>
     </div>
   </div>
@@ -775,14 +901,20 @@
   anything inside either block, including whitespace, recompute and update
   the two 'sha256-...' sources in vercel.json:
 
-    node -e "const c=require('crypto'),h=require('fs').readFileSync('admin.html','utf8'),re=new RegExp('<'+'script[^>]*>([^]*?)</'+'script>','g');for(const m of h.matchAll(re))console.log('sha256-'+c.createHash('sha256').update(m[1]).digest('base64'))"
+    node -e "const c=require('crypto'),h=require('fs').readFileSync('admin.html','utf8'),re=new RegExp('<'+'script[^>]*>([^]*?)</'+'script>','g');for(const m of h.matchAll(re))if(m[1].trim())console.log('sha256-'+c.createHash('sha256').update(m[1]).digest('base64'))"
 
   Inline event handler attributes (onclick, oninput, ...) are blocked by that
   policy as well. Attach handlers with addEventListener in the script.
 -->
+<script src="/vendor/qrcode.js"></script>
+<script src="/auth-policy.js"></script>
 <script type="module">
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-  import { getAuth, signInWithEmailAndPassword, signOut as fbSignOut, onAuthStateChanged, sendEmailVerification } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+  import {
+    initializeAuth, browserLocalPersistence,
+    signInWithEmailAndPassword, signOut as fbSignOut, onAuthStateChanged, sendEmailVerification,
+    multiFactor, TotpMultiFactorGenerator, getMultiFactorResolver, updatePassword
+  } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 
   const firebaseConfig = {
     apiKey: 'AIzaSyBgQp_ZTGul5jFwXbTlB0gJKjfR17j1D44',
@@ -790,39 +922,413 @@
     projectId: 'sensa-app-7b2b7',
   };
 
+  // Front-end mirror of the allowlist in api/admin.js, api/reviews-admin.js
+  // and api/password-reset.js. Keep all four lists identical. A non-admin
+  // account is rejected here before Firebase is contacted, and again in the
+  // auth state listener, so it never sees the dashboard. The API routes
+  // still verify the ID token and the list on every request.
+  const ADMIN_EMAILS = [
+    'info@sensawellness.org',
+    'sydney@sensawellness.org',
+    'ryan@sensawellness.org',
+  ];
+
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+  // Session persistence: the signed-in session (ID token, refresh token and
+  // user record) is stored in window.localStorage under the key
+  // "firebase:authUser:<apiKey>:[DEFAULT]" and survives tab and browser
+  // restarts until Sign out is clicked.
+  const auth = initializeAuth(app, { persistence: browserLocalPersistence });
 
-  window._auth = auth;
-  window._signInFn = signInWithEmailAndPassword;
-  window._signOutFn = fbSignOut;
+  const policy = window.SensaPasswordPolicy;
+  const $ = (id) => document.getElementById(id);
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const CODE_RE = /^\d{6}$/;
 
+  // ---- Screens and messages ----
+  const STEPS = ['step-login', 'step-mfa', 'step-enroll', 'step-password'];
+  function showStep(id) {
+    STEPS.forEach((s) => { $(s).style.display = s === id ? 'block' : 'none'; });
+    $('login-screen').style.display = 'flex';
+    $('dashboard').style.display = 'none';
+  }
+  function showDashboard() {
+    $('login-screen').style.display = 'none';
+    $('dashboard').style.display = 'block';
+  }
+  function showError(id, text) { const el = $(id); el.textContent = text; el.style.display = 'block'; }
+  function hideError(id) { const el = $(id); el.textContent = ''; el.style.display = 'none'; }
+  function showInfo(text) { const el = $('login-info'); el.textContent = text; el.style.display = 'block'; }
+  function hideInfo() { const el = $('login-info'); el.textContent = ''; el.style.display = 'none'; }
+  function setBusy(id, busy) { $(id).disabled = !!busy; }
+
+  // ---- Sign-in throttle (browser side) ----
+  // Firebase locks the account on its side after repeated failures. This
+  // adds an escalating pause in the browser as well, so a guessing loop on
+  // this page is slowed before each request leaves it.
+  const THROTTLE_KEY = 'sensaAdminLoginThrottle';
+  const THROTTLE_AFTER = 5;               // free attempts before the first pause
+  const THROTTLE_BASE_MS = 30 * 1000;     // 30 seconds, doubling per further failure
+  const THROTTLE_MAX_MS = 15 * 60 * 1000; // capped at 15 minutes
+  function readThrottle() {
+    try { return JSON.parse(localStorage.getItem(THROTTLE_KEY)) || { fails: 0, until: 0 }; }
+    catch (e) { return { fails: 0, until: 0 }; }
+  }
+  function writeThrottle(t) { try { localStorage.setItem(THROTTLE_KEY, JSON.stringify(t)); } catch (e) {} }
+  function lockedForMs() { return Math.max(0, readThrottle().until - Date.now()); }
+  function recordFailure() {
+    const t = readThrottle();
+    t.fails += 1;
+    if (t.fails >= THROTTLE_AFTER) {
+      t.until = Date.now() + Math.min(THROTTLE_MAX_MS, THROTTLE_BASE_MS * Math.pow(2, t.fails - THROTTLE_AFTER));
+    }
+    writeThrottle(t);
+  }
+  function clearFailures() { writeThrottle({ fails: 0, until: 0 }); }
+  function lockedMessage(ms) {
+    const s = Math.ceil(ms / 1000);
+    return 'Too many failed attempts. Try again in ' + (s >= 60 ? Math.ceil(s / 60) + ' minute(s).' : s + ' seconds.');
+  }
+
+  // Password reset: one request per minute from this browser. The server
+  // (api/password-reset.js) enforces the real per-address and per-IP limits.
+  const RESET_KEY = 'sensaAdminResetThrottle';
+  const RESET_GAP_MS = 60 * 1000;
+
+  // ---- State for the sign-in in progress ----
+  let pendingPassword = null;  // kept in memory only until the post-sign-in checks run
+  let mfaResolver = null;
+  let mfaHint = null;
+  let enrollSecret = null;
+  let passwordResume = null;   // what to do once a password change succeeds
+  let passwordForced = false;
+
+  // ---- Step 1: email and password ----
+  async function signIn() {
+    const email = $('login-email').value.trim().toLowerCase();
+    const password = $('login-password').value;
+    hideError('login-error');
+    hideInfo();
+
+    const wait = lockedForMs();
+    if (wait) return showError('login-error', lockedMessage(wait));
+    if (!EMAIL_RE.test(email)) return showError('login-error', 'Enter a valid email address.');
+    if (!password) return showError('login-error', 'Enter your password.');
+    if (password.length > 128) return showError('login-error', 'Password is too long.');
+    if (!ADMIN_EMAILS.includes(email)) {
+      recordFailure();
+      return showError('login-error', 'This account does not have admin access.');
+    }
+
+    setBusy('login-btn', true);
+    pendingPassword = password;
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      clearFailures();
+    } catch (e) {
+      if (e.code === 'auth/multi-factor-auth-required') {
+        mfaResolver = getMultiFactorResolver(auth, e);
+        mfaHint = mfaResolver.hints.find((h) => h.factorId === TotpMultiFactorGenerator.FACTOR_ID);
+        if (mfaHint) {
+          hideError('mfa-error');
+          $('mfa-code').value = '';
+          showStep('step-mfa');
+          $('mfa-code').focus();
+        } else {
+          pendingPassword = null;
+          showError('login-error', 'This account uses a second factor this page cannot verify.');
+        }
+      } else {
+        pendingPassword = null;
+        recordFailure();
+        if (e.code === 'auth/too-many-requests') {
+          showError('login-error', 'Too many failed attempts. Firebase has temporarily locked this account. Wait a while or use "Forgot password".');
+        } else {
+          showError('login-error', 'Invalid email or password.');
+        }
+      }
+    } finally {
+      setBusy('login-btn', false);
+      $('login-password').value = '';
+    }
+  }
+
+  // ---- Step 2: one-time code ----
+  async function verifyMfa() {
+    const code = $('mfa-code').value.replace(/\s+/g, '');
+    hideError('mfa-error');
+    if (!CODE_RE.test(code)) return showError('mfa-error', 'Enter the 6-digit code from your authenticator app.');
+    const wait = lockedForMs();
+    if (wait) { cancelMfa(); return showError('login-error', lockedMessage(wait)); }
+    setBusy('mfa-btn', true);
+    try {
+      await mfaResolver.resolveSignIn(TotpMultiFactorGenerator.assertionForSignIn(mfaHint.uid, code));
+      clearFailures();
+      mfaResolver = null;
+      mfaHint = null;
+    } catch (e) {
+      recordFailure();
+      if (e.code === 'auth/invalid-verification-code') {
+        showError('mfa-error', 'That code is not correct. Codes change every 30 seconds; enter the current one.');
+      } else {
+        cancelMfa();
+        showError('login-error', 'Could not verify the code. Sign in again.');
+      }
+    } finally {
+      setBusy('mfa-btn', false);
+    }
+  }
+  function cancelMfa() {
+    pendingPassword = null;
+    mfaResolver = null;
+    mfaHint = null;
+    $('mfa-code').value = '';
+    showStep('step-login');
+  }
+
+  // ---- Forgot password ----
+  async function forgotPassword() {
+    const email = $('login-email').value.trim().toLowerCase();
+    hideError('login-error');
+    hideInfo();
+    if (!EMAIL_RE.test(email)) return showError('login-error', 'Enter your email address above, then click "Forgot password".');
+    let last = 0;
+    try { last = Number(localStorage.getItem(RESET_KEY)) || 0; } catch (e) {}
+    if (Date.now() - last < RESET_GAP_MS) return showError('login-error', 'A reset email was just requested. Wait a minute before trying again.');
+    setBusy('forgot-btn', true);
+    try {
+      const res = await fetch('/api/password-reset', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.status === 429) return showError('login-error', 'Too many reset requests. Try again in an hour.');
+      if (!res.ok) throw new Error('password-reset ' + res.status);
+      try { localStorage.setItem(RESET_KEY, String(Date.now())); } catch (e) {}
+      showInfo('If that address has admin access, a password reset email is on its way.');
+    } catch (e) {
+      console.error(e);
+      showError('login-error', 'Could not request a reset right now. Try again in a minute.');
+    } finally {
+      setBusy('forgot-btn', false);
+    }
+  }
+
+  // ---- After Firebase accepts the credentials ----
   onAuthStateChanged(auth, async (user) => {
-    if (user && !user.emailVerified) {
+    if (!user) {
+      window._currentUser = null;
+      showStep('step-login');
+      return;
+    }
+    if (!ADMIN_EMAILS.includes(String(user.email || '').toLowerCase())) {
+      pendingPassword = null;
+      await fbSignOut(auth);
+      showError('login-error', 'This account does not have admin access.');
+      return;
+    }
+    if (!user.emailVerified) {
       // The admin API only accepts verified email claims. Send the
       // verification link once, then sign out so the token is refreshed
       // with email_verified=true on the next sign-in.
-      const errEl = document.getElementById('login-error');
+      pendingPassword = null;
       try {
         await sendEmailVerification(user);
-        errEl.textContent = 'Verification email sent to ' + user.email + '. Click the link in it, then sign in again.';
+        showInfo('Verification email sent to ' + user.email + '. Click the link in it, then sign in again.');
       } catch (e) {
-        errEl.textContent = 'Your email is not verified and the verification email could not be sent. Try again in a few minutes.';
+        showError('login-error', 'Your email is not verified and the verification email could not be sent. Try again in a few minutes.');
       }
-      errEl.style.display = 'block';
       await fbSignOut(auth);
       return;
     }
-    if (user) {
-      document.getElementById('login-screen').style.display = 'none';
-      document.getElementById('dashboard').style.display = 'block';
-      window._currentUser = user;
-      loadData();
-    } else {
-      document.getElementById('login-screen').style.display = 'flex';
-      document.getElementById('dashboard').style.display = 'none';
+    // Password rules and breach check run against the password that was
+    // just typed. A persisted session (page reload) has no password to
+    // check, so it skips straight to the second-factor check.
+    const password = pendingPassword;
+    pendingPassword = null;
+    if (password) {
+      const problem = await passwordProblem(password, user.email);
+      if (problem) {
+        openPasswordScreen(problem, true, () => afterPasswordChecks(user));
+        return;
+      }
     }
+    afterPasswordChecks(user);
   });
+
+  async function afterPasswordChecks(user) {
+    if (multiFactor(user).enrolledFactors.length === 0) {
+      await startEnrollment(user);
+      return;
+    }
+    enterDashboard(user);
+  }
+
+  function enterDashboard(user) {
+    window._currentUser = user;
+    showDashboard();
+    loadData();
+  }
+
+  // ---- Password rules and breach check ----
+  async function passwordProblem(password, email) {
+    if (policy.failedRules(password, email).length) return 'policy';
+    try {
+      if (await policy.isLeaked(password)) return 'leaked';
+    } catch (e) {
+      console.warn('Breach check unavailable at sign-in:', e);
+    }
+    return null;
+  }
+
+  const PASSWORD_REASONS = {
+    policy: 'Your current password does not meet the admin password rules. Set a new one to continue.',
+    leaked: 'Your current password appears in a known data breach (checked anonymously against Have I Been Pwned). Set a new one to continue.',
+    change: 'Choose a new password for your admin account.',
+  };
+
+  function openPasswordScreen(reason, forced, resume) {
+    passwordForced = forced;
+    passwordResume = resume;
+    $('password-reason').textContent = PASSWORD_REASONS[reason];
+    $('new-password').value = '';
+    $('new-password-confirm').value = '';
+    $('password-cancel-btn').textContent = forced ? 'Sign out instead' : 'Cancel';
+    hideError('password-error');
+    renderRules();
+    showStep('step-password');
+    $('new-password').focus();
+  }
+
+  function renderRules() {
+    const email = auth.currentUser ? auth.currentUser.email : '';
+    policy.renderRules($('password-rules'), $('new-password').value, email);
+  }
+
+  async function submitPassword() {
+    const user = auth.currentUser;
+    if (!user) return showStep('step-login');
+    const pw = $('new-password').value;
+    hideError('password-error');
+    if (policy.failedRules(pw, user.email).length) return showError('password-error', 'The new password does not meet every rule yet.');
+    if (pw !== $('new-password-confirm').value) return showError('password-error', 'The two passwords do not match.');
+    setBusy('password-btn', true);
+    try {
+      let leaked;
+      try {
+        leaked = await policy.isLeaked(pw);
+      } catch (e) {
+        console.error(e);
+        return showError('password-error', 'The breach check could not run. Check your connection and try again.');
+      }
+      if (leaked) return showError('password-error', 'That password appears in a known data breach. Choose a different one.');
+      await updatePassword(user, pw);
+      $('new-password').value = '';
+      $('new-password-confirm').value = '';
+      const resume = passwordResume;
+      passwordResume = null;
+      if (resume) resume(); else enterDashboard(user);
+    } catch (e) {
+      if (e.code === 'auth/requires-recent-login') {
+        await fbSignOut(auth);
+        showInfo('For security, sign in again and change your password right after signing in.');
+      } else {
+        showError('password-error', 'Could not save the password (' + (e.code || 'error') + '). Try again.');
+      }
+    } finally {
+      setBusy('password-btn', false);
+    }
+  }
+
+  async function cancelPassword() {
+    passwordResume = null;
+    if (!auth.currentUser) {
+      showStep('step-login');
+      return;
+    }
+    if (passwordForced) {
+      await fbSignOut(auth);
+      return;
+    }
+    showDashboard();
+  }
+
+  // ---- Authenticator enrollment ----
+  async function startEnrollment(user) {
+    hideError('enroll-error');
+    $('enroll-fallback').style.display = 'none';
+    $('enroll-form').style.display = 'block';
+    $('enroll-qr').textContent = '';
+    $('enroll-secret').textContent = '';
+    $('enroll-code').value = '';
+    showStep('step-enroll');
+    try {
+      const session = await multiFactor(user).getSession();
+      enrollSecret = await TotpMultiFactorGenerator.generateSecret(session);
+      const otpauthUrl = enrollSecret.generateQrCodeUrl(user.email, 'Sensa Admin');
+      const qr = window.qrcode(0, 'M');
+      qr.addData(otpauthUrl);
+      qr.make();
+      $('enroll-qr').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true });
+      $('enroll-secret').textContent = enrollSecret.secretKey;
+      $('enroll-code').focus();
+    } catch (e) {
+      console.error('Two-factor enrollment could not start:', e);
+      enrollSecret = null;
+      if (e.code === 'auth/requires-recent-login') {
+        await fbSignOut(auth);
+        showInfo('Sign in again to set up your authenticator app.');
+        return;
+      }
+      // Nothing the admin typed caused this; it is a project configuration
+      // or network problem, so explain it rather than lock everyone out.
+      $('enroll-form').style.display = 'none';
+      $('enroll-fallback-code').textContent = e.code || String(e);
+      $('enroll-fallback').style.display = 'block';
+    }
+  }
+
+  async function finishEnrollment() {
+    const code = $('enroll-code').value.replace(/\s+/g, '');
+    hideError('enroll-error');
+    if (!enrollSecret) return;
+    if (!CODE_RE.test(code)) return showError('enroll-error', 'Enter the 6-digit code shown in the app.');
+    setBusy('enroll-btn', true);
+    try {
+      const assertion = TotpMultiFactorGenerator.assertionForEnrollment(enrollSecret, code);
+      await multiFactor(auth.currentUser).enroll(assertion, 'Authenticator app');
+      enrollSecret = null;
+      await fbSignOut(auth);
+      showInfo('Authenticator app added. Sign in again; you will be asked for a code from the app.');
+    } catch (e) {
+      console.error(e);
+      showError('enroll-error', e.code === 'auth/invalid-verification-code'
+        ? 'That code is not correct. Enter the code the app shows right now.'
+        : 'Could not finish setup (' + (e.code || 'error') + '). Sign out and try again.');
+    } finally {
+      setBusy('enroll-btn', false);
+    }
+  }
+
+  // ---- Event wiring (the /admin CSP forbids inline handlers) ----
+  $('login-btn').addEventListener('click', signIn);
+  $('login-email').addEventListener('keydown', (e) => { if (e.key === 'Enter') signIn(); });
+  $('login-password').addEventListener('keydown', (e) => { if (e.key === 'Enter') signIn(); });
+  $('forgot-btn').addEventListener('click', forgotPassword);
+  $('mfa-btn').addEventListener('click', verifyMfa);
+  $('mfa-code').addEventListener('keydown', (e) => { if (e.key === 'Enter') verifyMfa(); });
+  $('mfa-cancel-btn').addEventListener('click', cancelMfa);
+  $('enroll-btn').addEventListener('click', finishEnrollment);
+  $('enroll-code').addEventListener('keydown', (e) => { if (e.key === 'Enter') finishEnrollment(); });
+  $('enroll-cancel-btn').addEventListener('click', () => fbSignOut(auth));
+  $('enroll-fallback-signout-btn').addEventListener('click', () => fbSignOut(auth));
+  $('enroll-skip-btn').addEventListener('click', () => enterDashboard(auth.currentUser));
+  $('password-btn').addEventListener('click', submitPassword);
+  $('new-password').addEventListener('input', renderRules);
+  $('new-password-confirm').addEventListener('keydown', (e) => { if (e.key === 'Enter') submitPassword(); });
+  $('password-cancel-btn').addEventListener('click', cancelPassword);
+  $('change-password-btn').addEventListener('click', () => { if (auth.currentUser) openPasswordScreen('change', false, showDashboard); });
+  $('signout-btn').addEventListener('click', () => fbSignOut(auth));
 </script>
 
 <script>
@@ -840,23 +1346,6 @@
   function fixed(v, digits) {
     const n = Number(v);
     return n ? n.toFixed(digits) : 'N/A';
-  }
-
-  async function signIn() {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    const errEl = document.getElementById('login-error');
-    errEl.style.display = 'none';
-    try {
-      await window._signInFn(window._auth, email, password);
-    } catch (e) {
-      errEl.textContent = 'Invalid email or password.';
-      errEl.style.display = 'block';
-    }
-  }
-
-  async function signOut() {
-    await window._signOutFn(window._auth);
   }
 
   async function loadData() {
@@ -1192,11 +1681,7 @@
   // ---- Event wiring ----
   // The /admin CSP has no 'unsafe-inline', so every handler is attached
   // here instead of through onclick/oninput attributes in the markup.
-  document.getElementById('login-btn').addEventListener('click', signIn);
-  document.getElementById('login-password').addEventListener('keydown', e => {
-    if (e.key === 'Enter') signIn();
-  });
-  document.getElementById('signout-btn').addEventListener('click', signOut);
+  // Sign-in, sign-out and password handlers live in the module script above.
   document.getElementById('overview-refresh-btn').addEventListener('click', loadData);
   document.getElementById('reviews-refresh-btn').addEventListener('click', loadReviews);
   document.getElementById('modal-close').addEventListener('click', closeModal);

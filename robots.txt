@@ -6,6 +6,8 @@ Allow: /
 
 Disallow: /admin.html
 Disallow: /admin
+Disallow: /reset-password.html
+Disallow: /reset-password
 Disallow: /success.html
 Disallow: /success
 Disallow: /chat.html
