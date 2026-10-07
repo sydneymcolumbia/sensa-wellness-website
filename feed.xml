@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Oct 2026 07:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 07:06:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study: Persistently Elevated CRP Linked to 34 Percent Higher Heart Failure Risk</title>
+        <link>https://www.sensawellness.org/post-crp-heart-failure-risk-new-study</link>
+        <guid>https://www.sensawellness.org/post-crp-heart-failure-risk-new-study</guid>
+        <description>A multinational study of nearly 65,000 adults found that persistent CRP above 3 mg/L is associated with a 34% higher heart failure risk and 90% higher all-cause mortality over ten years of follow-up.</description>
+        <category>News</category>
+        <pubDate>Wed, 07 Oct 2026 07:06:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Black Pepper Reduce Inflammation? What Piperine Research Shows</title>
         <link>https://www.sensawellness.org/post-does-black-pepper-reduce-inflammation</link>
