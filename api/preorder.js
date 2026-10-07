@@ -34,7 +34,9 @@ const KITS = {
 };
 
 // Where the "new preorder" alert goes. Same env conventions as api/webhook.js.
-const ALERT_EMAIL = process.env.PREORDER_ALERT_EMAIL || process.env.ORDER_ALERT_EMAIL || 'info@sensawellness.org';
+// Temporary (Oct 2026): alerts go to Sydney's personal inbox until the team
+// mailbox is set up for this. Set PREORDER_ALERT_EMAIL in Vercel to override.
+const ALERT_EMAIL = process.env.PREORDER_ALERT_EMAIL || 'sydneylizmurphy@gmail.com';
 const ALERT_FROM = process.env.ORDER_ALERT_FROM || 'Sensa Orders <orders@sensawellness.org>';
 
 const LIMITS = {
