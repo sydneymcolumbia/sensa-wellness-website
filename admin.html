@@ -761,6 +761,10 @@
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.5 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
       Reviews <span id="reviews-nav-badge" style="margin-left:auto;background:#ef4444;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 7px;display:none"></span>
     </div>
+    <div class="nav-item" data-page="preorders" role="button" tabindex="0">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Preorders <span id="preorders-nav-badge" style="margin-left:auto;background:#f59e0b;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 7px;display:none"></span>
+    </div>
 
     <div class="sidebar-bottom">
       <button class="signout-btn" id="change-password-btn" type="button" style="margin-bottom:8px">Change password</button>
@@ -876,6 +880,20 @@
           <span class="count" id="reviews-count"></span>
         </div>
         <div id="reviews-list"><div class="loading">Loading...</div></div>
+      </div>
+    </div>
+
+    <div class="page" id="page-preorders">
+      <div class="page-header">
+        <h1>Preorders</h1>
+        <button class="refresh-btn" id="preorders-refresh-btn" type="button">Refresh</button>
+      </div>
+      <div class="table-card">
+        <div class="table-header">
+          <h2>Reservations (no payment taken)</h2>
+          <span class="count" id="preorders-count"></span>
+        </div>
+        <div id="preorders-list"><div class="loading">Loading...</div></div>
       </div>
     </div>
 
@@ -1357,6 +1375,7 @@
       if (!res.ok) throw new Error(await res.text());
       _data = await res.json();
       renderOverview();
+      loadPreorders();
       renderUsers();
       renderScans();
       loadReviews();
@@ -1563,6 +1582,7 @@
     if (page) page.classList.add('active');
     if (nav) nav.classList.add('active');
     if (name === 'reviews') loadReviews();
+    if (name === 'preorders') loadPreorders();
   }
 
   // Helpers
@@ -1603,6 +1623,52 @@
       out += '<span style="color:' + (i <= r ? '#f59d06' : '#d1d5db') + '">&#9733;</span>';
     }
     return '<span style="font-size:16px;letter-spacing:1px">' + out + '</span>';
+  }
+
+  // ---- Preorders ----
+  async function loadPreorders() {
+    const listEl = document.getElementById('preorders-list');
+    try {
+      const token = await window._currentUser.getIdToken();
+      const res = await fetch('/api/preorder', { headers: { Authorization: `Bearer ${token}` } });
+      if (!res.ok) throw new Error(await res.text());
+      renderPreorders(await res.json());
+    } catch (e) {
+      console.error(e);
+      listEl.innerHTML = '<div class="loading">Failed to load preorders.</div>';
+    }
+  }
+
+  function renderPreorders(data) {
+    const list = data.preorders || [];
+    const listEl = document.getElementById('preorders-list');
+    const badge = document.getElementById('preorders-nav-badge');
+    document.getElementById('preorders-count').textContent = `${list.length} preorders, ${data.totalKits || 0} kits`;
+    if (badge) {
+      if (list.length) { badge.textContent = list.length; badge.style.display = 'inline-block'; }
+      else { badge.style.display = 'none'; }
+    }
+    if (!list.length) {
+      listEl.innerHTML = '<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No preorders yet.</div>';
+      return;
+    }
+    listEl.innerHTML = `
+      <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th scope="col">Date</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Kit</th><th scope="col">Qty</th><th scope="col">Note</th><th scope="col">Alert</th></tr></thead>
+        <tbody>
+          ${list.map(p => `<tr>
+            <td>${formatDate(p.createdAt)}</td>
+            <td>${escapeHtml(p.name)}</td>
+            <td><a href="mailto:${escapeHtml(p.email)}">${escapeHtml(p.email)}</a></td>
+            <td>${escapeHtml(p.kitLabel)}</td>
+            <td>${Number(p.quantity) || 1}</td>
+            <td style="max-width:280px;white-space:pre-wrap">${escapeHtml(p.note || '')}</td>
+            <td>${p.alertSent ? 'emailed' : 'not emailed'}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+      </div>`;
   }
 
   // ---- Review moderation ----
@@ -1684,6 +1750,7 @@
   // Sign-in, sign-out and password handlers live in the module script above.
   document.getElementById('overview-refresh-btn').addEventListener('click', loadData);
   document.getElementById('reviews-refresh-btn').addEventListener('click', loadReviews);
+  document.getElementById('preorders-refresh-btn').addEventListener('click', loadPreorders);
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('modal').addEventListener('click', e => {
     if (e.target === document.getElementById('modal')) closeModal();

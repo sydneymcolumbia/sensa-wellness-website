@@ -1658,7 +1658,7 @@
                 if (!response.ok) {
                     return response.json().catch(function() { return {}; }).then(function(data) {
                         var err = new Error(data.error || 'Checkout request failed');
-                        if (response.status === 400 && data.error) err.showToUser = true;
+                        if ((response.status === 400 || response.status === 409) && data.error) err.showToUser = true;
                         throw err;
                     });
                 }
@@ -1785,6 +1785,7 @@
         })();
     </script>
 
+<script src="preorder.js" defer></script>
 <script src="sale.js" defer></script>
 <script src="theme-fx.js" defer></script>
 </body>

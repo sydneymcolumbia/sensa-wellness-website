@@ -47,10 +47,23 @@ async function getSaleCoupon() {
   }
 }
 
+// ── Preorder mode ──────────────────────────────────────────────────
+// While kits cannot ship, no Stripe checkout may be created; the site
+// collects preorders instead (preorder.js + api/preorder.js). Flip this
+// back to false together with PREORDER_MODE in preorder.js.
+const PREORDER_MODE = true;
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  if (PREORDER_MODE) {
+    return res.status(409).json({
+      preorder: true,
+      error: 'Sensa kits are on preorder right now. Reserve yours on the order page; nothing is charged until kits ship.',
+    });
   }
 
   const { priceId, hearAboutUs, promoCode } = req.body;
