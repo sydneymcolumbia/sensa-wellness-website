@@ -9,7 +9,7 @@ no-op.
 
 - `lib/linkedin.js` shared helpers: OAuth, token refresh, LinkedIn Posts API,
   sitemap and article metadata, caption builder.
-- `api/linkedin-auth.js` one-time page connection (OAuth start and callback).
+- `lib/handlers/linkedin-auth.js` one-time page connection (OAuth start and callback), served at /api/linkedin-auth through a rewrite into api/social.js because the Hobby plan caps deployments at 12 functions.
 - `api/linkedin-cron.js` the daily job, plus dry-run and manual share modes.
 - `vercel.json` cron entry.
 

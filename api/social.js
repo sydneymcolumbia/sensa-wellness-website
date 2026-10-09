@@ -1,6 +1,8 @@
 const admin = require('firebase-admin');
 const li = require('../lib/linkedin');
 const ig = require('../lib/instagram');
+const linkedinAuth = require('../lib/handlers/linkedin-auth');
+const instagramAuth = require('../lib/handlers/instagram-auth');
 
 // Social media numbers for the admin dashboard.
 //   GET (admin)  { linkedin: {...}, instagram: {...}, generatedAt, cached }
@@ -89,6 +91,13 @@ async function instagramBlock() {
 }
 
 module.exports = async function handler(req, res) {
+  // The Hobby plan allows 12 serverless functions per deployment, so the
+  // two OAuth connect handlers live inside this function. vercel.json
+  // rewrites /api/linkedin-auth and /api/instagram-auth here with ?action=.
+  const action = req.query?.action;
+  if (action === 'linkedin-auth') return linkedinAuth(req, res);
+  if (action === 'instagram-auth') return instagramAuth(req, res);
+
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
   const adminUser = await requireAdmin(req, res);

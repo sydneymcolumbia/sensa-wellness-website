@@ -17,6 +17,16 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/api/linkedin-auth",
+      "destination": "/api/social?action=linkedin-auth"
+    },
+    {
+      "source": "/api/instagram-auth",
+      "destination": "/api/social?action=instagram-auth"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
