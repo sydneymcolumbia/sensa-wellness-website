@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Oct 2026 07:07:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 07:06:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>How Dying Fat Cells Drive Chronic Inflammation: New Research Explains the Loop</title>
+        <link>https://www.sensawellness.org/post-adipocyte-ferroptosis-obesity-inflammation</link>
+        <guid>https://www.sensawellness.org/post-adipocyte-ferroptosis-obesity-inflammation</guid>
+        <description>A September 2026 review maps out how iron-dependent fat cell death creates a self-amplifying inflammatory loop in obesity and why your CRP levels reflect it.</description>
+        <category>News</category>
+        <pubDate>Fri, 09 Oct 2026 07:06:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Zone 2 Training Reduce Inflammation? What the Science Shows</title>
         <link>https://www.sensawellness.org/post-zone-2-training-inflammation</link>
