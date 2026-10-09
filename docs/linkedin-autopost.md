@@ -37,7 +37,7 @@ bookkeeping, `linkedin_posts/{slug}` one record per shared article.
 | --- | --- |
 | `LINKEDIN_CLIENT_ID` | `78fxabucn45k8r` (app "Sensa Wellness Posting", created Oct 9 2026) |
 | `LINKEDIN_CLIENT_SECRET` | from the app's Auth tab |
-| `LINKEDIN_ORG_ID` | numeric page id |
+| `LINKEDIN_ORG_ID` | `112357960` (Sensa Wellness page) |
 | `LINKEDIN_SETUP_KEY` | long random string; guards the connect link |
 | `LINKEDIN_CAPTION_MODE` | optional. `claude` for a model-written intro, otherwise title + summary |
 | `LINKEDIN_HASHTAGS` | optional, for example `#inflammation #wellness` |
