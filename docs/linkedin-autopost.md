@@ -84,3 +84,37 @@ picture, and the reason is in the Vercel logs.
 With `LINKEDIN_CAPTION_MODE=claude`, a 60 to 120 word intro is written from the
 title and summary only, with no medical claims, no emojis, and no em dashes.
 Any model error falls back to the default caption.
+
+## Admin Social page (added Oct 9 2026)
+
+`admin.html` has a Social page backed by `GET /api/social` (admin token
+required). It shows LinkedIn followers, 30 day impressions, per-article
+stats for posts the auto-poster shared, and Instagram followers, 28 day
+reach, and recent posts. Results are cached in Firestore `social/cache` for
+15 minutes; the Refresh button bypasses the cache.
+
+LinkedIn numbers use the same token as the poster (scopes
+`r_organization_social` and `r_organization_admin`). If the Products tab
+request did not include the Page analytics use case, the follower and
+statistics calls may return 403; the card then shows the error text under
+the table. Request Page analytics on the Products tab to clear it.
+
+### Instagram setup (Instagram API with Instagram Login)
+
+1. The Sensa Instagram account must be a professional account (Business or
+   Creator). Switch in the Instagram app under Settings, Account type.
+2. At developers.facebook.com create an app, use case "Instagram", and open
+   the Instagram API setup. Copy the **Instagram App ID** and **Instagram App
+   Secret** (these differ from the Meta app id).
+3. Under App roles, Roles, add the Sensa Instagram account as an **Instagram
+   Tester**. Accept the invite in the Instagram app: Settings, Website
+   permissions, Apps and websites, Tester invites. While the account is a
+   tester, no Meta app review is needed.
+4. In the Instagram API settings add the redirect URI
+   `https://www.sensawellness.org/api/instagram-auth`.
+5. Vercel variables: `INSTAGRAM_APP_ID`, `INSTAGRAM_APP_SECRET`. The connect
+   link reuses `LINKEDIN_SETUP_KEY` unless `INSTAGRAM_SETUP_KEY` is set.
+6. Logged into Instagram as the Sensa account, open
+   `https://www.sensawellness.org/api/instagram-auth?key=<setup key>` and
+   approve. Tokens last 60 days and refresh automatically when the Social
+   page is used.

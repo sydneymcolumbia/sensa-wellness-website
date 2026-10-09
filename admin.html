@@ -765,6 +765,10 @@
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       Preorders <span id="preorders-nav-badge" style="margin-left:auto;background:#f59e0b;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 7px;display:none"></span>
     </div>
+    <div class="nav-item" data-page="social" role="button" tabindex="0">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Social
+    </div>
 
     <div class="sidebar-bottom">
       <button class="signout-btn" id="change-password-btn" type="button" style="margin-bottom:8px">Change password</button>
@@ -894,6 +898,32 @@
           <span class="count" id="preorders-count"></span>
         </div>
         <div id="preorders-list"><div class="loading">Loading...</div></div>
+      </div>
+    </div>
+
+    <!-- SOCIAL PAGE -->
+    <div class="page" id="page-social">
+      <div class="page-header">
+        <h1>Social</h1>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span class="last-updated" id="social-updated"></span>
+          <button class="refresh-btn" id="social-refresh-btn" type="button">Refresh</button>
+        </div>
+      </div>
+      <div class="stats-grid" id="social-stats"><div class="loading" style="grid-column:1/-1">Loading...</div></div>
+      <div class="table-card" id="social-linkedin-card">
+        <div class="table-header">
+          <h2>LinkedIn: recent shared articles</h2>
+          <span class="count" id="social-linkedin-status"></span>
+        </div>
+        <div id="social-linkedin-list"><div class="loading">Loading...</div></div>
+      </div>
+      <div class="table-card" id="social-instagram-card" style="margin-top:20px">
+        <div class="table-header">
+          <h2>Instagram: recent posts</h2>
+          <span class="count" id="social-instagram-status"></span>
+        </div>
+        <div id="social-instagram-list"><div class="loading">Loading...</div></div>
       </div>
     </div>
 
@@ -1583,6 +1613,7 @@
     if (nav) nav.classList.add('active');
     if (name === 'reviews') loadReviews();
     if (name === 'preorders') loadPreorders();
+    if (name === 'social') loadSocial();
   }
 
   // Helpers
@@ -1671,6 +1702,95 @@
       </div>`;
   }
 
+  // ---- Social ----
+  let socialLoaded = false;
+  async function loadSocial(force) {
+    const statsEl = document.getElementById('social-stats');
+    if (!force && socialLoaded) return;
+    statsEl.innerHTML = '<div class="loading" style="grid-column:1/-1">Loading...</div>';
+    try {
+      const token = await window._currentUser.getIdToken();
+      const res = await fetch('/api/social' + (force ? '?refresh=1' : ''), { headers: { Authorization: `Bearer ${token}` } });
+      if (!res.ok) throw new Error(await res.text());
+      renderSocial(await res.json());
+      socialLoaded = true;
+    } catch (e) {
+      console.error(e);
+      statsEl.innerHTML = '<div class="loading" style="grid-column:1/-1">Failed to load social stats.</div>';
+    }
+  }
+
+  function num(v) {
+    if (v === null || v === undefined) return '&ndash;';
+    return escapeHtml(Number(v).toLocaleString());
+  }
+
+  function socialDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return isNaN(d) ? '' : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function renderSocial(data) {
+    const li = data.linkedin || {};
+    const ig = data.instagram || {};
+    const updated = document.getElementById('social-updated');
+    updated.textContent = data.generatedAt ? `Updated ${new Date(data.generatedAt).toLocaleTimeString()}${data.cached ? ' (cached)' : ''}` : '';
+
+    const cards = [];
+    cards.push(`<div class="stat-card"><div class="label">LinkedIn followers</div><div class="value">${li.connected ? num(li.followers) : '&ndash;'}</div><div class="sub">${li.connected ? 'company page' : 'not connected'}</div></div>`);
+    cards.push(`<div class="stat-card"><div class="label">LinkedIn impressions, 30d</div><div class="value">${li.connected && li.last30 ? num(li.last30.impressions) : '&ndash;'}</div><div class="sub">${li.connected && li.last30 ? `${num(li.last30.clicks)} clicks, ${num(li.last30.likes)} reactions` : ''}</div></div>`);
+    cards.push(`<div class="stat-card"><div class="label">Instagram followers</div><div class="value">${ig.connected ? num(ig.followers) : '&ndash;'}</div><div class="sub">${ig.connected ? `@${escapeHtml(ig.username || '')}, ${num(ig.mediaCount)} posts` : 'not connected'}</div></div>`);
+    cards.push(`<div class="stat-card"><div class="label">Instagram reach, 28d</div><div class="value">${ig.connected ? num(ig.reach28) : '&ndash;'}</div><div class="sub">${ig.connected ? (ig.views28 !== null && ig.views28 !== undefined ? `${num(ig.views28)} views` : (ig.insightsError ? 'insights unavailable' : '')) : ''}</div></div>`);
+    document.getElementById('social-stats').innerHTML = cards.join('');
+
+    const liStatus = document.getElementById('social-linkedin-status');
+    const liList = document.getElementById('social-linkedin-list');
+    if (!li.connected) {
+      liStatus.textContent = 'not connected';
+      liList.innerHTML = `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">Connect the LinkedIn page by opening /api/linkedin-auth with the setup key as a page admin.${li.reason ? '<br><small>' + escapeHtml(li.reason) + '</small>' : ''}</div>`;
+    } else {
+      const rows = li.recent || [];
+      liStatus.textContent = `${rows.length} shared by the auto-poster`;
+      liList.innerHTML = rows.length ? `
+        <div style="overflow-x:auto"><table>
+          <thead><tr><th scope="col">Date</th><th scope="col">Article</th><th scope="col">Impressions</th><th scope="col">Clicks</th><th scope="col">Reactions</th><th scope="col">Comments</th></tr></thead>
+          <tbody>${rows.map(p => `<tr>
+            <td>${escapeHtml(socialDate(p.postedAt))}</td>
+            <td><a href="${escapeHtml(p.url || '#')}" target="_blank" rel="noopener">${escapeHtml(p.title || p.slug || '')}</a></td>
+            <td>${p.stats ? num(p.stats.impressions) : '&ndash;'}</td>
+            <td>${p.stats ? num(p.stats.clicks) : '&ndash;'}</td>
+            <td>${p.stats ? num(p.stats.likes) : '&ndash;'}</td>
+            <td>${p.stats ? num(p.stats.comments) : '&ndash;'}</td>
+          </tr>`).join('')}</tbody>
+        </table></div>
+        ${(li.errors && li.errors.length) ? `<div style="padding:10px 0 0;font-size:12px;color:var(--gray)">${li.errors.map(escapeHtml).join('<br>')}</div>` : ''}`
+        : `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">Nothing shared yet. The first article goes out with the next weekday blog post.</div>`;
+    }
+
+    const igStatus = document.getElementById('social-instagram-status');
+    const igList = document.getElementById('social-instagram-list');
+    if (!ig.connected) {
+      igStatus.textContent = 'not connected';
+      igList.innerHTML = `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">Connect Instagram by opening /api/instagram-auth with the setup key while logged in as the Sensa account.${ig.reason ? '<br><small>' + escapeHtml(ig.reason) + '</small>' : ''}</div>`;
+    } else {
+      const rows = ig.recent || [];
+      igStatus.textContent = `${rows.length} most recent`;
+      igList.innerHTML = rows.length ? `
+        <div style="overflow-x:auto"><table>
+          <thead><tr><th scope="col">Date</th><th scope="col">Post</th><th scope="col">Type</th><th scope="col">Likes</th><th scope="col">Comments</th></tr></thead>
+          <tbody>${rows.map(m => `<tr>
+            <td>${escapeHtml(socialDate(m.postedAt))}</td>
+            <td><a href="${escapeHtml(m.url || '#')}" target="_blank" rel="noopener">${escapeHtml(m.caption || '(no caption)')}</a></td>
+            <td>${escapeHtml((m.type || '').toLowerCase().replace('_', ' '))}</td>
+            <td>${num(m.likes)}</td>
+            <td>${num(m.comments)}</td>
+          </tr>`).join('')}</tbody>
+        </table></div>`
+        : `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No posts found.${ig.mediaError ? ' ' + escapeHtml(ig.mediaError) : ''}</div>`;
+    }
+  }
+
   // ---- Review moderation ----
   async function loadReviews() {
     const listEl = document.getElementById('reviews-list');
@@ -1751,6 +1871,7 @@
   document.getElementById('overview-refresh-btn').addEventListener('click', loadData);
   document.getElementById('reviews-refresh-btn').addEventListener('click', loadReviews);
   document.getElementById('preorders-refresh-btn').addEventListener('click', loadPreorders);
+  document.getElementById('social-refresh-btn').addEventListener('click', () => loadSocial(true));
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('modal').addEventListener('click', e => {
     if (e.target === document.getElementById('modal')) closeModal();
