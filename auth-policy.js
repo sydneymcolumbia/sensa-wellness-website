@@ -15,11 +15,10 @@
     { id: 'repeat', label: 'No character repeated 4 or more times in a row', test: function (p) { return !/(.)\1{3,}/.test(p); } },
     {
       id: 'identity',
-      label: 'Does not contain your email name or the word "sensa"',
+      label: 'Does not contain your email name',
       test: function (p, email) {
         var lower = p.toLowerCase();
         var local = String(email || '').split('@')[0].toLowerCase();
-        if (lower.indexOf('sensa') !== -1) return false;
         if (local.length >= 4 && lower.indexOf(local) !== -1) return false;
         return true;
       },
