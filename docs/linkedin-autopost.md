@@ -118,3 +118,13 @@ the table. Request Page analytics on the Products tab to clear it.
    `https://www.sensawellness.org/api/instagram-auth?key=<setup key>` and
    approve. Tokens last 60 days and refresh automatically when the Social
    page is used.
+
+### Facebook page (created Oct 11 2026)
+
+- Page: Sensa Wellness, Page ID `61595132587474`
+  (`https://www.facebook.com/profile.php?id=61595132587474`).
+- Created from Sydney's personal account; not yet in a Business Portfolio and
+  Instagram not yet linked. Username (vanity URL) pending.
+- Not wired to the auto-poster or the admin Social page yet. Facebook posting
+  would need the Meta app's `pages_manage_posts` permission and a Page access
+  token; Page stats need `pages_read_engagement`.
