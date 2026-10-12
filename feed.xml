@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Oct 2026 07:06:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 07:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>The MIND Diet and Brain Aging: New Research Shows It May Slow Brain Shrinkage by 2.5 Years</title>
+        <link>https://www.sensawellness.org/post-mind-diet-brain-aging</link>
+        <guid>https://www.sensawellness.org/post-mind-diet-brain-aging</guid>
+        <description>A Framingham Heart Study cohort of 1,647 adults followed for over a decade found that eating more closely to the MIND pattern slowed gray matter loss by the equivalent of 2.5 years of brain aging, with CRP and other inflammatory markers helping explain the effect.</description>
+        <category>News</category>
+        <pubDate>Mon, 12 Oct 2026 07:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>How Dying Fat Cells Drive Chronic Inflammation: New Research Explains the Loop</title>
         <link>https://www.sensawellness.org/post-adipocyte-ferroptosis-obesity-inflammation</link>
