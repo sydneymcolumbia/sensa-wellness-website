@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Oct 2026 07:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 07:06:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Sulforaphane Reduce Inflammation? What the Research Shows</title>
+        <link>https://www.sensawellness.org/post-does-sulforaphane-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-sulforaphane-reduce-inflammation</guid>
+        <description>Sulforaphane from broccoli sprouts activates Nrf2 and suppresses NF-kB simultaneously. Here is what human studies show about its effect on CRP and inflammatory markers, and how to maximize your intake from food.</description>
+        <category>Science</category>
+        <pubDate>Tue, 13 Oct 2026 07:06:00 +0000</pubDate>
+    </item>
     <item>
         <title>The MIND Diet and Brain Aging: New Research Shows It May Slow Brain Shrinkage by 2.5 Years</title>
         <link>https://www.sensawellness.org/post-mind-diet-brain-aging</link>
