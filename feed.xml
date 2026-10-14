@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 Oct 2026 07:06:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 07:10:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Ten Healthy Diets All Slow Biological Aging Through the Same Pathways, Large Study Finds</title>
+        <link>https://www.sensawellness.org/post-diet-quality-biological-aging</link>
+        <guid>https://www.sensawellness.org/post-diet-quality-biological-aging</guid>
+        <description>A Nature Communications study of more than 7,500 adults found that ten different healthy eating patterns all slowed epigenetic aging through largely the same biological mechanisms, with no single diet coming out ahead.</description>
+        <category>News</category>
+        <pubDate>Wed, 14 Oct 2026 07:10:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Sulforaphane Reduce Inflammation? What the Research Shows</title>
         <link>https://www.sensawellness.org/post-does-sulforaphane-reduce-inflammation</link>
