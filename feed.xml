@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Oct 2026 07:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 07:10:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study: Inflammation Already Elevated at the Earliest Stage of Heart-Kidney-Metabolic Syndrome</title>
+        <link>https://www.sensawellness.org/post-crp-ckm-syndrome-inflammation</link>
+        <guid>https://www.sensawellness.org/post-crp-ckm-syndrome-inflammation</guid>
+        <description>A new European Journal of Preventive Cardiology analysis found that hs-CRP nearly doubles at CKM stage 1, before any organ damage is present, crossing the 2 mg/L cardiovascular risk threshold at the very first step.</description>
+        <category>News</category>
+        <pubDate>Fri, 16 Oct 2026 07:10:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Ginger Reduce Inflammation? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-does-ginger-reduce-inflammation</link>
