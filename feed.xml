@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Oct 2026 07:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 07:14:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study: Immune Changes Signal IBD a Decade Before Diagnosis</title>
+        <link>https://www.sensawellness.org/post-ibd-immune-markers-decade-before-diagnosis</link>
+        <guid>https://www.sensawellness.org/post-ibd-immune-markers-decade-before-diagnosis</guid>
+        <description>A landmark Gut study tracked immune antibody signatures in 500 people up to ten years before inflammatory bowel disease developed, revealing a prolonged preclinical inflammatory phase science had only glimpsed before.</description>
+        <category>News</category>
+        <pubDate>Mon, 19 Oct 2026 07:14:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Study: Inflammation Already Elevated at the Earliest Stage of Heart-Kidney-Metabolic Syndrome</title>
         <link>https://www.sensawellness.org/post-crp-ckm-syndrome-inflammation</link>
