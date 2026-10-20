@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Oct 2026 07:14:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 07:11:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Spermidine Reduce Inflammation? What the Science Shows</title>
+        <link>https://www.sensawellness.org/post-does-spermidine-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-spermidine-reduce-inflammation</guid>
+        <description>Spermidine is a naturally occurring compound in wheat germ and mushrooms that activates autophagy, the cell's self-cleaning process. Here is what the science shows about its anti-inflammatory effects and how to get more of it from food.</description>
+        <category>Science</category>
+        <pubDate>Tue, 20 Oct 2026 07:11:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Study: Immune Changes Signal IBD a Decade Before Diagnosis</title>
         <link>https://www.sensawellness.org/post-ibd-immune-markers-decade-before-diagnosis</link>
