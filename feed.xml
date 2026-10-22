@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Oct 2026 07:11:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 07:12:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Insulin Resistance and Inflammation: The Two-Way Connection</title>
+        <link>https://www.sensawellness.org/post-insulin-resistance-inflammation</link>
+        <guid>https://www.sensawellness.org/post-insulin-resistance-inflammation</guid>
+        <description>Insulin resistance and chronic inflammation reinforce each other through overlapping biological pathways. Here is how the cycle works, what it means for CRP, and how to break it.</description>
+        <category>Science</category>
+        <pubDate>Thu, 22 Oct 2026 07:12:00 +0000</pubDate>
+    </item>
     <item>
         <title>Insomnia Raises Your CRP: New Genetic Research Explains Why</title>
         <link>https://www.sensawellness.org/post-insomnia-crp-genetics-study</link>
