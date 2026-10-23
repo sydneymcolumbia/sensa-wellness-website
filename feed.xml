@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Oct 2026 07:12:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 07:11:54 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>A Sugar Found Only in Red Meat May Trigger Chronic Inflammation: New Research on Neu5Gc</title>
+        <link>https://www.sensawellness.org/post-neu5gc-red-meat-inflammation</link>
+        <guid>https://www.sensawellness.org/post-neu5gc-red-meat-inflammation</guid>
+        <description>A new study of nearly 90,000 adults presented at EASD 2026 linked the red-meat sugar Neu5Gc to a higher risk of type 2 diabetes, with researchers pointing to chronic inflammation as the likely mechanism.</description>
+        <category>News</category>
+        <pubDate>Fri, 23 Oct 2026 07:11:54 +0000</pubDate>
+    </item>
     <item>
         <title>Insulin Resistance and Inflammation: The Two-Way Connection</title>
         <link>https://www.sensawellness.org/post-insulin-resistance-inflammation</link>
