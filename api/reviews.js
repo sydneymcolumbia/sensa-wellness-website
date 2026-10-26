@@ -151,18 +151,10 @@ async function createReview(req, res) {
   return res.status(201).json({ ok: true, pending: true });
 }
 
-// Reviews are paused while kits are on hold (Oct 16, 2026). The homepage
-// section is removed and new submissions are refused; flip this to false and
-// restore the #reviews section in index.html to reactivate.
-const REVIEWS_PAUSED = true;
-
 module.exports = async function handler(req, res) {
   try {
     if (req.method === 'GET') return await listApproved(res);
-    if (req.method === 'POST') {
-      if (REVIEWS_PAUSED) return res.status(503).json({ error: 'Reviews are paused for now.' });
-      return await createReview(req, res);
-    }
+    if (req.method === 'POST') return await createReview(req, res);
     res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ error: 'Method not allowed' });
   } catch (err) {
