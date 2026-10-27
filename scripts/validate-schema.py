@@ -70,12 +70,13 @@ def check_block(path, data, problems):
 
 
 def check_index_drift(problems):
-    """New posts must appear in sitemap.xml, blog.html, and llms.txt."""
+    """New posts must appear in sitemap.xml, blog.html, llms.txt, and feed.xml."""
     disk = {p[:-5] for p in glob.glob("post-*.html")}
     for name, source, pattern in (
         ("sitemap.xml", open("sitemap.xml").read(), r"sensawellness\.org/(post-[a-z0-9-]+)"),
         ("blog.html", open("blog.html").read(), r'href="/(post-[a-z0-9-]+)"'),
         ("llms.txt", open("llms.txt").read(), r"sensawellness\.org/(post-[a-z0-9-]+)"),
+        ("feed.xml", open("feed.xml").read(), r"sensawellness\.org/(post-[a-z0-9-]+)</link>"),
     ):
         listed = set(re.findall(pattern, source))
         for slug in sorted(disk - listed):

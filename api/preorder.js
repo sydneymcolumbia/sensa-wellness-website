@@ -25,6 +25,7 @@ const ADMIN_EMAILS = [
   'sydney@sensawellness.org',
   'ryan@sensawellness.org',
   'malhar@sensawellness.org',
+  'priyank@sensawellness.org',
 ];
 const REQUIRE_MFA = process.env.ADMIN_REQUIRE_MFA === 'true';
 

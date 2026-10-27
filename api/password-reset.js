@@ -27,6 +27,7 @@ const ADMIN_EMAILS = [
   'sydney@sensawellness.org',
   'ryan@sensawellness.org',
   'malhar@sensawellness.org',
+  'priyank@sensawellness.org',
 ];
 
 // Firebase web API key. It is public (the same key ships in admin.html);
