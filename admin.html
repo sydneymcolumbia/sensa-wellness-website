@@ -925,6 +925,13 @@
         </div>
         <div id="social-instagram-list"><div class="loading">Loading...</div></div>
       </div>
+      <div class="table-card" id="social-facebook-card" style="margin-top:20px">
+        <div class="table-header">
+          <h2>Facebook: recent posts</h2>
+          <span class="count" id="social-facebook-status"></span>
+        </div>
+        <div id="social-facebook-list"><div class="loading">Loading...</div></div>
+      </div>
     </div>
 
   </div>
@@ -979,6 +986,7 @@
     'info@sensawellness.org',
     'sydney@sensawellness.org',
     'ryan@sensawellness.org',
+      'malhar@sensawellness.org',
   ];
 
   const app = initializeApp(firebaseConfig);
@@ -1734,60 +1742,92 @@
   function renderSocial(data) {
     const li = data.linkedin || {};
     const ig = data.instagram || {};
+    const fb = data.facebook || {};
+    const viaPlanoly = data.source === 'planoly';
+    const days = data.windowDays || 30;
     const updated = document.getElementById('social-updated');
-    updated.textContent = data.generatedAt ? `Updated ${new Date(data.generatedAt).toLocaleTimeString()}${data.cached ? ' (cached)' : ''}` : '';
+    updated.textContent = data.generatedAt ? `Updated ${new Date(data.generatedAt).toLocaleTimeString()}${data.cached ? ' (cached)' : ''}${viaPlanoly ? ' via Planoly' : ''}` : '';
+    const connectMsg = 'Connect Planoly by opening /api/planoly-auth?key=&lt;setup key&gt; while signed into Planoly as the Sensa Wellness workspace owner.' + (data.planolyError ? ' Last error: ' + escapeHtml(data.planolyError) : '');
+    const empty = msg => `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">${msg}</div>`;
 
     const cards = [];
-    cards.push(`<div class="stat-card"><div class="label">LinkedIn followers</div><div class="value">${li.connected ? num(li.followers) : '&ndash;'}</div><div class="sub">${li.connected ? 'company page' : 'not connected'}</div></div>`);
-    cards.push(`<div class="stat-card"><div class="label">LinkedIn impressions, 30d</div><div class="value">${li.connected && li.last30 ? num(li.last30.impressions) : '&ndash;'}</div><div class="sub">${li.connected && li.last30 ? `${num(li.last30.clicks)} clicks, ${num(li.last30.likes)} reactions` : ''}</div></div>`);
-    cards.push(`<div class="stat-card"><div class="label">Instagram followers</div><div class="value">${ig.connected ? num(ig.followers) : '&ndash;'}</div><div class="sub">${ig.connected ? `@${escapeHtml(ig.username || '')}, ${num(ig.mediaCount)} posts` : 'not connected'}</div></div>`);
-    cards.push(`<div class="stat-card"><div class="label">Instagram reach, 28d</div><div class="value">${ig.connected ? num(ig.reach28) : '&ndash;'}</div><div class="sub">${ig.connected ? (ig.views28 !== null && ig.views28 !== undefined ? `${num(ig.views28)} views` : (ig.insightsError ? 'insights unavailable' : '')) : ''}</div></div>`);
+    cards.push(`<div class="stat-card"><div class="label">LinkedIn followers</div><div class="value">${li.connected ? num(li.followers) : '&ndash;'}</div></div>`);
+    cards.push(`<div class="stat-card"><div class="label">LinkedIn ${viaPlanoly ? 'views' : 'impressions'}, ${days}d</div><div class="value">${li.connected && li.last30 ? num(li.last30.impressions) : '&ndash;'}</div></div>`);
+    cards.push(`<div class="stat-card"><div class="label">Instagram followers</div><div class="value">${ig.connected ? num(ig.followers) : '&ndash;'}</div></div>`);
+    cards.push(`<div class="stat-card"><div class="label">Instagram reach, ${viaPlanoly ? days + 'd' : '28d'}</div><div class="value">${ig.connected ? num(viaPlanoly ? ig.reach30 : ig.reach28) : '&ndash;'}</div></div>`);
+    if (viaPlanoly) cards.push(`<div class="stat-card"><div class="label">Facebook posts, ${days}d</div><div class="value">${fb.connected ? num(fb.posts30) : '&ndash;'}</div></div>`);
     document.getElementById('social-stats').innerHTML = cards.join('');
 
     const liStatus = document.getElementById('social-linkedin-status');
     const liList = document.getElementById('social-linkedin-list');
     if (!li.connected) {
       liStatus.textContent = 'not connected';
-      liList.innerHTML = `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">Connect the LinkedIn page by opening /api/linkedin-auth with the setup key as a page admin.${li.reason ? '<br><small>' + escapeHtml(li.reason) + '</small>' : ''}</div>`;
+      liList.innerHTML = empty(viaPlanoly ? 'Planoly could not read LinkedIn: ' + escapeHtml(li.reason || 'unknown error') : connectMsg + ' Or connect LinkedIn directly at /api/linkedin-auth?key=&lt;setup key&gt; once LinkedIn approves the app.');
     } else {
       const rows = li.recent || [];
-      liStatus.textContent = `${rows.length} shared by the auto-poster`;
+      liStatus.textContent = viaPlanoly ? `${rows.length} most recent, published through Planoly` : `${rows.length} shared by the auto-poster`;
       liList.innerHTML = rows.length ? `
         <div style="overflow-x:auto"><table>
-          <thead><tr><th scope="col">Date</th><th scope="col">Article</th><th scope="col">Impressions</th><th scope="col">Clicks</th><th scope="col">Reactions</th><th scope="col">Comments</th></tr></thead>
+          <thead><tr><th scope="col">Date</th><th scope="col">Post</th><th scope="col">${viaPlanoly ? 'Views' : 'Impressions'}</th><th scope="col">${viaPlanoly ? 'Likes' : 'Clicks'}</th><th scope="col">${viaPlanoly ? 'Comments' : 'Reactions'}</th><th scope="col">${viaPlanoly ? 'Shares' : 'Comments'}</th></tr></thead>
           <tbody>${rows.map(p => `<tr>
             <td>${escapeHtml(socialDate(p.postedAt))}</td>
             <td><a href="${escapeHtml(p.url || '#')}" target="_blank" rel="noopener">${escapeHtml(p.title || p.slug || '')}</a></td>
             <td>${p.stats ? num(p.stats.impressions) : '&ndash;'}</td>
-            <td>${p.stats ? num(p.stats.clicks) : '&ndash;'}</td>
-            <td>${p.stats ? num(p.stats.likes) : '&ndash;'}</td>
-            <td>${p.stats ? num(p.stats.comments) : '&ndash;'}</td>
+            <td>${p.stats ? num(viaPlanoly ? p.stats.likes : p.stats.clicks) : '&ndash;'}</td>
+            <td>${p.stats ? num(viaPlanoly ? p.stats.comments : p.stats.likes) : '&ndash;'}</td>
+            <td>${p.stats ? num(viaPlanoly ? p.stats.shares : p.stats.comments) : '&ndash;'}</td>
           </tr>`).join('')}</tbody>
         </table></div>
         ${(li.errors && li.errors.length) ? `<div style="padding:10px 0 0;font-size:12px;color:var(--gray)">${li.errors.map(escapeHtml).join('<br>')}</div>` : ''}`
-        : `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">Nothing shared yet. The first article goes out with the next weekday blog post.</div>`;
+        : empty(viaPlanoly ? `No LinkedIn posts published through Planoly in the last ${days} days.` : 'Nothing shared yet. The first article goes out with the next weekday run.');
     }
 
     const igStatus = document.getElementById('social-instagram-status');
     const igList = document.getElementById('social-instagram-list');
     if (!ig.connected) {
       igStatus.textContent = 'not connected';
-      igList.innerHTML = `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">Connect Instagram by opening /api/instagram-auth with the setup key while logged in as the Sensa account.${ig.reason ? '<br><small>' + escapeHtml(ig.reason) + '</small>' : ''}</div>`;
+      igList.innerHTML = empty(viaPlanoly ? 'Planoly could not read Instagram: ' + escapeHtml(ig.reason || 'unknown error') : connectMsg);
     } else {
       const rows = ig.recent || [];
       igStatus.textContent = `${rows.length} most recent`;
       igList.innerHTML = rows.length ? `
         <div style="overflow-x:auto"><table>
-          <thead><tr><th scope="col">Date</th><th scope="col">Post</th><th scope="col">Type</th><th scope="col">Likes</th><th scope="col">Comments</th></tr></thead>
+          <thead><tr><th scope="col">Date</th><th scope="col">Post</th><th scope="col">Type</th>${viaPlanoly ? '<th scope="col">Reach</th>' : ''}<th scope="col">Likes</th><th scope="col">Comments</th>${viaPlanoly ? '<th scope="col">Saves</th>' : ''}</tr></thead>
           <tbody>${rows.map(m => `<tr>
             <td>${escapeHtml(socialDate(m.postedAt))}</td>
             <td><a href="${escapeHtml(m.url || '#')}" target="_blank" rel="noopener">${escapeHtml(m.caption || '(no caption)')}</a></td>
             <td>${escapeHtml((m.type || '').toLowerCase().replace('_', ' '))}</td>
+            ${viaPlanoly ? `<td>${num(m.reach)}</td>` : ''}
             <td>${num(m.likes)}</td>
             <td>${num(m.comments)}</td>
+            ${viaPlanoly ? `<td>${num(m.saves)}</td>` : ''}
           </tr>`).join('')}</tbody>
         </table></div>`
-        : `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No posts found.${ig.mediaError ? ' ' + escapeHtml(ig.mediaError) : ''}</div>`;
+        : empty(`No posts found.${ig.mediaError ? ' ' + escapeHtml(ig.mediaError) : ''}`);
+    }
+
+    const fbCard = document.getElementById('social-facebook-card');
+    const fbStatus = document.getElementById('social-facebook-status');
+    const fbList = document.getElementById('social-facebook-list');
+    if (!viaPlanoly) {
+      fbCard.style.display = 'none';
+    } else if (!fb.connected) {
+      fbCard.style.display = '';
+      fbStatus.textContent = 'not connected';
+      fbList.innerHTML = empty('Planoly could not read Facebook: ' + escapeHtml(fb.reason || 'unknown error'));
+    } else {
+      fbCard.style.display = '';
+      const rows = fb.recent || [];
+      fbStatus.textContent = `${rows.length} most recent`;
+      fbList.innerHTML = (rows.length ? `
+        <div style="overflow-x:auto"><table>
+          <thead><tr><th scope="col">Date</th><th scope="col">Post</th></tr></thead>
+          <tbody>${rows.map(m => `<tr>
+            <td>${escapeHtml(socialDate(m.postedAt))}</td>
+            <td>${m.url ? `<a href="${escapeHtml(m.url)}" target="_blank" rel="noopener">${escapeHtml(m.caption || '(no caption)')}</a>` : escapeHtml(m.caption || '(no caption)')}</td>
+          </tr>`).join('')}</tbody>
+        </table></div>` : empty('No Facebook posts published through Planoly yet.'))
+        + (fb.note ? `<div style="padding:10px 0 0;font-size:12px;color:var(--gray)">${escapeHtml(fb.note)}</div>` : '');
     }
   }
 

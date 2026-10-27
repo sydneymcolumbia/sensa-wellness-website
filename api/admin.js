@@ -16,6 +16,7 @@ const ADMIN_EMAILS = [
   'info@sensawellness.org',
   'sydney@sensawellness.org',
   'ryan@sensawellness.org',
+  'malhar@sensawellness.org',
 ];
 
 // Optional second factor gate. Off by default so nobody is locked out before

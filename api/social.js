@@ -3,9 +3,14 @@ const li = require('../lib/linkedin');
 const ig = require('../lib/instagram');
 const linkedinAuth = require('../lib/handlers/linkedin-auth');
 const instagramAuth = require('../lib/handlers/instagram-auth');
+const planoly = require('../lib/planoly');
+const planolyAuth = require('../lib/handlers/planoly-auth');
 
 // Social media numbers for the admin dashboard.
-//   GET (admin)  { linkedin: {...}, instagram: {...}, generatedAt, cached }
+//   GET (admin)  { source, linkedin: {...}, instagram: {...}, facebook: {...}, generatedAt, cached }
+//                Planoly is the source when it has been connected through
+//                /api/planoly-auth; otherwise the direct LinkedIn and
+//                Instagram connections are used.
 //                Requires a verified Firebase ID token from an allowlisted
 //                admin, same rules as api/preorder.js. Results are cached in
 //                Firestore `social/cache` for CACHE_MINUTES so repeated page
@@ -19,6 +24,7 @@ const ADMIN_EMAILS = [
   'info@sensawellness.org',
   'sydney@sensawellness.org',
   'ryan@sensawellness.org',
+  'malhar@sensawellness.org',
 ];
 const REQUIRE_MFA = process.env.ADMIN_REQUIRE_MFA === 'true';
 const CACHE_MINUTES = Number(process.env.SOCIAL_CACHE_MINUTES || 15);
@@ -97,6 +103,7 @@ module.exports = async function handler(req, res) {
   const action = req.query?.action;
   if (action === 'linkedin-auth') return linkedinAuth(req, res);
   if (action === 'instagram-auth') return instagramAuth(req, res);
+  if (action === 'planoly-auth') return planolyAuth(req, res);
 
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
@@ -115,9 +122,19 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  const [linkedin, instagram] = await Promise.all([linkedinBlock(), instagramBlock()]);
+  let payload;
+  let planolyError = null;
+  try {
+    payload = await planoly.fetchStats(db);
+  } catch (err) {
+    console.error('Planoly stats failed:', err.message);
+    planolyError = err.message;
+  }
+  if (!payload) {
+    const [linkedin, instagram] = await Promise.all([linkedinBlock(), instagramBlock()]);
+    payload = { source: 'direct', linkedin, instagram, planolyError };
+  }
   const generatedAt = new Date().toISOString();
-  const payload = { linkedin, instagram };
   await cacheRef.set({ payload, generatedAt }).catch(err => console.error('social cache write failed', err.message));
   return res.status(200).json({ ...payload, generatedAt, cached: false });
 };
