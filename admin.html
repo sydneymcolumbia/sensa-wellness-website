@@ -769,6 +769,10 @@
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
       Social
     </div>
+    <div class="nav-item" data-page="blog" role="button" tabindex="0">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Blog
+    </div>
 
     <div class="sidebar-bottom">
       <button class="signout-btn" id="change-password-btn" type="button" style="margin-bottom:8px">Change password</button>
@@ -898,6 +902,36 @@
           <span class="count" id="preorders-count"></span>
         </div>
         <div id="preorders-list"><div class="loading">Loading...</div></div>
+      </div>
+    </div>
+
+    <!-- BLOG PAGE -->
+    <div class="page" id="page-blog">
+      <div class="page-header">
+        <h1>Blog</h1>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span class="last-updated" id="blog-updated"></span>
+          <button class="refresh-btn" id="blog-refresh-btn" type="button">Refresh</button>
+        </div>
+      </div>
+      <div class="stats-grid" id="blog-stats"><div class="loading" style="grid-column:1/-1">Loading...</div></div>
+      <div class="table-card" id="blog-categories-card">
+        <div class="table-header">
+          <h2>Posts by category</h2>
+          <span class="count" id="blog-categories-count"></span>
+        </div>
+        <div id="blog-categories"><div class="loading">Loading...</div></div>
+      </div>
+      <div class="table-card" style="margin-top:20px">
+        <div class="table-header">
+          <h2>All posts</h2>
+          <span class="count" id="blog-list-count"></span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+          <input type="search" class="search-bar" id="blog-search" placeholder="Search title, slug, or description" aria-label="Search blog posts" style="flex:1;min-width:220px">
+          <select id="blog-category-filter" class="search-bar" aria-label="Filter by category" style="width:auto"><option value="">All categories</option></select>
+        </div>
+        <div id="blog-list"><div class="loading">Loading...</div></div>
       </div>
     </div>
 
@@ -1622,6 +1656,7 @@
     if (name === 'reviews') loadReviews();
     if (name === 'preorders') loadPreorders();
     if (name === 'social') loadSocial();
+    if (name === 'blog') loadBlog();
   }
 
   // Helpers
@@ -1830,6 +1865,143 @@
         + (fb.note ? `<div style="padding:10px 0 0;font-size:12px;color:var(--gray)">${escapeHtml(fb.note)}</div>` : '');
     }
   }
+
+  // ---- Blog ----
+  // Reads the public blog index, the sitemap and the RSS feed, so the tab
+  // stays current as the weekday blog agent publishes without any extra
+  // wiring. The index has every post with its category and month; the feed
+  // adds exact publish dates where it has the post; the sitemap adds lastmod.
+  let blogLoaded = false;
+  let blogPosts = [];
+  const BLOG_MONTHS = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+  const GITHUB_BLOB = 'https://github.com/sydneymcolumbia/sensa-wellness-website/blob/master/';
+
+  async function loadBlog(force) {
+    const statsEl = document.getElementById('blog-stats');
+    if (!force && blogLoaded) return;
+    statsEl.innerHTML = '<div class="loading" style="grid-column:1/-1">Loading...</div>';
+    try {
+      const opts = force ? { cache: 'reload' } : {};
+      const [blogHtml, sitemapXml, feedXml] = await Promise.all([
+        fetch('/blog', opts).then(r => { if (!r.ok) throw new Error('blog ' + r.status); return r.text(); }),
+        fetch('/sitemap.xml', opts).then(r => r.ok ? r.text() : '').catch(() => ''),
+        fetch('/feed.xml', opts).then(r => r.ok ? r.text() : '').catch(() => ''),
+      ]);
+      blogPosts = parseBlog(blogHtml, sitemapXml, feedXml);
+      blogLoaded = true;
+      document.getElementById('blog-updated').textContent = 'Read ' + new Date().toLocaleTimeString();
+      renderBlog();
+    } catch (err) {
+      console.error('Blog load failed', err);
+      statsEl.innerHTML = '<div class="loading" style="grid-column:1/-1">Failed to load blog data.</div>';
+    }
+  }
+
+  function parseBlog(html, sitemapXml, feedXml) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const lastmod = {};
+    const published = {};
+    if (sitemapXml) {
+      const sm = parser.parseFromString(sitemapXml, 'application/xml');
+      sm.querySelectorAll('url').forEach(u => {
+        const loc = (u.querySelector('loc') || {}).textContent || '';
+        const m = loc.match(/\/(post-[^/?#]+?)(?:\.html)?$/);
+        if (m) lastmod[m[1]] = ((u.querySelector('lastmod') || {}).textContent || '').slice(0, 10);
+      });
+    }
+    if (feedXml) {
+      const fd = parser.parseFromString(feedXml, 'application/xml');
+      fd.querySelectorAll('item').forEach(it => {
+        const link = (it.querySelector('link') || {}).textContent || '';
+        const m = link.match(/\/(post-[^/?#]+)$/);
+        const d = (it.querySelector('pubDate') || {}).textContent;
+        const t = d ? Date.parse(d) : NaN;
+        if (m && !isNaN(t)) published[m[1]] = new Date(t).toISOString().slice(0, 10);
+      });
+    }
+    return Array.from(doc.querySelectorAll('a.blog-card')).map((a, i) => {
+      const slug = (a.getAttribute('href') || '').replace(/^\//, '').replace(/\.html$/, '');
+      const text = sel => { const el = a.querySelector(sel); return el ? el.textContent.trim() : ''; };
+      const month = text('.post-date');
+      const [mon, yr] = month.split(/\s+/);
+      const monthDate = (BLOG_MONTHS[mon] !== undefined && yr) ? Date.UTC(Number(yr), BLOG_MONTHS[mon], 1) : 0;
+      const pub = published[slug] || null;
+      return {
+        slug,
+        url: 'https://www.sensawellness.org/' + slug,
+        title: text('h3') || slug,
+        category: text('.post-category') || (a.dataset.category || ''),
+        categoryKey: a.dataset.category || '',
+        description: text('.blog-card-content p'),
+        month,
+        published: pub,
+        sortDate: pub ? Date.parse(pub) : monthDate,
+        exact: Boolean(pub),
+        lastmod: lastmod[slug] || '',
+        order: i,
+      };
+    }).sort((x, y) => (y.sortDate - x.sortDate) || (x.order - y.order));
+  }
+
+  function renderBlog() {
+    const now = Date.now();
+    const day = 86400000;
+    const total = blogPosts.length;
+    const last7 = blogPosts.filter(p => p.exact && now - p.sortDate <= 7 * day).length;
+    const last30 = blogPosts.filter(p => p.exact && now - p.sortDate <= 30 * day).length;
+    const latest = blogPosts[0];
+    const byCat = {};
+    blogPosts.forEach(p => { byCat[p.category || 'Uncategorized'] = (byCat[p.category || 'Uncategorized'] || 0) + 1; });
+    const cats = Object.keys(byCat).sort((a, b) => byCat[b] - byCat[a]);
+
+    document.getElementById('blog-stats').innerHTML = [
+      `<div class="stat-card"><div class="label">Published posts</div><div class="value">${num(total)}</div></div>`,
+      `<div class="stat-card"><div class="label">New, last 7 days</div><div class="value">${num(last7)}</div></div>`,
+      `<div class="stat-card"><div class="label">New, last 30 days</div><div class="value">${num(last30)}</div></div>`,
+      `<div class="stat-card"><div class="label">Latest post</div><div class="value" style="font-size:15px;line-height:1.3">${latest ? `<a href="${escapeHtml(latest.url)}" target="_blank" rel="noopener">${escapeHtml(latest.title)}</a>` : '&ndash;'}</div><div class="sub">${latest ? escapeHtml(latest.published || latest.month) : ''}</div></div>`,
+    ].join('');
+
+    document.getElementById('blog-categories-count').textContent = `${cats.length} categories`;
+    document.getElementById('blog-categories').innerHTML = `
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th scope="col">Category</th><th scope="col">Posts</th><th scope="col">Share</th><th scope="col">Newest</th></tr></thead>
+        <tbody>${cats.map(c => {
+          const newest = blogPosts.find(p => (p.category || 'Uncategorized') === c);
+          return `<tr><td>${escapeHtml(c)}</td><td>${num(byCat[c])}</td><td>${total ? Math.round(100 * byCat[c] / total) : 0}%</td><td>${newest ? `<a href="${escapeHtml(newest.url)}" target="_blank" rel="noopener">${escapeHtml(newest.title)}</a>` : ''}</td></tr>`;
+        }).join('')}</tbody>
+      </table></div>`;
+
+    const select = document.getElementById('blog-category-filter');
+    const current = select.value;
+    select.innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option value="${escapeHtml(c)}"${c === current ? ' selected' : ''}>${escapeHtml(c)} (${byCat[c]})</option>`).join('');
+    renderBlogList();
+  }
+
+  function renderBlogList() {
+    const q = (document.getElementById('blog-search').value || '').trim().toLowerCase();
+    const cat = document.getElementById('blog-category-filter').value;
+    const rows = blogPosts.filter(p => (!cat || (p.category || 'Uncategorized') === cat) && (!q || [p.title, p.slug, p.description].some(v => (v || '').toLowerCase().includes(q))));
+    document.getElementById('blog-list-count').textContent = `${rows.length} of ${blogPosts.length}`;
+    document.getElementById('blog-list').innerHTML = rows.length ? `
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th scope="col">Published</th><th scope="col">Title</th><th scope="col">Category</th><th scope="col">Sitemap lastmod</th><th scope="col">Summary</th><th scope="col"></th></tr></thead>
+        <tbody>${rows.map(p => `<tr>
+          <td title="${p.exact ? 'From the RSS feed' : 'Month from the blog index; not in the feed'}">${escapeHtml(p.published || p.month)}${p.exact ? '' : ' <span style="color:var(--gray)">~</span>'}</td>
+          <td><a href="${escapeHtml(p.url)}" target="_blank" rel="noopener">${escapeHtml(p.title)}</a><div style="font-size:11px;color:var(--gray)">/${escapeHtml(p.slug)}</div></td>
+          <td>${escapeHtml(p.category)}</td>
+          <td>${escapeHtml(p.lastmod || '')}</td>
+          <td style="max-width:420px;font-size:12px;color:var(--gray)">${escapeHtml(p.description)}</td>
+          <td><a href="${escapeHtml(GITHUB_BLOB + p.slug + '.html')}" target="_blank" rel="noopener" style="font-size:12px">Source</a></td>
+        </tr>`).join('')}</tbody>
+      </table></div>
+      <div style="padding:10px 0 0;font-size:12px;color:var(--gray)">Dates marked ~ are month-level because that post is not in feed.xml.</div>`
+      : '<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No posts match.</div>';
+  }
+
+  document.getElementById('blog-refresh-btn').addEventListener('click', () => loadBlog(true));
+  document.getElementById('blog-search').addEventListener('input', () => { if (blogLoaded) renderBlogList(); });
+  document.getElementById('blog-category-filter').addEventListener('change', () => { if (blogLoaded) renderBlogList(); });
 
   // ---- Review moderation ----
   async function loadReviews() {
