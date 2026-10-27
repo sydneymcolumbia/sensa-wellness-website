@@ -115,6 +115,26 @@ module.exports = async function handler(req, res) {
         .limit(500)
         .get();
 
+      const toRow = (doc) => {
+          const d = doc.data() || {};
+          const rating = Number(d.rating);
+          return {
+            id: doc.id,
+            firstName: cleanString(d.firstName, 80),
+            rating: Number.isFinite(rating) ? Math.min(5, Math.max(0, Math.round(rating))) : 0,
+            title: cleanString(d.title, 120),
+            body: cleanString(d.body, 2000),
+            createdAt: d.createdAt?.toDate?.()?.toISOString() || null,
+            approvedAt: d.approvedAt?.toDate?.()?.toISOString() || null,
+            approvedBy: cleanString(d.approvedBy, 120),
+          };
+      };
+      const byDate = (a, b) => new Date(b.approvedAt || b.createdAt || 0) - new Date(a.approvedAt || a.createdAt || 0);
+      const pubSnap = await db.collection('reviews').where('approved', '==', true).limit(500).get();
+      const published = pubSnap.docs.map(toRow).sort(byDate);
+      const ratingSum = published.reduce((sum, r) => sum + r.rating, 0);
+      const average = published.length ? Math.round((ratingSum / published.length) * 10) / 10 : null;
+
       const pending = snap.docs
         .map((doc) => {
           const d = doc.data() || {};
@@ -136,13 +156,13 @@ module.exports = async function handler(req, res) {
         reviewCount: pending.length,
       });
 
-      return res.status(200).json({ pending });
+      return res.status(200).json({ pending, published, average });
     }
 
-    // Approve or delete a review.
+    // Approve, unpublish (back to pending) or delete a review.
     if (req.method === 'POST') {
       const { id, action } = req.body || {};
-      if (typeof id !== 'string' || !DOC_ID_RE.test(id) || !['approve', 'delete'].includes(action)) {
+      if (typeof id !== 'string' || !DOC_ID_RE.test(id) || !['approve', 'delete', 'unpublish'].includes(action)) {
         return res.status(400).json({ error: 'Provide an id and a valid action.' });
       }
       const ref = db.collection('reviews').doc(id);
@@ -151,6 +171,12 @@ module.exports = async function handler(req, res) {
           approved: true,
           approvedAt: admin.firestore.FieldValue.serverTimestamp(),
           approvedBy: adminUser.email,
+        });
+      } else if (action === 'unpublish') {
+        await ref.update({
+          approved: false,
+          unpublishedAt: admin.firestore.FieldValue.serverTimestamp(),
+          unpublishedBy: adminUser.email,
         });
       } else {
         await ref.delete();

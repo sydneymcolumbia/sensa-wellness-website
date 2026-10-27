@@ -893,6 +893,13 @@
         </div>
         <div id="reviews-list"><div class="loading">Loading...</div></div>
       </div>
+      <div class="table-card" style="margin-top:20px">
+        <div class="table-header">
+          <h2>Current published reviews</h2>
+          <span class="count" id="reviews-published-count"></span>
+        </div>
+        <div id="reviews-published-list"><div class="loading">Loading...</div></div>
+      </div>
     </div>
 
     <div class="page" id="page-preorders">
@@ -2207,6 +2214,7 @@
       if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
       renderReviews(data.pending || []);
+      renderPublishedReviews(data.published || [], data.average);
     } catch (e) {
       console.error(e);
       listEl.innerHTML = '<div class="loading">Failed to load reviews.</div>';
@@ -2248,8 +2256,36 @@
     `).join('');
   }
 
+  function renderPublishedReviews(published, average) {
+    const listEl = document.getElementById('reviews-published-list');
+    const countEl = document.getElementById('reviews-published-count');
+    countEl.textContent = published.length ? `${published.length} published, average ${average != null ? average.toFixed(1) : '-'} / 5` : '0 published';
+    if (!published.length) {
+      listEl.innerHTML = '<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No published reviews yet. Approved reviews appear here and on the homepage.</div>';
+      return;
+    }
+    listEl.innerHTML = published.map(r => `
+      <div class="review-card" style="border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:16px 18px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <strong>${escapeHtml(r.firstName)}</strong>
+            ${starGlyphs(r.rating)}
+            <span style="color:var(--gray);font-size:12px">submitted ${formatDate(r.createdAt)}${r.approvedAt ? `, published ${formatDate(r.approvedAt)}` : ''}${r.approvedBy ? ` by ${escapeHtml(r.approvedBy)}` : ''}</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="refresh-btn" data-review-id="${escapeHtml(r.id)}" data-action="unpublish">Unpublish</button>
+            <button class="refresh-btn" style="background:#ef4444;color:#fff;border:none" data-review-id="${escapeHtml(r.id)}" data-action="delete">Delete</button>
+          </div>
+        </div>
+        ${r.title ? `<div style="font-weight:700;margin-bottom:4px">${escapeHtml(r.title)}</div>` : ''}
+        <div style="color:var(--gray);white-space:pre-wrap;line-height:1.6">${escapeHtml(r.body)}</div>
+      </div>
+    `).join('');
+  }
+
   async function moderateReview(id, action, btn) {
-    if (!['approve', 'delete'].includes(action)) return;
+    if (!['approve', 'delete', 'unpublish'].includes(action)) return;
+    if (action === 'unpublish' && !confirm('Remove this review from the website? It goes back to the pending list and can be approved again.')) return;
     if (action === 'delete' && !confirm('Delete this review permanently?')) return;
     btn.disabled = true;
     try {
