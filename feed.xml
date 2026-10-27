@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Oct 2026 07:17:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 07:15:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Laughter Reduce Inflammation? What the Science Shows</title>
+        <link>https://www.sensawellness.org/post-laughter-inflammation</link>
+        <guid>https://www.sensawellness.org/post-laughter-inflammation</guid>
+        <description>Laughter lowers stress hormones that drive inflammatory signaling, boosts natural killer cell activity, and is associated with lower CRP over time. Here is what the research actually shows.</description>
+        <category>Science</category>
+        <pubDate>Tue, 27 Oct 2026 07:15:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Study: Elevated CRP Predicts 70% Higher Mortality Risk in Sleep Apnea</title>
         <link>https://www.sensawellness.org/post-sleep-apnea-crp-mortality-risk</link>
