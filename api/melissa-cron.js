@@ -51,6 +51,11 @@ module.exports = async function handler(req, res) {
       skipped++;
       continue;
     }
+    // Paid pre-orders have not shipped, so no check-in email until they do.
+    if (session.metadata?.preorder === 'true') {
+      skipped++;
+      continue;
+    }
 
     const email = session.customer_details?.email;
     const fullName = session.customer_details?.name || '';

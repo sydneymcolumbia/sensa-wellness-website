@@ -12,7 +12,12 @@
   'use strict';
 
   var PREORDER_MODE = true;
+  // true: Buy buttons run the normal Stripe checkout as a PAID pre-order
+  // (api/checkout.js PREORDER.paid must match); the free reservation modal
+  // stays reachable from a small link. false: every Buy opens the modal.
+  var PAID_PREORDERS = true;
   window.PREORDER_MODE = PREORDER_MODE;
+  window.PREORDER_PAID = PREORDER_MODE && PAID_PREORDERS;
   if (!PREORDER_MODE) return;
 
   var KITS = {
@@ -162,14 +167,15 @@
 
   // Turn every purchase control into a preorder control.
   function relabel() {
+    var label = PAID_PREORDERS ? 'Pre-order Now' : 'Preorder';
     document.querySelectorAll('button[onclick*="handleCheckout"]').forEach(function (b) {
       var t = b.textContent.trim();
-      if (/^Buy Now/i.test(t)) b.textContent = t.replace(/^Buy Now/i, 'Preorder');
-      else if (/^Buy\b/i.test(t)) b.textContent = t.replace(/^Buy\b/i, 'Preorder');
-      else b.textContent = 'Preorder ' + t;
+      if (/^Buy Now/i.test(t)) b.textContent = t.replace(/^Buy Now/i, label);
+      else if (/^Buy\b/i.test(t)) b.textContent = t.replace(/^Buy\b/i, label);
+      else b.textContent = label + ' ' + t;
     });
     document.querySelectorAll('a[href="#pricing"], a[href="/pay-now"], a[href="/pay-now#waitlist"]').forEach(function (a) {
-      if (/^Buy Now$/i.test(a.textContent.trim())) a.textContent = 'Preorder';
+      if (/^Buy Now$/i.test(a.textContent.trim())) a.textContent = PAID_PREORDERS ? 'Pre-order' : 'Preorder';
     });
   }
 
@@ -178,7 +184,9 @@
       if (h.querySelector('.preorder-notice')) return;
       var p = document.createElement('p');
       p.className = 'preorder-notice';
-      p.innerHTML = '<strong>Preorders open.</strong> Kits are temporarily out of stock. Reserve yours now, pay nothing today, and we will email you the moment your kit is ready to ship.';
+      p.innerHTML = PAID_PREORDERS
+        ? '<strong>Pre-orders open.</strong> Pay today and your kit ships when the next batch is ready; we email you the shipping date. Full refund any time before it ships. <a href="#" class="po-reserve-link">Prefer to reserve without paying?</a>'
+        : '<strong>Preorders open.</strong> Kits are temporarily out of stock. Reserve yours now, pay nothing today, and we will email you the moment your kit is ready to ship.';
       h.appendChild(p);
     });
   }
@@ -186,6 +194,7 @@
   function wire() {
     document.addEventListener('click', function (e) {
       if (e.target.id === 'poClose' || e.target.id === 'poDoneClose' || e.target.id === 'poOverlay') closePreorder();
+      if (e.target.classList && e.target.classList.contains('po-reserve-link')) { e.preventDefault(); openPreorder('price_3pack'); }
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closePreorder();
@@ -195,16 +204,21 @@
     });
   }
 
-  // Replace the Stripe handler. The original stays reachable for debugging.
+  // Reservation-only mode replaces the Stripe handler. In paid mode the
+  // original handleCheckout stays in place and the modal is opt-in.
   window._stripeCheckout = window.handleCheckout;
-  window.handleCheckout = function (priceId) { openPreorder(priceId); };
+  if (!PAID_PREORDERS) window.handleCheckout = function (priceId) { openPreorder(priceId); };
   window.openPreorder = openPreorder;
 
   function init() {
     relabel();
     addNotices();
     wire();
-    if (location.hash === '#preorder') openPreorder('price_3pack');
+    if (location.hash === '#preorder') {
+      var cards = document.querySelector('.pricing-cards');
+      if (PAID_PREORDERS && cards) cards.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else openPreorder('price_3pack');
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

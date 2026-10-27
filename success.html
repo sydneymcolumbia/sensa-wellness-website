@@ -162,6 +162,15 @@
         <a href="/" class="home-btn">Back to Homepage</a>
     </div>
 </main>
+<script>
+    (function () {
+        if (!/[?&]preorder=1/.test(location.search)) return;
+        var h1 = document.querySelector('.confirmation-card h1');
+        var note = document.querySelector('.order-note');
+        if (h1) h1.textContent = 'Pre-order Confirmed!';
+        if (note) note.innerHTML = '<strong>What happens next:</strong><br>Your pre-order is paid and your place in the next batch is secured. A receipt is on its way to your inbox. We will email you the shipping date as soon as the batch is ready, and you can cancel for a full refund any time before it ships. Questions: info@sensawellness.org.';
+    })();
+</script>
 <script src="theme-fx.js" defer></script>
 </body>
 </html>

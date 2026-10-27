@@ -763,7 +763,7 @@
     </div>
     <div class="nav-item" data-page="preorders" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      Preorders <span id="preorders-nav-badge" style="margin-left:auto;background:#f59e0b;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 7px;display:none"></span>
+      Orders <span id="preorders-nav-badge" style="margin-left:auto;background:#f59e0b;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 7px;display:none"></span>
     </div>
     <div class="nav-item" data-page="social" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -897,10 +897,18 @@
 
     <div class="page" id="page-preorders">
       <div class="page-header">
-        <h1>Preorders</h1>
+        <h1>Orders</h1>
         <button class="refresh-btn" id="preorders-refresh-btn" type="button">Refresh</button>
       </div>
+      <div class="stats-grid" id="orders-stats"></div>
       <div class="table-card">
+        <div class="table-header">
+          <h2>Paid orders</h2>
+          <span class="count" id="orders-count"></span>
+        </div>
+        <div id="orders-list"><div class="loading">Loading...</div></div>
+      </div>
+      <div class="table-card" style="margin-top:20px">
         <div class="table-header">
           <h2>Reservations (no payment taken)</h2>
           <span class="count" id="preorders-count"></span>
@@ -1750,16 +1758,47 @@
   }
 
   function renderPreorders(data) {
-    const list = data.preorders || [];
-    const listEl = document.getElementById('preorders-list');
+    const orders = data.orders || [];
+    const money = v => v == null ? '&ndash;' : '$' + Number(v).toFixed(2);
     const badge = document.getElementById('preorders-nav-badge');
-    document.getElementById('preorders-count').textContent = `${list.length} preorders, ${data.totalKits || 0} kits`;
     if (badge) {
-      if (list.length) { badge.textContent = list.length; badge.style.display = 'inline-block'; }
+      if (data.ordersLast7) { badge.textContent = data.ordersLast7; badge.style.display = 'inline-block'; }
       else { badge.style.display = 'none'; }
     }
+    document.getElementById('orders-stats').innerHTML = [
+      `<div class="stat-card"><div class="label">Paid orders (last 50)</div><div class="value">${num(orders.length)}</div></div>`,
+      `<div class="stat-card"><div class="label">Orders, last 7 days</div><div class="value">${num(data.ordersLast7 || 0)}</div></div>`,
+      `<div class="stat-card"><div class="label">Pre-orders awaiting shipment</div><div class="value">${num(orders.filter(o => o.preorder).length)}</div></div>`,
+      `<div class="stat-card"><div class="label">Revenue (listed orders)</div><div class="value">${money(data.revenue || 0)}</div></div>`,
+    ].join('');
+    document.getElementById('orders-count').textContent = data.ordersError ? 'Stripe unavailable' : `${orders.length} orders`;
+    const ordersEl = document.getElementById('orders-list');
+    if (data.ordersError) {
+      ordersEl.innerHTML = `<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">Could not load Stripe orders: ${escapeHtml(data.ordersError)}</div>`;
+    } else if (!orders.length) {
+      ordersEl.innerHTML = '<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No paid orders yet.</div>';
+    } else {
+      ordersEl.innerHTML = `
+        <div style="overflow-x:auto"><table>
+          <thead><tr><th scope="col">Date</th><th scope="col">Customer</th><th scope="col">Items</th><th scope="col">Total</th><th scope="col">Type</th><th scope="col">Ships to</th><th scope="col">Promo</th><th scope="col">Stripe</th></tr></thead>
+          <tbody>${orders.map(o => `<tr>
+            <td>${formatDate(o.createdAt)}</td>
+            <td>${escapeHtml(o.name || '')}<div style="font-size:11px"><a href="mailto:${escapeHtml(o.email || '')}">${escapeHtml(o.email || '')}</a></div></td>
+            <td>${escapeHtml(o.items || '')}</td>
+            <td>${money(o.total)} ${escapeHtml(o.currency || '')}</td>
+            <td>${o.preorder ? '<span style="background:#fde68a;color:#78350f;font-size:11px;font-weight:700;border-radius:8px;padding:2px 7px">Pre-order</span>' : 'Order'}${o.livemode ? '' : ' <span style="font-size:11px;color:var(--gray)">(test)</span>'}</td>
+            <td style="max-width:220px;font-size:12px">${escapeHtml(o.shipTo || '')}</td>
+            <td>${escapeHtml(o.promo || '')}</td>
+            <td>${o.paymentIntent ? `<a href="https://dashboard.stripe.com/payments/${escapeHtml(o.paymentIntent)}" target="_blank" rel="noopener">open</a>` : ''}</td>
+          </tr>`).join('')}</tbody>
+        </table></div>`;
+    }
+
+    const list = data.preorders || [];
+    const listEl = document.getElementById('preorders-list');
+    document.getElementById('preorders-count').textContent = `${list.length} reservations, ${data.totalKits || 0} kits`;
     if (!list.length) {
-      listEl.innerHTML = '<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No preorders yet.</div>';
+      listEl.innerHTML = '<div class="empty" style="padding:30px;text-align:center;color:var(--gray)">No reservations.</div>';
       return;
     }
     listEl.innerHTML = `

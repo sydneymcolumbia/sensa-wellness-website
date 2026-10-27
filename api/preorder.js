@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const admin = require('firebase-admin');
 const { Resend } = require('resend');
+const stripe = process.env.STRIPE_SECRET_KEY ? require('stripe')(process.env.STRIPE_SECRET_KEY) : null;
 
 // Preorder reservations while kits cannot ship.
 //   POST (public)  { name, email, kit, quantity, note, website, page }
@@ -218,7 +219,46 @@ async function listPreorders(req, res) {
     .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
 
   const totalKits = preorders.reduce((s, p) => s + p.quantity, 0);
-  return res.status(200).json({ preorders, count: preorders.length, totalKits });
+
+  // Paid orders straight from Stripe (newest first), so the dashboard shows
+  // pre-orders the moment Checkout completes, with no webhook dependency.
+  let orders = [];
+  let ordersError = null;
+  if (stripe) {
+    try {
+      const list = await stripe.checkout.sessions.list({ limit: 50, status: 'complete', expand: ['data.line_items'] });
+      orders = list.data
+        .filter((sess) => sess.payment_status === 'paid')
+        .map((sess) => {
+          const addr = sess.shipping_details?.address || sess.customer_details?.address || null;
+          return {
+            id: sess.id,
+            createdAt: new Date(sess.created * 1000).toISOString(),
+            name: clean(sess.customer_details?.name, 80),
+            email: clean(sess.customer_details?.email, 254),
+            items: (sess.line_items?.data || []).map((li) => `${li.quantity} x ${li.description}`).join(', '),
+            total: sess.amount_total != null ? sess.amount_total / 100 : null,
+            currency: (sess.currency || 'usd').toUpperCase(),
+            preorder: sess.metadata?.preorder === 'true',
+            promo: clean(sess.metadata?.promo, 40),
+            hearAboutUs: clean(sess.metadata?.hear_about_us, 40),
+            shipTo: addr ? [addr.line1, addr.city, addr.state, addr.postal_code, addr.country].filter(Boolean).join(', ') : '',
+            paymentIntent: typeof sess.payment_intent === 'string' ? sess.payment_intent : (sess.payment_intent?.id || null),
+            livemode: sess.livemode === true,
+          };
+        });
+    } catch (err) {
+      console.error('Stripe order list failed:', err.message);
+      ordersError = err.message;
+    }
+  } else {
+    ordersError = 'STRIPE_SECRET_KEY is not configured';
+  }
+  const weekAgo = Date.now() - 7 * 864e5;
+  const ordersLast7 = orders.filter((o) => Date.parse(o.createdAt) >= weekAgo).length;
+  const revenue = orders.reduce((sum, o) => sum + (o.total || 0), 0);
+
+  return res.status(200).json({ orders, ordersError, ordersLast7, revenue, preorders, count: preorders.length, totalKits });
 }
 
 module.exports = async function handler(req, res) {

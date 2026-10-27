@@ -25,9 +25,9 @@ async function sendOrderAlert(session) {
   const result = await resend.emails.send({
     from: ORDER_ALERT_FROM,
     to: ORDER_ALERT_EMAIL,
-    subject: `New Sensa order: ${items} (${total})`,
+    subject: `${session.metadata?.preorder === 'true' ? 'New Sensa PRE-ORDER' : 'New Sensa order'}: ${items} (${total})`,
     text: [
-      'New order on sensawellness.org',
+      session.metadata?.preorder === 'true' ? 'New PAID PRE-ORDER on sensawellness.org (ships with the next batch)' : 'New order on sensawellness.org',
       '',
       `Items: ${items}`,
       `Total: ${total}`,

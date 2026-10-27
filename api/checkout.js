@@ -47,11 +47,19 @@ async function getSaleCoupon() {
   }
 }
 
-// ── Preorder mode ──────────────────────────────────────────────────
-// While kits cannot ship, no Stripe checkout may be created; the site
-// collects preorders instead (preorder.js + api/preorder.js). Flip this
-// back to false together with PREORDER_MODE in preorder.js.
-const PREORDER_MODE = true;
+// ── Pre-order mode ─────────────────────────────────────────────────
+// enabled: kits ship later than a normal order (copy and alerts say so).
+// paid:    true  = Stripe Checkout runs and the order is a PAID pre-order
+//                  (charged today, ships when the next batch is ready);
+//          false = no checkout; the site collects free reservations
+//                  instead (preorder.js + api/preorder.js).
+// Flip `enabled` to false here AND PREORDER_MODE in preorder.js to go back
+// to normal selling. preorder.js has a matching PAID_PREORDERS flag.
+const PREORDER = {
+  enabled: true,
+  paid: true,
+  note: 'This is a pre-order. You are charged today and your kit ships when the next batch is ready; we will email you the shipping date. Cancel for a full refund any time before it ships.',
+};
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -59,7 +67,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (PREORDER_MODE) {
+  if (PREORDER.enabled && !PREORDER.paid) {
     return res.status(409).json({
       preorder: true,
       error: 'Sensa kits are on preorder right now. Reserve yours on the order page; nothing is charged until kits ship.',
@@ -99,9 +107,15 @@ module.exports = async function handler(req, res) {
       metadata: {
         hear_about_us: hearAboutUs || 'not_answered',
       },
-      success_url: 'https://sensawellness.org/success',
-      cancel_url: 'https://sensawellness.org/pay-now',
+      success_url: PREORDER.enabled ? 'https://www.sensawellness.org/success?preorder=1' : 'https://www.sensawellness.org/success',
+      cancel_url: 'https://www.sensawellness.org/pay-now',
     };
+
+    if (PREORDER.enabled) {
+      params.metadata.preorder = 'true';
+      params.custom_text = { submit: { message: PREORDER.note } };
+      params.payment_intent_data = { description: 'Sensa at-home inflammation test kit (pre-order)' };
+    }
 
     if (promo) {
       params.discounts = [{ promotion_code: promo.id }];
