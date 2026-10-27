@@ -29,6 +29,10 @@
     {
       "source": "/api/planoly-auth",
       "destination": "/api/social?action=planoly-auth"
+    },
+    {
+      "source": "/api/analytics",
+      "destination": "/api/social?action=analytics"
     }
   ],
   "headers": [
@@ -66,7 +70,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'sha256-Jx94rwr+TS43V476tJmA/PTt6MH5iq6OYSrNYXIYWZ8=' 'sha256-EQLkauhHhHT4dfr/P1TxFrSpC9bAyKjyDLksk3VAUqQ=' https://www.gstatic.com https://apis.google.com; connect-src https://api.pwnedpasswords.com 'self' https://script.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.googleapis.com https://*.firebaseio.com; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'sha256-Jx94rwr+TS43V476tJmA/PTt6MH5iq6OYSrNYXIYWZ8=' 'sha256-QW08gA2KcLtrPHvH1ggwA6R8NGjC7JP48+VXCzIz1Ts=' https://www.gstatic.com https://apis.google.com; connect-src https://api.pwnedpasswords.com 'self' https://script.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.googleapis.com https://*.firebaseio.com; upgrade-insecure-requests"
         },
         {
           "key": "Cache-Control",
@@ -87,7 +91,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'sha256-Jx94rwr+TS43V476tJmA/PTt6MH5iq6OYSrNYXIYWZ8=' 'sha256-EQLkauhHhHT4dfr/P1TxFrSpC9bAyKjyDLksk3VAUqQ=' https://www.gstatic.com https://apis.google.com; connect-src https://api.pwnedpasswords.com 'self' https://script.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.googleapis.com https://*.firebaseio.com; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'sha256-Jx94rwr+TS43V476tJmA/PTt6MH5iq6OYSrNYXIYWZ8=' 'sha256-QW08gA2KcLtrPHvH1ggwA6R8NGjC7JP48+VXCzIz1Ts=' https://www.gstatic.com https://apis.google.com; connect-src https://api.pwnedpasswords.com 'self' https://script.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.googleapis.com https://*.firebaseio.com; upgrade-insecure-requests"
         },
         {
           "key": "Cache-Control",

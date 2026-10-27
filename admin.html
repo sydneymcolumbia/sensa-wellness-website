@@ -773,6 +773,10 @@
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       Blog
     </div>
+    <div class="nav-item" data-page="analytics" role="button" tabindex="0">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Analytics
+    </div>
 
     <div class="sidebar-bottom">
       <button class="signout-btn" id="change-password-btn" type="button" style="margin-bottom:8px">Change password</button>
@@ -902,6 +906,36 @@
           <span class="count" id="preorders-count"></span>
         </div>
         <div id="preorders-list"><div class="loading">Loading...</div></div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS PAGE -->
+    <div class="page" id="page-analytics">
+      <div class="page-header">
+        <h1>Analytics</h1>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span class="last-updated" id="analytics-updated"></span>
+          <select id="analytics-days" class="search-bar" aria-label="Date range" style="width:auto">
+            <option value="7">Last 7 days</option>
+            <option value="28" selected>Last 28 days</option>
+            <option value="90">Last 90 days</option>
+          </select>
+          <button class="refresh-btn" id="analytics-refresh-btn" type="button">Refresh</button>
+        </div>
+      </div>
+      <div id="analytics-setup" style="display:none" class="table-card"></div>
+      <div class="stats-grid" id="analytics-stats"><div class="loading" style="grid-column:1/-1">Loading...</div></div>
+      <div class="table-card" id="analytics-chart-card">
+        <div class="table-header"><h2>Daily users</h2><span class="count" id="analytics-chart-count"></span></div>
+        <div id="analytics-chart"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;margin-top:20px">
+        <div class="table-card"><div class="table-header"><h2>Top pages</h2></div><div id="analytics-pages"></div></div>
+        <div class="table-card"><div class="table-header"><h2>Traffic sources</h2></div><div id="analytics-sources"></div></div>
+        <div class="table-card"><div class="table-header"><h2>Landing pages</h2></div><div id="analytics-landing"></div></div>
+        <div class="table-card"><div class="table-header"><h2>Events</h2></div><div id="analytics-events"></div></div>
+        <div class="table-card"><div class="table-header"><h2>Countries</h2></div><div id="analytics-countries"></div></div>
+        <div class="table-card"><div class="table-header"><h2>Devices</h2></div><div id="analytics-devices"></div></div>
       </div>
     </div>
 
@@ -1657,6 +1691,7 @@
     if (name === 'preorders') loadPreorders();
     if (name === 'social') loadSocial();
     if (name === 'blog') loadBlog();
+    if (name === 'analytics') loadAnalytics();
   }
 
   // Helpers
@@ -1865,6 +1900,123 @@
         + (fb.note ? `<div style="padding:10px 0 0;font-size:12px;color:var(--gray)">${escapeHtml(fb.note)}</div>` : '');
     }
   }
+
+  // ---- Analytics (GA4 via /api/analytics) ----
+  const analyticsLoaded = {};
+  function analyticsDays() { return Number(document.getElementById('analytics-days').value) || 28; }
+  async function loadAnalytics(force) {
+    const days = analyticsDays();
+    const statsEl = document.getElementById('analytics-stats');
+    if (!force && analyticsLoaded[days]) { renderAnalytics(analyticsLoaded[days]); return; }
+    statsEl.innerHTML = '<div class="loading" style="grid-column:1/-1">Loading...</div>';
+    try {
+      const token = await window._currentUser.getIdToken();
+      const res = await fetch('/api/analytics?days=' + days + (force ? '&refresh=1' : ''), { headers: { Authorization: `Bearer ${token}` } });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      analyticsLoaded[days] = data;
+      renderAnalytics(data);
+    } catch (err) {
+      console.error('Analytics load failed', err);
+      statsEl.innerHTML = '<div class="loading" style="grid-column:1/-1">Failed to load analytics.</div>';
+    }
+  }
+
+  function pct(cur, prev) {
+    if (!prev) return cur ? '<span style="color:var(--gray)">new</span>' : '';
+    const d = (cur - prev) / prev * 100;
+    const color = d >= 0 ? '#15803d' : '#b91c1c';
+    return `<span style="color:${color}">${d >= 0 ? '+' : ''}${d.toFixed(0)}% vs prior</span>`;
+  }
+  function mmss(sec) { const s = Math.round(sec || 0); return `${Math.floor(s / 60)}m ${String(s % 60).padStart(2, '0')}s`; }
+  function simpleTable(rows, cols) {
+    if (!rows || !rows.length) return '<div class="empty" style="padding:20px;text-align:center;color:var(--gray)">No data.</div>';
+    return `<div style="overflow-x:auto"><table><thead><tr>${cols.map(c => `<th scope="col">${escapeHtml(c.label)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${cols.map(c => `<td${c.num ? ' style="text-align:right"' : ''}>${c.render ? c.render(r) : escapeHtml(String(r[c.key] == null ? '' : r[c.key]))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }
+  function dailyChart(daily) {
+    if (!daily || !daily.length) return '<div class="empty" style="padding:20px;text-align:center;color:var(--gray)">No daily data.</div>';
+    const max = Math.max(1, ...daily.map(d => d.users));
+    const w = 1000, h = 220, pad = 24, bw = (w - pad * 2) / daily.length;
+    const bars = daily.map((d, i) => {
+      const bh = Math.round((d.users / max) * (h - pad * 2));
+      const x = pad + i * bw, y = h - pad - bh;
+      const label = `${d.date.slice(0, 4)}-${d.date.slice(4, 6)}-${d.date.slice(6, 8)}: ${d.users} users, ${d.sessions} sessions, ${d.views} views`;
+      return `<rect x="${x.toFixed(1)}" y="${y}" width="${Math.max(1, bw - 2).toFixed(1)}" height="${bh}" rx="2" fill="#7267f2"><title>${escapeHtml(label)}</title></rect>`;
+    }).join('');
+    const first = daily[0].date, last = daily[daily.length - 1].date;
+    const fmt = d => `${d.slice(4, 6)}/${d.slice(6, 8)}`;
+    return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" role="img" aria-label="Daily active users">
+      <line x1="${pad}" y1="${h - pad}" x2="${w - pad}" y2="${h - pad}" stroke="#e5e7eb"/>
+      ${bars}
+      <text x="${pad}" y="${h - 6}" font-size="12" fill="#6b7280">${fmt(first)}</text>
+      <text x="${w - pad}" y="${h - 6}" font-size="12" fill="#6b7280" text-anchor="end">${fmt(last)}</text>
+      <text x="${pad}" y="${pad - 8}" font-size="12" fill="#6b7280">peak ${max} users/day</text>
+    </svg>`;
+  }
+
+  function renderAnalytics(data) {
+    const setup = document.getElementById('analytics-setup');
+    const updated = document.getElementById('analytics-updated');
+    updated.textContent = data.generatedAt ? `Updated ${new Date(data.generatedAt).toLocaleTimeString()}${data.cached ? ' (cached)' : ''}` : '';
+    if (!data.connected) {
+      setup.style.display = '';
+      setup.innerHTML = `<div class="table-header"><h2>Google Analytics is not connected</h2></div>
+        <p style="margin:0 0 10px">${escapeHtml(data.error || 'Unknown error')}</p>
+        <ol style="margin:0;padding-left:20px;line-height:1.7;font-size:13px">
+          <li>Open Google Analytics, Admin, Property access management for the property with measurement ID <code>${escapeHtml(data.measurementId || '')}</code>.</li>
+          <li>Add <code>${escapeHtml(data.serviceAccount || '')}</code> with the Viewer role. Untick "notify by email".</li>
+          <li>Come back here and click Refresh.</li>
+        </ol>`;
+      document.getElementById('analytics-stats').innerHTML = '';
+      ['analytics-chart', 'analytics-pages', 'analytics-sources', 'analytics-landing', 'analytics-events', 'analytics-countries', 'analytics-devices'].forEach(id => { document.getElementById(id).innerHTML = ''; });
+      document.getElementById('analytics-chart-count').textContent = '';
+      return;
+    }
+    setup.style.display = 'none';
+    const t = data.totals || {}, p = data.previous || {};
+    const card = (label, value, sub) => `<div class="stat-card"><div class="label">${label}</div><div class="value">${value}</div><div class="sub">${sub || ''}</div></div>`;
+    document.getElementById('analytics-stats').innerHTML = [
+      card('Users', num(t.activeUsers), pct(t.activeUsers, p.activeUsers)),
+      card('New users', num(t.newUsers), pct(t.newUsers, p.newUsers)),
+      card('Sessions', num(t.sessions), pct(t.sessions, p.sessions)),
+      card('Page views', num(t.screenPageViews), pct(t.screenPageViews, p.screenPageViews)),
+      card('Engagement rate', `${Math.round((t.engagementRate || 0) * 100)}%`, `prior ${Math.round((p.engagementRate || 0) * 100)}%`),
+      card('Avg engagement / user', mmss(t.avgEngagementSeconds), `prior ${mmss(p.avgEngagementSeconds)}`),
+      card('Key events', num(t.keyEvents), pct(t.keyEvents, p.keyEvents)),
+      card('Active right now', data.realtimeUsers == null ? '&ndash;' : num(data.realtimeUsers), data.realtimeError ? 'realtime unavailable' : 'last 30 minutes'),
+    ].join('');
+    document.getElementById('analytics-chart-count').textContent = `${data.days} days${data.propertyName ? ', ' + data.propertyName : ''}`;
+    document.getElementById('analytics-chart').innerHTML = dailyChart(data.daily);
+    const link = r => `<a href="https://www.sensawellness.org${escapeHtml(r.path)}" target="_blank" rel="noopener">${escapeHtml(r.path)}</a>`;
+    document.getElementById('analytics-pages').innerHTML = simpleTable(data.pages, [
+      { label: 'Page', render: r => `${link(r)}<div style="font-size:11px;color:var(--gray)">${escapeHtml((r.title || '').replace(/ - Sensa Wellness.*$/, ''))}</div>` },
+      { label: 'Views', key: 'views', num: true, render: r => num(r.views) },
+      { label: 'Users', key: 'users', num: true, render: r => num(r.users) },
+    ]);
+    document.getElementById('analytics-sources').innerHTML = simpleTable(data.sources, [
+      { label: 'Source / medium', render: r => `${escapeHtml(r.source)} <span style="color:var(--gray)">/ ${escapeHtml(r.medium)}</span>` },
+      { label: 'Sessions', num: true, render: r => num(r.sessions) },
+      { label: 'Users', num: true, render: r => num(r.users) },
+    ]);
+    document.getElementById('analytics-landing').innerHTML = simpleTable(data.landing, [
+      { label: 'Landing page', render: link },
+      { label: 'Sessions', num: true, render: r => num(r.sessions) },
+    ]);
+    document.getElementById('analytics-events').innerHTML = simpleTable(data.events, [
+      { label: 'Event', key: 'name' },
+      { label: 'Count', num: true, render: r => num(r.count) },
+    ]);
+    document.getElementById('analytics-countries').innerHTML = simpleTable(data.countries, [
+      { label: 'Country', key: 'country' },
+      { label: 'Users', num: true, render: r => num(r.users) },
+    ]);
+    document.getElementById('analytics-devices').innerHTML = simpleTable(data.devices, [
+      { label: 'Device', key: 'device' },
+      { label: 'Users', num: true, render: r => num(r.users) },
+    ]);
+  }
+  document.getElementById('analytics-refresh-btn').addEventListener('click', () => loadAnalytics(true));
+  document.getElementById('analytics-days').addEventListener('change', () => loadAnalytics(false));
 
   // ---- Blog ----
   // Reads the public blog index, the sitemap and the RSS feed, so the tab

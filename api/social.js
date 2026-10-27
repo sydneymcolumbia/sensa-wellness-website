@@ -5,6 +5,7 @@ const linkedinAuth = require('../lib/handlers/linkedin-auth');
 const instagramAuth = require('../lib/handlers/instagram-auth');
 const planoly = require('../lib/planoly');
 const planolyAuth = require('../lib/handlers/planoly-auth');
+const analytics = require('../lib/handlers/analytics');
 
 // Social media numbers for the admin dashboard.
 //   GET (admin)  { source, linkedin: {...}, instagram: {...}, facebook: {...}, generatedAt, cached }
@@ -104,6 +105,7 @@ module.exports = async function handler(req, res) {
   if (action === 'linkedin-auth') return linkedinAuth(req, res);
   if (action === 'instagram-auth') return instagramAuth(req, res);
   if (action === 'planoly-auth') return planolyAuth(req, res);
+  if (action === 'analytics') return analytics(req, res, requireAdmin);
 
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
