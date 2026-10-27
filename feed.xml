@@ -5,7 +5,7 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Oct 2026 07:15:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
@@ -19,6 +19,46 @@
         <description>Laughter lowers stress hormones that drive inflammatory signaling, boosts natural killer cell activity, and is associated with lower CRP over time. Here is what the research actually shows.</description>
         <category>Science</category>
         <pubDate>Tue, 27 Oct 2026 07:15:00 +0000</pubDate>
+    </item>
+    <item>
+        <title>Sensa vs COR One: Two Ways to Track Inflammation at Home</title>
+        <link>https://www.sensawellness.org/post-sensa-vs-cor-one</link>
+        <guid>https://www.sensawellness.org/post-sensa-vs-cor-one</guid>
+        <description>Sensa vs COR One: ESR from a finger prick versus CRP from saliva. Time to result, yearly cost, data handling, and who each fits. Verified Oct 27, 2026.</description>
+        <category>Wellness</category>
+        <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+        <title>Sensa vs Everlywell: Lab hs-CRP by Mail or Saliva CRP in 15 Minutes</title>
+        <link>https://www.sensawellness.org/post-sensa-vs-everlywell</link>
+        <guid>https://www.sensawellness.org/post-sensa-vs-everlywell</guid>
+        <description>Everlywell mails a finger-prick sample to a lab for an hs-CRP value in a few days at $99. Sensa reads saliva CRP at home in 15 minutes from $32 a test.</description>
+        <category>Wellness</category>
+        <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+        <title>At-Home hs-CRP Test Kit With Lab Results: Your Options Compared</title>
+        <link>https://www.sensawellness.org/post-at-home-hs-crp-test-kit-with-lab-results</link>
+        <guid>https://www.sensawellness.org/post-at-home-hs-crp-test-kit-with-lab-results</guid>
+        <description>Which at-home hs-CRP kits send your sample to a lab, what they cost, how long results take, and how Sensa's 15-minute saliva test fits alongside them.</description>
+        <category>Wellness</category>
+        <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+        <title>How to Test Inflammation Levels at Home: 4 Options Compared</title>
+        <link>https://www.sensawellness.org/post-how-to-test-inflammation-levels-at-home</link>
+        <guid>https://www.sensawellness.org/post-how-to-test-inflammation-levels-at-home</guid>
+        <description>Four ways to test inflammation levels at home, from mail-in hs-CRP kits to a 15-minute saliva test, with costs, turnaround, and a step-by-step routine.</description>
+        <category>Wellness</category>
+        <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+        <title>Can You Measure CRP in Saliva? What the Research Says</title>
+        <link>https://www.sensawellness.org/post-saliva-crp-test</link>
+        <guid>https://www.sensawellness.org/post-saliva-crp-test</guid>
+        <description>CRP is detectable in saliva, but levels are far lower than in blood and agreement varies by study. What the research says about salivary CRP.</description>
+        <category>Science</category>
+        <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
     </item>
     <item>
         <title>New Study: Elevated CRP Predicts 70% Higher Mortality Risk in Sleep Apnea</title>
