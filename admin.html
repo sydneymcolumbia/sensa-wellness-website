@@ -830,7 +830,7 @@
     <div class="page" id="page-users">
       <div class="page-header">
         <h1>Users</h1>
-        <input class="search-bar" type="text" aria-label="Search users by name or email" placeholder="Search by name or email..." id="users-search">
+        <input class="search-bar" type="text" aria-label="Search users by first name" placeholder="Search by first name..." id="users-search">
       </div>
       <div class="table-card">
         <div class="table-header">
@@ -1583,8 +1583,11 @@
   }
 
   function renderUsers(filter = '') {
+    // The list shows first names only; full names and emails stay in the
+    // detail modal, which opens on click.
+    const firstNameOf = u => (String(u.displayName || '').trim().split(/\s+/)[0]) || 'User';
     const users = _data ? _data.users.filter(u =>
-      (String(u.displayName || '') + ' ' + String(u.email || '')).toLowerCase().includes(filter.toLowerCase())
+      firstNameOf(u).toLowerCase().includes(filter.toLowerCase())
     ) : [];
 
     document.getElementById('users-count').textContent = `${users.length} users`;
@@ -1595,7 +1598,7 @@
     document.getElementById('users-body').innerHTML = users.map(u => {
       const score = u.lastScan?.score;
       return `<tr data-uid="${escapeHtml(u.uid)}" style="cursor:pointer">
-        <td><div class="user-cell"><div class="avatar">${initials(u.displayName || u.email)}</div><div><div style="font-weight:700">${escapeHtml(u.displayName || 'No name')}</div><div style="color:var(--gray);font-size:12px">${escapeHtml(u.email)}</div></div></div></td>
+        <td><div class="user-cell"><div class="avatar">${initials(firstNameOf(u))}</div><div style="font-weight:700">${escapeHtml(firstNameOf(u))}</div></div></td>
         <td>${formatDate(u.createdAt)}</td>
         <td>${escapeHtml(u.scanCount)}</td>
         <td>${score !== undefined ? `<span class="score-pill" style="background:${scoreColor(score)}">${escapeHtml(score)}</span>` : '<span style="color:var(--gray)">None</span>'}</td>
