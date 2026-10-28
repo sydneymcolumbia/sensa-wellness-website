@@ -814,7 +814,6 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">User</th>
               <th scope="col">Score</th>
               <th scope="col">Label</th>
               <th scope="col">Optical index</th>
@@ -867,7 +866,6 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">User</th>
               <th scope="col">Score</th>
               <th scope="col">Label</th>
               <th scope="col">Optical index</th>
@@ -1567,9 +1565,7 @@
 
     const rows = _data.recentScans.slice(0, 20).map(scan => {
       const u = userMap[scan.userId];
-      const name = u ? u.displayName || u.email : String(scan.userId || '').slice(0, 8);
       return `<tr>
-        <td><div class="user-cell"><div class="avatar">${initials(name)}</div>${escapeHtml(name)}</div></td>
         <td><span class="score-pill" style="background:${scoreColor(scan.score)}">${escapeHtml(scan.score)}</span></td>
         <td><span class="${badgeClass(scan.label)}">${escapeHtml(scan.label)}</span></td>
         <td>${fixed(scan.opticalScore, 2)}</td>
@@ -1577,7 +1573,7 @@
       </tr>`;
     }).join('');
 
-    document.getElementById('recent-scans-body').innerHTML = rows || '<tr><td colspan="5" class="empty">No scans yet</td></tr>';
+    document.getElementById('recent-scans-body').innerHTML = rows || '<tr><td colspan="4" class="empty">No scans yet</td></tr>';
     document.getElementById('recent-count').textContent = `${_data.recentScans.length} scans`;
     document.getElementById('recent-scans-card').style.display = 'block';
   }
@@ -1621,9 +1617,7 @@
 
     document.getElementById('scans-body').innerHTML = scans.map(scan => {
       const u = userMap[scan.userId];
-      const name = u ? u.displayName || u.email : String(scan.userId || '').slice(0, 8);
       return `<tr>
-        <td><div class="user-cell"><div class="avatar">${initials(name)}</div>${escapeHtml(name)}</div></td>
         <td><span class="score-pill" style="background:${scoreColor(scan.score)}">${escapeHtml(scan.score)}</span></td>
         <td><span class="${badgeClass(scan.label)}">${escapeHtml(scan.label)}</span></td>
         <td>${fixed(scan.opticalScore, 2)}</td>
