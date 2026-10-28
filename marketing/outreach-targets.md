@@ -103,3 +103,25 @@ questions every few weeks, watch Google for `"Sensa Wellness" CRP`).
 The single most valuable outcome on this list is inclusion in either Healthline
 piece. That one citation would propagate into nearly every AI answer for
 commercial-intent CRP queries.
+
+---
+
+## Update 2026-10-28: the AI-visibility tool's "cited sources" list
+
+The tool listed nine domains cited for buyer prompts where Sensa is absent and
+labeled most of them "Editorial". They are not. Verified on 2026-10-28:
+
+| Domain | What it is | Action |
+|---|---|---|
+| mylabbox.com | Competitor: hs-CRP + vitamin D finger-prick kit, $99, 2 to 5 days, not sold in NY | No pitch. Added to our comparison content and the price routine. |
+| questhealth.com | Quest Diagnostics consumer store: hs-CRP $65 + $6 physician fee, draw at a Quest location, 2 to 3 business days | No pitch. Added to our comparison content and the price routine. |
+| labcorp.com, walkinlab.com | Labcorp itself and a Quest/Labcorp reseller | No pitch. |
+| defiance-health.com | Colorado cash-pay clinic selling its own hs-CRP kit | One complementary-use pitch (sent by Sydney by hand, Oct 2026). |
+| rapamycin.news | Longevity community forum (Discourse); COR One thread and an hs-CRP guide thread | Participate as Sydney with disclosure, Reddit rules apply. Draft posts given 2026-10-28. |
+| amazon.com | Marketplace; competitor kits listed, Sensa not | Biggest lever. List Sensa when kits ship and fulfillment is possible. Decision pending. |
+| gnc.com | Retailer; stocks the myLAB Box kit | Retail distribution inquiry via contact form, after Amazon. |
+| the-tester.com | Online store for self-tests and devices, sells CRP tests | Retail distribution inquiry via contact form, after Amazon. |
+
+Rule learned: for shopping-style prompts the engines cite seller pages, so the
+fix is our own product and comparison pages plus marketplace listings, not
+pitches to sellers. Editorial pitches stay aimed at Healthline and Hone Health.
