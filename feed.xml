@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Oct 2026 19:25:24 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 07:10:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study: Elevated CRP Linked to Developing Chronic Pain in Older Adults</title>
+        <link>https://www.sensawellness.org/post-crp-chronic-pain-older-adults</link>
+        <guid>https://www.sensawellness.org/post-crp-chronic-pain-older-adults</guid>
+        <description>A prospective Journal of Pain study followed 1,850 pain-free older adults and found elevated CRP significantly predicted who would develop chronic pain, adding fresh longitudinal evidence to the inflammation-pain connection.</description>
+        <category>News</category>
+        <pubDate>Wed, 28 Oct 2026 07:10:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does CRP Fluctuate From Day to Day?</title>
         <link>https://www.sensawellness.org/post-does-crp-fluctuate</link>
