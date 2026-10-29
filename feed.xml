@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Oct 2026 07:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 08:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Glycine Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-does-glycine-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-glycine-reduce-inflammation</guid>
+        <description>Glycine is the smallest amino acid in the human body and may quiet inflammatory signaling through a glycine-gated chloride channel on immune cells. Here is what the research shows about glycine and inflammation.</description>
+        <category>Science</category>
+        <pubDate>Thu, 29 Oct 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Study: Elevated CRP Linked to Developing Chronic Pain in Older Adults</title>
         <link>https://www.sensawellness.org/post-crp-chronic-pain-older-adults</link>
