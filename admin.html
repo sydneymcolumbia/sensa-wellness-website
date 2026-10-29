@@ -1294,8 +1294,15 @@
     afterPasswordChecks(user);
   });
 
+  // Accounts that sign in with a password only. The shared info@ login is
+  // used by several coworkers at once, so an authenticator app tied to one
+  // phone does not work for it. Any account with a factor already enrolled
+  // is still asked for its code by Firebase regardless of this list.
+  const MFA_EXEMPT_EMAILS = ['info@sensawellness.org'];
+
   async function afterPasswordChecks(user) {
-    if (multiFactor(user).enrolledFactors.length === 0) {
+    const exempt = MFA_EXEMPT_EMAILS.includes(String(user.email || '').toLowerCase());
+    if (!exempt && multiFactor(user).enrolledFactors.length === 0) {
       await startEnrollment(user);
       return;
     }
