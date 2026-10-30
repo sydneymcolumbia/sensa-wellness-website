@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Oct 2026 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 08:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does L-Theanine Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-does-l-theanine-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-l-theanine-reduce-inflammation</guid>
+        <description>L-theanine, the calming amino acid in green tea, is best known for easing stress. Here is what the research shows about its indirect and direct effects on inflammation and CRP.</description>
+        <category>Science</category>
+        <pubDate>Fri, 30 Oct 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Glycine Reduce Inflammation? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-does-glycine-reduce-inflammation</link>
