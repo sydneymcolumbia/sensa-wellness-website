@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Oct 2026 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 08:10:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Inflammaging: New Yale Research Uncovers Why Chronic Inflammation Becomes Harder to Control With Age</title>
+        <link>https://www.sensawellness.org/post-inflammaging-nlrp3-new-science</link>
+        <guid>https://www.sensawellness.org/post-inflammaging-nlrp3-new-science</guid>
+        <description>A landmark Cell study from Yale University has uncovered the molecular feedback loop behind inflammaging, revealing why the NLRP3 inflammasome becomes harder to switch off as we age, and what that means for CRP and chronic disease.</description>
+        <category>News</category>
+        <pubDate>Fri, 30 Oct 2026 08:10:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does L-Theanine Reduce Inflammation? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-does-l-theanine-reduce-inflammation</link>
