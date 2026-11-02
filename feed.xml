@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Oct 2026 08:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 08:18:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study Finds Psilocybin Reduced Inflammation Markers in Parkinson's Patients</title>
+        <link>https://www.sensawellness.org/post-psilocybin-inflammation-study</link>
+        <guid>https://www.sensawellness.org/post-psilocybin-inflammation-study</guid>
+        <description>A small JAMA Psychiatry trial found psilocybin sessions significantly lowered CRP, IL-6, and TNF-alpha in Parkinson's patients. Here is what the early data shows, and what still needs confirmation in a controlled study.</description>
+        <category>News</category>
+        <pubDate>Mon, 02 Nov 2026 08:18:00 +0000</pubDate>
+    </item>
     <item>
         <title>Are Oranges Anti-Inflammatory? What the Research Shows</title>
         <link>https://www.sensawellness.org/post-are-oranges-anti-inflammatory</link>
