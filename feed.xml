@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Nov 2026 08:18:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 08:09:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does NMN Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-does-nmn-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-nmn-reduce-inflammation</guid>
+        <description>Animal studies consistently show NMN lowers pro-inflammatory cytokines via the NAD-SIRT1-NF-kB pathway. Here is an honest look at the preclinical evidence and what emerging human trials actually show.</description>
+        <category>Science</category>
+        <pubDate>Tue, 03 Nov 2026 08:09:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Study Finds Psilocybin Reduced Inflammation Markers in Parkinson's Patients</title>
         <link>https://www.sensawellness.org/post-psilocybin-inflammation-study</link>
