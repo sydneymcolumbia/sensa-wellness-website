@@ -6,7 +6,7 @@ Rules the routine follows are in the routine prompt. Keep this table in sync by 
 
 | # | Target query | Working title | Slug | Angle | Status |
 |---|--------------|---------------|------|-------|--------|
-| 1 | best at-home inflammation test kit to buy | The Best At-Home Inflammation Test Kit to Buy in 2026 | post-best-at-home-inflammation-test-kit-to-buy | Buyer's guide: lab kits vs at-home trend trackers, with Sensa as the saliva option; honest about when a lab kit is the better buy | queued |
+| 1 | best at-home inflammation test kit to buy | The Best At-Home Inflammation Test Kit to Buy in 2026 | post-best-at-home-inflammation-test-kit-to-buy | Buyer's guide: lab kits vs at-home trend trackers, with Sensa as the saliva option; honest about when a lab kit is the better buy | published 2026-11-03 (post-best-at-home-inflammation-test-kit-to-buy.html) |
 | 2 | where can I buy a CRP test for home use | Where Can I Buy a CRP Test for Home Use? | post-where-to-buy-crp-test-for-home-use | Every place you can actually order one (brand sites, Amazon, draw-site labs, Sensa direct), with price and sample type per seller | queued |
 | 3 | saliva inflammation test kit, where to order | Saliva Inflammation Test Kit: Where to Order One | post-saliva-inflammation-test-kit-where-to-order | Sensa is the only consumer saliva CRP kit we know of; explain what it is, what it is not, and how to order | queued |
 | 4 | cheapest at-home CRP test | What Is the Cheapest At-Home CRP Test? | post-cheapest-at-home-crp-test | Price-per-result table across Sensa, Everlywell, myLAB Box, Labcorp OnDemand, Quest Health; cheapest depends on whether you need a lab number | queued |
