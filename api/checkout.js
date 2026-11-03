@@ -58,7 +58,7 @@ async function getSaleCoupon() {
 const PREORDER = {
   enabled: true,
   paid: true,
-  note: 'This is a pre-order. You are charged today and your kit ships when the next batch is ready; we will email you the shipping date. Cancel for a full refund any time before it ships.',
+  note: 'You are charged today and your kit ships when the next batch is ready; we will email you the shipping date. Cancel for a full refund any time before it ships.',
 };
 
 module.exports = async function handler(req, res) {
@@ -114,7 +114,7 @@ module.exports = async function handler(req, res) {
     if (PREORDER.enabled) {
       params.metadata.preorder = 'true';
       params.custom_text = { submit: { message: PREORDER.note } };
-      params.payment_intent_data = { description: 'Sensa at-home inflammation test kit (pre-order)' };
+      params.payment_intent_data = { description: 'Sensa at-home inflammation test kit' };
     }
 
     if (promo) {

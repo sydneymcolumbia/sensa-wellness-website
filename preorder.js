@@ -167,7 +167,7 @@
 
   // Turn every purchase control into a preorder control.
   function relabel() {
-    var label = PAID_PREORDERS ? 'Pre-order Now' : 'Preorder';
+    var label = PAID_PREORDERS ? 'Order Now' : 'Preorder';
     document.querySelectorAll('button[onclick*="handleCheckout"]').forEach(function (b) {
       var t = b.textContent.trim();
       if (/^Buy Now/i.test(t)) b.textContent = t.replace(/^Buy Now/i, label);
@@ -175,7 +175,7 @@
       else b.textContent = label + ' ' + t;
     });
     document.querySelectorAll('a[href="#pricing"], a[href="/pay-now"], a[href="/pay-now#waitlist"]').forEach(function (a) {
-      if (/^Buy Now$/i.test(a.textContent.trim())) a.textContent = PAID_PREORDERS ? 'Pre-order' : 'Preorder';
+      if (/^Buy Now$/i.test(a.textContent.trim())) a.textContent = PAID_PREORDERS ? 'Order' : 'Preorder';
     });
   }
 
@@ -185,7 +185,7 @@
       var p = document.createElement('p');
       p.className = 'preorder-notice';
       p.innerHTML = PAID_PREORDERS
-        ? '<strong>Pre-orders open.</strong> Pay today and your kit ships when the next batch is ready; we email you the shipping date. Full refund any time before it ships. <a href="#" class="po-reserve-link">Prefer to reserve without paying?</a>'
+        ? '<strong>Orders open.</strong> Pay today and your kit ships when the next batch is ready; we email you the shipping date. Full refund any time before it ships. <a href="#" class="po-reserve-link">Prefer to reserve without paying?</a>'
         : '<strong>Preorders open.</strong> Kits are temporarily out of stock. Reserve yours now, pay nothing today, and we will email you the moment your kit is ready to ship.';
       h.appendChild(p);
     });
