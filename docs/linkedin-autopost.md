@@ -23,7 +23,11 @@ bookkeeping, `linkedin_posts/{slug}` one record per shared article.
    Wellness page, privacy policy `https://www.sensawellness.org/privacy-policy`.
 2. Settings tab: Verify the company association as a page admin.
 3. Products tab: request **Community Management API**. Posting as the page
-   needs the `w_organization_social` scope, which only this product grants.
+   needs the `w_organization_social` scope, which only this product grants. The
+   connect flow also asks for `r_organization_social` and `rw_organization_admin`
+   (the admin scope the Development Tier grants); if LinkedIn shows a generic
+   "something went wrong" page at authorization, compare the requested scopes
+   with the app's Auth tab list.
 4. Auth tab: add the redirect URL
    `https://www.sensawellness.org/api/linkedin-auth` and note the Client ID
    and Client Secret.
