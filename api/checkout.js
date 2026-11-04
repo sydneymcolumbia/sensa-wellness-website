@@ -56,27 +56,80 @@ async function getSaleCoupon(priceId) {
   }
 }
 
-// ── Pre-order mode ─────────────────────────────────────────────────
-// enabled: kits ship later than a normal order (copy and alerts say so).
-// paid:    true  = Stripe Checkout runs and the order is a PAID pre-order
-//                  (charged today, ships when the next batch is ready);
-//          false = no checkout; the site collects free reservations
-//                  instead (preorder.js + api/preorder.js).
-// Flip `enabled` to false here AND PREORDER_MODE in preorder.js to go back
-// to normal selling. preorder.js has a matching PAID_PREORDERS flag.
+// ── Fulfillment and pre-order mode ─────────────────────────────────
+// Selling live since 2026-11-04: kits are assembled on demand and ship
+// within 2 weeks of the order. The team can fill about 100 orders in this
+// batch, so once `capOrders` paid orders have come in since `since`, the
+// checkout automatically switches to PAID PRE-ORDER wording (charged today,
+// ships with the next batch) and preorder.js (which asks GET /api/checkout)
+// relabels the site to match. Set capOrders to 0 to disable the cap.
+const FULFILLMENT = {
+  shipNote: 'Ships within 2 weeks of your order. Free shipping. Full refund any time before it ships.',
+  capOrders: 100,
+  since: '2026-11-04T00:00:00Z',
+};
+
+// enabled: force pre-order mode on regardless of the cap (kits cannot ship).
+// paid:    true  = Stripe Checkout runs and the order is a PAID pre-order;
+//          false = no checkout; the site collects free reservations instead
+//                  (preorder.js + api/preorder.js).
+// preorder.js reads the live state from GET /api/checkout, so there is no
+// front-end flag to keep in sync any more.
 const PREORDER = {
-  enabled: true,
+  enabled: false,
   paid: true,
   note: 'You are charged today and your kit ships when the next batch is ready; we will email you the shipping date. Cancel for a full refund any time before it ships.',
 };
 
+// Count paid Checkout sessions since the batch started. Cached for a minute
+// so a burst of visitors does not hammer the Stripe list endpoint.
+let capCache = { at: 0, count: 0 };
+async function paidOrdersSinceBatchStart() {
+  if (Date.now() - capCache.at < 60 * 1000) return capCache.count;
+  const since = Math.floor(new Date(FULFILLMENT.since).getTime() / 1000);
+  let count = 0;
+  let startingAfter;
+  for (let page = 0; page < 10; page++) {
+    const params = { created: { gte: since }, limit: 100 };
+    if (startingAfter) params.starting_after = startingAfter;
+    const res = await stripe.checkout.sessions.list(params);
+    for (const sess of res.data) {
+      if (sess.payment_status === 'paid' && sess.metadata?.preorder !== 'true') count++;
+    }
+    if (!res.has_more || count >= FULFILLMENT.capOrders) break;
+    startingAfter = res.data[res.data.length - 1].id;
+  }
+  capCache = { at: Date.now(), count };
+  return count;
+}
+
+async function preorderActive() {
+  if (PREORDER.enabled) return true;
+  if (!FULFILLMENT.capOrders) return false;
+  try {
+    return (await paidOrdersSinceBatchStart()) >= FULFILLMENT.capOrders;
+  } catch (err) {
+    console.error('Order cap check failed:', err.message);
+    return false;
+  }
+}
+
 module.exports = async function handler(req, res) {
+  // GET: current selling state for preorder.js (no secrets, cache briefly).
+  if (req.method === 'GET') {
+    const preorder = await preorderActive();
+    res.setHeader('Cache-Control', 'public, max-age=60');
+    return res.status(200).json({ preorder, paid: PREORDER.paid, shipNote: FULFILLMENT.shipNote });
+  }
+
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+    res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (PREORDER.enabled && !PREORDER.paid) {
+  const preorder = await preorderActive();
+
+  if (preorder && !PREORDER.paid) {
     return res.status(409).json({
       preorder: true,
       error: 'Sensa kits are on preorder right now. Reserve yours on the order page; nothing is charged until kits ship.',
@@ -116,14 +169,16 @@ module.exports = async function handler(req, res) {
       metadata: {
         hear_about_us: hearAboutUs || 'not_answered',
       },
-      success_url: PREORDER.enabled ? 'https://www.sensawellness.org/success?preorder=1' : 'https://www.sensawellness.org/success',
+      success_url: preorder ? 'https://www.sensawellness.org/success?preorder=1' : 'https://www.sensawellness.org/success',
       cancel_url: 'https://www.sensawellness.org/pay-now',
     };
 
-    if (PREORDER.enabled) {
+    params.payment_intent_data = { description: 'Sensa at-home inflammation test kit' };
+    if (preorder) {
       params.metadata.preorder = 'true';
       params.custom_text = { submit: { message: PREORDER.note } };
-      params.payment_intent_data = { description: 'Sensa at-home inflammation test kit' };
+    } else {
+      params.custom_text = { submit: { message: FULFILLMENT.shipNote } };
     }
 
     if (promo) {

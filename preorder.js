@@ -5,20 +5,18 @@
 // charged, and the team is emailed. Loaded with `defer` on index.html and
 // pay-now.html AFTER the inline checkout code so it can wrap handleCheckout().
 //
-// To go back to normal selling, set PREORDER_MODE to false here AND in
-// api/checkout.js (the server refuses Stripe checkouts while preorder mode
-// is on, so the two flags must flip together).
+// Since 2026-11-04 the mode is read live from GET /api/checkout, which turns
+// pre-order on automatically once the current batch's order cap is reached
+// (see FULFILLMENT and PREORDER in api/checkout.js). Set PREORDER_MODE to
+// true or false here only to force a mode for testing.
 (function () {
   'use strict';
 
-  var PREORDER_MODE = true;
+  var PREORDER_MODE = 'auto';
   // true: Buy buttons run the normal Stripe checkout as a PAID pre-order
   // (api/checkout.js PREORDER.paid must match); the free reservation modal
   // stays reachable from a small link. false: every Buy opens the modal.
   var PAID_PREORDERS = true;
-  window.PREORDER_MODE = PREORDER_MODE;
-  window.PREORDER_PAID = PREORDER_MODE && PAID_PREORDERS;
-  if (!PREORDER_MODE) return;
 
   var KITS = {
     price_1test: '1 Test Kit',
@@ -180,6 +178,8 @@
   }
 
   function addNotices() {
+    // Static "in stock, ships within 2 weeks" lines contradict pre-order mode.
+    document.querySelectorAll('.ship-note').forEach(function (el) { el.hidden = true; });
     document.querySelectorAll('#pricing .section-header, section.waitlist .section-header, section#waitlist .section-header').forEach(function (h) {
       if (h.querySelector('.preorder-notice')) return;
       var p = document.createElement('p');
@@ -204,10 +204,6 @@
     });
   }
 
-  // Reservation-only mode replaces the Stripe handler. In paid mode the
-  // original handleCheckout stays in place and the modal is opt-in.
-  window._stripeCheckout = window.handleCheckout;
-  if (!PAID_PREORDERS) window.handleCheckout = function (priceId) { openPreorder(priceId); };
   window.openPreorder = openPreorder;
 
   function init() {
@@ -220,6 +216,24 @@
       else openPreorder('price_3pack');
     }
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  function boot(active) {
+    window.PREORDER_MODE = active;
+    window.PREORDER_PAID = active && PAID_PREORDERS;
+    if (!active) return;
+    // Reservation-only mode replaces the Stripe handler. In paid mode the
+    // original handleCheckout stays in place and the modal is opt-in.
+    window._stripeCheckout = window.handleCheckout;
+    if (!PAID_PREORDERS) window.handleCheckout = function (priceId) { openPreorder(priceId); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+  }
+
+  if (PREORDER_MODE === 'auto') {
+    fetch('/api/checkout', { method: 'GET' })
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .then(function (d) { boot(Boolean(d && d.preorder)); })
+      .catch(function () { boot(false); });
+  } else {
+    boot(Boolean(PREORDER_MODE));
+  }
 })();
