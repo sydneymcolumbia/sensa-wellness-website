@@ -8,39 +8,48 @@ const PRICE_IDS = {
 
 // ── Fall Reset Sale ────────────────────────────────────────────────
 // 20% off, applied server-side so the discount is real (the checkout
-// total reflects it). Evergreen on purpose: the front end (sale.js)
-// runs a self-resetting weekly countdown with no end date, so the
-// discount must never expire on its own or the site would advertise
-// sale prices while checkout charges full price. To end the promo,
-// set enabled to false AND revert the on-page sale copy together.
+// total reflects it). The site shows rounded sale prices ($39 / $79 /
+// $103), but a 20% coupon on the $49 / $99 / $129 list prices charged
+// $39.20 / $79.20 / $103.20, so every bundle now gets a fixed dollar-off
+// coupon and checkout charges exactly the advertised amount. The promo
+// has no end date (the on-page countdown was retired 2026-11-04). To end
+// it, set enabled to false AND revert the on-page sale copy together.
+// Cleaner long-term: create $39 / $79 / $103 prices in the Stripe
+// dashboard, swap PRICE_IDS, and set enabled to false.
 const SALE = {
   enabled: true,
-  couponId: 'fall_reset_2026',     // fixed id so coupon creation is idempotent
-  percentOff: 20,
   name: 'Fall Reset Sale',
+  // Fixed coupon ids so creation is idempotent; amountOff is in cents.
+  coupons: {
+    price_1test: { id: 'fall_reset_2026_1kit',  amountOff: 1000 }, // $49 -> $39
+    price_3pack: { id: 'fall_reset_2026_3pack', amountOff: 2000 }, // $99 -> $79
+    price_4pack: { id: 'fall_reset_2026_4pack', amountOff: 2600 }, // $129 -> $103
+  },
 };
 
-function saleActive() {
-  return SALE.enabled;
+function saleActive(priceId) {
+  return SALE.enabled && Boolean(SALE.coupons[priceId]);
 }
 
-// Retrieve the promo coupon, creating it once if it does not exist yet.
-// Uses a fixed coupon id so concurrent cold starts converge on the same
+// Retrieve the bundle's promo coupon, creating it once if it does not exist
+// yet. Fixed coupon ids mean concurrent cold starts converge on the same
 // coupon; a create race (resource_already_exists) falls back to retrieve.
-async function getSaleCoupon() {
+async function getSaleCoupon(priceId) {
+  const spec = SALE.coupons[priceId];
   try {
-    return await stripe.coupons.retrieve(SALE.couponId);
+    return await stripe.coupons.retrieve(spec.id);
   } catch (retrieveErr) {
     try {
       return await stripe.coupons.create({
-        id: SALE.couponId,
-        percent_off: SALE.percentOff,
+        id: spec.id,
+        amount_off: spec.amountOff,
+        currency: 'usd',
         duration: 'once',
         name: SALE.name,
       });
     } catch (createErr) {
       if (createErr && createErr.code === 'resource_already_exists') {
-        return await stripe.coupons.retrieve(SALE.couponId);
+        return await stripe.coupons.retrieve(spec.id);
       }
       throw createErr;
     }
@@ -84,7 +93,7 @@ module.exports = async function handler(req, res) {
   try {
     // A Checkout session only allows one discount, so a customer promo code
     // replaces the sale coupon. Every code we issue ($49 off) is worth more
-    // than the 20% sale on any bundle, so the customer always comes out ahead.
+    // than the sale discount on any bundle, so the customer always comes out ahead.
     let promo = null;
     if (promoCode && typeof promoCode === 'string' && promoCode.trim()) {
       const found = await stripe.promotionCodes.list({
@@ -120,10 +129,10 @@ module.exports = async function handler(req, res) {
     if (promo) {
       params.discounts = [{ promotion_code: promo.id }];
       params.metadata.promo = promo.code;
-    } else if (saleActive()) {
-      const coupon = await getSaleCoupon();
+    } else if (saleActive(priceId)) {
+      const coupon = await getSaleCoupon(priceId);
       params.discounts = [{ coupon: coupon.id }];
-      params.metadata.promo = SALE.couponId;
+      params.metadata.promo = coupon.id;
     }
 
     const session = await stripe.checkout.sessions.create(params);
