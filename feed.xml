@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Nov 2026 18:20:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Sunlight Reduce Inflammation? What the Research Shows</title>
+        <link>https://www.sensawellness.org/post-sunlight-inflammation</link>
+        <guid>https://www.sensawellness.org/post-sunlight-inflammation</guid>
+        <description>Moderate sun exposure can lower blood pressure and inflammatory markers through nitric oxide, vitamin D, and immune regulation, and CRP tends to run lower in summer. But the dose matters. Here is the evidence.</description>
+        <category>Lifestyle</category>
+        <pubDate>Wed, 04 Nov 2026 12:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Where Can I Buy a CRP Test for Home Use?</title>
         <link>https://www.sensawellness.org/post-where-to-buy-crp-test-for-home-use</link>
