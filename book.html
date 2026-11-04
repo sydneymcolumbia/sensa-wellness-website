@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+      Public page for Ryan's free book. Draft shell.
+      Before launch:
+        - set PAYHIP_URL below (data-payhip on the download links) to the real Payhip product link
+        - Ryan approves the excerpt (currently the opening of "Before we begin", his own text)
+        - remove the robots noindex tag, add /book to sitemap.xml and llms.txt,
+          then add the homepage book feature that links here
+      Record the AI visibility baseline (docs/ai-visibility-baseline-2026-11-04.md)
+      before this page goes live.
+    -->
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"><!-- remove at launch -->
+    <title>Inflammation: Weight Loss and Aging, a Free Book by Ryan A. Robinson | Sensa Wellness</title>
+    <meta name="description" content="Download Inflammation: Weight Loss and Aging, a free illustrated book by Sensa Wellness founder Ryan A. Robinson on the biology of inflammation, how it is measured, and better questions for health conversations.">
+    <meta property="og:type" content="book">
+    <meta property="og:url" content="https://www.sensawellness.org/book">
+    <meta property="og:title" content="Inflammation: Weight Loss and Aging (Free Book)">
+    <meta property="og:site_name" content="Sensa Wellness">
+    <meta property="og:description" content="A free illustrated guide to inflammation, weight, aging, and health monitoring by Ryan A. Robinson, founder of Sensa Wellness.">
+    <meta property="og:image" content="https://www.sensawellness.org/book-cover.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Inflammation: Weight Loss and Aging (Free Book)">
+    <meta name="twitter:description" content="A free illustrated guide to inflammation, weight, aging, and health monitoring by Ryan A. Robinson, founder of Sensa Wellness.">
+    <link rel="canonical" href="https://www.sensawellness.org/book">
+    <meta name="theme-color" content="#1800AD">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": "Inflammation: Weight Loss and Aging",
+        "alternateName": "Inflammation: Weight Loss and Aging. Understand What Your Body is Trying to Tell You",
+        "author": {
+            "@type": "Person",
+            "name": "Ryan A. Robinson",
+            "jobTitle": "Founder",
+            "worksFor": { "@type": "Organization", "name": "Sensa Wellness", "url": "https://www.sensawellness.org" }
+        },
+        "publisher": { "@type": "Person", "name": "Ryan A. Robinson" },
+        "datePublished": "2026-11",
+        "inLanguage": "en",
+        "bookFormat": "https://schema.org/EBook",
+        "numberOfPages": 87,
+        "image": "https://www.sensawellness.org/book-cover.webp",
+        "url": "https://www.sensawellness.org/book",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://www.sensawellness.org/book" },
+        "about": ["Inflammation", "Weight management", "Aging", "C-reactive protein", "Health monitoring"],
+        "description": "An illustrated guide to the biology of inflammation, how it is measured in blood and saliva, and better questions for health conversations. Written for a general adult audience."
+    }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24JYKBTXB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X24JYKBTXB', { allow_google_signals: false, allow_ad_personalization_signals: false });
+        gtag('event', 'book_view', { book_title: 'Inflammation: Weight Loss and Aging' });
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: var(--bg-primary); color: var(--text-dark); }
+        .book-hero { background: var(--bg-white); padding: 3.5rem 0; }
+        .book-hero .container { display: grid; grid-template-columns: 340px 1fr; gap: 3rem; align-items: center; }
+        .cover { width: 100%; max-width: 340px; height: auto; border-radius: 10px; box-shadow: 0 20px 50px rgba(24,0,173,0.18); display: block; margin: 0 auto; }
+        .badge { display: inline-block; background: #ecebff; color: var(--accent-navy); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1rem; }
+        .book-hero h1 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; color: var(--accent-navy); margin-bottom: 0.5rem; }
+        .book-hero .by { color: var(--text-gray); font-size: 1.05rem; margin-bottom: 1.2rem; }
+        .book-hero .desc { font-size: 1.1rem; line-height: 1.65; color: var(--text-gray); margin-bottom: 1.6rem; max-width: 560px; }
+        .btn-gold { background: var(--accent-gold); color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; padding: 0.95rem 2rem; border-radius: 12px; border: none; text-decoration: none; display: inline-block; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+        .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(250,194,52,0.4); }
+        .how { font-size: 0.9rem; color: var(--text-light); margin-top: 0.8rem; line-height: 1.5; max-width: 520px; }
+        .kit-link { margin-top: 1.4rem; font-weight: 700; }
+        .kit-link a { color: var(--accent-navy); text-decoration: none; }
+        .kit-link a:hover { text-decoration: underline; }
+
+        section.block { padding: 4rem 0; }
+        section.block.alt { background: var(--bg-white); }
+        .narrow { max-width: 760px; margin: 0 auto; }
+        .block h2 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; color: var(--accent-navy); margin-bottom: 1.2rem; }
+        .block p { color: var(--text-gray); line-height: 1.7; margin-bottom: 1rem; }
+        .chapters { list-style: none; counter-reset: ch; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 2rem; }
+        .chapters li { counter-increment: ch; padding: 0.55rem 0; border-bottom: 1px solid rgba(0,0,0,0.07); color: var(--text-dark); font-weight: 600; }
+        .chapters li::before { content: counter(ch, decimal-leading-zero); font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--accent-purple); margin-right: 0.8rem; }
+        .chapters li.extra::before { content: "+"; }
+        .excerpt { background: var(--bg-white); border-left: 4px solid var(--accent-gold); border-radius: 0 16px 16px 0; padding: 1.8rem 2rem; }
+        .excerpt .label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-navy); margin-bottom: 0.8rem; }
+        .excerpt p:last-child { margin-bottom: 0; }
+        .author { display: grid; grid-template-columns: 110px 1fr; gap: 1.6rem; align-items: start; }
+        .author img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; }
+        .disclosure { background: #fff8e6; border: 1px solid rgba(245,157,6,0.4); border-radius: 14px; padding: 1.3rem 1.5rem; font-size: 0.95rem; }
+        .disclosure p { margin-bottom: 0.6rem; }
+        .disclosure p:last-child { margin-bottom: 0; }
+        .boundary { background: #ecebff; border-radius: 14px; padding: 1.3rem 1.5rem; }
+        .boundary p { margin: 0; color: var(--accent-navy); font-weight: 600; }
+        .cta { text-align: center; padding: 4rem 0; background: var(--bg-white); }
+        .cta h2 { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--accent-navy); font-size: 2rem; margin-bottom: 0.5rem; }
+        .cta p { color: var(--text-gray); margin-bottom: 1.4rem; }
+        .cta .secondary { margin-top: 1.2rem; font-size: 0.95rem; }
+        .cta .secondary a { color: var(--accent-navy); font-weight: 700; text-decoration: none; }
+        @media (max-width: 800px) {
+            .book-hero .container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+            .book-hero .desc, .how { margin-left: auto; margin-right: auto; }
+            .chapters { grid-template-columns: 1fr; }
+            .author { grid-template-columns: 1fr; text-align: center; }
+            .author img { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <img src="logo.png" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="/">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/how-to">How To</a>
+                <a href="/kit">Order a Kit</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <section class="book-hero">
+        <div class="container">
+            <div>
+                <img class="cover" src="book-cover.webp" alt="Cover of Inflammation: Weight Loss and Aging by Ryan A. Robinson" width="720" height="1080" fetchpriority="high">
+            </div>
+            <div>
+                <span class="badge">Free download</span>
+                <h1>Inflammation: Weight Loss and Aging</h1>
+                <p class="by">By Ryan A. Robinson. Illustrated digital edition, November 2026. 87 pages.</p>
+                <p class="desc">An illustrated guide to the biology of inflammation, how it is measured in blood and saliva, and better questions to bring to your health conversations. Written for a general adult audience, with numbered references throughout.</p>
+                <a class="btn-gold js-book-cta" href="#" data-payhip="PAYHIP_URL">Continue to free download</a>
+                <p class="how">The download is delivered by Payhip. You enter an email address to receive the file. No payment is required and the book is not a product purchase.</p>
+                <p class="kit-link">Already ready to track? <a href="/kit">Choose your Sensa kit</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="container narrow">
+            <h2>What is inside</h2>
+            <p>The book moves from biology to decisions. Read it straight through, or start with the chapter that matches your question.</p>
+            <ol class="chapters">
+                <li>Understanding the response</li>
+                <li>Weight loss and metabolic health</li>
+                <li>Arthritis and joint health</li>
+                <li>Cardiovascular health</li>
+                <li>Inflammation and aging</li>
+                <li>The gut, the mouth, and the wider picture</li>
+                <li>Age, sex, race, and unequal burdens</li>
+                <li>Food and movement</li>
+                <li>Sleep, stress, and the environment</li>
+                <li>Treatment that matches the problem</li>
+                <li>Blood and saliva monitoring</li>
+                <li>Observing and acting with OODA</li>
+                <li>Using AI for everyday health</li>
+                <li class="extra">Milestones in the science, a personal baseline record, and an OODA health worksheet</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="block alt">
+        <div class="container narrow">
+            <h2>An excerpt</h2>
+            <div class="excerpt">
+                <div class="label">From "Before we begin"</div>
+                <p>I want to start with a question that sounds simple: when someone says they are "inflamed," what do they actually mean?</p>
+                <p>They might mean their knee hurts. They might be talking about a blood test, fatigue, trouble losing weight, or a feeling that their body is not functioning the way it used to. Those experiences deserve attention. But they are not interchangeable, and giving them all the same name can make the next decision less clear rather than more clear.</p>
+                <p>This book is about making that distinction useful. We will look at what inflammation does, when it protects us, when it contributes to disease, and where the evidence supports a practical response. Weight loss and aging are central themes, alongside arthritis, cardiovascular health, and metabolic health.</p>
+                <p>The practical aim is a little more clarity: what is known, what is uncertain, what needs medical attention, and what you can reasonably do next.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="container narrow">
+            <h2>About the author</h2>
+            <div class="author">
+                <img src="ryan.webp" alt="Ryan A. Robinson" width="110" height="110">
+                <div>
+                    <p>Ryan A. Robinson is the founder of Sensa Wellness. His work connects science, education, and the design of tools people can use. He wrote this book to help readers notice changes, ask informed questions, and take part more confidently in their own care.</p>
+                    <div class="disclosure">
+                        <p><strong>Reader information, from the book.</strong> The author is the founder of Sensa Wellness and has a financial interest in its products. Company descriptions in the book are identified as such.</p>
+                        <p>The book offers education and questions for discussion, not individualized diagnosis or treatment. The clinical content has not received an independent clinician's prepublication review. Case examples are fictional teaching scenarios, not patient histories or product testimonials.</p>
+                        <p>This edition was prepared with AI assistance for writing, research organization, editing, and design. Editorial illustrations were created with generative AI and are visual metaphors, not microscopy images or exact molecular structures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block alt">
+        <div class="container narrow">
+            <h2>The book and the kit are different things</h2>
+            <div class="boundary">
+                <p>A book about inflammation explains the science. It does not establish how the Sensa kit performs, and the kit's own testing summary lives on the <a href="/kit#evidence">kit page</a>. Sensa is a general wellness product for tracking a trend at home. It is not a diagnosis or a substitute for care from your clinician.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Get the free book</h2>
+            <p>Delivered by Payhip. Email required, no payment.</p>
+            <a class="btn-gold js-book-cta" href="#" data-payhip="PAYHIP_URL">Continue to free download</a>
+            <p class="secondary">Already ready? <a href="/kit">Choose your Sensa kit</a></p>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation tracking as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/how-to">How To</a></li>
+                        <li><a href="/kit">Order a Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">Info@sensawellness.org</div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="wellness-disclaimer">Sensa is a general wellness product intended to support a healthy lifestyle. It is not intended to diagnose, treat, cure, or prevent any disease or medical condition. Results are not a substitute for professional medical advice, diagnosis, or treatment. If you have concerns about your health, consult a qualified healthcare provider.</p>
+                &copy; 2026 Sensa Wellness. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var toggle = document.getElementById('mobileToggle');
+        var nav = document.getElementById('mainNav');
+        toggle.addEventListener('click', function () {
+            var open = nav.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        // Download buttons: point at the Payhip product link once it is set.
+        // Until then the button explains that the link is coming.
+        (function () {
+            var PAYHIP_URL = '';   // e.g. https://payhip.com/b/XXXXX (set before launch)
+            document.querySelectorAll('.js-book-cta').forEach(function (a) {
+                if (PAYHIP_URL) {
+                    a.href = PAYHIP_URL;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                } else {
+                    a.setAttribute('aria-disabled', 'true');
+                    a.style.opacity = '0.6';
+                    a.title = 'Download link coming soon';
+                }
+                a.addEventListener('click', function (e) {
+                    if (!PAYHIP_URL) { e.preventDefault(); return; }
+                    if (typeof gtag === 'function') gtag('event', 'book_cta_click', { book_title: 'Inflammation: Weight Loss and Aging', destination: 'payhip' });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

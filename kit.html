@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+      Focused landing page for paid traffic (January campaign). Draft shell.
+      Before launch, replace every bracketed placeholder and remove the robots
+      noindex tag below:
+        [SHIPPING WINDOW]   approved estimated shipping range (Ryan + Priyank)
+        [STORAGE]           storage and expiry facts for the shipped kit
+        [EVIDENCE ...]      approved complete-kit testing summary (Ryan)
+        [REVIEW ...]        one verbatim customer review with written permission
+        [APP STATUS]        current native app availability
+      The four How-it-works steps mirror /how-to today (saliva into vial, hold
+      60 seconds, scan with the app, about 15 minutes). If the January kit uses
+      a different procedure, update them here, on /how-to, and in the app.
+      Wording: "Order" today; switch to "Preorder" once a shipping window exists
+      (see preorder.js PAID_PREORDERS relabeling, which also runs on this page).
+    -->
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"><!-- remove at launch -->
+    <title>Order the Sensa At-Home Inflammation Kit | Sensa Wellness</title>
+    <meta name="description" content="Order the Sensa at-home saliva inflammation kit. Track your wellness trend with the Sensa app, no needles and no lab. From $39, free shipping, full refund before it ships.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sensawellness.org/kit">
+    <meta property="og:title" content="Go Beyond the Scale | Sensa At-Home Inflammation Kit">
+    <meta property="og:site_name" content="Sensa Wellness">
+    <meta property="og:description" content="Track inflammation at home with a simple saliva kit and the Sensa app. From $39. Free shipping. Full refund before it ships.">
+    <meta property="og:image" content="https://www.sensawellness.org/sensa-og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Go Beyond the Scale | Sensa At-Home Inflammation Kit">
+    <meta name="twitter:description" content="Track inflammation at home with a simple saliva kit and the Sensa app. From $39. Free shipping. Full refund before it ships.">
+    <link rel="canonical" href="https://www.sensawellness.org/kit">
+    <meta name="theme-color" content="#1800AD">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24JYKBTXB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X24JYKBTXB', { allow_google_signals: false, allow_ad_personalization_signals: false });
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: var(--bg-primary); color: var(--text-dark); }
+        .kit-nav-cta { background: var(--accent-navy); color: #fff !important; padding: 0.55rem 1.2rem; border-radius: 10px; font-weight: 700; }
+        .kit-nav-cta:hover { background: var(--btn-hover); }
+
+        .status-bar { background: var(--accent-navy); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; text-align: center; padding: 0.5rem 1rem; }
+        .status-bar span + span::before { content: "|"; margin: 0 0.7rem; opacity: 0.6; }
+
+        .kit-hero { padding: 3.5rem 0 2.5rem; background: var(--bg-white); }
+        .kit-hero .container { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
+        .kit-hero h1 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .kit-hero h1 span { color: var(--accent-navy); display: block; }
+        .kit-hero p.lead { font-size: 1.15rem; line-height: 1.6; color: var(--text-gray); margin-bottom: 0.6rem; }
+        .kit-hero p.sub { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1.4rem; }
+        .hero-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+        .btn-gold { background: var(--accent-gold); color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; padding: 0.95rem 2rem; border-radius: 12px; border: none; text-decoration: none; display: inline-block; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+        .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(250,194,52,0.4); }
+        .btn-quiet { color: var(--accent-navy); font-weight: 700; text-decoration: none; }
+        .btn-quiet:hover { text-decoration: underline; }
+        .fine { font-size: 0.85rem; color: var(--text-light); }
+        .kit-hero img { width: 100%; height: auto; border-radius: 16px; }
+        .trust-row { border-top: 1px solid rgba(24,0,173,0.08); margin-top: 1.8rem; padding-top: 1rem; display: flex; gap: 2rem; flex-wrap: wrap; font-family: 'Nunito', sans-serif; font-weight: 700; color: var(--accent-navy); font-size: 0.95rem; }
+        .disclaimer { font-size: 0.8rem; color: var(--text-light); margin-top: 0.8rem; }
+
+        section.block { padding: 4rem 0; }
+        section.block.alt { background: var(--bg-white); }
+        .section-header { text-align: center; max-width: 680px; margin: 0 auto 2.5rem; }
+        .section-header h2 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.02em; color: var(--accent-navy); margin-bottom: 0.6rem; }
+        .section-header p { color: var(--text-gray); line-height: 1.6; }
+
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+        .step { background: var(--bg-white); border-radius: 16px; padding: 1.6rem 1.4rem; box-shadow: 0 4px 18px rgba(24,0,173,0.05); }
+        .step .num { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 2rem; color: var(--accent-purple); line-height: 1; margin-bottom: 0.8rem; }
+        .step h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--accent-navy); margin-bottom: 0.4rem; }
+        .step p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.55; }
+
+        .demo { margin-top: 2rem; background: #ecebff; border: 1.5px dashed rgba(24,0,173,0.25); border-radius: 16px; padding: 2.2rem 1.5rem; text-align: center; color: var(--accent-navy); font-family: 'Nunito', sans-serif; font-weight: 700; }
+        .demo small { display: block; font-family: 'Quicksand', sans-serif; font-weight: 500; color: var(--text-gray); margin-top: 0.4rem; }
+
+        .result-wrap { display: grid; grid-template-columns: 360px 1fr; gap: 3rem; align-items: center; }
+        .result-card { background: var(--bg-white); border-radius: 22px; padding: 2rem; box-shadow: 0 12px 40px rgba(24,0,173,0.08); text-align: center; }
+        .result-card .tag { display: inline-block; background: #ecebff; color: var(--accent-navy); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 1rem; }
+        .result-card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--accent-navy); font-size: 1.3rem; margin-bottom: 0.6rem; }
+        .result-card .score { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 4.2rem; line-height: 1; color: var(--accent-navy); }
+        .result-card .outof { color: var(--text-gray); margin-bottom: 0.8rem; }
+        .result-card .tier { display: inline-block; background: rgba(65,166,240,0.15); color: #1d6fb0; font-weight: 700; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
+        .result-card .history { border-top: 1px solid rgba(0,0,0,0.07); padding-top: 0.9rem; color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; text-align: left; }
+        .result-notes h3 { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--accent-navy); font-size: 1.15rem; margin: 0 0 0.3rem; }
+        .result-notes p { color: var(--text-gray); line-height: 1.6; margin-bottom: 1.3rem; }
+        .tiers { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.4rem; }
+        .tiers span { font-weight: 700; font-size: 0.85rem; padding: 0.3rem 0.8rem; border-radius: 20px; }
+        .tiers .t1 { background: rgba(65,166,240,0.15); color: #1d6fb0; }
+        .tiers .t2 { background: rgba(250,194,52,0.25); color: #8a6200; }
+        .tiers .t3 { background: rgba(232,90,57,0.14); color: var(--accent-coral-text); }
+
+        .evidence { background: var(--bg-white); border-radius: 18px; padding: 2rem; box-shadow: 0 4px 18px rgba(24,0,173,0.05); max-width: 860px; margin: 0 auto; }
+        .evidence table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        .evidence th, .evidence td { text-align: left; padding: 0.8rem 0.6rem; border-bottom: 1px solid rgba(0,0,0,0.07); vertical-align: top; }
+        .evidence th { font-family: 'Nunito', sans-serif; color: var(--accent-navy); width: 32%; }
+        .placeholder { color: var(--accent-coral-text); font-weight: 600; }
+
+        .trust-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: start; }
+        .review { background: var(--bg-white); border-radius: 18px; padding: 2rem; border-left: 4px solid var(--accent-gold); }
+        .review blockquote { font-size: 1.05rem; line-height: 1.7; color: var(--text-gray); font-style: italic; margin-bottom: 0.9rem; }
+        .review cite { font-style: normal; font-weight: 700; color: var(--accent-navy); display: block; }
+        .review small { color: var(--text-light); }
+        .founder { display: flex; gap: 1rem; align-items: center; background: var(--bg-white); border-radius: 18px; padding: 1.5rem; }
+        .founder img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; }
+        .founder strong { font-family: 'Nunito', sans-serif; color: var(--accent-navy); display: block; font-size: 1.05rem; }
+        .founder span { color: var(--text-gray); font-size: 0.92rem; }
+
+        .pricing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; max-width: 1000px; margin: 0 auto; }
+        .pricing-card { background: var(--bg-white); border-radius: 20px; padding: 2rem 1.6rem; text-align: center; position: relative; box-shadow: 0 4px 18px rgba(24,0,173,0.05); display: flex; flex-direction: column; }
+        .pricing-card.featured { background: var(--accent-navy); color: #fff; box-shadow: 0 16px 40px rgba(24,0,173,0.3); }
+        .pricing-card.featured h3, .pricing-card.featured .per, .pricing-card.featured .pricing-subtitle { color: #fff; }
+        .pricing-badge { position: absolute; top: -0.8rem; left: 50%; transform: translateX(-50%); background: var(--accent-gold); color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; white-space: nowrap; }
+        .pricing-card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent-navy); margin-bottom: 0.2rem; }
+        .pricing-subtitle { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 1rem; }
+        .pricing-price { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 2.6rem; line-height: 1; margin-bottom: 0.2rem; }
+        .pricing-card.featured .pricing-price { color: #fff; }
+        .sale-old { font-size: 1.1rem; font-weight: 600; opacity: 0.55; text-decoration: line-through; margin-right: 0.4rem; }
+        .per { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.4rem; }
+        .pricing-card .btn { margin-top: auto; width: 100%; text-align: center; }
+        .pricing-card.featured .btn { background: var(--accent-gold); color: var(--text-dark); }
+        .terms { max-width: 720px; margin: 2rem auto 0; background: var(--bg-white); border-radius: 16px; padding: 1.4rem 1.6rem; text-align: center; color: var(--text-gray); line-height: 1.6; }
+        .terms strong { color: var(--accent-navy); }
+        .promo-row { max-width: 420px; margin: 1.2rem auto 0; display: flex; gap: 0.6rem; }
+        .promo-row input { flex: 1; padding: 0.7rem 0.9rem; border: 1.5px solid #e8e5ff; border-radius: 10px; font-family: 'Quicksand', sans-serif; font-size: 0.95rem; }
+        .checkout-error { display: none; color: var(--accent-coral-text); text-align: center; margin-top: 1rem; font-weight: 600; }
+
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-list details { background: var(--bg-white); border-radius: 14px; padding: 1.1rem 1.4rem; margin-bottom: 0.8rem; }
+        .faq-list summary { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--accent-navy); cursor: pointer; font-size: 1.05rem; }
+        .faq-list details p { color: var(--text-gray); line-height: 1.6; margin-top: 0.7rem; }
+
+        .final-cta { text-align: center; padding: 4rem 0; background: var(--bg-white); }
+        .final-cta h2 { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--accent-navy); font-size: 2rem; margin-bottom: 0.6rem; }
+        .final-cta p { color: var(--text-gray); margin-bottom: 1.4rem; }
+
+        .buy-bar { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; background: var(--bg-white); box-shadow: 0 -6px 24px rgba(24,0,173,0.12); padding: 0.7rem 1.2rem; display: flex; align-items: center; justify-content: center; gap: 1rem; transform: translateY(110%); transition: transform 0.25s ease; }
+        .buy-bar.visible { transform: translateY(0); }
+        .buy-bar .from { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--accent-navy); font-size: 1.05rem; }
+        .buy-bar .btn-gold { padding: 0.7rem 1.4rem; font-size: 0.95rem; }
+
+        .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+        @media (max-width: 900px) {
+            .kit-hero .container, .result-wrap, .trust-grid { grid-template-columns: 1fr; }
+            .buy-bar { display: flex; }
+            .steps { grid-template-columns: 1fr 1fr; }
+            .pricing-cards { grid-template-columns: 1fr; max-width: 440px; }
+            .result-wrap { gap: 2rem; }
+            .result-card { max-width: 360px; margin: 0 auto; }
+        }
+        @media (max-width: 560px) {
+            .steps { grid-template-columns: 1fr; }
+            .kit-hero { padding-top: 2.2rem; }
+            .status-bar span { display: block; }
+            .status-bar span + span::before { content: none; }
+            .trust-row { gap: 1rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <img src="logo.png" alt="Sensa" class="logo-img">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <a href="#how">How it works</a>
+                <a href="#results">Results</a>
+                <a href="#faq">FAQ</a>
+                <a href="#pricing" class="kit-nav-cta">Order</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="status-bar" role="status">
+        <span>Orders open</span>
+        <span>Estimated shipping: <span class="placeholder">[SHIPPING WINDOW]</span></span>
+    </div>
+
+    <main id="main-content">
+
+    <section class="kit-hero">
+        <div class="container">
+            <div>
+                <h1><span>Go beyond the scale.</span> See your wellness trend.</h1>
+                <p class="lead">Track inflammation at home with a simple saliva kit and the Sensa app. Your reading is ready in about 15 minutes.</p>
+                <p class="sub">No needles. No lab. App access included.</p>
+                <div class="hero-actions">
+                    <a href="#pricing" class="btn-gold">Order from $39</a>
+                    <a href="#how" class="btn-quiet">See how it works</a>
+                </div>
+                <p class="fine">Pay today. Full refund any time before it ships.</p>
+                <div class="trust-row">
+                    <span>One-time purchase</span>
+                    <span>Free shipping</span>
+                    <span>No subscription</span>
+                </div>
+                <p class="disclaimer">For general wellness tracking. Not a diagnosis or a substitute for medical care.</p>
+            </div>
+            <div>
+                <img src="hero-product.webp" alt="The Sensa kit box open on a counter with the vial and the Sensa app on a phone" width="1920" height="1092" fetchpriority="high">
+            </div>
+        </div>
+    </section>
+
+    <section class="block" id="how">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>How Sensa works</h2>
+                <p>A few minutes of hands-on time. Your score appears in the app in about 15 minutes.</p>
+            </div>
+            <div class="steps reveal">
+                <div class="step"><div class="num">01</div><h3>Collect</h3><p>Open the sealed vial and add your saliva sample following the kit instructions.</p></div>
+                <div class="step"><div class="num">02</div><h3>Activate</h3><p>Seal the vial and hold it upright for 60 seconds while the reagent activates.</p></div>
+                <div class="step"><div class="num">03</div><h3>Wait</h3><p>Let the color develop. The app times it for you, about 15 minutes.</p></div>
+                <div class="step"><div class="num">04</div><h3>Scan</h3><p>Tap Scan in the Sensa app and hold the vial in frame. Your reading is logged to your history.</p></div>
+            </div>
+            <div class="demo reveal">
+                Short demonstration video
+                <small>Four real shots of the shipping kit: the kit on a table, sample and activate, the wait, a result in the app. Footage to be captured with the final kit.</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="block alt" id="results">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>A result you can understand</h2>
+                <p>Every reading is a number from 0 to 100, with a simple tier and your history alongside it.</p>
+            </div>
+            <div class="result-wrap reveal">
+                <div class="result-card" aria-label="Illustrative app result">
+                    <span class="tag">Illustrative example</span>
+                    <h3>Your Sensa reading</h3>
+                    <div class="score">42</div>
+                    <div class="outof">out of 100</div>
+                    <span class="tier">In range</span>
+                    <div class="history">Previous reading: 58<br>Current reading: 42<br>Lower score, lower reading.</div>
+                </div>
+                <div class="result-notes">
+                    <h3>What the score means</h3>
+                    <p>A lower number means a lower reading. Each result lands in one of three tiers so you know the direction without interpreting a gauge.</p>
+                    <div class="tiers"><span class="t1">In range</span><span class="t2">Worth watching</span><span class="t3">Time to reset</span></div>
+                    <h3 style="margin-top:1.4rem;">Comparison with context</h3>
+                    <p>The app keeps your date, notes, and history together. A change between two readings shows a change; it does not prove what caused it.</p>
+                    <h3>The boundary</h3>
+                    <p>A wellness reading does not diagnose a condition or replace testing your clinician orders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block" id="evidence">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>The evidence behind Sensa</h2>
+                <p>A plain-language summary of complete-kit testing. Methods and findings, without the proprietary chemistry.</p>
+            </div>
+            <div class="evidence reveal">
+                <table>
+                    <tr><th scope="row">Kit and sample conditions</th><td><span class="placeholder">[EVIDENCE: current kit version and sample type]</span></td></tr>
+                    <tr><th scope="row">What testing showed</th><td><span class="placeholder">[EVIDENCE: observed results with units and limits]</span></td></tr>
+                    <tr><th scope="row">Scope and limitations</th><td><span class="placeholder">[EVIDENCE: conditions where the findings apply]</span></td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="block alt" id="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>From people using Sensa</h2>
+            </div>
+            <div class="trust-grid reveal">
+                <div class="review">
+                    <blockquote><span class="placeholder">[REVIEW: one approved, verbatim customer review about ease of use, packaging, or understanding the result]</span></blockquote>
+                    <cite><span class="placeholder">[REVIEW: first name, city]</span></cite>
+                    <small>Verified customer. Shared with permission.</small>
+                </div>
+                <div class="founder">
+                    <img src="ryan.webp" alt="Ryan Robinson, founder of Sensa Wellness" width="72" height="72">
+                    <div>
+                        <strong>Ryan Robinson</strong>
+                        <span>Founder, Sensa Wellness. Author of the free book <a href="/book">Inflammation: Weight Loss and Aging</a>.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Choose your kit</h2>
+                <p>One-time purchase. No subscription. Free shipping.</p>
+            </div>
+            <div class="pricing-cards reveal">
+                <div class="pricing-card">
+                    <h3>1 test</h3>
+                    <p class="pricing-subtitle">A first look</p>
+                    <div class="pricing-price"><span class="sale-old">$49</span>$39</div>
+                    <p class="per">$39 per test</p>
+                    <button type="button" class="btn" onclick="handleCheckout('price_1test', this)">Buy Now</button>
+                </div>
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">Suggested for tracking</span>
+                    <h3>3 tests</h3>
+                    <p class="pricing-subtitle">Test, change, retest</p>
+                    <div class="pricing-price"><span class="sale-old">$99</span>$79</div>
+                    <p class="per" style="color:rgba(255,255,255,0.75);">$26.33 per test</p>
+                    <button type="button" class="btn" onclick="handleCheckout('price_3pack', this)">Buy Now</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>4 tests</h3>
+                    <p class="pricing-subtitle">More check-ins</p>
+                    <div class="pricing-price"><span class="sale-old">$129</span>$103</div>
+                    <p class="per">$25.75 per test</p>
+                    <button type="button" class="btn" onclick="handleCheckout('price_4pack', this)">Buy Now</button>
+                </div>
+            </div>
+            <div class="promo-row">
+                <label for="promoCode" class="visually-hidden">Promo code</label>
+                <input type="text" id="promoCode" placeholder="Promo code (optional)" autocomplete="off">
+            </div>
+            <p class="checkout-error" id="checkoutError" role="alert"></p>
+            <div class="terms reveal">
+                <strong>Estimated shipping: <span class="placeholder">[SHIPPING WINDOW]</span>.</strong><br>
+                Pay today. Cancel for a full refund any time before shipment by emailing <a href="mailto:info@sensawellness.org">info@sensawellness.org</a>. We email your confirmation and shipping updates.
+            </div>
+        </div>
+    </section>
+
+    <section class="block alt" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Before you order</h2>
+            </div>
+            <div class="faq-list reveal">
+                <details open>
+                    <summary>When will my order ship?</summary>
+                    <p>Estimated shipping: <span class="placeholder">[SHIPPING WINDOW]</span>. You are charged today, and we email your shipping date and tracking as soon as your kit is on its way.</p>
+                </details>
+                <details>
+                    <summary>How should I store the kit?</summary>
+                    <p><span class="placeholder">[STORAGE: storage conditions and expiry for the shipped kit]</span></p>
+                </details>
+                <details>
+                    <summary>What do I do with my result?</summary>
+                    <p>Use it as one more signal alongside sleep, stress, food, and movement. Readings can fluctuate, so a trend over several tests tells you more than any single number. If a reading concerns you, bring it to your healthcare provider.</p>
+                </details>
+                <details>
+                    <summary>Can I cancel before it ships?</summary>
+                    <p>Yes. Email <a href="mailto:info@sensawellness.org">info@sensawellness.org</a> any time before your kit ships for a full refund.</p>
+                </details>
+                <details>
+                    <summary>Does it work with my phone?</summary>
+                    <p>The Sensa web app runs in the browser on any phone with a camera, iPhone or Android, at <a href="https://app.sensawellness.org" target="_blank" rel="noopener">app.sensawellness.org</a>. <span class="placeholder">[APP STATUS: native app availability]</span></p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to see your trend?</h2>
+            <p>Free shipping. No subscription. Full refund before it ships.</p>
+            <a href="#pricing" class="btn-gold">Choose your kit</a>
+            <p class="fine" style="margin-top:1rem;">Not ready to pay? <a href="#" class="po-reserve-link btn-quiet">Reserve a kit without paying</a> and we will email you before it ships.</p>
+        </div>
+    </section>
+
+    </main>
+
+    <div class="buy-bar" id="buyBar" aria-hidden="true">
+        <span class="from">From $39</span>
+        <a href="#pricing" class="btn-gold">Choose a kit</a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sensa Wellness</h3>
+                    <p>Sensa Wellness is on a mission to make inflammation tracking as simple as brushing your teeth. Because understanding what's happening inside your body shouldn't require a lab visit.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/how-to">How To</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="https://app.sensawellness.org" target="_blank" rel="noopener">Already have a kit? Open the app</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">Info@sensawellness.org</div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="wellness-disclaimer">Sensa is a general wellness product intended to support a healthy lifestyle. It is not intended to diagnose, treat, cure, or prevent any disease or medical condition. Results are not a substitute for professional medical advice, diagnosis, or treatment. If you have concerns about your health, consult a qualified healthcare provider.</p>
+                &copy; 2026 Sensa Wellness. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        var toggle = document.getElementById('mobileToggle');
+        var nav = document.getElementById('mainNav');
+        toggle.addEventListener('click', function () {
+            var open = nav.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () { nav.classList.remove('active'); toggle.setAttribute('aria-expanded', 'false'); });
+        });
+
+        // Scroll reveal
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('visible'); }); return; }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+            }, { threshold: 0.1 });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+
+        // Sticky purchase bar: after the hero, hidden while the bundles are on screen
+        (function () {
+            var bar = document.getElementById('buyBar');
+            var hero = document.querySelector('.kit-hero');
+            var pricing = document.getElementById('pricing');
+            if (!bar || !hero || !pricing || !('IntersectionObserver' in window)) return;
+            var pastHero = false, pricingVisible = false;
+            function update() {
+                var show = pastHero && !pricingVisible;
+                bar.classList.toggle('visible', show);
+                bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+            }
+            new IntersectionObserver(function (en) { pastHero = !en[0].isIntersecting; update(); }).observe(hero);
+            new IntersectionObserver(function (en) { pricingVisible = en[0].isIntersecting; update(); }, { threshold: 0.15 }).observe(pricing);
+        })();
+
+        // Prefill promo code from ?code= links
+        (function () {
+            var code = new URLSearchParams(window.location.search).get('code');
+            if (code) document.getElementById('promoCode').value = code.toUpperCase();
+        })();
+
+        // Stripe checkout
+        function handleCheckout(priceId, btnEl) {
+            var prices = { price_1test: 39, price_3pack: 79, price_4pack: 103 };
+            var labels = { price_1test: '1 Test Kit', price_3pack: '3-Pack Bundle', price_4pack: '4-Pack Bundle' };
+            if (typeof gtag === 'function') {
+                gtag('event', 'begin_checkout', {
+                    currency: 'USD',
+                    value: prices[priceId] || 0,
+                    items: [{ item_name: labels[priceId] || priceId, price: prices[priceId] || 0, quantity: 1 }]
+                });
+            }
+            var btn = btnEl || null;
+            var errorEl = document.getElementById('checkoutError');
+            var original = btn ? btn.textContent : '';
+            if (btn) { btn.disabled = true; btn.textContent = 'Processing...'; }
+            errorEl.style.display = 'none';
+            var promoCode = (document.getElementById('promoCode').value || '').trim();
+
+            fetch('/api/checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ priceId: priceId, hearAboutUs: 'kit_landing_page', promoCode: promoCode })
+            })
+            .then(function (r) {
+                if (!r.ok) {
+                    return r.json().catch(function () { return {}; }).then(function (d) {
+                        var err = new Error(d.error || 'Checkout request failed');
+                        if ((r.status === 400 || r.status === 409) && d.error) err.showToUser = true;
+                        throw err;
+                    });
+                }
+                return r.json();
+            })
+            .then(function (d) {
+                if (d.url) window.location.href = d.url; else throw new Error('No checkout URL returned');
+            })
+            .catch(function (err) {
+                errorEl.textContent = err.showToUser ? err.message : 'Something went wrong. Please try again.';
+                errorEl.style.display = 'block';
+                if (btn) { btn.disabled = false; btn.textContent = original; }
+            });
+        }
+    </script>
+<script src="preorder.js" defer></script>
+</body>
+</html>
