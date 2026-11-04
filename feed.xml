@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 14:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>CRP and Heart Risk: New Research Shows Inflammation Predicts Cardiovascular Events Even When Cholesterol Is Normal</title>
+        <link>https://www.sensawellness.org/post-crp-cardiovascular-risk-primary-prevention</link>
+        <guid>https://www.sensawellness.org/post-crp-cardiovascular-risk-primary-prevention</guid>
+        <description>A major 2026 UK Biobank study of 416,000+ people finds hsCRP predicts heart attacks, strokes, and cardiovascular death across every risk level, adding value beyond standard cholesterol-based calculators.</description>
+        <category>News</category>
+        <pubDate>Wed, 04 Nov 2026 14:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Sunlight Reduce Inflammation? What the Research Shows</title>
         <link>https://www.sensawellness.org/post-sunlight-inflammation</link>
