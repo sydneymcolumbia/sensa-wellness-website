@@ -1,6 +1,6 @@
 # Draft reply to Ryan, "January preorder launch: website edits and book strategy" (his email of Nov 2, 2026)
 
-Status: NOT SENT as of Nov 4, 2026. Attach docs/book-measurement-spec.md and docs/book-follow-up-sequence.md when sending. Ryan's thread lives in Sydney's personal Gmail, which the Claude Gmail connector cannot see (it is signed into positionbird.io). Copy the text below into Gmail.
+Status: NOT SENT as of Nov 5, 2026. Attach ~/Desktop/Sensa-Book-Measurement-Plan-2026-11-05.pdf when sending. The email sequence copy is not attached (Sydney's call, Nov 5). Ryan's thread lives in Sydney's personal Gmail, which the Claude Gmail connector cannot see (it is signed into positionbird.io). Copy the text below into Gmail.
 
 ---
 
@@ -22,8 +22,8 @@ What I would implement first (in order)
 
 1. Turn on Google Ads against /kit this week. Everything on that page is approved copy and the checkout path is one click from the first screen.
 2. Book page. It is built and reviewed internally at /book with the real cover, chapter list, an excerpt from "Before we begin," your author disclosure, and Book schema. It is hidden until I have your Payhip link and your sign-off on the excerpt. Once live I will add a tasteful book feature on the homepage below the kit section.
-3. Measurement with Malhar. The spec is attached (book-measurement-spec.md). It adopts your event labels from slide 44, keeps free book requests out of revenue by product id and zero price, joins later kit orders back to the request by hashed email where the reader used the same address, and falls back to 30/60/90 day cohorts where it did not. It also lists the four metrics from slide 46 with formulas. Two things it surfaced on our side: the GA4 purchase event on the thank-you page currently reports $0 with no transaction id, and no page carries a Google Ads conversion. Both get fixed before we spend, by moving the revenue event to the Stripe webhook and importing it into Ads from GA4. For that I need admin on the Ads account, or 30 minutes with you to link it.
-4. Reader follow-up sequence. Drafted and attached (book-follow-up-sequence.md), on your slide 39 timing: delivery email to everyone, then "one useful idea" at +2 days and "how Sensa fits a wellness routine" at +5 days to opted-in readers only, suppressed for anyone who already bought. Please check the page references and the author note.
+3. Measurement with Malhar. The plan is attached as a PDF. It adopts your event labels from slide 44, keeps free book requests out of revenue by product id and zero price, joins later kit orders back to the request by hashed email where the reader used the same address, and falls back to 30/60/90 day cohorts where it did not. It also lists the four metrics from slide 46 with formulas. Two things it surfaced on our side: the GA4 purchase event on the thank-you page currently reports $0 with no transaction id, and no page carries a Google Ads conversion. Both get fixed before we spend, by moving the revenue event to the Stripe webhook and importing it into Ads from GA4. For that I need admin on the Ads account, or 30 minutes with you to link it.
+4. Reader follow-up sequence. Drafted, on your slide 39 timing: delivery email to everyone, then "one useful idea" at +2 days and "how Sensa fits a wellness routine" at +5 days to opted-in readers only, suppressed for anyone who already bought. I will send you the copy to check once the book page is live.
 5. AI visibility. I recorded a fixed 10-prompt baseline across ChatGPT, Perplexity, and Google AI Mode today so we measure whether the book changes anything instead of assuming it does. Same panel reruns 30 days after the book page goes live.
 
 What I need from you
