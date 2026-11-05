@@ -2,7 +2,7 @@
 
 Draft Nov 4, 2026, updated Nov 5 after the first build pass. Malhar owns what is left to build, Sydney owns Google Analytics and the site, Ryan owns Payhip and Google Ads. Written against slides 43 to 46 of Ryan's January guide and the current site code.
 
-**Built on Nov 5:** the server-side purchase event with the real amount, campaign and GA ids carried from the page into Stripe, the book request intake endpoint, the hashed-email join that marks a kit order as book-assisted, and refund handling. **Still open:** Google Ads link and conversion import (needs Ads access), the Payhip to Zapier connection (needs Ryan's Payhip), two secrets in Vercel, and the reporting tab.
+**Built on Nov 5:** the server-side purchase event with the real amount, campaign and GA ids carried from the page into Stripe, the book request intake endpoint, the hashed-email join that marks a kit order as book-assisted, and refund handling. Both secrets are in Vercel as of Nov 5, so server-side events flow from the next order. **Still open:** Google Ads link and conversion import (needs Ads access), the Payhip to Zapier connection (needs Ryan's Payhip product id), the Stripe refund event subscription, the two GA4 admin settings in 6.5, and the reporting tab.
 
 ## 1. The question we are answering
 
@@ -12,7 +12,7 @@ Does giving away the book produce paid kit orders at an acceptable cost, and how
 
 | System | What it records | State on Nov 4 |
 | --- | --- | --- |
-| GA4 property, stream G-X24JYKBTXB | Page views, begin_checkout on the kit and pricing pages, book_view and book_cta_click on the book page, and purchase sent from the server after Stripe confirms payment | Live. The old $0 purchase on the thank-you page is removed. The server purchase carries the real amount and the Stripe session id (fixed Nov 5; needs the GA_API_SECRET secret in Vercel to start flowing). |
+| GA4 property, stream G-X24JYKBTXB | Page views, begin_checkout on the kit and pricing pages, book_view and book_cta_click on the book page, and purchase sent from the server after Stripe confirms payment | Live. The old $0 purchase on the thank-you page is removed. The server purchase carries the real amount and the Stripe session id (fixed Nov 5; the GA secret is in place, so the next paid order is the first one to arrive this way). |
 | Stripe (shared Sensa Wellness Inc account) | Paid kit Checkout sessions, refunds, customer email, metadata.promo, metadata.preorder | Live. Admin Orders tab already lists the last 50 paid sessions. |
 | Payhip | Free book checkouts, access requests, marketing consent | Not connected yet. Ryan has the account. Our intake endpoint is built and waiting for it. |
 | Firestore (sensa-app-7b2b7) | preorders, reviews, analytics cache, and now book_requests and kit_orders | Live. kit_orders starts filling with the next paid order; book_requests fills once Payhip is connected. |
@@ -59,15 +59,15 @@ Do not credit the same order twice. **Built Nov 5.** An order is labelled by a f
 
 ## 6. Prerequisite fixes on our side
 
-6.1 Fix the purchase event. **Done Nov 5.** The $0 browser event is gone. The webhook sends purchase and kit_purchase with the real amount, the Stripe session id as transaction id, the items, the coupon, and the journey label. It needs one secret, GA_API_SECRET, created in GA4 Admin under the web stream's Measurement Protocol API secrets and added to Vercel. Until that secret exists the events are skipped and logged, nothing breaks.
+6.1 Fix the purchase event. **Done Nov 5.** The $0 browser event is gone. The webhook sends purchase and kit_purchase with the real amount, the Stripe session id as transaction id, the items, the coupon, and the journey label. The GA4 Measurement Protocol secret is created and stored in Vercel, so events flow from the next order. Verify with the first real $39 order: it should appear in GA4 Realtime under Events as purchase with value 39.
 
 6.2 Google Ads conversion. Link the GA4 property to Ryan's Ads account, import kit_purchase as the conversion action, and enable auto-tagging. No separate Ads tag is required if the import works. Verify a test order shows up in Ads within 24 hours before spending.
 
 6.3 Cross-domain. Add payhip.com to the GA4 cross-domain list so a book page visitor who returns from Payhip keeps the same session where the browser allows it. Two minutes in GA4 Admin.
 
-6.5 Setup checklist (Sydney, about ten minutes once Ryan's parts arrive)
+6.5 Setup checklist (Sydney)
 
-- Vercel environment: GA_API_SECRET (from GA4 Admin, Data streams, the web stream, Measurement Protocol API secrets, Create) and BOOK_REQUEST_SECRET (any long random string; the same value goes in the Zapier header x-book-secret). Redeploy after adding them.
+- Vercel environment: GA_API_SECRET and BOOK_REQUEST_SECRET. **Done Nov 5** and redeployed; the intake endpoint now rejects unsigned requests with 401. The BOOK_REQUEST_SECRET value is in Sydney's password manager and goes in the Zapier header x-book-secret.
 - Stripe dashboard: on the webhook endpoint for sensawellness.org/api/webhook, add the event charge.refunded next to checkout.session.completed.
 - GA4 Admin: mark purchase and book_request_complete as key events; add payhip.com under cross-domain measurement.
 - Zapier: trigger Payhip New Sale, action Webhooks by Zapier, POST, JSON, URL https://www.sensawellness.org/api/book-request, header x-book-secret, fields email, order_id, product_id, product_name, price, newsletter.
@@ -94,7 +94,7 @@ Also report direct versus book-assisted journeys side by side, using the precede
 
 ## 9. Order of work
 
-1. Fix 6.1 (done Nov 5) and 6.2 (needs Google Ads access).
+1. Fix 6.1 (done Nov 5, secrets in place) and 6.2 (needs Google Ads access).
 2. Build the book_requests endpoint and Firestore collection (done Nov 5, tested with sample payloads). Connect Zapier once Ryan shares the Payhip product id and turns on the zap.
 3. Pass UTMs, gclid, and GA ids into Stripe metadata from the kit, order, and home pages (done Nov 5).
 4. Email hash join in the webhook (done Nov 5).
