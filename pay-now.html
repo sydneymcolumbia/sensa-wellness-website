@@ -1542,7 +1542,7 @@
             fetch('/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ priceId: priceId, hearAboutUs: hearAboutUs, promoCode: promoCode })
+                body: JSON.stringify({ priceId: priceId, hearAboutUs: hearAboutUs, promoCode: promoCode, attribution: (window.sensaAttribution ? window.sensaAttribution() : {}) })
             })
             .then(function(response) {
                 if (!response.ok) {
@@ -1660,6 +1660,7 @@
         })();
     </script>
 
+<script src="attribution.js" defer></script>
 <script src="preorder.js" defer></script>
 <script src="theme-fx.js" defer></script>
 </body>

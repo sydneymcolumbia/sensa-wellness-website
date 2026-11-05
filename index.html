@@ -2605,7 +2605,7 @@
             fetch('/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ priceId: priceId, hearAboutUs: 'not_answered' })
+                body: JSON.stringify({ priceId: priceId, hearAboutUs: 'not_answered', attribution: (window.sensaAttribution ? window.sensaAttribution() : {}) })
             })
             .then(function(response) {
                 if (!response.ok) throw new Error('Checkout request failed');
@@ -2936,6 +2936,7 @@
         navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
 </script>
+<script src="attribution.js" defer></script>
 <script src="preorder.js" defer></script>
 <script src="theme-fx.js" defer></script>
 <script src="bot-guard.js" defer></script>

@@ -33,6 +33,10 @@
     {
       "source": "/api/analytics",
       "destination": "/api/social?action=analytics"
+    },
+    {
+      "source": "/api/book-request",
+      "destination": "/api/social?action=book-request"
     }
   ],
   "headers": [

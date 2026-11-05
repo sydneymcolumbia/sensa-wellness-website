@@ -114,6 +114,23 @@ async function preorderActive() {
   }
 }
 
+// ── Attribution ───────────────────────────────────────────────────
+// attribution.js sends the visitor's GA4 client/session ids and campaign
+// parameters with the checkout request. They are copied into the session
+// metadata (Stripe allows 50 keys, 500 chars each) so api/webhook.js can send
+// the real purchase to GA4 against the same visitor and label the order as
+// direct, ad-assisted or book-assisted. Unknown keys are dropped.
+const ATTRIBUTION_KEYS = ['ga_client_id', 'ga_session_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'landing_page', 'referrer', 'checkout_page'];
+function cleanAttribution(a) {
+  const out = {};
+  if (!a || typeof a !== 'object') return out;
+  for (const k of ATTRIBUTION_KEYS) {
+    const v = a[k];
+    if (typeof v === 'string' && v.trim()) out[k] = v.trim().slice(0, 200);
+  }
+  return out;
+}
+
 module.exports = async function handler(req, res) {
   // GET: current selling state for preorder.js (no secrets, cache briefly).
   if (req.method === 'GET') {
@@ -136,7 +153,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const { priceId, hearAboutUs, promoCode } = req.body;
+  const { priceId, hearAboutUs, promoCode, attribution } = req.body;
   const stripePriceId = PRICE_IDS[priceId];
 
   if (!stripePriceId) {
@@ -168,6 +185,8 @@ module.exports = async function handler(req, res) {
       },
       metadata: {
         hear_about_us: hearAboutUs || 'not_answered',
+        price_key: priceId,
+        ...cleanAttribution(attribution),
       },
       success_url: preorder ? 'https://www.sensawellness.org/success?preorder=1' : 'https://www.sensawellness.org/success',
       cancel_url: 'https://www.sensawellness.org/pay-now',

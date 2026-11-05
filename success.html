@@ -15,12 +15,9 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-X24JYKBTXB', { allow_google_signals: false, allow_ad_personalization_signals: false });
-        // GA4 purchase event
-        gtag('event', 'purchase', {
-            currency: 'USD',
-            value: 0,
-            transaction_id: ''
-        });
+        // The purchase event is sent server-side from api/webhook.js with the
+        // real amount and Stripe session id (GA4 Measurement Protocol), so the
+        // browser no longer fires a $0 purchase here.
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
