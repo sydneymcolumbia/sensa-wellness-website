@@ -42,7 +42,6 @@ What I need from you
 - Payhip link for the book, the book's Payhip product id, and a yes on the excerpt and author block. With the product id I can set up the Zapier step that tells our site about each free request. That needs a login to your Payhip, or you can create the zap and I will send you the exact settings.
 - Admin access to the Google Ads account for me, or a short call to link it.
 - The approved one-paragraph summary of the complete-kit testing. The evidence section on /kit is written and hidden until you send it.
-- One customer we can quote with permission. No reviews are live yet, so the review slot on /kit is empty.
 - For the January kit: does "January" mean orders open or kits ship, and is it the dip-and-swirl version from slide 11? If so, the How To page, schema, app prompt, and demo video all need a second pass, and I would rather do that once.
 - Storage conditions and expiry for the printed insert and FAQ.
 - Variable cost per kit, so the net contribution number is real rather than gross.
