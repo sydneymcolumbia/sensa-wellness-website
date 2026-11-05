@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Nov 2026 11:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 16:30:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>How Much Does the Sensa Wellness Test Cost?</title>
+        <link>https://www.sensawellness.org/post-how-much-does-sensa-cost</link>
+        <guid>https://www.sensawellness.org/post-how-much-does-sensa-cost</guid>
+        <description>Sensa lists at $49 for one saliva kit, $99 for a three-pack and $129 for a four-pack, about $32 a test, with free shipping, no subscription and no lab fee.</description>
+        <category>Wellness</category>
+        <pubDate>Thu, 05 Nov 2026 16:30:00 +0000</pubDate>
+    </item>
     <item>
         <title>Inflammation Tests You Can Do at Home Without a Blood Draw</title>
         <link>https://www.sensawellness.org/post-inflammation-test-at-home-without-blood-draw</link>
