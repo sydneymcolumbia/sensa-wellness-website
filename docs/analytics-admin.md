@@ -40,3 +40,24 @@ sensa-app-7b2b7 project on 2026-10-27.
   on new properties.
 - Google rate limits are generous for one dashboard; the cache keeps repeat
   opens from hitting the API.
+
+## Charts (added 2026-11-05)
+
+- admin-charts.js draws every chart: plain SVG, no library, because the /admin
+  CSP allows only same-origin scripts. `SensaCharts.line` (up to two series,
+  optional area), `SensaCharts.bars`, plus `aggregate` (week/month buckets),
+  `cumulative`, `monthRange`. Every chart has a crosshair or per-bar tooltip, a
+  legend when there are two series, and a Table toggle. Colors #4a3aa7 and
+  #eb6834 pass the dataviz palette validator against a white card.
+- Web Analytics: users + sessions per day and page views per day; the 180 and
+  365 day ranges (ALLOWED_DAYS in lib/handlers/analytics.js) are bucketed by
+  ISO week in the browser.
+- Published Blogs: total posts over time and posts per month, from the feed
+  date (exact) or the index month.
+- Social Media: followers over time from Firestore `social_history/<date>`
+  (one doc per day, written by lib/social-stats.js from api/linkedin-cron.js
+  daily and from fresh loads of the tab), LinkedIn views per post, Instagram
+  reach (Planoly) or likes per post.
+- Nav labels renamed 2026-11-05: Web Analytics, Published Blogs, Social Media.
+- Inline-script edits to admin.html still require recomputing the CSP hashes
+  in vercel.json (one-liner in the comment above the script blocks).
