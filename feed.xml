@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2026 16:20:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does the DASH Diet Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-dash-diet-inflammation</link>
+        <guid>https://www.sensawellness.org/post-dash-diet-inflammation</guid>
+        <description>Randomized trials show the DASH diet significantly lowers hs-CRP compared to a typical Western diet. Here is how the diet works against inflammation and how long the effect takes.</description>
+        <category>Lifestyle</category>
+        <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>What Is the Cheapest At-Home CRP Test? Price per Result Compared</title>
         <link>https://www.sensawellness.org/post-cheapest-at-home-crp-test</link>
