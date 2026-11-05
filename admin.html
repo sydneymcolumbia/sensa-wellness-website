@@ -637,6 +637,28 @@
   }
 
   .refresh-btn:hover { background: var(--border); }
+
+  /* Charts (admin-charts.js) */
+  .chart { padding: 6px 0 2px; }
+  .chart-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6px; min-height: 26px; }
+  .chart-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--gray); }
+  .chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .chart-legend i { display: inline-block; width: 14px; height: 2px; border-radius: 2px; }
+  .chart-table-btn { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 3px 10px; font: inherit; font-size: 12px; color: var(--gray); cursor: pointer; }
+  .chart-table-btn:hover { border-color: var(--purple); color: var(--navy); }
+  .chart-plot { position: relative; }
+  .chart-plot svg { font-family: 'Nunito', sans-serif; }
+  .chart-tooltip { position: absolute; pointer-events: none; background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; font-size: 12px; color: var(--gray); box-shadow: 0 6px 20px rgba(24, 0, 173, 0.10); white-space: nowrap; z-index: 2; }
+  .chart-tooltip .tt-head { color: var(--dark); font-weight: 600; margin-bottom: 4px; }
+  .chart-tooltip .tt-row { display: flex; align-items: center; gap: 6px; }
+  .chart-tooltip .tt-row i { display: inline-block; width: 12px; height: 2px; border-radius: 2px; }
+  .chart-tooltip .tt-row strong { color: var(--dark); font-weight: 700; }
+  .chart-table { margin-top: 10px; max-height: 280px; overflow: auto; border-top: 1px solid var(--border); }
+  .chart-note, .chart-empty { font-size: 12px; color: var(--gray); }
+  .chart-note { padding: 8px 0 0; }
+  .chart-empty { padding: 28px 0; text-align: center; }
+  .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; margin-bottom: 28px; }
+  .charts-grid .table-card { margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -767,15 +789,15 @@
     </div>
     <div class="nav-item" data-page="social" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-      Social
+      Social Media
     </div>
     <div class="nav-item" data-page="blog" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      Blog
+      Published Blogs
     </div>
     <div class="nav-item" data-page="analytics" role="button" tabindex="0">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      Analytics
+      Web Analytics
     </div>
 
     <div class="sidebar-bottom">
@@ -925,13 +947,15 @@
     <!-- ANALYTICS PAGE -->
     <div class="page" id="page-analytics">
       <div class="page-header">
-        <h1>Analytics</h1>
+        <h1>Web Analytics</h1>
         <div style="display:flex;gap:10px;align-items:center;">
           <span class="last-updated" id="analytics-updated"></span>
           <select id="analytics-days" class="search-bar" aria-label="Date range" style="width:auto">
             <option value="7">Last 7 days</option>
             <option value="28" selected>Last 28 days</option>
             <option value="90">Last 90 days</option>
+            <option value="180">Last 6 months</option>
+            <option value="365">Last 12 months</option>
           </select>
           <button class="refresh-btn" id="analytics-refresh-btn" type="button">Refresh</button>
         </div>
@@ -939,8 +963,12 @@
       <div id="analytics-setup" style="display:none" class="table-card"></div>
       <div class="stats-grid" id="analytics-stats"><div class="loading" style="grid-column:1/-1">Loading...</div></div>
       <div class="table-card" id="analytics-chart-card">
-        <div class="table-header"><h2>Daily users</h2><span class="count" id="analytics-chart-count"></span></div>
+        <div class="table-header"><h2 id="analytics-chart-title">Users and sessions per day</h2><span class="count" id="analytics-chart-count"></span></div>
         <div id="analytics-chart"></div>
+      </div>
+      <div class="table-card">
+        <div class="table-header"><h2 id="analytics-views-title">Page views per day</h2><span class="count" id="analytics-views-count"></span></div>
+        <div id="analytics-views-chart"></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;margin-top:20px">
         <div class="table-card"><div class="table-header"><h2>Top pages</h2></div><div id="analytics-pages"></div></div>
@@ -955,13 +983,17 @@
     <!-- BLOG PAGE -->
     <div class="page" id="page-blog">
       <div class="page-header">
-        <h1>Blog</h1>
+        <h1>Published Blogs</h1>
         <div style="display:flex;gap:10px;align-items:center;">
           <span class="last-updated" id="blog-updated"></span>
           <button class="refresh-btn" id="blog-refresh-btn" type="button">Refresh</button>
         </div>
       </div>
       <div class="stats-grid" id="blog-stats"><div class="loading" style="grid-column:1/-1">Loading...</div></div>
+      <div class="charts-grid">
+        <div class="table-card"><div class="table-header"><h2>Total posts over time</h2><span class="count" id="blog-growth-count"></span></div><div id="blog-growth-chart"></div></div>
+        <div class="table-card"><div class="table-header"><h2>Posts published per month</h2><span class="count" id="blog-monthly-count"></span></div><div id="blog-monthly-chart"></div></div>
+      </div>
       <div class="table-card" id="blog-categories-card">
         <div class="table-header">
           <h2>Posts by category</h2>
@@ -985,13 +1017,18 @@
     <!-- SOCIAL PAGE -->
     <div class="page" id="page-social">
       <div class="page-header">
-        <h1>Social</h1>
+        <h1>Social Media</h1>
         <div style="display:flex;gap:10px;align-items:center;">
           <span class="last-updated" id="social-updated"></span>
           <button class="refresh-btn" id="social-refresh-btn" type="button">Refresh</button>
         </div>
       </div>
       <div class="stats-grid" id="social-stats"><div class="loading" style="grid-column:1/-1">Loading...</div></div>
+      <div class="charts-grid">
+        <div class="table-card"><div class="table-header"><h2>Followers over time</h2><span class="count" id="social-history-count"></span></div><div id="social-history-chart"></div></div>
+        <div class="table-card"><div class="table-header"><h2 id="social-li-chart-title">LinkedIn views per post</h2><span class="count" id="social-li-chart-count"></span></div><div id="social-li-chart"></div></div>
+        <div class="table-card"><div class="table-header"><h2 id="social-ig-chart-title">Instagram reach per post</h2><span class="count" id="social-ig-chart-count"></span></div><div id="social-ig-chart"></div></div>
+      </div>
       <div class="table-card" id="social-linkedin-card">
         <div class="table-header">
           <h2>LinkedIn: recent shared articles</h2>
@@ -1043,6 +1080,7 @@
   policy as well. Attach handlers with addEventListener in the script.
 -->
 <script src="/vendor/qrcode.js"></script>
+<script src="/admin-charts.js"></script>
 <script src="/auth-policy.js"></script>
 <script type="module">
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
@@ -1872,6 +1910,7 @@
     cards.push(`<div class="stat-card"><div class="label">Instagram reach, ${viaPlanoly ? days + 'd' : '28d'}</div><div class="value">${ig.connected ? num(viaPlanoly ? ig.reach30 : ig.reach28) : '&ndash;'}</div></div>`);
     if (viaPlanoly) cards.push(`<div class="stat-card"><div class="label">Facebook posts, ${days}d</div><div class="value">${fb.connected ? num(fb.posts30) : '&ndash;'}</div></div>`);
     document.getElementById('social-stats').innerHTML = cards.join('');
+    renderSocialCharts(data, li, ig, viaPlanoly);
 
     const liStatus = document.getElementById('social-linkedin-status');
     const liList = document.getElementById('social-linkedin-list');
@@ -1946,6 +1985,42 @@
     }
   }
 
+  // Followers from the daily social_history snapshots (one point per day,
+  // written by the LinkedIn cron and by fresh loads of this tab), plus the
+  // per-post numbers already in the payload, oldest post on the left.
+  function renderSocialCharts(data, li, ig, viaPlanoly) {
+    const hist = (data.history || []).filter(h => h && h.date);
+    const histEl = document.getElementById('social-history-chart');
+    const histCount = document.getElementById('social-history-count');
+    const liF = hist.map(h => h.linkedinFollowers == null ? null : h.linkedinFollowers);
+    const igF = hist.map(h => h.instagramFollowers == null ? null : h.instagramFollowers);
+    const series = [];
+    if (liF.some(v => v != null)) series.push({ name: 'LinkedIn followers', values: liF });
+    if (igF.some(v => v != null)) series.push({ name: 'Instagram followers', values: igF });
+    histCount.textContent = hist.length ? `${hist.length} daily snapshot${hist.length === 1 ? '' : 's'} since ${SensaCharts.fmtDate(hist[0].date, { month: 'short', day: 'numeric', year: 'numeric' })}` : '';
+    SensaCharts.line(histEl, { labels: hist.map(h => h.date), series, empty: 'No snapshots yet. One is recorded each day; the line fills in over the coming weeks.', note: hist.length && hist.length < 7 ? 'A snapshot is taken once a day. Check back after a week for a trend.' : '' });
+
+    const byDate = (a, b) => Date.parse(a.postedAt || 0) - Date.parse(b.postedAt || 0);
+    const liRows = (li.connected ? (li.recent || []) : []).filter(p => p.stats).sort(byDate);
+    document.getElementById('social-li-chart-title').textContent = viaPlanoly ? 'LinkedIn views per post' : 'LinkedIn impressions per post';
+    document.getElementById('social-li-chart-count').textContent = liRows.length ? `${liRows.length} most recent` : '';
+    SensaCharts.bars(document.getElementById('social-li-chart'), {
+      labels: liRows.map(p => p.postedAt), values: liRows.map(p => p.stats.impressions), name: viaPlanoly ? 'views' : 'impressions',
+      tooltipTitle: i => `${SensaCharts.fmtDate(liRows[i].postedAt)}: ${liRows[i].title || liRows[i].slug || ''}`,
+      empty: li.connected ? 'No LinkedIn posts with stats yet.' : 'LinkedIn is not connected.',
+    });
+
+    const igRows = (ig.connected ? (ig.recent || []) : []).slice().sort(byDate);
+    const igMetric = viaPlanoly ? 'reach' : 'likes';
+    document.getElementById('social-ig-chart-title').textContent = `Instagram ${igMetric} per post`;
+    document.getElementById('social-ig-chart-count').textContent = igRows.length ? `${igRows.length} most recent` : '';
+    SensaCharts.bars(document.getElementById('social-ig-chart'), {
+      labels: igRows.map(m => m.postedAt), values: igRows.map(m => viaPlanoly ? m.reach : m.likes), name: igMetric,
+      tooltipTitle: i => `${SensaCharts.fmtDate(igRows[i].postedAt)}: ${(igRows[i].caption || '(no caption)').slice(0, 60)}`,
+      empty: ig.connected ? 'No Instagram posts yet.' : 'Instagram is not connected.',
+    });
+  }
+
   // ---- Analytics (GA4 via /api/analytics) ----
   const analyticsLoaded = {};
   function analyticsDays() { return Number(document.getElementById('analytics-days').value) || 28; }
@@ -1978,25 +2053,28 @@
     if (!rows || !rows.length) return '<div class="empty" style="padding:20px;text-align:center;color:var(--gray)">No data.</div>';
     return `<div style="overflow-x:auto"><table><thead><tr>${cols.map(c => `<th scope="col">${escapeHtml(c.label)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${cols.map(c => `<td${c.num ? ' style="text-align:right"' : ''}>${c.render ? c.render(r) : escapeHtml(String(r[c.key] == null ? '' : r[c.key]))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   }
-  function dailyChart(daily) {
-    if (!daily || !daily.length) return '<div class="empty" style="padding:20px;text-align:center;color:var(--gray)">No daily data.</div>';
-    const max = Math.max(1, ...daily.map(d => d.users));
-    const w = 1000, h = 220, pad = 24, bw = (w - pad * 2) / daily.length;
-    const bars = daily.map((d, i) => {
-      const bh = Math.round((d.users / max) * (h - pad * 2));
-      const x = pad + i * bw, y = h - pad - bh;
-      const label = `${d.date.slice(0, 4)}-${d.date.slice(4, 6)}-${d.date.slice(6, 8)}: ${d.users} users, ${d.sessions} sessions, ${d.views} views`;
-      return `<rect x="${x.toFixed(1)}" y="${y}" width="${Math.max(1, bw - 2).toFixed(1)}" height="${bh}" rx="2" fill="#7267f2"><title>${escapeHtml(label)}</title></rect>`;
-    }).join('');
-    const first = daily[0].date, last = daily[daily.length - 1].date;
-    const fmt = d => `${d.slice(4, 6)}/${d.slice(6, 8)}`;
-    return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" role="img" aria-label="Daily active users">
-      <line x1="${pad}" y1="${h - pad}" x2="${w - pad}" y2="${h - pad}" stroke="#e5e7eb"/>
-      ${bars}
-      <text x="${pad}" y="${h - 6}" font-size="12" fill="#6b7280">${fmt(first)}</text>
-      <text x="${w - pad}" y="${h - 6}" font-size="12" fill="#6b7280" text-anchor="end">${fmt(last)}</text>
-      <text x="${pad}" y="${pad - 8}" font-size="12" fill="#6b7280">peak ${max} users/day</text>
-    </svg>`;
+  // Daily series from GA4, drawn with admin-charts.js. Ranges longer than
+  // 90 days are bucketed by week so the line stays readable.
+  function renderDailyCharts(daily, days) {
+    const el = document.getElementById('analytics-chart');
+    const el2 = document.getElementById('analytics-views-chart');
+    const rows = daily || [];
+    const iso = d => `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
+    let labels = rows.map(d => iso(d.date));
+    let users = rows.map(d => d.users), sessions = rows.map(d => d.sessions), views = rows.map(d => d.views);
+    const weekly = Number(days) > 90;
+    if (weekly) {
+      const a = SensaCharts.aggregate(labels, [users, sessions, views], 'week', 'sum');
+      labels = a.labels; [users, sessions, views] = a.series;
+    }
+    const unit = weekly ? 'week' : 'day';
+    document.getElementById('analytics-chart-title').textContent = `Users and sessions per ${unit}`;
+    document.getElementById('analytics-views-title').textContent = `Page views per ${unit}`;
+    const peak = Math.max(0, ...users.filter(v => v != null));
+    document.getElementById('analytics-views-count').textContent = views.length ? `${Number(views.reduce((t, v) => t + (v || 0), 0)).toLocaleString()} total` : '';
+    const xFormat = weekly ? (l => 'wk of ' + SensaCharts.fmtDate(l)) : undefined;
+    SensaCharts.line(el, { labels, series: [{ name: 'Users', values: users }, { name: 'Sessions', values: sessions }], xFormat, empty: 'No daily data.', note: peak ? `Peak ${peak.toLocaleString()} users in a ${unit}.` : '' });
+    SensaCharts.line(el2, { labels, series: [{ name: 'Page views', values: views }], area: true, xFormat, empty: 'No daily data.' });
   }
 
   function renderAnalytics(data) {
@@ -2013,7 +2091,7 @@
           <li>Come back here and click Refresh.</li>
         </ol>`;
       document.getElementById('analytics-stats').innerHTML = '';
-      ['analytics-chart', 'analytics-pages', 'analytics-sources', 'analytics-landing', 'analytics-events', 'analytics-countries', 'analytics-devices'].forEach(id => { document.getElementById(id).innerHTML = ''; });
+      ['analytics-chart', 'analytics-views-chart', 'analytics-pages', 'analytics-sources', 'analytics-landing', 'analytics-events', 'analytics-countries', 'analytics-devices'].forEach(id => { document.getElementById(id).innerHTML = ''; });
       document.getElementById('analytics-chart-count').textContent = '';
       return;
     }
@@ -2031,7 +2109,7 @@
       card('Active right now', data.realtimeUsers == null ? '&ndash;' : num(data.realtimeUsers), data.realtimeError ? 'realtime unavailable' : 'last 30 minutes'),
     ].join('');
     document.getElementById('analytics-chart-count').textContent = `${data.days} days${data.propertyName ? ', ' + data.propertyName : ''}`;
-    document.getElementById('analytics-chart').innerHTML = dailyChart(data.daily);
+    renderDailyCharts(data.daily, data.days);
     const link = r => `<a href="https://www.sensawellness.org${escapeHtml(r.path)}" target="_blank" rel="noopener">${escapeHtml(r.path)}</a>`;
     document.getElementById('analytics-pages').innerHTML = simpleTable(data.pages, [
       { label: 'Page', render: r => `${link(r)}<div style="font-size:11px;color:var(--gray)">${escapeHtml((r.title || '').replace(/ - Sensa Wellness.*$/, ''))}</div>` },
@@ -2159,6 +2237,7 @@
       `<div class="stat-card"><div class="label">Latest post</div><div class="value" style="font-size:15px;line-height:1.3">${latest ? `<a href="${escapeHtml(latest.url)}" target="_blank" rel="noopener">${escapeHtml(latest.title)}</a>` : '&ndash;'}</div><div class="sub">${latest ? escapeHtml(latest.published || latest.month) : ''}</div></div>`,
     ].join('');
 
+    renderBlogCharts();
     document.getElementById('blog-categories-count').textContent = `${cats.length} categories`;
     document.getElementById('blog-categories').innerHTML = `
       <div style="overflow-x:auto"><table>
@@ -2173,6 +2252,26 @@
     const current = select.value;
     select.innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option value="${escapeHtml(c)}"${c === current ? ' selected' : ''}>${escapeHtml(c)} (${byCat[c]})</option>`).join('');
     renderBlogList();
+  }
+
+  // Publishing cadence: posts per calendar month (zero-filled) and the running
+  // total, from the exact feed date where we have one, else the index month.
+  function renderBlogCharts() {
+    const dated = blogPosts.filter(p => p.sortDate > 0);
+    const growthEl = document.getElementById('blog-growth-chart'), monthlyEl = document.getElementById('blog-monthly-chart');
+    if (!dated.length) { SensaCharts.line(growthEl, { labels: [], series: [] , empty: 'No dated posts yet.' }); SensaCharts.bars(monthlyEl, { labels: [], values: [], empty: 'No dated posts yet.' }); return; }
+    const first = new Date(Math.min(...dated.map(p => p.sortDate))).toISOString().slice(0, 10);
+    const months = SensaCharts.monthRange(first);
+    const counts = Object.fromEntries(months.map(m => [m, 0]));
+    dated.forEach(p => { const k = new Date(p.sortDate).toISOString().slice(0, 7) + '-01'; if (k in counts) counts[k]++; });
+    const perMonth = months.map(m => counts[m]);
+    const total = SensaCharts.cumulative(perMonth);
+    const undated = blogPosts.length - dated.length;
+    const best = Math.max(...perMonth), bestIdx = perMonth.indexOf(best);
+    document.getElementById('blog-growth-count').textContent = `${months.length} months`;
+    document.getElementById('blog-monthly-count').textContent = best ? `best month ${SensaCharts.fmtMonth(months[bestIdx])}: ${best}` : '';
+    SensaCharts.line(growthEl, { labels: months, series: [{ name: 'Published posts', values: total }], area: true, xFormat: SensaCharts.fmtMonth, labelHead: 'Month', note: undated ? `${undated} post${undated === 1 ? '' : 's'} without a date not shown.` : '' });
+    SensaCharts.bars(monthlyEl, { labels: months, values: perMonth, name: 'posts', xFormat: SensaCharts.fmtMonth, labelHead: 'Month' });
   }
 
   function renderBlogList() {
