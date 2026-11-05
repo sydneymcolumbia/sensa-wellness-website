@@ -1,7 +1,6 @@
 # Reply to Ryan, "January preorder launch: website edits and book strategy" (his email of Nov 2, 2026)
 
-Status: NOT SENT as of Nov 5, 2026 (updated draft). Reply inside his Gmail thread and attach ~/Desktop/Sensa-Book-Measurement-Plan-2026-11-05.pdf. Skip this status block when pasting.
-
+Status: SENT by Sydney on Nov 5, 2026, in Ryan's Gmail thread, with Sensa-Book-Measurement-Plan-2026-11-05.pdf (rev. 3) attached. Kept for reference.
 ---
 
 Hi Ryan,
