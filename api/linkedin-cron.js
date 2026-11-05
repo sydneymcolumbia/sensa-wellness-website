@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const socialStats = require('../lib/social-stats');
 const { Resend } = require('resend');
 const li = require('../lib/linkedin');
 
@@ -53,6 +54,17 @@ module.exports = async function handler(req, res) {
   const db = li.getDb();
   const stateRef = db.collection('linkedin').doc('state');
   const startedAt = new Date().toISOString();
+
+  // Daily social snapshot for the admin "Followers over time" chart. Runs
+  // before the posting logic and never blocks it.
+  if (!dry) {
+    try {
+      const payload = await socialStats.buildSocialPayload(db);
+      await socialStats.recordSnapshot(db, payload);
+    } catch (err) {
+      console.error('Social snapshot failed:', err.message);
+    }
+  }
 
   try {
     const slugs = await li.fetchSitemapPostSlugs();

@@ -1,9 +1,8 @@
 const admin = require('firebase-admin');
 const li = require('../lib/linkedin');
-const ig = require('../lib/instagram');
+const socialStats = require('../lib/social-stats');
 const linkedinAuth = require('../lib/handlers/linkedin-auth');
 const instagramAuth = require('../lib/handlers/instagram-auth');
-const planoly = require('../lib/planoly');
 const planolyAuth = require('../lib/handlers/planoly-auth');
 const analytics = require('../lib/handlers/analytics');
 const bookRequest = require('../lib/handlers/book-request');
@@ -56,49 +55,6 @@ async function requireAdmin(req, res) {
   return decoded;
 }
 
-async function linkedinBlock() {
-  const block = { connected: false };
-  try {
-    const auth = await li.loadAuth(db);
-    if (!auth) return { ...block, reason: 'not connected' };
-    const { token, auth: live } = await li.ensureFreshToken(db, auth);
-    block.connected = true;
-    block.tokenExpiresAt = live.expires_at || null;
-
-    const sharedSnap = await db.collection('linkedin_posts').orderBy('postedAt', 'desc').limit(10).get();
-    const shared = sharedSnap.docs.map(d => d.data());
-    const stats = await li.fetchPageStats(token, shared.map(p => p.postUrn).filter(Boolean));
-
-    block.followers = stats.followers;
-    block.lifetime = stats.lifetime;
-    block.last30 = stats.last30;
-    block.errors = stats.errors;
-    block.recent = shared.map(p => ({
-      slug: p.slug,
-      title: p.title,
-      url: p.url,
-      postedAt: p.postedAt,
-      stats: stats.posts[p.postUrn] || null,
-    }));
-    return block;
-  } catch (err) {
-    return { ...block, reason: err.message };
-  }
-}
-
-async function instagramBlock() {
-  const block = { connected: false };
-  try {
-    const auth = await ig.loadAuth(db);
-    if (!auth) return { ...block, reason: 'not connected' };
-    const { token, auth: live } = await ig.ensureFreshToken(db, auth);
-    const stats = await ig.fetchStats(token);
-    return { ...block, connected: true, tokenExpiresAt: live.expires_at || null, ...stats };
-  } catch (err) {
-    return { ...block, reason: err.message };
-  }
-}
-
 module.exports = async function handler(req, res) {
   // The Hobby plan allows 12 serverless functions per deployment, so the
   // two OAuth connect handlers live inside this function. vercel.json
@@ -122,24 +78,19 @@ module.exports = async function handler(req, res) {
     if (snap.exists) {
       const c = snap.data();
       if (c.generatedAt && Date.now() - Date.parse(c.generatedAt) < CACHE_MINUTES * 60 * 1000) {
-        return res.status(200).json({ ...c.payload, generatedAt: c.generatedAt, cached: true });
+        const history = await socialStats.loadHistory(db).catch(() => []);
+        return res.status(200).json({ ...c.payload, history, generatedAt: c.generatedAt, cached: true });
       }
     }
   }
 
-  let payload;
-  let planolyError = null;
-  try {
-    payload = await planoly.fetchStats(db);
-  } catch (err) {
-    console.error('Planoly stats failed:', err.message);
-    planolyError = err.message;
-  }
-  if (!payload) {
-    const [linkedin, instagram] = await Promise.all([linkedinBlock(), instagramBlock()]);
-    payload = { source: 'direct', linkedin, instagram, planolyError };
-  }
+  const payload = await socialStats.buildSocialPayload(db);
   const generatedAt = new Date().toISOString();
   await cacheRef.set({ payload, generatedAt }).catch(err => console.error('social cache write failed', err.message));
-  return res.status(200).json({ ...payload, generatedAt, cached: false });
+  // One snapshot per day feeds the "Followers over time" chart. The LinkedIn
+  // cron also records one daily, so the series fills in even when nobody opens
+  // the admin page.
+  await socialStats.recordSnapshot(db, payload).catch(err => console.error('social snapshot failed', err.message));
+  const history = await socialStats.loadHistory(db).catch(() => []);
+  return res.status(200).json({ ...payload, history, generatedAt, cached: false });
 };
