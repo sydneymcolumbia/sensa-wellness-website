@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Nov 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 11:30:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Inflammation Tests You Can Do at Home Without a Blood Draw</title>
+        <link>https://www.sensawellness.org/post-inflammation-test-at-home-without-blood-draw</link>
+        <guid>https://www.sensawellness.org/post-inflammation-test-at-home-without-blood-draw</guid>
+        <description>A finger prick is still blood. The only needle-free at-home inflammation test we know of is Sensa's saliva kit, from about $32 a test with free shipping.</description>
+        <category>Wellness</category>
+        <pubDate>Thu, 05 Nov 2026 11:30:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does the DASH Diet Reduce Inflammation? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-dash-diet-inflammation</link>
