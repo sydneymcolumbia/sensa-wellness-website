@@ -85,7 +85,7 @@
                 </div>
                 <h1>Liver Inflammation and Metabolic Disease: The Silent Epidemic of NAFLD</h1>
                 <p class="post-subtitle">The liver processes nearly every inflammatory signal that enters the bloodstream. When it becomes chronically inflamed, the metabolic consequences extend far beyond the organ itself.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -112,7 +112,7 @@
                 <p>The gut barrier's integrity is a critical variable. Tight junction protein expression in the intestinal epithelium is consistently reduced in NAFLD patients, allowing greater LPS translocation into the portal circulation. Studies have found that the degree of gut permeability correlates with the severity of hepatic inflammation in NAFLD patients. This has led to significant research interest in gut-targeted interventions, including specific probiotic combinations, fecal microbiota transplantation, and dietary fiber supplementation, as approaches to reduce the gut-derived inflammatory load on the liver.</p>
 
                 <h2>NAFLD and Systemic Inflammation</h2>
-                <p>While NAFLD begins in the liver, its inflammatory consequences extend systemically. The cytokines produced during hepatic inflammation, including TNF-alpha, IL-6, and <a href="/post-understanding-crp">C-reactive protein</a>(which is actually synthesized in the liver), enter systemic circulation and contribute to insulin resistance, <a href="/post-heart-disease-inflammation">cardiovascular disease</a>, and metabolic dysfunction throughout the body. NAFLD patients have significantly elevated CRP levels and higher rates of cardiovascular disease than the general population, even after controlling for traditional risk factors.</p>
+                <p>While NAFLD begins in the liver, its inflammatory consequences extend systemically. The cytokines produced during hepatic inflammation, including TNF-alpha, IL-6, and <a href="/post-understanding-crp">C-reactive protein</a> (which is actually synthesized in the liver), enter systemic circulation and contribute to insulin resistance, <a href="/post-heart-disease-inflammation">cardiovascular disease</a>, and metabolic dysfunction throughout the body. NAFLD patients have significantly elevated CRP levels and higher rates of cardiovascular disease than the general population, even after controlling for traditional risk factors.</p>
 
                 <p>Conversely, systemic metabolic inflammation worsens liver disease. Adipose tissue-derived cytokines from visceral fat, which drains directly into the portal vein, continuously stimulate Kupffer cells and promote hepatic lipid accumulation. This creates a bidirectional inflammatory relationship between liver and adipose tissue that is central to metabolic syndrome: each worsens the other, making isolated treatment of either insufficient for most patients.</p>
 
@@ -300,16 +300,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () =>{
+        window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

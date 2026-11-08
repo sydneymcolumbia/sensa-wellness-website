@@ -490,14 +490,14 @@
         <p>The fastest way to delete your Sensa Wellness account is directly in the app:</p>
         <ol>
             <li>Open the Sensa Wellness app and log in.</li>
-            <li>Go to the <strong>Profile</strong>tab.</li>
+            <li>Go to the <strong>Profile</strong> tab.</li>
             <li>Tap <strong>Delete Account &amp; Data</strong>.</li>
             <li>Confirm. You may be asked to re-enter your password.</li>
         </ol>
         <p>This immediately and permanently deletes your account and all associated data, including your scan history, wellness scores, and health profile. Deleted data cannot be recovered.</p>
 
         <h2>Request deletion by email</h2>
-        <p>If you can no longer access the app, email us at <a href="mailto:info@sensawellness.org?subject=Account%20Deletion%20Request">info@sensawellness.org</a>from the email address associated with your account, with the subject line "Account Deletion Request". We will delete your account and all associated data within 30 days and confirm by reply.</p>
+        <p>If you can no longer access the app, email us at <a href="mailto:info@sensawellness.org?subject=Account%20Deletion%20Request">info@sensawellness.org</a> from the email address associated with your account, with the subject line "Account Deletion Request". We will delete your account and all associated data within 30 days and confirm by reply.</p>
 
         <h2>What is deleted</h2>
         <ul>
@@ -569,26 +569,26 @@
 
     <script>
         // Scroll to top button
-        window.addEventListener('scroll', () =>{
+        window.addEventListener('scroll', () => {
             const btn = document.getElementById('scrollTop');
-            if (document.documentElement.scrollTop >400) {
+            if (document.documentElement.scrollTop > 400) {
                 btn.classList.add('visible');
             } else {
                 btn.classList.remove('visible');
             }
         });
 
-        document.getElementById('scrollTop').addEventListener('click', () =>{
+        document.getElementById('scrollTop').addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Mobile nav toggle
-        document.getElementById('mobileToggle').addEventListener('click', () =>{
+        document.getElementById('mobileToggle').addEventListener('click', () => {
             document.getElementById('mainNav').classList.toggle('active');
         });
 
-        document.querySelectorAll('#mainNav a').forEach(link =>{
-            link.addEventListener('click', () =>{
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
                 document.getElementById('mainNav').classList.remove('active');
             });
         });

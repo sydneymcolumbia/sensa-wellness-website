@@ -748,19 +748,19 @@
                     <div class="factor-list">
                         <div class="factor-item">
                             <span class="factor-dot">&#8226;</span>
-                            <p><strong>Stalled progress.</strong>Effort that doesn't seem to show up on the scale or tape measure.</p>
+                            <p><strong>Stalled progress.</strong> Effort that doesn't seem to show up on the scale or tape measure.</p>
                         </div>
                         <div class="factor-item">
                             <span class="factor-dot">&#8226;</span>
-                            <p><strong>Cravings.</strong>Appetite and food noise that feel harder to manage than they should.</p>
+                            <p><strong>Cravings.</strong> Appetite and food noise that feel harder to manage than they should.</p>
                         </div>
                         <div class="factor-item">
                             <span class="factor-dot">&#8226;</span>
-                            <p><strong>Low energy.</strong>Feeling drained even when sleep and training look fine on paper.</p>
+                            <p><strong>Low energy.</strong> Feeling drained even when sleep and training look fine on paper.</p>
                         </div>
                         <div class="factor-item">
                             <span class="factor-dot">&#8226;</span>
-                            <p><strong>Slower recovery.</strong>Taking longer than expected to bounce back between hard days.</p>
+                            <p><strong>Slower recovery.</strong> Taking longer than expected to bounce back between hard days.</p>
                         </div>
                     </div>
                 </div>
@@ -807,7 +807,7 @@
                 <span class="section-label">Pricing</span>
                 <h2>Pick your kit</h2>
                 <p>One-time purchase, no subscription, free shipping on every order.</p>
-                <p class="ship-note" style="margin:0.9rem auto 0;max-width:640px;padding:0.75rem 1rem;border-radius:12px;background:rgba(250,194,52,0.18);border:1px solid rgba(245,157,6,0.5);font-size:0.95rem;line-height:1.5;color:#1a1a2e;"><strong>In stock.</strong>Ships within 2 weeks of your order. Order by December 5 for delivery by Christmas. Free shipping, full refund any time before it ships.</p>
+                <p class="ship-note" style="margin:0.9rem auto 0;max-width:640px;padding:0.75rem 1rem;border-radius:12px;background:rgba(250,194,52,0.18);border:1px solid rgba(245,157,6,0.5);font-size:0.95rem;line-height:1.5;color:#1a1a2e;"><strong>In stock.</strong> Ships within 2 weeks of your order. Order by December 5 for delivery by Christmas. Free shipping, full refund any time before it ships.</p>
             </div>
 
             <div class="pricing-grid">
@@ -877,15 +877,15 @@
 
             <div class="faq-list">
                 <div class="faq-item reveal">
-                    <h3><span class="faq-q-mark">Q.</span>Can Sensa help with weight loss?</h3>
+                    <h3><span class="faq-q-mark">Q.</span> Can Sensa help with weight loss?</h3>
                     <p>Sensa does not cause weight loss, and it is not a weight-loss product. What it can do is help you see whether inflammation could be one factor in your picture, so you can adjust your approach with better information. Many people find it motivating to track a signal alongside their other habits and watch it respond to the changes they make.</p>
                 </div>
                 <div class="faq-item reveal">
-                    <h3><span class="faq-q-mark">Q.</span>Is Sensa a medical test or diagnosis?</h3>
+                    <h3><span class="faq-q-mark">Q.</span> Is Sensa a medical test or diagnosis?</h3>
                     <p>No. Sensa is a general wellness product intended to support a healthy lifestyle. It is not intended to diagnose, treat, cure, or prevent any disease or medical condition. If you have concerns about your health, please consult a qualified healthcare provider.</p>
                 </div>
                 <div class="faq-item reveal">
-                    <h3><span class="faq-q-mark">Q.</span>How often should I test?</h3>
+                    <h3><span class="faq-q-mark">Q.</span> How often should I test?</h3>
                     <p>A single test gives you a snapshot of one moment. Tracking over time tells a richer story, because you can compare where you started against where you are after making changes. That's why the 3-Pack is the most popular choice: it gives you a clean test, change, retest cycle without guessing.</p>
                 </div>
             </div>
@@ -951,31 +951,31 @@
 
     <script>
         // Progress bar + scroll-to-top
-        window.addEventListener('scroll', () =>{
+        window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
 
-        document.getElementById('scrollTop').addEventListener('click', () =>{
+        document.getElementById('scrollTop').addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Mobile nav
-        document.getElementById('mobileToggle').addEventListener('click', () =>{
+        document.getElementById('mobileToggle').addEventListener('click', () => {
             document.getElementById('mainNav').classList.toggle('active');
         });
-        document.querySelectorAll('#mainNav a').forEach(link =>{
-            link.addEventListener('click', () =>{
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
                 document.getElementById('mainNav').classList.remove('active');
             });
         });
 
         // Scroll reveal
-        const revealObserver = new IntersectionObserver((entries) =>{
-            entries.forEach(entry =>{
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     revealObserver.unobserve(entry.target);
@@ -983,7 +983,7 @@
             });
         }, { threshold: 0.12 });
 
-        document.querySelectorAll('.reveal').forEach(el =>revealObserver.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         // Checkout
         function handleCheckout(priceId, btnEl) {

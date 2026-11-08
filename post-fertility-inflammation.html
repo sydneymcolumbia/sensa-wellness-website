@@ -85,7 +85,7 @@
                 </div>
                 <h1>Fertility and Inflammation: How Chronic Immune Activation Affects Reproductive Health</h1>
                 <p class="post-subtitle">Reproduction requires a precisely calibrated immune environment. Chronic low-grade inflammation disrupts this calibration at multiple stages, from oocyte quality and ovulation to implantation and early pregnancy maintenance.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -104,7 +104,7 @@
                 <h2>Inflammation and Ovarian Function</h2>
                 <p>Ovarian reserve, the quantity and quality of remaining oocytes, is significantly influenced by the inflammatory environment within the ovary. Pro-inflammatory cytokines including IL-6, TNF-alpha, and IL-1 beta are present in follicular fluid and directly affect oocyte maturation, granulosa cell function, and follicular development. Elevated systemic CRP is inversely associated with antral follicle count and ovarian reserve markers in several studies, with the relationship independent of age and BMI. Women with the highest CRP quartiles have significantly lower AMH (anti-Mullerian hormone, the primary ovarian reserve marker) than those in the lowest quartile.</p>
 
-                <p>Oxidative stress, which accompanies and amplifies inflammatory signaling, is particularly damaging to oocytes because mature eggs lack the <a href="/post-mitochondria-inflammation">mitochondrial</a>repair capacity of somatic cells. Oocytes from women with elevated systemic inflammatory markers show higher rates of chromosomal abnormalities, reduced fertilization rates, and impaired early embryo development in IVF cycles. This inflammatory oocyte damage is one mechanism linking conditions such as obesity, autoimmune disease, and smoking, all characterized by elevated oxidative stress and inflammation, to reduced IVF success rates independently of their other reproductive effects.</p>
+                <p>Oxidative stress, which accompanies and amplifies inflammatory signaling, is particularly damaging to oocytes because mature eggs lack the <a href="/post-mitochondria-inflammation">mitochondrial</a> repair capacity of somatic cells. Oocytes from women with elevated systemic inflammatory markers show higher rates of chromosomal abnormalities, reduced fertilization rates, and impaired early embryo development in IVF cycles. This inflammatory oocyte damage is one mechanism linking conditions such as obesity, autoimmune disease, and smoking, all characterized by elevated oxidative stress and inflammation, to reduced IVF success rates independently of their other reproductive effects.</p>
 
                 <h2>Implantation and the Immunological Window</h2>
                 <p>Successful embryo implantation requires the endometrium to transition through a precisely timed inflammatory window during the mid-luteal phase of the menstrual cycle. During this window, uterine natural killer (uNK) cells, regulatory T-cells, and macrophages collectively prepare the endometrial stroma for embryo invasion, promote spiral artery remodeling, and tolerate the semi-allogeneic embryo as an immunological variant of self. This process requires a shift from predominantly inflammatory to predominantly regulatory immune activity in the endometrium at the time of implantation.</p>
@@ -300,16 +300,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () =>{
+        window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

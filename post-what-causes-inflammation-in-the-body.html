@@ -88,7 +88,7 @@
                 </div>
                 <h1>What Causes Inflammation in the Body?</h1>
                 <p class="post-subtitle">Inflammation is not a disease in itself. It is the immune system's response to a perceived threat. Understanding what triggers it, and why the same process can heal you or harm you, is the key to knowing when it matters.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -102,7 +102,7 @@
 
                 <p>Inflammation gets talked about as if it were a single bad thing to be eliminated, but that framing misses the point. Inflammation is a coordinated immune response, and in its acute form it is one of the reasons you survive infections and heal from wounds. The distinction that matters is between the short, self-limiting inflammation that fixes a problem and then switches off, and the smoldering, chronic inflammation that never fully resolves. They share the same molecular machinery but have opposite consequences for long-term health. Knowing what triggers each, and why one switches off while the other does not, is what lets you tell a normal healing response apart from a problem worth acting on.</p>
 
-                <div class="key-definition"><strong>Inflammation</strong>is the immune system's protective response to harmful stimuli such as infection, injury, or toxins. It involves immune cells, blood vessels, and signaling molecules called cytokines. Acute inflammation is short-term and healing; chronic inflammation is long-term and can damage tissue.</div>
+                <div class="key-definition"><strong>Inflammation</strong> is the immune system's protective response to harmful stimuli such as infection, injury, or toxins. It involves immune cells, blood vessels, and signaling molecules called cytokines. Acute inflammation is short-term and healing; chronic inflammation is long-term and can damage tissue.</div>
 
                 <h2>What Are the Main Causes of Inflammation?</h2>
 
@@ -137,7 +137,7 @@
 
                 <h2>What Role Does the Gut Play in Inflammation?</h2>
 
-                <p>The gut plays a large role in inflammation because it houses a major share of the immune system and a barrier that separates trillions of microbes from the bloodstream. When that intestinal barrier works well and the gut microbiome is balanced, it helps keep inflammation in check, partly by producing anti-inflammatory short-chain fatty acids from dietary fiber. When the barrier is compromised or the microbial balance is disturbed, microbial components can provoke a low-grade inflammatory response. This is one reason diet has such a strong influence on inflammation: a fiber-rich diet supports a microbiome that dampens inflammation, while a diet high in sugar and ultra-processed foods can push in the opposite direction. See our post on <a href="/post-gut-inflammation">gut inflammation</a>for a deeper look at this connection.</p>
+                <p>The gut plays a large role in inflammation because it houses a major share of the immune system and a barrier that separates trillions of microbes from the bloodstream. When that intestinal barrier works well and the gut microbiome is balanced, it helps keep inflammation in check, partly by producing anti-inflammatory short-chain fatty acids from dietary fiber. When the barrier is compromised or the microbial balance is disturbed, microbial components can provoke a low-grade inflammatory response. This is one reason diet has such a strong influence on inflammation: a fiber-rich diet supports a microbiome that dampens inflammation, while a diet high in sugar and ultra-processed foods can push in the opposite direction. See our post on <a href="/post-gut-inflammation">gut inflammation</a> for a deeper look at this connection.</p>
 
                 <h2>How Does the Immune System Create Inflammation?</h2>
 
@@ -167,7 +167,7 @@
 
                 <h2>Which Health Conditions Are Linked to Chronic Inflammation?</h2>
 
-                <p>Chronic low-grade inflammation is linked to many of the most common long-term health conditions, which is why it draws so much research attention. A widely cited 2019 review in <em>Nature Medicine</em>described how systemic chronic inflammation, promoted by social, environmental, and lifestyle factors, drives a cluster of diseases that collectively represent the leading causes of disability and mortality worldwide (<a href="https://pubmed.ncbi.nlm.nih.gov/31806905/" target="_blank" rel="noopener">Furman et al., 2019</a>). It is associated with cardiovascular disease, where inflammation contributes to the buildup and instability of arterial plaque, and with type 2 diabetes and metabolic syndrome, where it is intertwined with insulin resistance. Chronic inflammation is also implicated in the biology of aging, in certain cancers, and in neurodegenerative and mood-related conditions, and it is central to autoimmune diseases in which the immune system attacks healthy tissue. Importantly, association is not the same as sole cause: inflammation is one contributing thread among many, not a single explanation for these diseases. But its shared involvement across so many conditions is precisely why lowering chronic inflammation is viewed as a broadly protective goal. See our post on <a href="/post-inflammation-cause-of-disease">inflammation as a driver of disease</a>.</p>
+                <p>Chronic low-grade inflammation is linked to many of the most common long-term health conditions, which is why it draws so much research attention. A widely cited 2019 review in <em>Nature Medicine</em> described how systemic chronic inflammation, promoted by social, environmental, and lifestyle factors, drives a cluster of diseases that collectively represent the leading causes of disability and mortality worldwide (<a href="https://pubmed.ncbi.nlm.nih.gov/31806905/" target="_blank" rel="noopener">Furman et al., 2019</a>). It is associated with cardiovascular disease, where inflammation contributes to the buildup and instability of arterial plaque, and with type 2 diabetes and metabolic syndrome, where it is intertwined with insulin resistance. Chronic inflammation is also implicated in the biology of aging, in certain cancers, and in neurodegenerative and mood-related conditions, and it is central to autoimmune diseases in which the immune system attacks healthy tissue. Importantly, association is not the same as sole cause: inflammation is one contributing thread among many, not a single explanation for these diseases. But its shared involvement across so many conditions is precisely why lowering chronic inflammation is viewed as a broadly protective goal. See our post on <a href="/post-inflammation-cause-of-disease">inflammation as a driver of disease</a>.</p>
 
                 <h2>How Do You Know If You Have Chronic Inflammation?</h2>
 
@@ -358,16 +358,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () =>{
+        window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

@@ -65,7 +65,7 @@ function multiLerp(cols, f) {
   const n = cols.length - 1, fi = f * n;
   const i = Math.min(Math.floor(fi), n - 1), frac = fi - i;
   const e = frac < 0.5 ? 2*frac*frac : -1+(4-2*frac)*frac;
-  return cols[i].map((v, j) =>lerp(v, cols[i+1][j], e));
+  return cols[i].map((v, j) => lerp(v, cols[i+1][j], e));
 }
 function getLabel(p) {
   if (p < 0.25) return STAGE_LABELS[0];
@@ -289,7 +289,7 @@ function draw(ts) {
     b.y -= b.spd;
     b.x += Math.sin(b.ph) * 0.32;
     if (b.y < FILL_Y - 4) Object.assign(b, mkBub());
-    if (b.y >FILL_Y + 8) {
+    if (b.y > FILL_Y + 8) {
       ctx.beginPath();
       ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
       ctx.strokeStyle = `rgba(255,255,255,${b.op})`;

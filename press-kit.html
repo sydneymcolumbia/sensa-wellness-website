@@ -83,12 +83,12 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .reveal-stagger >*:nth-child(1) { transition-delay: 0s; }
-        .reveal-stagger >*:nth-child(2) { transition-delay: 0.12s; }
-        .reveal-stagger >*:nth-child(3) { transition-delay: 0.24s; }
-        .reveal-stagger >*:nth-child(4) { transition-delay: 0.36s; }
-        .reveal-stagger >*:nth-child(5) { transition-delay: 0.48s; }
-        .reveal-stagger >*:nth-child(6) { transition-delay: 0.60s; }
+        .reveal-stagger > *:nth-child(1) { transition-delay: 0s; }
+        .reveal-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+        .reveal-stagger > *:nth-child(3) { transition-delay: 0.24s; }
+        .reveal-stagger > *:nth-child(4) { transition-delay: 0.36s; }
+        .reveal-stagger > *:nth-child(5) { transition-delay: 0.48s; }
+        .reveal-stagger > *:nth-child(6) { transition-delay: 0.60s; }
 
         /* Progress bar */
         .progress-bar {
@@ -1000,33 +1000,33 @@
 
     <script>
         // Progress bar
-        window.addEventListener('scroll', () =>{
+        window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = ((scrollTop / scrollHeight) * 100) + '%';
             const btn = document.getElementById('scrollTop');
-            btn.classList.toggle('visible', scrollTop >400);
+            btn.classList.toggle('visible', scrollTop > 400);
         });
 
-        document.getElementById('scrollTop').addEventListener('click', () =>{
+        document.getElementById('scrollTop').addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Mobile nav
-        document.getElementById('mobileToggle').addEventListener('click', () =>{
+        document.getElementById('mobileToggle').addEventListener('click', () => {
             document.getElementById('mainNav').classList.toggle('active');
         });
 
         // Scroll reveal
-        const observer = new IntersectionObserver((entries) =>{
-            entries.forEach(entry =>{
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.reveal').forEach(el =>observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 
 <script src="theme-fx.js" defer></script>

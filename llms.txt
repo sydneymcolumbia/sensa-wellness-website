@@ -1,6 +1,6 @@
 # Sensa Wellness
 
->Sensa is an at-home CRP (C-reactive protein) inflammation test kit. You run a simple saliva-based vial test at home, scan the cuvette with the Sensa mobile app, and get a 0 to 100 inflammation score in 15 to 30 minutes. No needles and no clinic visit. Sensa is a general wellness product for tracking inflammation trends over time, not a medical diagnostic device.
+> Sensa is an at-home CRP (C-reactive protein) inflammation test kit. You run a simple saliva-based vial test at home, scan the cuvette with the Sensa mobile app, and get a 0 to 100 inflammation score in 15 to 30 minutes. No needles and no clinic visit. Sensa is a general wellness product for tracking inflammation trends over time, not a medical diagnostic device.
 
 Key facts:
 - Product: at-home inflammation (CRP) test kit with a companion scanning app

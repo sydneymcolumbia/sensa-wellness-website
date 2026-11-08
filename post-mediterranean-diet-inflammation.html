@@ -85,7 +85,7 @@
                 </div>
                 <h1>The Mediterranean Diet and Inflammation: The Best-Studied Anti-Inflammatory Eating Pattern</h1>
                 <p class="post-subtitle">No single dietary pattern has more clinical trial evidence for reducing systemic inflammation than the Mediterranean diet. Here is what makes it work and what the landmark PREDIMED trial found.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -104,7 +104,7 @@
                 <h2>PREDIMED and the Clinical Trial Evidence</h2>
                 <p>The PREDIMED trial (Prevenci&oacute;n con Dieta Mediterr&aacute;nea) enrolled 7,447 high-cardiovascular-risk Spanish adults and randomized them to a Mediterranean diet supplemented with extra-virgin olive oil, a Mediterranean diet supplemented with mixed nuts, or a control low-fat diet. The trial was stopped early at a median follow-up of 4.8 years when interim analysis showed a 30 percent relative risk reduction in major cardiovascular events in the Mediterranean diet groups compared to control. Published in the New England Journal of Medicine in 2013, it remains one of the most influential dietary intervention trials ever conducted.</p>
 
-                <p>The inflammatory marker findings from PREDIMED were striking. After 3 months, the Mediterranean plus olive oil group showed a 41 percent reduction in CRP, while the control group showed no significant change. IL-6 and ICAM-1 also fell significantly in Mediterranean diet groups. A subsequent PREDIMED analysis found that the inflammatory marker reductions partially mediated the cardiovascular risk reduction, confirming that anti-inflammatory effects are a primary mechanism of the diet's cardiovascular benefit rather than simply a correlated observation. The PREDIMED-Plus trial, extending the design to include caloric restriction and <a href="/post-exercise-inflammation">physical activity</a>promotion alongside the Mediterranean diet, is generating even larger inflammatory and cardiovascular benefits.</p>
+                <p>The inflammatory marker findings from PREDIMED were striking. After 3 months, the Mediterranean plus olive oil group showed a 41 percent reduction in CRP, while the control group showed no significant change. IL-6 and ICAM-1 also fell significantly in Mediterranean diet groups. A subsequent PREDIMED analysis found that the inflammatory marker reductions partially mediated the cardiovascular risk reduction, confirming that anti-inflammatory effects are a primary mechanism of the diet's cardiovascular benefit rather than simply a correlated observation. The PREDIMED-Plus trial, extending the design to include caloric restriction and <a href="/post-exercise-inflammation">physical activity</a> promotion alongside the Mediterranean diet, is generating even larger inflammatory and cardiovascular benefits.</p>
 
                 <h2>Why the Mediterranean Diet Reduces Inflammation</h2>
                 <p>The Mediterranean diet's anti-inflammatory effects are produced by the convergence of multiple mechanisms operating simultaneously. Extra-virgin olive oil provides oleocanthal (a COX-inhibiting polyphenol), oleacein, and hydroxytyrosol, which collectively suppress NF-kB activity and endothelial inflammatory gene expression. The high polyphenol diversity from fruits, vegetables, herbs, red wine, and olives feeds a diverse gut microbiome capable of producing a wide range of anti-inflammatory metabolites. The high fiber intake from legumes, vegetables, and whole grains supports butyrate production and gut barrier integrity. The omega-3 fatty acids from fatty fish and walnuts shift the membrane phospholipid pool toward pro-resolving mediator production.</p>
@@ -300,16 +300,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () =>{
+        window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 
