@@ -120,7 +120,7 @@ async function preorderActive() {
 // metadata (Stripe allows 50 keys, 500 chars each) so api/webhook.js can send
 // the real purchase to GA4 against the same visitor and label the order as
 // direct, ad-assisted or book-assisted. Unknown keys are dropped.
-const ATTRIBUTION_KEYS = ['ga_client_id', 'ga_session_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'landing_page', 'referrer', 'checkout_page'];
+const ATTRIBUTION_KEYS = ['ga_client_id', 'ga_session_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'oppref', 'oai_campaign', 'landing_page', 'referrer', 'checkout_page'];
 function cleanAttribution(a) {
   const out = {};
   if (!a || typeof a !== 'object') return out;

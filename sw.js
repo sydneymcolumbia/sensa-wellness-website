@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sensa-v14';
+const CACHE_NAME = 'sensa-v15';
 const PRECACHE_URLS = [
     '/',
     '/index.html',
