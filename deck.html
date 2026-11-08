@@ -893,8 +893,8 @@ p, li, td, th {
   document.addEventListener('touchend', function(e) {
     touchEndX = e.changedTouches[0].screenX;
     var diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
+    if (Math.abs(diff) >50) {
+      if (diff >0) {
         showSlide(currentSlide + 1);
       } else {
         showSlide(currentSlide - 1);

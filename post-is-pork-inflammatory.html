@@ -88,7 +88,7 @@
                 </div>
                 <h1>Is Pork Inflammatory?</h1>
                 <p class="post-subtitle">Pork covers everything from a lean tenderloin to bacon and sausage, and those extremes have very different relationships with inflammation. Here is what the research separates out, and what it does not.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -102,7 +102,7 @@
 
                 <p>Pork is a broad category, and lumping it together hides the most important distinction. A grilled pork tenderloin and a plate of bacon are both technically pork, but nutritionally and in terms of inflammation they are almost different foods. When people ask whether pork is inflammatory, the useful answer starts by splitting fresh, unprocessed cuts from cured and processed products, because that split explains most of what the research shows.</p>
 
-                <div class="key-definition"><strong>Processed meat</strong> is meat preserved by smoking, curing, salting, or adding chemical preservatives, and includes bacon, ham, sausage, hot dogs, and deli meats. Fresh cuts such as pork loin, chop, or tenderloin are unprocessed red meat and are nutritionally distinct.</div>
+                <div class="key-definition"><strong>Processed meat</strong>is meat preserved by smoking, curing, salting, or adding chemical preservatives, and includes bacon, ham, sausage, hot dogs, and deli meats. Fresh cuts such as pork loin, chop, or tenderloin are unprocessed red meat and are nutritionally distinct.</div>
 
                 <h2>Is Pork Inflammatory?</h2>
                 <p>Pork is inflammatory mainly in its processed forms, while lean fresh pork is closer to neutral. Processed pork products tend to be high in sodium, saturated fat, and preservatives such as nitrites, and diets heavy in processed meat are repeatedly associated with higher inflammatory markers. Lean pork, by contrast, is a source of protein, B vitamins, selenium, and zinc, and the evidence tying it specifically to inflammation is weaker and often disappears once body weight is taken into account. So pork is not uniformly inflammatory; the processing and the portion matter far more than the fact that it comes from a pig.</p>
@@ -325,16 +325,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

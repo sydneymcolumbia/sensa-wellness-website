@@ -20,7 +20,7 @@
 - Google AI Mode answers were strongly UK-localized (Medichecks, Forth, Thriva, Vitall, prices in GBP) even though the prompts were US-oriented. Check the Google account region or run from a US-only profile next time.
 - Perplexity showed a Cloudflare "Verify you are human" check twice; it cleared on reload both times without any interaction. If it does not clear, record "not available".
 - Perplexity's results page for prompt 7 pulled in Trustpilot pages for sensa.health (a mental health app) and the old Sensa weight-loss product. Both Perplexity and Google explicitly disambiguated Sensa Wellness from those; ChatGPT did too. Brand confusion is a live risk for the name.
-- Site facts used to score accuracy: saliva sample, color change read by the Sensa phone app in about 15 minutes, no lab, no blood, 0 to 100 score with tiers "In range", "Worth watching", "Time to reset", single kit $49 (sale $39), 3-pack $99, 4-pack $129, no subscription. All confirmed against index.html on the run date.
+- Site facts used to score accuracy: saliva sample, color change read by the Sensa phone app in about 15 minutes, no lab, no blood, 0 to 100 score with tiers "In range", "Worth watching", "Time to reset", single kit $39, 3-pack $79, 4-pack $103, no subscription (sale framing removed Nov 8). All confirmed against index.html on the run date.
 
 ## The fixed prompt panel
 

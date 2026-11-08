@@ -88,7 +88,7 @@
                 </div>
                 <h1>How Are Sinusitis and Inflammation Linked?</h1>
                 <p class="post-subtitle">Sinusitis is, by definition, inflammation of the sinuses. Whether it clears in a week or drags on for months comes down to what is driving that inflammation, and the acute and chronic forms are almost different conditions.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -102,7 +102,7 @@
 
                 <p>The sinuses are hollow cavities lined with a thin, mucus-producing membrane that normally drains freely into the nose. When that lining becomes inflamed and swollen, drainage is blocked, mucus builds up, and you get the familiar pressure, congestion, and facial pain of sinusitis. The word simply means sinus inflammation, but what keeps the inflammation going, and for how long, separates a passing cold complication from a chronic condition that reshapes daily life.</p>
 
-                <div class="key-definition"><strong>Sinusitis</strong> (also called rhinosinusitis) is inflammation of the lining of the sinuses. It is classified by duration: acute (less than 4 weeks), subacute (4 to 12 weeks), and chronic (12 weeks or more). Acute cases are usually viral; chronic cases are driven by persistent inflammation.</div>
+                <div class="key-definition"><strong>Sinusitis</strong>(also called rhinosinusitis) is inflammation of the lining of the sinuses. It is classified by duration: acute (less than 4 weeks), subacute (4 to 12 weeks), and chronic (12 weeks or more). Acute cases are usually viral; chronic cases are driven by persistent inflammation.</div>
 
                 <h2>What Causes Acute Sinusitis?</h2>
 
@@ -131,7 +131,7 @@
 
                 <h2>Can Allergies Cause Sinusitis?</h2>
 
-                <p>Yes, allergies are an important contributor to sinusitis, particularly the chronic form. Allergic inflammation swells the nasal and sinus lining, which narrows the drainage openings and creates the blocked, congested environment in which sinusitis develops. This is part of why upper-airway conditions cluster together: allergic rhinitis, asthma, and chronic rhinosinusitis share overlapping inflammatory mechanisms, and many people have more than one. In allergy-driven cases, managing the underlying allergic inflammation, through allergen avoidance, nasal corticosteroids, and other allergy treatments, is often central to controlling recurrent or chronic sinus symptoms. This connection also explains why treating sinusitis as a purely infectious problem, with repeated antibiotics, frequently fails when allergy is the real driver. See our post on <a href="/post-allergies-inflammation">allergies and inflammation</a> for more.</p>
+                <p>Yes, allergies are an important contributor to sinusitis, particularly the chronic form. Allergic inflammation swells the nasal and sinus lining, which narrows the drainage openings and creates the blocked, congested environment in which sinusitis develops. This is part of why upper-airway conditions cluster together: allergic rhinitis, asthma, and chronic rhinosinusitis share overlapping inflammatory mechanisms, and many people have more than one. In allergy-driven cases, managing the underlying allergic inflammation, through allergen avoidance, nasal corticosteroids, and other allergy treatments, is often central to controlling recurrent or chronic sinus symptoms. This connection also explains why treating sinusitis as a purely infectious problem, with repeated antibiotics, frequently fails when allergy is the real driver. See our post on <a href="/post-allergies-inflammation">allergies and inflammation</a>for more.</p>
 
                 <h2>How Is Chronic Sinusitis Different From an Ongoing Cold?</h2>
 
@@ -338,16 +338,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

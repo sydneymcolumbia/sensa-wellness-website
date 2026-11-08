@@ -102,7 +102,7 @@
                 </div>
                 <h1>How Is Asthma Linked to Inflammation?</h1>
                 <p class="post-subtitle">Asthma is defined by inflammation, not just narrowed airways. Understanding the type 2 immune response behind most asthma explains why controller inhalers target inflammation rather than only opening the airways.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -116,7 +116,7 @@
 
                 <p>Asthma is often pictured simply as airways that squeeze shut, but the wheezing and breathlessness are the visible end of a deeper process: ongoing inflammation in the lining of the airways. That inflammation makes the airways hyper-reactive, so triggers like allergens, cold air, exercise, or a virus provoke swelling, mucus, and muscle tightening. Understanding what kind of inflammation drives asthma explains why the most important treatments work by calming the immune response rather than only relaxing airway muscle.</p>
 
-                <div class="key-definition"><strong>Type 2 airway inflammation</strong> is an immune response in which cells release interleukin-4, interleukin-5, and interleukin-13, drawing eosinophils into the airways and causing mucus, swelling, and narrowing. It underlies the majority of asthma.</div>
+                <div class="key-definition"><strong>Type 2 airway inflammation</strong>is an immune response in which cells release interleukin-4, interleukin-5, and interleukin-13, drawing eosinophils into the airways and causing mucus, swelling, and narrowing. It underlies the majority of asthma.</div>
 
                 <h2>What Type of Inflammation Causes Asthma?</h2>
                 <p>Most asthma is driven by type 2 inflammation. According to a 2022 review in ERJ Open Research, this response can be triggered through the innate immune system (by pollutants, viruses, or fungi activating type 2 innate lymphoid cells) and through the adaptive immune system (by allergen contact activating type 2 helper T cells). Both cell types produce the same trio of type 2 cytokines: interleukin-4 (IL-4), interleukin-5 (IL-5), and interleukin-13 (IL-13). Each has a distinct job in the inflammatory cascade, and together they generate the characteristic features of asthma.</p>
@@ -371,16 +371,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

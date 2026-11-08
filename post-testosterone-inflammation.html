@@ -85,7 +85,7 @@
                 </div>
                 <h1>Testosterone and Inflammation: The Hormonal Link Between Low T and Chronic Disease</h1>
                 <p class="post-subtitle">Testosterone is an anti-inflammatory hormone. Low levels are not merely a consequence of chronic inflammation, but a contributor to it, with implications for cardiovascular disease, metabolic health, and immune function in both men and women.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -99,7 +99,7 @@
 
                 <p>Testosterone is the dominant androgen in men and an important hormone in women, produced primarily in the testes and ovaries with smaller contributions from the adrenal glands. Its roles in sexual function, muscle mass, bone density, and mood are well recognized. Less discussed in popular health media is testosterone's significant role as an immune modulator with direct anti-inflammatory effects that influence systemic inflammatory status throughout the lifespan.</p>
 
-                <p>Low testosterone, formally defined as hypogonadism in men (total testosterone below 300 ng/dL by most guidelines), is increasingly prevalent, affecting an estimated 20 percent of men over 60 and, by some estimates, declining at the population level in Western nations independently of the aging effect. The relationship between low testosterone and chronic inflammatory disease is bidirectional and clinically significant, with implications for <a href="/post-heart-disease-inflammation">cardiovascular disease</a> prevention, metabolic health, and the management of conditions where inflammation plays a central role.</p>
+                <p>Low testosterone, formally defined as hypogonadism in men (total testosterone below 300 ng/dL by most guidelines), is increasingly prevalent, affecting an estimated 20 percent of men over 60 and, by some estimates, declining at the population level in Western nations independently of the aging effect. The relationship between low testosterone and chronic inflammatory disease is bidirectional and clinically significant, with implications for <a href="/post-heart-disease-inflammation">cardiovascular disease</a>prevention, metabolic health, and the management of conditions where inflammation plays a central role.</p>
 
                 <h2>Testosterone's Direct Anti-Inflammatory Mechanisms</h2>
                 <p>Testosterone exerts direct anti-inflammatory effects through androgen receptors expressed on key immune cell populations. In macrophages, testosterone binding to androgen receptors suppresses NF-kB activation and reduces production of TNF-alpha, IL-6, and IL-1 beta, shifting macrophage polarization toward the anti-inflammatory M2 phenotype. In T-cells, testosterone promotes regulatory T-cell differentiation and suppresses Th1 and Th17 inflammatory T-cell activity, reducing the adaptive immune inflammatory response. In endothelial cells, testosterone upregulates eNOS activity and nitric oxide production, improving vascular function and reducing endothelial inflammatory activation.</p>
@@ -300,16 +300,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

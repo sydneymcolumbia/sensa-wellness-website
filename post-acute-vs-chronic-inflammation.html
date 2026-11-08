@@ -88,7 +88,7 @@
                 </div>
                 <h1>Acute vs Chronic Inflammation</h1>
                 <p class="post-subtitle">Inflammation is not one thing. The fast, visible kind that follows a cut or infection is very different from the slow, silent kind that builds over years. Understanding the difference is the key to understanding your health.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -102,7 +102,7 @@
 
                 <p>People often use the word inflammation as if it means one thing, but biologists distinguish two very different processes. One is a rapid, coordinated defense that heals injuries and fights infection. The other is a smoldering, long-term state that damages tissue slowly and underlies much of modern chronic disease. Knowing which is which changes how you think about swelling after a sprain, a lingering sense of fatigue, and a blood test result. This article lays out the differences clearly.</p>
 
-                <div class="key-definition"><strong>Inflammation</strong> is the immune system's response to harm, whether from injury, infection, toxins, or internal stress. <strong>Acute inflammation</strong> is short-term and protective. <strong>Chronic inflammation</strong> is long-term and, past a point, damaging. The same basic machinery drives both, but the timing, intensity, and consequences differ profoundly.</div>
+                <div class="key-definition"><strong>Inflammation</strong>is the immune system's response to harm, whether from injury, infection, toxins, or internal stress. <strong>Acute inflammation</strong>is short-term and protective. <strong>Chronic inflammation</strong>is long-term and, past a point, damaging. The same basic machinery drives both, but the timing, intensity, and consequences differ profoundly.</div>
 
                 <h2>What Is Acute Inflammation?</h2>
                 <p>Acute inflammation is the body's immediate response to something harmful, such as a cut, a splinter, a burn, or an invading microbe. Within minutes, small blood vessels near the site widen and become leakier, allowing immune cells, fluid, and proteins to flood into the tissue. This is a fast, purposeful process designed to isolate the threat, destroy pathogens, clear debris, and begin repair. In most cases it resolves within a few days once the job is done, and the tissue returns to normal. Acute inflammation is not a malfunction; it is a sign the immune system is working as intended.</p>
@@ -329,16 +329,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

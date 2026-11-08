@@ -85,7 +85,7 @@
                 </div>
                 <h1>Alzheimer's Disease and Neuroinflammation: New Evidence for an Old Enemy</h1>
                 <p class="post-subtitle">For three decades, Alzheimer's research focused almost exclusively on amyloid plaques and tau tangles. The neuroinflammation that surrounds them, once considered a secondary response, is now understood as a primary driver of neuronal death.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -99,7 +99,7 @@
 
                 <p>Alzheimer's disease (AD) affects approximately 55 million people worldwide and is projected to triple in prevalence by 2050 as populations age. The disease is characterized pathologically by extracellular amyloid-beta (A-beta) plaques and intracellular tau neurofibrillary tangles in the brain, with progressive neuronal loss producing the cognitive decline and memory impairment that define the clinical syndrome. The dominant research framework for the past three decades, the amyloid cascade hypothesis, positioned A-beta accumulation as the primary driver of disease.</p>
 
-                <p>While the amyloid hypothesis retains validity, its limitations, including the failure of numerous anti-amyloid therapies in clinical trials, have driven a significant reexamination of the role of <a href="/post-brain-inflammation">neuroinflammation</a> in AD pathogenesis. The emerging consensus positions chronic microglial activation and neuroinflammation not as secondary responses to amyloid and tau but as active drivers of neuronal death that interact with amyloid and tau pathology in complex, bidirectional ways.</p>
+                <p>While the amyloid hypothesis retains validity, its limitations, including the failure of numerous anti-amyloid therapies in clinical trials, have driven a significant reexamination of the role of <a href="/post-brain-inflammation">neuroinflammation</a>in AD pathogenesis. The emerging consensus positions chronic microglial activation and neuroinflammation not as secondary responses to amyloid and tau but as active drivers of neuronal death that interact with amyloid and tau pathology in complex, bidirectional ways.</p>
 
                 <h2>Microglia, Amyloid, and the Inflammatory Cascade</h2>
                 <p>Microglia, the brain's resident macrophages, play a central and complex role in AD. In early disease stages, microglia attempt to clear A-beta plaques through phagocytosis, a neuroprotective function. With aging and sustained amyloid accumulation, microglia become chronically activated in a dysfunctional state that impairs their phagocytic capacity while dramatically increasing their production of pro-inflammatory cytokines including TNF-alpha, IL-1 beta, IL-6, and complement proteins. This chronic microglial activation, also called neuroinflammation, directly damages synapses, impairs neural circuit function, and promotes tau phosphorylation and spread.</p>
@@ -121,7 +121,7 @@
                 <h2>Anti-Neuroinflammatory Prevention Strategies</h2>
                 <p>The neuroinflammatory model of AD strengthens the case for lifestyle-based prevention approaches that reduce both peripheral and central inflammatory burden over the adult lifespan. The FINGER trial, a large Finnish randomized controlled trial of a multidomain lifestyle intervention (diet, exercise, cognitive training, vascular risk monitoring), found significant protection against cognitive decline in at-risk older adults over 2 years. Exercise is particularly strongly supported: multiple meta-analyses find that regular aerobic exercise reduces dementia risk by 30 to 40 percent and slows cognitive decline in AD, partly through BDNF-mediated neurogenesis and partly through reducing neuroinflammation.</p>
 
-                <p>The Mediterranean-DASH Intervention for Neurodegenerative Delay (MIND) diet, specifically designed to incorporate foods and dietary patterns with evidence for neuroprotection including leafy greens, berries, nuts, fish, olive oil, and legumes, is associated with significantly reduced AD risk and slower cognitive decline in observational studies. Its anti-neuroinflammatory components, omega-3 fatty acids, <a href="/post-polyphenols-inflammation">polyphenols</a> including flavonoids and anthocyanins, and the butyrate-promoting fiber from legumes and vegetables, provide plausible mechanisms for these epidemiological observations. Adequate sleep, which allows glymphatic clearance of A-beta and other neuroinflammatory debris from the brain each night, may be among the most direct lifestyle factors for reducing AD risk given its specific mechanism of CNS waste clearance.</p>
+                <p>The Mediterranean-DASH Intervention for Neurodegenerative Delay (MIND) diet, specifically designed to incorporate foods and dietary patterns with evidence for neuroprotection including leafy greens, berries, nuts, fish, olive oil, and legumes, is associated with significantly reduced AD risk and slower cognitive decline in observational studies. Its anti-neuroinflammatory components, omega-3 fatty acids, <a href="/post-polyphenols-inflammation">polyphenols</a>including flavonoids and anthocyanins, and the butyrate-promoting fiber from legumes and vegetables, provide plausible mechanisms for these epidemiological observations. Adequate sleep, which allows glymphatic clearance of A-beta and other neuroinflammatory debris from the brain each night, may be among the most direct lifestyle factors for reducing AD risk given its specific mechanism of CNS waste clearance.</p>
 
                 <div class="post-share">
                     <span class="post-share-label">Share this article</span>
@@ -302,16 +302,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

@@ -85,7 +85,7 @@
                 </div>
                 <h1>Meditation, Mindfulness, and Inflammation: The Mind-Body Science</h1>
                 <p class="post-subtitle">The idea that mental practice can change immune function sounds like wellness marketing. The neuroimmunology research suggests it is not. Mindfulness-based interventions produce measurable reductions in inflammatory markers across multiple clinical populations.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -107,9 +107,9 @@
                 <p>The effect is not purely psychological. EEG and fMRI studies have documented structural and functional brain changes in long-term meditators, including reduced amygdala volume, thicker prefrontal cortex, and increased connectivity between the prefrontal cortex and subcortical structures involved in emotional regulation. These neurological changes are associated with blunted cortisol and inflammatory responses to experimental stressors, suggesting that meditation recalibrates the nervous system-immune axis at a structural level over time, not just transiently during practice sessions.</p>
 
                 <h2>Clinical Trial Evidence</h2>
-                <p>A 2016 meta-analysis published in Brain, Behavior, and Immunity pooled data from 20 randomized controlled trials examining mindfulness-based interventions and inflammatory biomarkers. The meta-analysis found statistically significant reductions in CRP, IL-6, and IL-1 beta across studies, with effect sizes that were modest but consistent. Crucially, the effects were most pronounced in trials enrolling people with elevated baseline inflammation, such as <a href="/post-cancer-inflammation">cancer</a> survivors, people with <a href="/post-chronic-pain-inflammation">chronic pain</a>, and individuals with high perceived stress.</p>
+                <p>A 2016 meta-analysis published in Brain, Behavior, and Immunity pooled data from 20 randomized controlled trials examining mindfulness-based interventions and inflammatory biomarkers. The meta-analysis found statistically significant reductions in CRP, IL-6, and IL-1 beta across studies, with effect sizes that were modest but consistent. Crucially, the effects were most pronounced in trials enrolling people with elevated baseline inflammation, such as <a href="/post-cancer-inflammation">cancer</a>survivors, people with <a href="/post-chronic-pain-inflammation">chronic pain</a>, and individuals with high perceived stress.</p>
 
-                <p>A notable study published in Psychosomatic Medicine randomized chronically stressed adults to either MBSR, an <a href="/post-exercise-inflammation">exercise</a> program, or a health education control. Only MBSR and exercise reduced CRP significantly at 8 weeks. MBSR also produced greater reductions in perceived stress than exercise, with the stress reduction partially mediating the CRP change. Another trial in cancer survivors found that 8 weeks of MBSR not only reduced IL-6 but also normalized cortisol rhythms that had been disrupted by disease-related stress, providing evidence that the anti-inflammatory effect involves neuroendocrine recalibration rather than placebo response.</p>
+                <p>A notable study published in Psychosomatic Medicine randomized chronically stressed adults to either MBSR, an <a href="/post-exercise-inflammation">exercise</a>program, or a health education control. Only MBSR and exercise reduced CRP significantly at 8 weeks. MBSR also produced greater reductions in perceived stress than exercise, with the stress reduction partially mediating the CRP change. Another trial in cancer survivors found that 8 weeks of MBSR not only reduced IL-6 but also normalized cortisol rhythms that had been disrupted by disease-related stress, providing evidence that the anti-inflammatory effect involves neuroendocrine recalibration rather than placebo response.</p>
 
                 <h2>Gene Expression and the Relaxation Response</h2>
                 <p>Research by Herbert Benson at Harvard and Richard Davidson at the University of Wisconsin has examined the effects of meditative practices on gene expression patterns in immune cells. These studies found that long-term meditators show reduced expression of NF-kB target genes, the downstream inflammatory genes activated by the master inflammatory transcription factor. A 2013 study in PLOS One found that a single session of relaxation response practice in experienced practitioners significantly reduced expression of inflammatory pathway genes compared to novices, with the magnitude of effect increasing with years of practice.</p>
@@ -298,16 +298,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

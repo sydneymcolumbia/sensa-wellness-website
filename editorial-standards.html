@@ -134,7 +134,7 @@
                 <p class="standards-lead">Sensa Wellness publishes a large library of articles about inflammation, C-reactive protein (CRP), and the lifestyle and disease factors connected to them. Because people use this information to think about their health, we hold our content to a clear, consistent standard. This page explains how that content is made and how we keep it accurate.</p>
 
                 <h2>Who writes our content</h2>
-                <p>Our articles are researched and written by the Sensa Wellness team, which includes scientists and engineers who work on inflammation measurement, alongside professional health writers. Content is produced under the direction of our team rather than attributed to a single individual, which is why articles carry a Sensa Wellness organizational byline. You can read about the people behind Sensa on our <a href="/#team">team section</a> and in <a href="/our-story">our story</a>.</p>
+                <p>Our articles are researched and written by the Sensa Wellness team, which includes scientists and engineers who work on inflammation measurement, alongside professional health writers. Content is produced under the direction of our team rather than attributed to a single individual, which is why articles carry a Sensa Wellness organizational byline. You can read about the people behind Sensa on our <a href="/#team">team section</a>and in <a href="/our-story">our story</a>.</p>
 
                 <h2>How we research</h2>
                 <p>Every health claim in our articles is grounded in published scientific evidence. When we describe a mechanism, a study result, or a statistic, it comes from sources such as:</p>
@@ -148,7 +148,7 @@
                 <h2>How we describe evidence</h2>
                 <p>Inflammation science is active and evolving, and we try to represent it honestly. We aim to:</p>
                 <ul>
-                    <li>Distinguish between an <strong>association</strong> (two things move together) and <strong>causation</strong> (one thing drives the other), rather than overstating a link</li>
+                    <li>Distinguish between an <strong>association</strong>(two things move together) and <strong>causation</strong>(one thing drives the other), rather than overstating a link</li>
                     <li>Note when findings come from small studies, animal models, or early research that has not yet been confirmed in large human trials</li>
                     <li>Avoid promising specific health outcomes, cures, or guaranteed results from any product, food, or behavior</li>
                 </ul>
@@ -157,7 +157,7 @@
                 <p>Each article records both its original publication date and the date it was last reviewed or updated, visible in the article and in its structured data. When new evidence changes the picture on a topic, or when a reader flags something, we revise the affected articles and update the modified date. Older articles remain available but are periodically reviewed against current understanding.</p>
 
                 <h2>Corrections</h2>
-                <p>If you believe something we published is inaccurate or out of date, we want to know. Email <a href="mailto:sensawellness@gmail.com">sensawellness@gmail.com</a> with the article and the concern, and we will review it. Substantive corrections are made promptly and reflected in the article's last-updated date.</p>
+                <p>If you believe something we published is inaccurate or out of date, we want to know. Email <a href="mailto:sensawellness@gmail.com">sensawellness@gmail.com</a>with the article and the concern, and we will review it. Substantive corrections are made promptly and reflected in the article's last-updated date.</p>
 
                 <h2>Our relationship to the product</h2>
                 <p>Sensa Wellness makes an at-home CRP testing device, so we have a commercial interest in inflammation awareness. We keep our educational content and our product marketing distinct: articles are written to inform, they cite independent science rather than our own marketing, and they do not claim that the Sensa device diagnoses, treats, or prevents disease.</p>
@@ -249,16 +249,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 <script src="theme-fx.js" defer></script>

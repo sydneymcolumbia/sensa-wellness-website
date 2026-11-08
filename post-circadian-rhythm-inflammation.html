@@ -85,7 +85,7 @@
                 </div>
                 <h1>Circadian Rhythm and Inflammation: Why Your Body Clock Controls Your Immune System</h1>
                 <p class="post-subtitle">Every cell in your body runs on a 24-hour clock that controls when inflammatory genes are active, when immune cells patrol, and when repair happens. Disrupting that clock is one of the most reliable ways to drive chronic inflammation.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -116,7 +116,7 @@
                 <h2>Meal Timing and Chrono-Nutrition</h2>
                 <p>The timing of food intake is a powerful zeitgeber, a time-setting signal, for peripheral circadian clocks in the liver, gut, adipose tissue, and other organs. When meal timing is misaligned with the light-dark cycle, as occurs with late-night eating, it creates internal circadian desynchrony between the central brain clock (set by light) and peripheral organ clocks (set partly by food). This internal desynchrony produces metabolic and inflammatory consequences that are independent of caloric intake.</p>
 
-                <p>A controlled crossover study published in Cell Metabolism found that eating the same meals early in the day versus late in the day produced significantly different postprandial inflammatory responses, with late eating generating higher glucose, insulin, and inflammatory cytokine spikes. <a href="/post-intermittent-fasting-inflammation">Time-restricted eating</a> aligned with daylight hours consistently shows better metabolic and anti-inflammatory outcomes than identical caloric intake spread across a longer or late-shifted eating window. Eating the last meal at least 3 to 4 hours before sleep, and front-loading calories to the earlier part of the day, aligns peripheral clocks with the central clock and reduces the inflammatory consequences of metabolic processing.</p>
+                <p>A controlled crossover study published in Cell Metabolism found that eating the same meals early in the day versus late in the day produced significantly different postprandial inflammatory responses, with late eating generating higher glucose, insulin, and inflammatory cytokine spikes. <a href="/post-intermittent-fasting-inflammation">Time-restricted eating</a>aligned with daylight hours consistently shows better metabolic and anti-inflammatory outcomes than identical caloric intake spread across a longer or late-shifted eating window. Eating the last meal at least 3 to 4 hours before sleep, and front-loading calories to the earlier part of the day, aligns peripheral clocks with the central clock and reduces the inflammatory consequences of metabolic processing.</p>
 
                 <h2>Optimizing Circadian Health for Anti-Inflammatory Benefit</h2>
                 <p>Circadian alignment is achievable through consistent behavioral anchors. Morning bright light exposure within 30 minutes of waking is the single most powerful zeitgeber for the central circadian clock. Consistent sleep and wake times, even on weekends, prevent social jet lag and maintain inflammatory gene timing. Physical activity is also a circadian zeitgeber: regular exercise, particularly in the morning or early afternoon, reinforces circadian alignment and produces anti-inflammatory benefits that are partly mediated by clock-gene effects.</p>
@@ -302,16 +302,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

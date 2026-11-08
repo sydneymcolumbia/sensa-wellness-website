@@ -88,7 +88,7 @@
                 </div>
                 <h1>Sciatica and Inflammation</h1>
                 <p class="post-subtitle">Sciatica is a nerve problem, not a muscle one, and inflammation plays a supporting role in the pain. Here is what irritates the nerve, why most cases improve on their own, and when to seek help.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -102,7 +102,7 @@
 
                 <p>Sciatica is a symptom rather than a diagnosis, and understanding it helps explain why it hurts the way it does and why patience is usually rewarded. The word describes the distinctive radiating leg pain, but the real action is happening at the nerve root in the lower back. Inflammation around that nerve root is a key reason a mechanical issue turns into sharp, shooting pain, and it is also part of why the pain tends to settle over time.</p>
 
-                <div class="key-definition"><strong>Sciatica</strong> is pain caused by irritation or compression of one of the nerve roots that form the sciatic nerve, usually in the lower lumbar spine. It is a form of lumbar radiculopathy, meaning nerve-root pain, and it typically causes pain, tingling, numbness, or weakness that travels down one leg.</div>
+                <div class="key-definition"><strong>Sciatica</strong>is pain caused by irritation or compression of one of the nerve roots that form the sciatic nerve, usually in the lower lumbar spine. It is a form of lumbar radiculopathy, meaning nerve-root pain, and it typically causes pain, tingling, numbness, or weakness that travels down one leg.</div>
 
                 <h2>What Causes Sciatica?</h2>
                 <p>The most common cause of sciatica is a herniated, or slipped, disc in the lower spine. Discs are cushions between the vertebrae, and when the soft inner material pushes out through the tougher outer layer, it can press on a nearby nerve root. Other causes include spinal stenosis, a narrowing of the spinal canal that is more common with age, and bony changes that crowd the nerve. Less often, muscle-related irritation or other structural issues contribute. In each case the shared theme is a nerve root that is being physically disturbed where it exits the spine.</p>
@@ -330,16 +330,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

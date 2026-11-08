@@ -102,7 +102,7 @@
                 </div>
                 <h1>Is Rosacea an Inflammatory Skin Condition?</h1>
                 <p class="post-subtitle">Rosacea's flushing and redness are not just sensitive skin. They reflect an overactive innate immune response, driven by antimicrobial peptides, that keeps facial skin in a state of inflammation.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -116,7 +116,7 @@
 
                 <p>Rosacea is a common chronic skin condition that causes facial redness, flushing, visible blood vessels, and sometimes acne-like bumps, most often across the cheeks, nose, chin, and forehead. It is easy to dismiss as simply sensitive or easily embarrassed skin, but the flushing reflects a real biological process: an innate immune system that overreacts in the skin. Understanding rosacea as an inflammatory disorder, rather than a cosmetic quirk, explains why it flares with specific triggers and why treatments aim to calm inflammation.</p>
 
-                <div class="key-definition"><strong>Cathelicidin</strong> is an antimicrobial peptide of the innate immune system. In rosacea, abnormally high cathelicidin (LL-37) activity in the skin promotes inflammation, redness, and dilated blood vessels.</div>
+                <div class="key-definition"><strong>Cathelicidin</strong>is an antimicrobial peptide of the innate immune system. In rosacea, abnormally high cathelicidin (LL-37) activity in the skin promotes inflammation, redness, and dilated blood vessels.</div>
 
                 <h2>What Causes the Inflammation in Rosacea?</h2>
                 <p>Rosacea inflammation is driven by the innate immune system, the body's fast, first-line defense. A review published in the Journal of Drugs in Dermatology explains that emerging evidence points to inflammation, rather than infection, as central to rosacea, and identifies the antimicrobial and pro-inflammatory cathelicidins as key players. Cathelicidins are peptides that normally help defend the skin against microbes, but in rosacea-prone skin their activity is dysregulated, producing forms that promote inflammation, redness, and the growth of visible blood vessels. The review notes that these cathelicidins can be downregulated by treatments such as azelaic acid and sub-antimicrobial-dose doxycycline, which helps explain how those therapies calm rosacea by modulating inflammation rather than by acting as simple antibiotics.</p>
@@ -363,16 +363,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

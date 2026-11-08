@@ -102,7 +102,7 @@
                 </div>
                 <h1>Is GERD Caused by Inflammation, Not Just Acid?</h1>
                 <p class="post-subtitle">For decades, reflux damage was blamed on acid chemically burning the esophagus. A landmark study suggests the real driver may be an inflammatory immune response, which reframes how we think about GERD.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -116,7 +116,7 @@
 
                 <p>Gastroesophageal reflux disease (GERD) is one of the most common digestive complaints, and for most of the last century the explanation for its tissue damage was intuitive: stomach acid splashes up into the esophagus and chemically burns the surface, like acid on skin. That model shaped how reflux was understood. But careful human research has challenged it, suggesting that the injury of reflux esophagitis is orchestrated by the immune system, an inflammatory process, rather than a direct chemical burn. The distinction changes how we think about what GERD actually is.</p>
 
-                <div class="key-definition"><strong>Reflux esophagitis</strong> is inflammation and injury of the esophageal lining associated with acid reflux. Evidence suggests it develops through a cytokine-mediated immune response rather than acid directly burning surface cells.</div>
+                <div class="key-definition"><strong>Reflux esophagitis</strong>is inflammation and injury of the esophageal lining associated with acid reflux. Evidence suggests it develops through a cytokine-mediated immune response rather than acid directly burning surface cells.</div>
 
                 <h2>Is Reflux Damage an Acid Burn or an Immune Response?</h2>
                 <p>The tissue damage in GERD appears to be inflammatory, not a simple chemical burn. In a 2016 study published in JAMA, researchers took patients whose reflux esophagitis had been controlled with acid-suppressing medication, stopped the medication, and tracked what happened to the esophageal lining with biopsies. If the traditional theory were correct, the surface cells should have died from acid exposure first. Instead, the biopsies showed something different: an influx of immune cells, predominantly T lymphocytes, into the esophageal lining, along with changes deeper in the tissue such as basal cell and papillary hyperplasia, and this developed without loss of the surface cells.</p>
@@ -367,16 +367,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

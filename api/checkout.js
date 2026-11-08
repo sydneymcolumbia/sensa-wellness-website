@@ -1,26 +1,47 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const PRICE_IDS = {
+// ── Prices ─────────────────────────────────────────────────────────
+// The site sells at $39 / $79 / $103 with no sale framing (since 2026-11-08).
+// LIST_PRICE_IDS are the original Stripe prices the products were created
+// with ($49 / $99 / $129); they are kept only to find each product and as a
+// last-resort fallback. The selling prices are separate Stripe Price objects
+// found by lookup_key and created once if missing (same idempotent pattern
+// the old sale coupons used), so Checkout and receipts show $39 with no
+// discount line. To change a price: edit unitAmount AND bump the lookupKey
+// (for example sensa_1test_4200) AND update the on-page copy together.
+const LIST_PRICE_IDS = {
   price_1test:  'price_1TGmnPKrHFkD3MC35eXx5OM5',
   price_3pack:  'price_1TGmoOKrHFkD3MC33tp7m4LU',
   price_4pack:  'price_1TGmyGKrHFkD3MC3MlqR1Z2d',
 };
+const PRICES = {
+  price_1test: { lookupKey: 'sensa_1test_3900', unitAmount: 3900, nickname: '1 Test Kit, $39' },
+  price_3pack: { lookupKey: 'sensa_3pack_7900', unitAmount: 7900, nickname: '3-Pack Bundle, $79' },
+  price_4pack: { lookupKey: 'sensa_4pack_10300', unitAmount: 10300, nickname: '4-Pack Bundle, $103' },
+};
+const priceCache = {};
+async function resolvePrice(priceKey) {
+  if (priceCache[priceKey]) return priceCache[priceKey];
+  const spec = PRICES[priceKey];
+  const found = await stripe.prices.list({ lookup_keys: [spec.lookupKey], active: true, limit: 1 });
+  if (found.data[0]) return (priceCache[priceKey] = found.data[0].id);
+  const base = await stripe.prices.retrieve(LIST_PRICE_IDS[priceKey]);
+  const created = await stripe.prices.create({
+    product: typeof base.product === 'string' ? base.product : base.product.id,
+    unit_amount: spec.unitAmount,
+    currency: 'usd',
+    lookup_key: spec.lookupKey,
+    transfer_lookup_key: true,
+    nickname: spec.nickname,
+  });
+  return (priceCache[priceKey] = created.id);
+}
 
-// ── Sale pricing ───────────────────────────────────────────────────
-// 20% off, applied server-side so the discount is real (the checkout
-// total reflects it). The site shows rounded sale prices ($39 / $79 /
-// $103), but a 20% coupon on the $49 / $99 / $129 list prices charged
-// $39.20 / $79.20 / $103.20, so every bundle now gets a fixed dollar-off
-// coupon and checkout charges exactly the advertised amount. The promo
-// has no end date (the on-page countdown was retired 2026-11-04). To end
-// it, set enabled to false AND revert the on-page sale copy together.
-// Cleaner long-term: create $39 / $79 / $103 prices in the Stripe
-// dashboard, swap PRICE_IDS, and set enabled to false.
-const SALE = {
-  enabled: true,
-  // Shown to the customer on the Stripe Checkout page and receipt.
-  name: '20% Off',
-  // Fixed coupon ids so creation is idempotent; amountOff is in cents.
+// Fallback only: if the $39 price cannot be resolved (Stripe error), sell the
+// list price with a fixed dollar-off coupon so the customer is still charged
+// the advertised amount. In that case Checkout shows a discount line.
+const FALLBACK_DISCOUNT = {
+  name: 'Current pricing',
   coupons: {
     price_1test: { id: 'sale20_2026_1kit',  amountOff: 1000 }, // $49 -> $39
     price_3pack: { id: 'sale20_2026_3pack', amountOff: 2000 }, // $99 -> $79
@@ -28,15 +49,8 @@ const SALE = {
   },
 };
 
-function saleActive(priceId) {
-  return SALE.enabled && Boolean(SALE.coupons[priceId]);
-}
-
-// Retrieve the bundle's promo coupon, creating it once if it does not exist
-// yet. Fixed coupon ids mean concurrent cold starts converge on the same
-// coupon; a create race (resource_already_exists) falls back to retrieve.
-async function getSaleCoupon(priceId) {
-  const spec = SALE.coupons[priceId];
+async function getFallbackCoupon(priceId) {
+  const spec = FALLBACK_DISCOUNT.coupons[priceId];
   try {
     return await stripe.coupons.retrieve(spec.id);
   } catch (retrieveErr) {
@@ -46,7 +60,7 @@ async function getSaleCoupon(priceId) {
         amount_off: spec.amountOff,
         currency: 'usd',
         duration: 'once',
-        name: SALE.name,
+        name: FALLBACK_DISCOUNT.name,
       });
     } catch (createErr) {
       if (createErr && createErr.code === 'resource_already_exists') {
@@ -155,10 +169,18 @@ module.exports = async function handler(req, res) {
   }
 
   const { priceId, hearAboutUs, promoCode, attribution } = req.body;
-  const stripePriceId = PRICE_IDS[priceId];
-
-  if (!stripePriceId) {
+  if (!PRICES[priceId]) {
     return res.status(400).json({ error: 'Invalid price selection' });
+  }
+
+  let stripePriceId;
+  let useFallbackDiscount = false;
+  try {
+    stripePriceId = await resolvePrice(priceId);
+  } catch (err) {
+    console.error('Price lookup failed, falling back to list price + coupon:', err.message);
+    stripePriceId = LIST_PRICE_IDS[priceId];
+    useFallbackDiscount = true;
   }
 
   try {
@@ -204,8 +226,8 @@ module.exports = async function handler(req, res) {
     if (promo) {
       params.discounts = [{ promotion_code: promo.id }];
       params.metadata.promo = promo.code;
-    } else if (saleActive(priceId)) {
-      const coupon = await getSaleCoupon(priceId);
+    } else if (useFallbackDiscount) {
+      const coupon = await getFallbackCoupon(priceId);
       params.discounts = [{ coupon: coupon.id }];
       params.metadata.promo = coupon.id;
     }

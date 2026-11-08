@@ -85,7 +85,7 @@
                 </div>
                 <h1>Dietary Fiber and Inflammation: Why Your Gut Bacteria Need You to Eat More Plants</h1>
                 <p class="post-subtitle">Dietary fiber is not simply roughage that keeps things moving. It is the primary fuel for gut bacteria that produce the short-chain fatty acids your immune system depends on to stay calibrated.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -109,7 +109,7 @@
                 <h2>Fiber and Inflammatory Markers: Clinical Evidence</h2>
                 <p>Multiple meta-analyses have confirmed the relationship between dietary fiber intake and systemic inflammatory markers. A 2018 meta-analysis of 14 randomized trials found that fiber supplementation significantly reduced CRP across diverse adult populations, with the largest effects observed in people with elevated baseline CRP. Soluble fiber (oats, legumes, psyllium, inulin) generally shows stronger anti-inflammatory effects than insoluble fiber, likely because it is more readily fermented by gut bacteria into SCFAs, though both types contribute to gut health through different mechanisms.</p>
 
-                <p>Dietary fiber also reduces inflammatory markers through mechanisms independent of gut fermentation. Viscous soluble fiber blunts postprandial glucose absorption, reducing the glycemic-driven inflammatory spike that follows meals. Fiber displaces pro-inflammatory ultra-<a href="/post-processed-foods-inflammation">processed foods</a> in the diet, reducing intake of emulsifiers and additives that damage the gut barrier. High-fiber diets promote bile acid excretion and shift bile acid composition in ways that reduce <a href="/post-gut-inflammation">gut inflammation</a>. The effect of fiber on CRP is roughly dose-dependent: studies consistently show that each additional 10 grams of fiber per day is associated with approximately a 10 percent reduction in CRP risk across population studies.</p>
+                <p>Dietary fiber also reduces inflammatory markers through mechanisms independent of gut fermentation. Viscous soluble fiber blunts postprandial glucose absorption, reducing the glycemic-driven inflammatory spike that follows meals. Fiber displaces pro-inflammatory ultra-<a href="/post-processed-foods-inflammation">processed foods</a>in the diet, reducing intake of emulsifiers and additives that damage the gut barrier. High-fiber diets promote bile acid excretion and shift bile acid composition in ways that reduce <a href="/post-gut-inflammation">gut inflammation</a>. The effect of fiber on CRP is roughly dose-dependent: studies consistently show that each additional 10 grams of fiber per day is associated with approximately a 10 percent reduction in CRP risk across population studies.</p>
 
                 <h2>Soluble vs. Insoluble Fiber: Which Matters More</h2>
                 <p>Fiber is not a single entity. Soluble fiber dissolves in water to form a gel, slowing digestion and providing substrate for gut bacteria that ferment it efficiently. Key soluble fiber types include beta-glucan (oats, barley), pectin (apples, citrus), inulin and fructooligosaccharides (chicory, garlic, onions, asparagus), and resistant starch (cooked-and-cooled potatoes and rice, green bananas, legumes). These are the fibers most directly linked to SCFA production and anti-inflammatory effects.</p>
@@ -300,16 +300,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

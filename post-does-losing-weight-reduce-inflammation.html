@@ -88,7 +88,7 @@
                 </div>
                 <h1>Does Losing Weight Reduce Inflammation?</h1>
                 <p class="post-subtitle">It is one of the most consistent findings in metabolic research. Losing excess fat lowers the inflammatory signals your body produces. Here is how much weight loss it takes, why visceral fat matters most, and what actually changes inside you.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -102,7 +102,7 @@
 
                 <p>People often assume inflammation and body weight are separate concerns, one a blood-test abstraction and the other a number on the scale. In reality they are tightly connected. Excess adipose tissue is not inert padding; it is an active endocrine organ that releases inflammatory signals into the bloodstream. This is why weight loss is one of the few interventions that lowers inflammation through a clear, well-understood mechanism rather than a vague "healthy living" effect.</p>
 
-                <div class="key-definition"><strong>Adipose tissue</strong> is body fat, and it is metabolically active. Beyond storing energy, fat cells and the immune cells within them secrete hormones and signaling molecules called adipokines and cytokines that influence inflammation, appetite, and insulin sensitivity throughout the body.</div>
+                <div class="key-definition"><strong>Adipose tissue</strong>is body fat, and it is metabolically active. Beyond storing energy, fat cells and the immune cells within them secrete hormones and signaling molecules called adipokines and cytokines that influence inflammation, appetite, and insulin sensitivity throughout the body.</div>
 
                 <h2>Does Losing Weight Reduce Inflammation?</h2>
                 <p>For anyone carrying excess fat, the answer is a clear yes. The link runs through the fat tissue itself. As fat stores expand, particularly the visceral fat packed around the liver and intestines, the tissue becomes infiltrated with immune cells and shifts toward releasing pro-inflammatory cytokines such as IL-6 and tumor necrosis factor alpha (TNF-alpha), while producing less of the protective, anti-inflammatory adipokine adiponectin. When you lose that fat, you remove the tissue generating those signals, and the inflammatory load falls. This is why weight loss consistently lowers markers of systemic inflammation in study after study, whereas many other lifestyle changes produce smaller or less predictable effects.</p>
@@ -323,16 +323,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

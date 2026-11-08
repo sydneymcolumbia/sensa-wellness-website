@@ -85,7 +85,7 @@
                 </div>
                 <h1>Do Omega-3s Reduce Inflammation?</h1>
                 <p class="post-subtitle">Not all fats are created equal when it comes to inflammation. Omega-3 fatty acids have one of the strongest clinical evidence bases of any dietary intervention for reducing systemic inflammatory markers.</p>
-                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong> Written to reflect current, publicly available inflammation research.</p>
+                <p class="post-reviewer">Written by <a href="/authors/sydney-murphy">Sydney Murphy</a>, CMO &amp; Digital Products Officer. <strong>Reviewed by the Sensa Wellness editorial team.</strong>Written to reflect current, publicly available inflammation research.</p>
             </div>
         </div>
 
@@ -101,7 +101,7 @@
 
                 <p>The key omega-3 fatty acids in the context of human inflammation research are eicosapentaenoic acid (EPA) and docosahexaenoic acid (DHA), found primarily in marine foods and fish oil, and alpha-linolenic acid (ALA), found in flaxseed, chia seeds, and walnuts. EPA and DHA are the metabolically active forms, and the evidence for their anti-inflammatory effects is considerably stronger than for ALA.</p>
 
-                <div class="key-definition"><strong>Omega-3 fatty acids</strong> (EPA and DHA from fatty fish) are among the most consistently anti-inflammatory nutrients. They reshape cell membranes and give rise to specialized pro-resolving mediators (resolvins, protectins, maresins) that actively switch off inflammation.</div>
+                <div class="key-definition"><strong>Omega-3 fatty acids</strong>(EPA and DHA from fatty fish) are among the most consistently anti-inflammatory nutrients. They reshape cell membranes and give rise to specialized pro-resolving mediators (resolvins, protectins, maresins) that actively switch off inflammation.</div>
 
                 <div class="data-table-wrap">
                     <table class="data-table">
@@ -132,7 +132,7 @@
                 <p>This distinction matters for chronic, low-grade inflammation, the kind that quietly raises CRP and drives long-term disease. That state can be understood partly as a failure of resolution: inflammation that starts appropriately but never fully switches off. By supplying the building blocks for pro-resolving mediators, adequate omega-3 intake supports the body's own off switch rather than forcing the on switch shut. It is a fundamentally different, and arguably more physiological, way to lower the inflammatory burden.</p>
 
                 <h2>Clinical Evidence: What the Trials Show</h2>
-                <p>A 2017 meta-analysis of 68 randomized controlled trials published in the Journal of Clinical Lipidology found that omega-3 supplementation significantly reduced CRP, IL-6, and TNF-alpha across diverse populations. The effects were strongest in individuals with elevated baseline inflammatory markers, such as those with <a href="/post-metabolic-syndrome-inflammation">metabolic syndrome</a>, <a href="/post-heart-disease-inflammation">cardiovascular disease</a> risk, or autoimmune conditions. In healthy individuals with already-low baseline inflammation, the effects were more modest.</p>
+                <p>A 2017 meta-analysis of 68 randomized controlled trials published in the Journal of Clinical Lipidology found that omega-3 supplementation significantly reduced CRP, IL-6, and TNF-alpha across diverse populations. The effects were strongest in individuals with elevated baseline inflammatory markers, such as those with <a href="/post-metabolic-syndrome-inflammation">metabolic syndrome</a>, <a href="/post-heart-disease-inflammation">cardiovascular disease</a>risk, or autoimmune conditions. In healthy individuals with already-low baseline inflammation, the effects were more modest.</p>
 
                 <p>The REDUCE-IT trial, published in the New England Journal of Medicine in 2019, found that high-dose EPA supplementation (4 grams daily as icosapentaenoic acid) reduced major cardiovascular events by 25 percent in high-risk patients already on statin therapy. While this trial was designed around cardiovascular outcomes rather than inflammatory markers specifically, the magnitude of benefit strongly suggests meaningful anti-inflammatory effects beyond lipid modulation alone.</p>
 
@@ -335,16 +335,16 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">Top</button>
 
     <script>
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () =>{
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
             const btn = document.getElementById('scrollTop');
-            if (scrollTop > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+            if (scrollTop >400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
         });
-        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('mainNav').classList.toggle('active'); });
-        document.querySelectorAll('#mainNav a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mainNav').classList.remove('active'); }); });
+        document.getElementById('scrollTop').addEventListener('click', () =>{ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        document.getElementById('mobileToggle').addEventListener('click', () =>{ document.getElementById('mainNav').classList.toggle('active'); });
+        document.querySelectorAll('#mainNav a').forEach(link =>{ link.addEventListener('click', () =>{ document.getElementById('mainNav').classList.remove('active'); }); });
     </script>
 
 

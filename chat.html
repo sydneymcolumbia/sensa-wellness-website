@@ -472,7 +472,7 @@
     sendBtn.disabled = false;
 
     // Send on button click
-    sendBtn.addEventListener('click', () => {
+    sendBtn.addEventListener('click', () =>{
         const text = input.value.trim();
         if (text) {
             input.value = '';
@@ -481,7 +481,7 @@
     });
 
     // Send on Enter
-    input.addEventListener('keydown', e => {
+    input.addEventListener('keydown', e =>{
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             const text = input.value.trim();

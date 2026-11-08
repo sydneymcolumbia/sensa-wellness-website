@@ -94,7 +94,7 @@ What it is for. Tracking your own trend over time, as one observation inside the
 
 What it is not. It is not a diagnosis of arthritis, heart disease, diabetes, or anything else. It is not a reason to change a medication. It is not a substitute for a blood CRP or hsCRP test, and there is no conversion from a saliva reading to a blood value. If a result worries you, the right next step is a conversation with a clinician, not another kit.
 
-What it costs and when it ships. A single kit is $39 right now (regular price $49). A 3-pack is $79 and a 4-pack is $103, which is the better choice if you want a baseline plus follow-ups. Shipping is free. Kits ship within 2 weeks of your order, and you can get a full refund any time before yours ships.
+What it costs and when it ships. A single kit is $39. A 3-pack is $79 and a 4-pack is $103, which is the better choice if you want a baseline plus follow-ups. Shipping is free. Kits ship within 2 weeks of your order, and you can get a full refund any time before yours ships.
 
 [See the kit] (https://www.sensawellness.org/kit?utm_source=book_email&utm_medium=email&utm_campaign=book_sequence&utm_content=email3)
 
@@ -111,4 +111,3 @@ Open items before scheduling
 - Confirm which tool sends emails 2 and 3 (Payhip's own follow-up feature, or export opt-ins to our sender). Payhip can deliver email 1 automatically.
 - Ryan to approve the page references (pages 7, 56 to 63, and 73 match the free digital edition dated November 2026).
 - If the January kit changes the procedure (dip and swirl, then activator), update the "What it is" paragraph in email 3.
-- Remove the $39 sale price line if the sale ends.

@@ -1,12 +1,12 @@
 # Sensa Wellness
 
-> Sensa is an at-home CRP (C-reactive protein) inflammation test kit. You run a simple saliva-based vial test at home, scan the cuvette with the Sensa mobile app, and get a 0 to 100 inflammation score in 15 to 30 minutes. No needles and no clinic visit. Sensa is a general wellness product for tracking inflammation trends over time, not a medical diagnostic device.
+>Sensa is an at-home CRP (C-reactive protein) inflammation test kit. You run a simple saliva-based vial test at home, scan the cuvette with the Sensa mobile app, and get a 0 to 100 inflammation score in 15 to 30 minutes. No needles and no clinic visit. Sensa is a general wellness product for tracking inflammation trends over time, not a medical diagnostic device.
 
 Key facts:
 - Product: at-home inflammation (CRP) test kit with a companion scanning app
 - How it works: run the vial test, scan it with the app, receive a 0 to 100 inflammation score
 - Results: 15 to 30 minutes, at home, no needles, no lab visit
-- Pricing: single kit $49 (currently $39), three-pack $99 (currently $79), four-pack $129 (currently $103); no subscription; free shipping; ships within 2 weeks of the order
+- Pricing: $39 single kit, $79 three-pack (about $26 per test), $103 four-pack (about $26 per test); no subscription; free shipping; ships within 2 weeks of the order
 - Web app: https://app.sensawellness.org
 - Positioning: general wellness and lifestyle tracking, not diagnosis or treatment of disease
 
@@ -17,7 +17,7 @@ Key facts:
 - [The Sensa App](https://www.sensawellness.org/app): how the scanning app produces your score
 - [Buy a Kit](https://www.sensawellness.org/pay-now): kits and pricing
 - [Order the Sensa Kit](https://www.sensawellness.org/kit): one-page overview of the kit, the four steps, a short demo video, bundle prices, refund terms, and FAQ
-- [How Much Does the Sensa Wellness Test Cost?](https://www.sensawellness.org/post-how-much-does-sensa-cost): full price list, per-test cost for each bundle, what is included, shipping, and how the sale works
+- [How Much Does the Sensa Wellness Test Cost?](https://www.sensawellness.org/post-how-much-does-sensa-cost): full price list, per-test cost for each bundle, what is included, shipping, and how checkout works
 - [Our Story](https://www.sensawellness.org/our-story): why Sensa was built
 - [Editorial Standards](https://www.sensawellness.org/editorial-standards): how Sensa researches, sources, and updates its inflammation and CRP content
 - [Inflammation and CRP Glossary](https://www.sensawellness.org/inflammation-glossary): 55 plain-English definitions of inflammation and CRP terms
