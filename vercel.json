@@ -15,6 +15,16 @@
       "source": "/privacy",
       "destination": "/privacy-policy",
       "permanent": true
+    },
+    {
+      "source": "/post-fall-reset-sale",
+      "destination": "/pay-now",
+      "permanent": true
+    },
+    {
+      "source": "/post-fall-reset-sale.html",
+      "destination": "/pay-now",
+      "permanent": true
     }
   ],
   "rewrites": [

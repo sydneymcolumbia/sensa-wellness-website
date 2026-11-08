@@ -6,7 +6,7 @@ const PRICE_IDS = {
   price_4pack:  'price_1TGmyGKrHFkD3MC3MlqR1Z2d',
 };
 
-// ── Fall Reset Sale ────────────────────────────────────────────────
+// ── Sale pricing ───────────────────────────────────────────────────
 // 20% off, applied server-side so the discount is real (the checkout
 // total reflects it). The site shows rounded sale prices ($39 / $79 /
 // $103), but a 20% coupon on the $49 / $99 / $129 list prices charged
@@ -18,12 +18,13 @@ const PRICE_IDS = {
 // dashboard, swap PRICE_IDS, and set enabled to false.
 const SALE = {
   enabled: true,
-  name: 'Fall Reset Sale',
+  // Shown to the customer on the Stripe Checkout page and receipt.
+  name: '20% Off',
   // Fixed coupon ids so creation is idempotent; amountOff is in cents.
   coupons: {
-    price_1test: { id: 'fall_reset_2026_1kit',  amountOff: 1000 }, // $49 -> $39
-    price_3pack: { id: 'fall_reset_2026_3pack', amountOff: 2000 }, // $99 -> $79
-    price_4pack: { id: 'fall_reset_2026_4pack', amountOff: 2600 }, // $129 -> $103
+    price_1test: { id: 'sale20_2026_1kit',  amountOff: 1000 }, // $49 -> $39
+    price_3pack: { id: 'sale20_2026_3pack', amountOff: 2000 }, // $99 -> $79
+    price_4pack: { id: 'sale20_2026_4pack', amountOff: 2600 }, // $129 -> $103
   },
 };
 
@@ -120,7 +121,7 @@ async function preorderActive() {
 // metadata (Stripe allows 50 keys, 500 chars each) so api/webhook.js can send
 // the real purchase to GA4 against the same visitor and label the order as
 // direct, ad-assisted or book-assisted. Unknown keys are dropped.
-const ATTRIBUTION_KEYS = ['ga_client_id', 'ga_session_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'oppref', 'oai_campaign', 'landing_page', 'referrer', 'checkout_page'];
+const ATTRIBUTION_KEYS = ['ga_client_id', 'ga_session_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'oppref', 'oai_click', 'oai_campaign', 'landing_page', 'referrer', 'checkout_page'];
 function cleanAttribution(a) {
   const out = {};
   if (!a || typeof a !== 'object') return out;

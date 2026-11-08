@@ -26,7 +26,7 @@ const ORDER_ALERT_EMAIL = process.env.ORDER_ALERT_EMAIL || 'info@sensawellness.o
 const ORDER_ALERT_FROM = process.env.ORDER_ALERT_FROM || 'Sensa Orders <orders@sensawellness.org>';
 
 const KIT_LABELS = { price_1test: '1 Test Kit', price_3pack: '3-Pack Bundle', price_4pack: '4-Pack Bundle' };
-const ATTRIBUTION_KEYS = ['ga_client_id', 'ga_session_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'oppref', 'oai_campaign', 'landing_page', 'referrer', 'checkout_page', 'hear_about_us', 'price_key'];
+const ATTRIBUTION_KEYS = ['ga_client_id', 'ga_session_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'oppref', 'oai_click', 'oai_campaign', 'landing_page', 'referrer', 'checkout_page', 'hear_about_us', 'price_key'];
 
 function getDb() {
   if (!process.env.FIREBASE_SERVICE_ACCOUNT) return null;
@@ -54,7 +54,7 @@ function attributionFrom(metadata) {
 // campaign) > ad (gclid or paid medium) > direct.
 function journeyFor(bookMatch, a) {
   if (bookMatch || a.utm_campaign === 'book_sequence' || a.utm_source === 'book_email') return 'book';
-  if (a.gclid || a.oppref || a.utm_medium === 'cpc' || a.utm_medium === 'paid') return 'ad';
+  if (a.gclid || a.oppref || a.oai_click || a.utm_medium === 'cpc' || a.utm_medium === 'paid') return 'ad';
   return 'direct';
 }
 

@@ -8,7 +8,7 @@
 // order can be labelled direct, ad-assisted, or book-assisted later.
 (function () {
     // gclid is Google Ads; oppref and oai_campaign are OpenAI (ChatGPT) Ads Manager click references.
-    var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'oppref', 'oai_campaign'];
+    var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'oppref', 'oai_click', 'oai_campaign'];
     var STORE = 'sensa_attrib';
     var MEASUREMENT_ID = 'G-X24JYKBTXB';
 
