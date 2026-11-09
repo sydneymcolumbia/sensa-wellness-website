@@ -211,7 +211,11 @@ module.exports = async function handler(req, res) {
         price_key: priceId,
         ...cleanAttribution(attribution),
       },
-      success_url: preorder ? 'https://www.sensawellness.org/success?preorder=1' : 'https://www.sensawellness.org/success',
+      // {CHECKOUT_SESSION_ID} is filled in by Stripe; success.html uses it as the
+      // dedup event_id for the OpenAI Ads order_created pixel event.
+      success_url: preorder
+        ? 'https://www.sensawellness.org/success?preorder=1&session_id={CHECKOUT_SESSION_ID}'
+        : 'https://www.sensawellness.org/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://www.sensawellness.org/pay-now',
     };
 

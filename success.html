@@ -8,6 +8,8 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#1800AD">
     <link rel="canonical" href="https://www.sensawellness.org/success">
+    <!-- OpenAI (ChatGPT) Ads pixel, see oai-pixel.js -->
+    <script src="oai-pixel.js" async></script>
     <!-- Google Analytics (GA4) - TODO: Replace G-X24JYKBTXB with your Measurement ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24JYKBTXB"></script>
     <script>
@@ -166,6 +168,17 @@
         var note = document.querySelector('.order-note');
         if (h1) h1.textContent = 'Order Confirmed!';
         if (note) note.innerHTML = '<strong>What happens next:</strong><br>Your order is paid and your place in the next batch is secured. A receipt is on its way to your inbox. We will email you the shipping date as soon as the batch is ready, and you can cancel for a full refund any time before it ships. Questions: info@sensawellness.org.';
+    })();
+    // OpenAI (ChatGPT) Ads conversion. event_id is the Stripe Checkout session
+    // id (api/checkout.js puts it in success_url) so a Conversions API send from
+    // the webhook later dedups against this browser event. Fires once per id.
+    (function () {
+        var sessionId = '';
+        try { sessionId = new URLSearchParams(location.search).get('session_id') || ''; } catch (e) { /* ignore */ }
+        if (!/^cs_[A-Za-z0-9_]+$/.test(sessionId)) sessionId = '';
+        function send() { if (window.sensaOai) sensaOai.orderCreated(sessionId); }
+        if (window.sensaOai) send();
+        else window.addEventListener('load', send);
     })();
 </script>
 <script src="theme-fx.js" defer></script>

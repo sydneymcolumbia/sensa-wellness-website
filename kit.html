@@ -27,6 +27,8 @@
     <meta name="twitter:description" content="Track inflammation at home with a simple saliva kit and the Sensa app. From $39. Free shipping. Full refund before it ships.">
     <link rel="canonical" href="https://www.sensawellness.org/kit">
     <meta name="theme-color" content="#1800AD">
+    <!-- OpenAI (ChatGPT) Ads pixel, see oai-pixel.js -->
+    <script src="oai-pixel.js" async></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24JYKBTXB"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -446,6 +448,7 @@
                     items: [{ item_name: labels[priceId] || priceId, price: prices[priceId] || 0, quantity: 1 }]
                 });
             }
+            if (window.sensaOai) sensaOai.checkoutStarted(priceId, prices[priceId] || 0);
             var btn = btnEl || null;
             var errorEl = document.getElementById('checkoutError');
             var original = btn ? btn.textContent : '';

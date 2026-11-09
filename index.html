@@ -20,6 +20,8 @@
     <link rel="sitemap" href="/sitemap.xml">
     <link rel="alternate" type="application/rss+xml" title="Sensa Wellness Blog" href="https://www.sensawellness.org/feed.xml">
     <meta name="theme-color" content="#1800AD">
+    <!-- OpenAI (ChatGPT) Ads pixel, see oai-pixel.js -->
+    <script src="oai-pixel.js" async></script>
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24JYKBTXB"></script>
     <script>
@@ -2519,15 +2521,16 @@
     <script>
         // Direct Stripe checkout
         function handleCheckout(priceId, btn) {
+            var prices = { price_1test: 39, price_3pack: 79, price_4pack: 103 };
+            var labels = { price_1test: '1 Test Kit', price_3pack: '3-Pack Progress Tracker', price_4pack: '4-Pack Bundle' };
             if (typeof gtag === 'function') {
-                var prices = { price_1test: 49, price_3pack: 99, price_4pack: 129 };
-                var labels = { price_1test: '1 Test Kit', price_3pack: '3-Pack Progress Tracker', price_4pack: '4-Pack Bundle' };
                 gtag('event', 'begin_checkout', {
                     currency: 'USD',
                     value: prices[priceId] || 0,
                     items: [{ item_name: labels[priceId] || priceId, price: prices[priceId] || 0, quantity: 1 }]
                 });
             }
+            if (window.sensaOai) sensaOai.checkoutStarted(priceId, prices[priceId] || 0);
             var originalText = btn ? btn.textContent : '';
             if (btn) {
                 btn.disabled = true;

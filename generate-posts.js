@@ -16,6 +16,8 @@ function buildPost(p) {
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${p.title} - Sensa Wellness</title>
+    <!-- OpenAI (ChatGPT) Ads pixel, see oai-pixel.js -->
+    <script src="oai-pixel.js" async></script>
     <meta name="description" content="${p.desc}">
     <meta name="theme-color" content="#1800AD">
     <link rel="canonical" href="https://www.sensawellness.org/post-${p.slug}.html">
