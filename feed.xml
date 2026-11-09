@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 10:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Research Reads Individual Cellular Vesicles to Find Where Chronic Inflammation Starts</title>
+        <link>https://www.sensawellness.org/post-extracellular-vesicles-inflammation-origin</link>
+        <guid>https://www.sensawellness.org/post-extracellular-vesicles-inflammation-origin</guid>
+        <description>A Nagoya University technique published in Cell Reports Physical Science reads paired molecular signals inside individual extracellular vesicles to detect chronic inflammation and identify which tissue is producing it.</description>
+        <category>News</category>
+        <pubDate>Mon, 09 Nov 2026 10:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Milk Thistle Reduce Inflammation?</title>
         <link>https://www.sensawellness.org/post-does-milk-thistle-reduce-inflammation</link>
