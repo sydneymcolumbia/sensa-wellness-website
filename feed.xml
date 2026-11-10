@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Nov 2026 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 08:10:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Lion's Mane Reduce Inflammation? What the Research Shows</title>
+        <link>https://www.sensawellness.org/post-does-lions-mane-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-lions-mane-reduce-inflammation</guid>
+        <description>Lion's mane mushroom contains bioactive polysaccharides and ergosterol that suppress key inflammatory pathways including NF-kB and JAK/STAT. Here is what the research shows, and where the evidence is still limited.</description>
+        <category>Science</category>
+        <pubDate>Tue, 10 Nov 2026 08:10:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Research Reads Individual Cellular Vesicles to Find Where Chronic Inflammation Starts</title>
         <link>https://www.sensawellness.org/post-extracellular-vesicles-inflammation-origin</link>
