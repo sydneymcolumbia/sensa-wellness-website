@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Nov 2026 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 08:10:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Pro-Inflammatory Diets May Speed Up Biological Aging, New Research Shows</title>
+        <link>https://www.sensawellness.org/post-inflammatory-diet-biological-aging-ckm</link>
+        <guid>https://www.sensawellness.org/post-inflammatory-diet-biological-aging-ckm</guid>
+        <description>A cluster of 2026 studies finds that diets high in processed foods and refined carbohydrates accelerate epigenetic aging, partly explaining why inflammatory diets worsen cardiovascular-kidney-metabolic outcomes.</description>
+        <category>News</category>
+        <pubDate>Fri, 13 Nov 2026 08:10:00 +0000</pubDate>
+    </item>
     <item>
         <title>Are Carrots Anti-Inflammatory?</title>
         <link>https://www.sensawellness.org/post-are-carrots-anti-inflammatory</link>
