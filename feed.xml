@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Nov 2026 08:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 08:10:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Ginseng Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-does-ginseng-reduce-inflammation</link>
+        <guid>https://www.sensawellness.org/post-does-ginseng-reduce-inflammation</guid>
+        <description>Ginseng is one of the oldest herbal remedies, and modern trials show its ginsenosides can lower some inflammatory markers like IL-6 and TNF-alpha. Here is what the research actually shows about ginseng and CRP.</description>
+        <category>Science</category>
+        <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Pro-Inflammatory Diets May Speed Up Biological Aging, New Research Shows</title>
         <link>https://www.sensawellness.org/post-inflammatory-diet-biological-aging-ckm</link>
