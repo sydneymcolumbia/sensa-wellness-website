@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Nov 2026 08:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 10:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study Reveals Why Keto Diets Raise Inflammation for Some People But Not Others</title>
+        <link>https://www.sensawellness.org/post-keto-fat-type-inflammation-study</link>
+        <guid>https://www.sensawellness.org/post-keto-fat-type-inflammation-study</guid>
+        <description>A November 2026 Science Advances study found that long-chain saturated fats in ketogenic diets trigger proinflammatory macrophage activity via cGAS-STING signaling, while medium-chain and unsaturated fats do not, explaining why keto diets have opposite effects on inflammation in different people.</description>
+        <category>News</category>
+        <pubDate>Mon, 16 Nov 2026 10:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Ginseng Reduce Inflammation? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-does-ginseng-reduce-inflammation</link>

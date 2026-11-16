@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/blog.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/sitemap-page.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -272,7 +272,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-are-carrots-anti-inflammatory.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -835,6 +835,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.sensawellness.org/post-does-ginseng-reduce-inflammation.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.sensawellness.org/post-does-glucosamine-reduce-inflammation.html</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -957,12 +963,6 @@
   <url>
     <loc>https://www.sensawellness.org/post-does-tart-cherry-reduce-inflammation.html</loc>
     <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.sensawellness.org/post-does-ginseng-reduce-inflammation.html</loc>
-    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1376,7 +1376,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-inflammatory-diet-biological-aging-ckm.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1737,6 +1737,12 @@
   <url>
     <loc>https://www.sensawellness.org/post-is-yogurt-inflammatory.html</loc>
     <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/post-keto-fat-type-inflammation-study.html</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
