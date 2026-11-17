@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Nov 2026 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Is Quercetin Anti-Inflammatory? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-quercetin-inflammation</link>
+        <guid>https://www.sensawellness.org/post-quercetin-inflammation</guid>
+        <description>Quercetin, a flavonoid antioxidant found in onions, apples, and berries, lowers CRP in multiple meta-analyses of randomized controlled trials. Here is what the evidence actually shows, what dose matters, and who is most likely to benefit.</description>
+        <category>Science</category>
+        <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Study Reveals Why Keto Diets Raise Inflammation for Some People But Not Others</title>
         <link>https://www.sensawellness.org/post-keto-fat-type-inflammation-study</link>
