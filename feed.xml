@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 14:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study Finds Centenarians Have Gut Bacteria That Counter Age-Related Inflammation</title>
+        <link>https://www.sensawellness.org/post-centenarian-gut-bacteria-inflammation</link>
+        <guid>https://www.sensawellness.org/post-centenarian-gut-bacteria-inflammation</guid>
+        <description>A Cell Metabolism study published November 16, 2026 found that people who live past 100 share a gut microbiome signature linked to bile acid deconjugation that may counter metabolic decline and low-grade chronic inflammation in aging.</description>
+        <category>News</category>
+        <pubDate>Wed, 18 Nov 2026 14:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Is Peripheral Artery Disease Linked to Inflammation?</title>
         <link>https://www.sensawellness.org/post-peripheral-artery-disease-inflammation</link>
