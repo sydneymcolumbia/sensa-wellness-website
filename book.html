@@ -2,19 +2,17 @@
 <html lang="en">
 <head>
     <!--
-      Public page for Ryan's free book. Draft shell.
-      Before launch:
-        - set PAYHIP_URL below (data-payhip on the download links) to the real Payhip product link
-        - Ryan approves the excerpt (currently the opening of "Before we begin", his own text)
-        - remove the robots noindex tag, add /book to sitemap.xml and llms.txt,
-          then add the homepage book feature that links here
-      Record the AI visibility baseline (docs/ai-visibility-baseline-2026-11-04.md)
-      before this page goes live.
+      Public page for Ryan's free book. Live since Nov 20, 2026 (Sydney's call).
+      PAYHIP_URL is https://payhip.com/b/jGF8h (Ryan, Nov 20, 2026). Linked from
+      the homepage #book feature, sitemap.xml, sitemap-page.html and llms.txt.
+      The excerpt is the opening of "Before we begin", Ryan's own text; his
+      formal sign-off on it was still outstanding at launch.
+      AI visibility baseline: docs/ai-visibility-baseline-2026-11-04.md
+      (rerun the same panel 30 days after launch).
     -->
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow"><!-- remove at launch -->
     <title>Inflammation: Weight Loss and Aging, a Free Book by Ryan A. Robinson | Sensa Wellness</title>
     <meta name="description" content="Download Inflammation: Weight Loss and Aging, a free illustrated book by Sensa Wellness founder Ryan A. Robinson on the biology of inflammation, how it is measured, and better questions for health conversations.">
     <meta property="og:type" content="book">
@@ -271,7 +269,7 @@
         // Download buttons: point at the Payhip product link once it is set.
         // Until then the button explains that the link is coming.
         (function () {
-            var PAYHIP_URL = '';   // e.g. https://payhip.com/b/XXXXX (set before launch)
+            var PAYHIP_URL = 'https://payhip.com/b/jGF8h';   // Ryan confirmed Nov 20, 2026
             document.querySelectorAll('.js-book-cta').forEach(function (a) {
                 if (PAYHIP_URL) {
                     a.href = PAYHIP_URL;
