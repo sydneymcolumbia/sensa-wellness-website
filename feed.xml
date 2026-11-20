@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Nov 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does H. Pylori Cause Inflammation?</title>
+        <link>https://www.sensawellness.org/post-h-pylori-inflammation</link>
+        <guid>https://www.sensawellness.org/post-h-pylori-inflammation</guid>
+        <description>Helicobacter pylori is one of the world's most common infections, and inflammation is the core of what it does. It inflames the stomach lining in nearly everyone it colonizes and is linked to a modest rise in systemic markers like CRP. Here is what the research shows.</description>
+        <category>Conditions</category>
+        <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Senescent Cells and Inflammation: How Zombie Cells Drive Chronic Disease</title>
         <link>https://www.sensawellness.org/post-senescent-cells-inflammation</link>
