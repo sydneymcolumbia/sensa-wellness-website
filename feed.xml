@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 10:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Review: Cardiorespiratory Fitness Beats Diet Quality for Longevity, Mayo Clinic Analysis Finds</title>
+        <link>https://www.sensawellness.org/post-exercise-vs-diet-longevity</link>
+        <guid>https://www.sensawellness.org/post-exercise-vs-diet-longevity</guid>
+        <description>A November 2026 review in Mayo Clinic Proceedings found that physical activity and cardiorespiratory fitness are more strongly linked to longevity than diet quality, and high fitness largely eliminates excess mortality from a lower-quality diet.</description>
+        <category>News</category>
+        <pubDate>Fri, 20 Nov 2026 10:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does H. Pylori Cause Inflammation?</title>
         <link>https://www.sensawellness.org/post-h-pylori-inflammation</link>
