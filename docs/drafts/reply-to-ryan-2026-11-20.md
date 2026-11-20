@@ -9,7 +9,7 @@ Thanks, this is enough to move the book forward.
 
 Book
 
-- The Payhip link is wired into the book page. The page stays hidden until you say yes to the excerpt and author block, then it goes public with the homepage feature.
+- The book is live: sensawellness.org/book, with a feature on the homepage below the kits and a Book link in the menu. The excerpt is the opening of "Before we begin," your own words. If you would rather it not be there, say so and it comes off the same day.
 - Payhip shows the book as "On Sale, $0.00." If the base price is set to $0 rather than discounted to it, the listing reads as free instead of as a sale, which matches how the site now presents prices.
 - The product id, free-checkout trigger, download event, and marketing opt-in answers only affect the measurement step, not the launch. Whenever you have them I will finish the Zapier connection. If it is easier, create the zap yourself: trigger Payhip New Sale, action Webhooks by Zapier POST to https://www.sensawellness.org/api/book-request, and I will send you the header value.
 
