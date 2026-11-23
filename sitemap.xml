@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.sensawellness.org/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/blog.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/sitemap-page.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -104,7 +104,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/hub-chronic-disease-inflammation.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -122,7 +122,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/hub-mental-health-inflammation.html</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -403,6 +403,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.sensawellness.org/post-bipolar-disorder-inflammation.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.sensawellness.org/post-birth-control-crp.html</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -500,7 +506,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-centenarian-gut-bacteria-inflammation.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -626,7 +632,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-crp-heart-attack-risk.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1063,14 +1069,8 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sensawellness.org/post-bipolar-disorder-inflammation.html</loc>
-    <lastmod>2026-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.sensawellness.org/post-exercise-vs-diet-longevity.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1190,7 +1190,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-h-pylori-inflammation.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1401,6 +1401,12 @@
   <url>
     <loc>https://www.sensawellness.org/post-inflammatory-diet-biological-aging-ckm.html</loc>
     <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sensawellness.org/post-inflammatory-diet-cognitive-frailty.html</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2042,7 +2048,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-peripheral-artery-disease-inflammation.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2222,7 +2228,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/post-senescent-cells-inflammation.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2600,7 +2606,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/book.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2636,7 +2642,7 @@
   </url>
   <url>
     <loc>https://www.sensawellness.org/kit.html</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
