@@ -189,7 +189,7 @@
       var p = document.createElement('p');
       p.className = 'preorder-notice';
       p.innerHTML = PAID_PREORDERS
-        ? '<strong>Preorders open.</strong> Pay today and your kit ships when the next batch is ready; we email you the shipping date. Full refund any time before it ships. <a href="#" class="po-reserve-link">Prefer to reserve without paying?</a>'
+        ? '<strong>Preorders open.</strong> Pay today and your kit ships in January; we email you the shipping date. Full refund any time before it ships. <a href="#" class="po-reserve-link">Prefer to reserve without paying?</a>'
         : '<strong>Preorders open.</strong> Kits are temporarily out of stock. Reserve yours now, pay nothing today, and we will email you the moment your kit is ready to ship.';
       h.appendChild(p);
     });

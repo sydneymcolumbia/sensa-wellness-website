@@ -6,7 +6,7 @@ Key facts:
 - Product: at-home inflammation (CRP) test kit with a companion scanning app
 - How it works: run the vial test, scan it with the app, receive a 0 to 100 inflammation score
 - Results: 15 to 30 minutes, at home, no needles, no lab visit
-- Pricing: $39 single kit, $79 three-pack (about $26 per test), $103 four-pack (about $26 per test); no subscription; free shipping; sold as paid preorders that ship with the next batch (shipping date emailed, full refund before it ships)
+- Pricing: $39 single kit, $79 three-pack (about $26 per test), $103 four-pack (about $26 per test); no subscription; free shipping; sold as paid preorders that ship in January (shipping date emailed, full refund before it ships)
 - Web app: https://app.sensawellness.org
 - Positioning: general wellness and lifestyle tracking, not diagnosis or treatment of disease
 

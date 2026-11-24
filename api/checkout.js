@@ -73,7 +73,7 @@ async function getFallbackCoupon(priceId) {
 
 // ── Fulfillment and pre-order mode ─────────────────────────────────
 // PAID PREORDERS since 2026-11-24 (PREORDER.enabled = true): charged today,
-// ships with the next batch, no ship date promised. The cap below only
+// ships in January (stated on the notice and in Stripe). The cap below only
 // matters when PREORDER.enabled is false: once `capOrders` paid orders have
 // come in since `since`, checkout switches to preorder wording automatically
 // and preorder.js (which asks GET /api/checkout) relabels the site to match.
@@ -92,7 +92,7 @@ const FULFILLMENT = {
 const PREORDER = {
   enabled: true,
   paid: true,
-  note: 'This is a preorder. You are charged today and your kit ships when the next batch is ready; we will email you the shipping date. Cancel for a full refund any time before it ships.',
+  note: 'This is a preorder. You are charged today and your kit ships in January; we will email you the shipping date. Cancel for a full refund any time before it ships.',
 };
 
 // Count paid Checkout sessions since the batch started. Cached for a minute
