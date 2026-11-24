@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Nov 2026 11:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 10:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Blue Light from Screens Cause Inflammation? What the Research Shows</title>
+        <link>https://www.sensawellness.org/post-blue-light-inflammation</link>
+        <guid>https://www.sensawellness.org/post-blue-light-inflammation</guid>
+        <description>Evening blue light from screens and LED lighting suppresses melatonin and disrupts the circadian clock, both of which are connected to higher levels of systemic inflammation, including elevated CRP. Here is what the research shows.</description>
+        <category>Science</category>
+        <pubDate>Tue, 24 Nov 2026 10:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Research: An Inflammatory Diet Triples the Risk of Cognitive Frailty in Older Adults</title>
         <link>https://www.sensawellness.org/post-inflammatory-diet-cognitive-frailty</link>
