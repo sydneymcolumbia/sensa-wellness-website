@@ -72,14 +72,13 @@ async function getFallbackCoupon(priceId) {
 }
 
 // ── Fulfillment and pre-order mode ─────────────────────────────────
-// Selling live since 2026-11-04: kits are assembled on demand and ship
-// within 2 weeks of the order. The team can fill about 100 orders in this
-// batch, so once `capOrders` paid orders have come in since `since`, the
-// checkout automatically switches to PAID PRE-ORDER wording (charged today,
-// ships with the next batch) and preorder.js (which asks GET /api/checkout)
-// relabels the site to match. Set capOrders to 0 to disable the cap.
+// PAID PREORDERS since 2026-11-24 (PREORDER.enabled = true): charged today,
+// ships with the next batch, no ship date promised. The cap below only
+// matters when PREORDER.enabled is false: once `capOrders` paid orders have
+// come in since `since`, checkout switches to preorder wording automatically
+// and preorder.js (which asks GET /api/checkout) relabels the site to match.
 const FULFILLMENT = {
-  shipNote: 'Ships within 2 weeks of your order. Free shipping. Full refund any time before it ships.',
+  shipNote: 'Free shipping. Full refund any time before it ships.',
   capOrders: 100,
   since: '2026-11-04T00:00:00Z',
 };
@@ -91,9 +90,9 @@ const FULFILLMENT = {
 // preorder.js reads the live state from GET /api/checkout, so there is no
 // front-end flag to keep in sync any more.
 const PREORDER = {
-  enabled: false,
+  enabled: true,
   paid: true,
-  note: 'You are charged today and your kit ships when the next batch is ready; we will email you the shipping date. Cancel for a full refund any time before it ships.',
+  note: 'This is a preorder. You are charged today and your kit ships when the next batch is ready; we will email you the shipping date. Cancel for a full refund any time before it ships.',
 };
 
 // Count paid Checkout sessions since the batch started. Cached for a minute
@@ -219,7 +218,7 @@ module.exports = async function handler(req, res) {
       cancel_url: 'https://www.sensawellness.org/pay-now',
     };
 
-    params.payment_intent_data = { description: 'Sensa at-home inflammation test kit' };
+    params.payment_intent_data = { description: preorder ? 'Sensa at-home inflammation test kit (preorder)' : 'Sensa at-home inflammation test kit' };
     if (preorder) {
       params.metadata.preorder = 'true';
       params.custom_text = { submit: { message: PREORDER.note } };

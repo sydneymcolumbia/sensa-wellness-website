@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmed - Sensa Wellness</title>
+    <title>Preorder Confirmed - Sensa Wellness</title>
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#1800AD">
     <link rel="canonical" href="https://www.sensawellness.org/success">
@@ -152,11 +152,11 @@
                 <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
         </div>
-        <h1>Order Confirmed!</h1>
+        <h1>Preorder Confirmed!</h1>
         <p class="thank-you">Thank you for choosing Sensa Wellness. You are taking an important step toward understanding and managing your inflammation.</p>
         <div class="order-note">
             <strong>What happens next:</strong><br>
-            A confirmation email is on its way to your inbox with your order details and tracking information. Your Sensa kit ships within 2 weeks of your order, and we email tracking the day it goes out.
+            Your preorder is paid and your place in the next batch is secured. A receipt is on its way to your inbox. We will email you the shipping date as soon as the batch is ready, and you can cancel for a full refund any time before it ships.
         </div>
         <a href="/" class="home-btn">Back to Homepage</a>
     </div>
@@ -166,8 +166,8 @@
         if (!/[?&]preorder=1/.test(location.search)) return;
         var h1 = document.querySelector('.confirmation-card h1');
         var note = document.querySelector('.order-note');
-        if (h1) h1.textContent = 'Order Confirmed!';
-        if (note) note.innerHTML = '<strong>What happens next:</strong><br>Your order is paid and your place in the next batch is secured. A receipt is on its way to your inbox. We will email you the shipping date as soon as the batch is ready, and you can cancel for a full refund any time before it ships. Questions: info@sensawellness.org.';
+        if (h1) h1.textContent = 'Preorder Confirmed!';
+        if (note) note.innerHTML = '<strong>What happens next:</strong><br>Your preorder is paid and your place in the next batch is secured. A receipt is on its way to your inbox. We will email you the shipping date as soon as the batch is ready, and you can cancel for a full refund any time before it ships. Questions: info@sensawellness.org.';
     })();
     // OpenAI (ChatGPT) Ads conversion. event_id is the Stripe Checkout session
     // id (api/checkout.js puts it in success_url) so a Conversions API send from
