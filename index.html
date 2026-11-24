@@ -238,6 +238,75 @@
         @media (max-width: 760px) {
         }
 
+        /* Black Friday promo bar */
+        .promo-bar {
+            background: var(--accent-navy);
+            color: #fff;
+            position: relative;
+        }
+
+        .promo-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .promo-headline {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+        }
+
+        .promo-tag {
+            background: var(--accent-orange);
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .promo-sub {
+            display: block;
+            font-weight: 500;
+            font-size: 0.85rem;
+            opacity: 0.85;
+            margin-top: 0.1rem;
+        }
+
+        .promo-cta {
+            background: #fff;
+            color: var(--accent-navy);
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.55rem 1.4rem;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .promo-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
+
+        @media (max-width: 760px) {
+            .promo-bar-inner { gap: 0.75rem; padding: 0.9rem 1.2rem; flex-direction: column; }
+            .promo-headline { font-size: 1rem; text-align: center; flex-direction: column; gap: 0.4rem; }
+        }
+
         /* Sale price styling on pricing cards */
         .sale-old {
             font-family: 'Nunito', sans-serif;
@@ -1797,6 +1866,17 @@
     </header>
     <main id="main-content">
 
+    <!-- Black Friday promo bar -->
+    <div class="promo-bar" role="region" aria-label="Black Friday offer">
+        <div class="promo-bar-inner">
+            <div class="promo-headline">
+                <span class="promo-tag">Black Friday</span>
+                <span>Our best price of the year on every kit <span class="promo-sub">Free US shipping. No subscription. Order by December 5 for Christmas delivery.</span></span>
+            </div>
+            <a href="#pricing" class="promo-cta">Shop Black Friday</a>
+        </div>
+    </div>
+
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -2060,6 +2140,7 @@
             <div class="section-header reveal">
                 <h2>Choose Your Bundle</h2>
                 <p>One-time purchase. No subscription. Free shipping.</p>
+                <p class="bf-note" style="margin:0.9rem auto 0;max-width:640px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0.5rem 0.75rem;font-size:0.95rem;line-height:1.5;color:#1a1a2e;"><span style="display:inline-block;background:var(--accent-navy);color:#fff;font-weight:700;font-size:0.8rem;letter-spacing:0.02em;padding:0.25rem 0.7rem;border-radius:999px;">Black Friday</span><span><strong>Our best price of the year.</strong> Free US shipping. No subscription.</span></p>
                 <p class="ship-note" style="margin:0.9rem auto 0;max-width:640px;padding:0.75rem 1rem;border-radius:12px;background:rgba(250,194,52,0.18);border:1px solid rgba(245,157,6,0.5);font-size:0.95rem;line-height:1.5;color:#1a1a2e;"><strong>In stock.</strong> Ships within 2 weeks of your order. Order by December 5 for delivery by Christmas. Free shipping, full refund any time before it ships.</p>
             </div>
             <div class="pricing-cards reveal">
@@ -2527,7 +2608,7 @@
         <div class="buy-bar-inner">
             <div class="buy-bar-text">
                 <div class="buy-bar-title">Sensa At-Home Test Kit</div>
-                <div class="buy-bar-sub">From $39. Free shipping. Ships within 2 weeks.</div>
+                <div class="buy-bar-sub">Black Friday price. From $39. Free shipping. Ships within 2 weeks.</div>
             </div>
             <div class="buy-bar-actions">
                 <button type="button" class="btn btn-outline buy-bar-hide-sm" onclick="handleCheckout('price_1test', this)">1 Kit &middot; $39</button>
