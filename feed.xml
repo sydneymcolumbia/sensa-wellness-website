@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Nov 2026 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 11:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>New Study Reveals How Mitochondrial DNA Damage Triggers the Inflammatory Cascade</title>
+        <link>https://www.sensawellness.org/post-mitochondrial-dna-inflammation-trigger</link>
+        <guid>https://www.sensawellness.org/post-mitochondrial-dna-inflammation-trigger</guid>
+        <description>A University of California, Riverside study published November 11, 2026, built a new molecular tool to watch how damaged mitochondrial DNA leaks into the cell and fires the cGAS-STING inflammatory alarm, with implications for chronic inflammation and aging.</description>
+        <category>News</category>
+        <pubDate>Wed, 25 Nov 2026 11:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Does Pericarditis Raise CRP Levels?</title>
         <link>https://www.sensawellness.org/post-pericarditis-inflammation</link>
