@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Nov 2026 11:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 08:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Does Resistance Training Reduce Inflammation? What the Evidence Shows</title>
+        <link>https://www.sensawellness.org/post-resistance-training-inflammation</link>
+        <guid>https://www.sensawellness.org/post-resistance-training-inflammation</guid>
+        <description>Multiple meta-analyses of randomized controlled trials confirm that regular resistance training lowers CRP, the standard marker of systemic inflammation. The effect is strongest with at least three sessions per week, intensity above 70% of one-rep max, and duration of at least 12 weeks.</description>
+        <category>Science</category>
+        <pubDate>Thu, 26 Nov 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>New Study Reveals How Mitochondrial DNA Damage Triggers the Inflammatory Cascade</title>
         <link>https://www.sensawellness.org/post-mitochondrial-dna-inflammation-trigger</link>
