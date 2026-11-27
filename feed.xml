@@ -5,13 +5,21 @@
     <link>https://www.sensawellness.org/blog</link>
     <description>Expert guides on inflammation, chronic disease, diet, lifestyle, and at-home CRP testing from Sensa Wellness.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Nov 2026 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.sensawellness.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
         <url>https://www.sensawellness.org/sensa-og.jpg</url>
         <title>Sensa Wellness Blog</title>
         <link>https://www.sensawellness.org/blog</link>
     </image>
+    <item>
+        <title>Can a Daily Oral Hyaluronic Acid Supplement Lower Inflammation? What a New Trial Found</title>
+        <link>https://www.sensawellness.org/post-oral-hyaluronic-acid-inflammation</link>
+        <guid>https://www.sensawellness.org/post-oral-hyaluronic-acid-inflammation</guid>
+        <description>A randomized, placebo-controlled trial published in November 2026 found that 120 mg of oral hyaluronic acid daily for 12 weeks significantly reduced CRP and IL-1 beta in healthy adults. Here is what the evidence shows and why the caveats matter.</description>
+        <category>News</category>
+        <pubDate>Fri, 27 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
     <item>
         <title>Can Pneumonia Raise Your CRP? What the Evidence Shows</title>
         <link>https://www.sensawellness.org/post-pneumonia-crp</link>
